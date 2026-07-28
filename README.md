@@ -4,8 +4,8 @@ An ATS-friendly, one-to-two-page LaTeX resume system with focused variants for U
 technology companies, Web3 teams, and the Taiwan market. Facts are shared;
 positioning changes by audience.
 
-> The included experience, metrics, links, and education are realistic
-> placeholders. Replace every example with truthful information before use.
+> The committed personal content is Timothy Yu's reviewed factual baseline.
+> Reconfirm every claim before sending a tailored version.
 
 ## Repository layout
 
@@ -19,9 +19,9 @@ dist/         Generated PDFs
 ```
 
 The three entrypoints deliberately contain almost no content. Common facts live
-in `sections/experience.tex` and `sections/education.tex`; summaries, skill
-ordering, and selected work vary because recruiters in each market scan for
-different signals.
+in `sections/experience.tex` and `sections/education.tex`; summaries and skill
+ordering vary because recruiters in each market scan for different signals.
+Every variant must remain within the factual boundaries of `source/resume.md`.
 
 The Taiwan variant is English-first for maximum ATS portability. If a role
 requires Traditional Chinese, switch that entrypoint to XeLaTeX and configure a
@@ -60,8 +60,9 @@ by Git; source remains the reviewable artifact of record.
 
 ## Customize your resume
 
-1. Replace identity values in `config/commands.tex`.
-2. Replace all example employers, metrics, projects, and education.
+1. Update identity values in `config/commands.tex`.
+2. Keep employers, metrics, skills, and education consistent with
+   `source/resume.md`.
 3. Keep achievements in the pattern **action + technical scope + result**.
 4. Build all variants after shared-content changes.
 5. Open each PDF and perform a final visual and factual review.
@@ -102,8 +103,9 @@ only when they match actual experience.
 - Validation checks page count and required extractable headings. It cannot
   guarantee performance in every ATS, so test the final PDF by copying its text
   into a plain-text editor.
-- Validation allows one or two pages. Prefer removing weak bullets over shrinking
-  below 10 pt or tightening margins further.
+- Validation allows one or two pages and rejects an underfilled page in a
+  two-page document. Prefer removing weak bullets over shrinking below 10 pt or
+  tightening margins further.
 - Use US Letter for US/Web3 applications. If a Taiwan employer explicitly
   requests A4, add a separate paper-size override rather than silently changing
   every variant.

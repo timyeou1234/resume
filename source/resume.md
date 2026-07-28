@@ -1,15 +1,13 @@
 # Timothy Yu
 
 **Senior iOS Engineer**  
-Taiwan · [timyeou1234@hotmail.com](mailto:timyeou1234@hotmail.com) · [GitHub](https://github.com/timyeou1234) · [LinkedIn](https://www.linkedin.com/in/timothy-yeou-0134a9117)
+Taiwan · [+886 929070110](tel:+886929070110) · [timyeou1234@hotmail.com](mailto:timyeou1234@hotmail.com) · [GitHub](https://github.com/timyeou1234) · [LinkedIn](https://www.linkedin.com/in/timothy-yeou-0134a9117)
 
 ## Summary
 
-Senior iOS Engineer with 9+ years of experience building consumer, fintech, and blockchain applications.
+Senior iOS Engineer with 9+ years delivering self-custodial wallets, real-time betting products, and connected vehicle applications.
 
-Experienced in delivering end-to-end mobile features through product planning, API discussions, implementation, and production support.
-
-Background includes self-custodial wallets, real-time betting platforms, and connected vehicle applications.
+Owns features from product and API discussions through implementation and production support.
 
 ## Technical Skills
 

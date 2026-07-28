@@ -23,6 +23,8 @@ The strongest themes are:
 - Do not imply direct employment by Toyota or KINTO.
 - JSON-RPC was handled through SDK abstractions and should not be listed as a skill.
 - Do not list TCP Socket, Account Abstraction, or DeFi in the skills section.
+- Variant-specific summaries and skill ordering must use only facts already
+  present in `source/resume.md`.
 
 ## Bullet style
 
@@ -70,7 +72,7 @@ Current approximate scale references:
 
 Only list technologies with meaningful hands-on experience.
 
-Keep product or protocol names such as Morpho and Merkl in experience unless there is a clear reason to target a role requiring those terms.
+Keep product or protocol names such as Morpho in experience unless there is a clear reason to target a role requiring those terms.
 
 ## Review checklist
 
@@ -83,3 +85,5 @@ Before publishing, confirm:
 - No placeholder employer, metric, link, or education detail remains.
 - The PDF text extracts in the expected reading order.
 - The layout remains readable at normal zoom.
+- A two-page version uses both pages meaningfully and does not orphan Education
+  or another short section on page two.

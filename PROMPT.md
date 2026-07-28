@@ -4,7 +4,10 @@
 
 Use `source/resume.md` as the factual content source.
 
-Do not replace it with the placeholder content currently present in the LaTeX files. Preserve the distinction between `Crypto.com Onchain` and `Cronos App`; they are separate phases of the candidate's Crypto.com experience.
+Audience-specific sections may condense or reorder facts, but must not introduce
+claims that are absent from the source. Preserve the distinction between
+`Crypto.com Onchain` and `Cronos App`; they are separate phases of the
+candidate's Crypto.com experience.
 
 ## Objective
 
@@ -16,7 +19,7 @@ Convert the approved Markdown content into a clean, ATS-compatible resume for Se
 - Do not turn approximate DAU figures into exact figures.
 - Do not add TCP Socket, Account Abstraction, or DeFi to the skills section.
 - Account Abstraction-related implementation may be described only through the factual Cronos experience already present, such as smart contract wallets and UserOperation construction.
-- Keep Morpho and Merkl in experience, not in skills.
+- Keep Morpho in experience, not in skills.
 - Preserve current-tense verbs for the current Crypto.com role and past tense for previous roles.
 - Prefer direct, natural engineering language over marketing language or generic AI-style phrasing.
 - Do not force an impact statement or percentage where none is documented.
@@ -33,6 +36,7 @@ Convert the approved Markdown content into a clean, ATS-compatible resume for Se
 ## Layout requirements
 
 - Keep the resume to no more than two readable pages; prefer one page when the complete relevant history fits without excessive compression.
+- If two pages are used, both pages must contain substantive content; never leave only Education or one short section on page two.
 - Keep a single-column reading order.
 - Use conventional headings and text-based links.
 - Avoid icons, skill bars, charts, sidebars, photographs, and text boxes.
@@ -43,7 +47,7 @@ Convert the approved Markdown content into a clean, ATS-compatible resume for Se
 ## Repository work
 
 1. Inspect the existing LaTeX structure and build scripts before changing them.
-2. Replace all placeholder identity, experience, skills, metrics, links, and education content.
+2. Keep identity, experience, skills, metrics, links, and education synchronized with the factual source.
 3. Keep `source/resume.md` as the human-reviewable content record.
 4. Update the LaTeX source so it accurately represents the Markdown.
 5. Build and validate every existing resume variant.

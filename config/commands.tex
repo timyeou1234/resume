@@ -1,5 +1,7 @@
 \newcommand{\ResumeName}{Timothy Yu}
 \newcommand{\ResumeLocation}{Taiwan}
+\newcommand{\ResumePhone}{+886 929070110}
+\newcommand{\ResumePhoneURL}{tel:+886929070110}
 \newcommand{\ResumeEmail}{timyeou1234@hotmail.com}
 \newcommand{\ResumeLinkedIn}{linkedin.com/in/timothy-yeou-0134a9117}
 \newcommand{\ResumeLinkedInURL}{https://www.linkedin.com/in/timothy-yeou-0134a9117}
@@ -15,6 +17,7 @@
     {\LARGE\bfseries \ResumeName}\\[-1pt]
     {\normalsize \ResumeTagline}\\[2pt]
     \ResumeLocation{} \enspace|\enspace
+    \href{\ResumePhoneURL}{\ResumePhone} \enspace|\enspace
     \href{mailto:\ResumeEmail}{\ResumeEmail}\\[-1pt]
     \href{\ResumeLinkedInURL}{\ResumeLinkedIn} \enspace|\enspace
     \href{\ResumeGitHubURL}{\ResumeGitHub}
@@ -23,12 +26,17 @@
 }
 
 \newcommand{\resumeRole}[4]{%
-  \textbf{#1} --- #2\\[-1pt]
-  \textit{#3} --- #4
+  \textbf{#1} \enspace|\enspace #2\\[-1pt]
+  \textit{#3} \enspace|\enspace #4
 }
 
-\newcommand{\resumeProject}[2]{%
-  \textbf{#1}: #2
+\newcommand{\resumeSubrole}[1]{%
+  \par\vspace{1pt}\textbf{#1}\par\vspace{-1pt}
+}
+
+\newcommand{\resumeCompactRole}[4]{%
+  \textbf{#1} \enspace|\enspace \textit{#2} \enspace|\enspace #3\\[-1pt]
+  #4\par\vspace{1pt}
 }
 
 \newcommand{\resumeBullet}[1]{\item #1}
