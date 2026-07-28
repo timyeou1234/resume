@@ -32,18 +32,16 @@ Sep 2024 – Present
 
 #### Crypto.com Onchain
 
-- Own the Buy and Earn experiences for Crypto.com Onchain Wallet, a production wallet with approximately 20K daily active users.
-- Build fiat-to-crypto purchase flows through Crypto.com Pay, including automated on-chain asset conversion within a single purchase journey.
-- Maintain a unified staking experience across multiple blockchain protocols, covering staking, reward claiming, and asset management.
-- Work with Product Managers and Backend Engineers on feature planning, API design, implementation, and production delivery.
+- Own iOS development for the Earn module, including feature delivery, maintenance, and refactoring across multiple blockchain protocols.
+- Delivered Buy & Swap by extending the existing fiat purchase journey with a user-initiated on-chain swap after the purchased asset reached the wallet.
+- Built and maintained staking flows across major EVM-compatible protocols, covering staking, unstaking, reward claiming, and position management.
+- Worked with Product Managers and Backend Engineers throughout feature planning, API discussions, implementation, and production delivery for a self-custodial wallet serving approximately 20K daily active users.
 
 #### Cronos App
 
-- Serve as the sole iOS engineer in an eight-person cross-functional squad building new wallet capabilities.
-- Lead the iOS implementation of smart contract wallet features, including signing workflows and UserOperation construction.
-- Build vault investment and reward-management experiences integrating Morpho and Merkl.
-- Define mobile architecture and work with Backend Engineers on APIs and blockchain transaction flows.
-- Develop and validate features on Cronos Testnet with mocked Morpho vaults before launch.
+- Implemented smart contract wallet features, including transaction signing and UserOperation construction.
+- Built Morpho vault flows for deposits, withdrawals, and position tracking.
+- Worked with Backend Engineers on API discussions and multi-step blockchain transaction flows, and validated vault features on Cronos Testnet with mocked Morpho vaults.
 
 ### San Orange Technology
 
