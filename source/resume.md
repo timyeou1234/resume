@@ -61,13 +61,11 @@ Oct 2020 – Apr 2024
 
 **Product:** SportyBet
 
-- Built real-time betting features for SportyBet, a sports betting platform with approximately 100K daily active users.
-- Implemented WebSocket synchronization for live odds, open bets, and betting history.
-- Improved WebSocket subscription management to prevent duplicated real-time updates across multiple betting slips.
-- Redesigned Android-originated product flows as native iOS experiences rather than direct platform copies.
-- Migrated legacy modules to RxSwift and MVVM.
-- Built an internal mock server for UI development and automated testing.
-- Reviewed pull requests and mentored junior iOS engineers.
+- Built real-time betting features for SportyBet, a sports betting platform serving approximately 100K daily active users.
+- Implemented WebSocket synchronization for live odds, open bets, and betting history, and improved subscription management to prevent duplicated updates across multiple betting slips.
+- Adapted Android-first product requirements into native iOS flows instead of directly copying the Android implementation.
+- Migrated legacy modules to RxSwift and MVVM to improve maintainability and support ongoing feature development.
+- Built an internal mock server for UI development and automated testing, reviewed pull requests, and mentored junior iOS engineers.
 
 ### Royal Technology
 
