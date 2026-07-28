@@ -7,21 +7,19 @@ Taiwan · [timyeou1234@hotmail.com](mailto:timyeou1234@hotmail.com) · [GitHub](
 
 Senior iOS Engineer with 9+ years of experience building consumer, fintech, and blockchain applications.
 
-Experienced in owning end-to-end mobile features, from product planning and API design to implementation and production delivery.
+Experienced in delivering end-to-end mobile features through product planning, API discussions, implementation, and production support.
 
-Built products across crypto wallets, real-time betting, and connected vehicle platforms.
+Background includes self-custodial wallets, real-time betting platforms, and connected vehicle applications.
 
 ## Technical Skills
 
 **Languages:** Swift, Objective-C  
 **Frameworks:** UIKit, SwiftUI, RxSwift, Combine  
-**Architecture:** MVVM
-
-**Concurrency:** Swift Concurrency
-
+**Architecture:** MVVM  
+**Concurrency:** Swift Concurrency  
 **Networking:** REST APIs, WebSocket  
-**Blockchain:** WalletCore, EVM  
-**Tools:** Git
+**Blockchain:** Trust Wallet Core, EVM, Smart Contract Wallets  
+**Tools:** Xcode, Git, GitHub Actions
 
 ## Professional Experience
 
