@@ -51,8 +51,7 @@ Jun 2024 – Aug 2024
 **Client:** KINTO
 
 - Delivered production iOS features for KINTO's connected vehicle application during a three-month contract.
-- Built experiences for vehicle usage tracking, vehicle status information, and in-app vehicle guidance.
-- Worked with Product, Design, and Backend teams within a short delivery cycle.
+- Implemented vehicle usage tracking, vehicle status, and in-app guidance features while collaborating with Product, Design, and Backend teams on a short delivery cycle.
 
 ### OpenNet
 
