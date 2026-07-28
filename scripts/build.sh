@@ -20,11 +20,14 @@ fi
 
 mkdir -p "$repo_dir/build/$variant" "$repo_dir/dist"
 
-tex_input="\\input{resumes/$variant.tex}"
 output_name="$variant"
+entrypoint="$repo_dir/build/$variant/entry.tex"
 if [[ -n "$company" ]]; then
-  tex_input="\\def\\CompanyOverlay{$company}$tex_input"
   output_name="$variant-$company"
+  printf '\\def\\CompanyOverlay{%s}\\input{resumes/%s.tex}\\n' \
+    "$company" "$variant" > "$entrypoint"
+else
+  printf '\\input{resumes/%s.tex}\\n' "$variant" > "$entrypoint"
 fi
 
 latexmk \
@@ -34,7 +37,7 @@ latexmk \
   -file-line-error \
   -output-directory="$repo_dir/build/$variant" \
   -jobname="$output_name" \
-  "$tex_input"
+  "$entrypoint"
 
 cp "$repo_dir/build/$variant/$output_name.pdf" "$repo_dir/dist/$output_name.pdf"
 echo "Built dist/$output_name.pdf"
