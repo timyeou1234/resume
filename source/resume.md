@@ -71,9 +71,8 @@ Oct 2020 – Apr 2024
 **Project Manager / iOS Developer**  
 Apr 2019 – Aug 2020
 
-- Managed software projects while serving as the primary iOS developer.
-- Worked with clients and cross-functional teams from planning through App Store release.
-- Delivered production iOS applications and coordinated Backend and Android development.
+- Served as the primary iOS developer while managing client projects from planning through App Store release.
+- Delivered production iOS applications and coordinated Product, Backend, and Android development across project teams.
 
 ### Awesome Limited
 
@@ -87,8 +86,7 @@ Apr 2018 – Jan 2019
 **iOS Developer**  
 Aug 2017 – Apr 2018
 
-- Led a three-engineer iOS team responsible for enterprise mobile applications.
-- Managed enterprise signing, internal distribution, and release coordination.
+- Led a three-engineer iOS team responsible for enterprise applications, internal distribution, and release coordination.
 
 ### WeWork Technology
 
