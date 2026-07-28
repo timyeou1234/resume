@@ -1,0 +1,32 @@
+name: Build resumes
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    container:
+      image: ghcr.io/xu-cheng/texlive-full:20250401
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build and validate PDFs
+        run: make validate
+
+      - name: Upload PDF artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: resumes-${{ github.sha }}
+          path: dist/*.pdf
+          if-no-files-found: error
+          retention-days: 30

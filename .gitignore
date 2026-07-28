@@ -1,0 +1,9 @@
+build/
+dist/*.pdf
+config/company.local.tex
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz

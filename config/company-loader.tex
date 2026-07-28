@@ -1,0 +1,12 @@
+% A tracked overlay can be selected with COMPANY=<slug>.
+\ifdefined\CompanyOverlay
+  \IfFileExists{companies/\CompanyOverlay.tex}
+    {\input{companies/\CompanyOverlay.tex}}
+    {\PackageError{resume}{Unknown company overlay: \CompanyOverlay}
+      {Create companies/\CompanyOverlay.tex or omit COMPANY.}}
+\fi
+
+% This ignored file is useful for private contact details and local tailoring.
+\IfFileExists{config/company.local.tex}
+  {\input{config/company.local.tex}}
+  {}
