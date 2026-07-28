@@ -1,7 +1,7 @@
 # Timothy Yu
 
 **Senior iOS Engineer**  
-Taiwan · Email · GitHub · LinkedIn
+Taiwan · [timyeou1234@hotmail.com](mailto:timyeou1234@hotmail.com) · [GitHub](https://github.com/timyeou1234) · [LinkedIn](https://www.linkedin.com/in/timothy-yeou-0134a9117)
 
 ## Summary
 
@@ -15,7 +15,10 @@ Built products across crypto wallets, real-time betting, and connected vehicle p
 
 **Languages:** Swift, Objective-C  
 **Frameworks:** UIKit, SwiftUI, RxSwift, Combine  
-**Architecture:** MVVM, Swift Concurrency  
+**Architecture:** MVVM
+
+**Concurrency:** Swift Concurrency
+
 **Networking:** REST APIs, WebSocket  
 **Blockchain:** WalletCore, EVM  
 **Tools:** Git

@@ -32,7 +32,7 @@ Convert the approved Markdown content into a clean, ATS-compatible resume for Se
 
 ## Layout requirements
 
-- Target a readable one-page resume; use two pages rather than removing important career history or shrinking text excessively.
+- Keep the resume to no more than two readable pages; prefer one page when the complete relevant history fits without excessive compression.
 - Keep a single-column reading order.
 - Use conventional headings and text-based links.
 - Avoid icons, skill bars, charts, sidebars, photographs, and text boxes.

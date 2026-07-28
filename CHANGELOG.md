@@ -2,6 +2,9 @@
 
 ## Unreleased — Resume content baseline
 
+- Allowed readable one- or two-page resume variants in validation and guidance.
+- Added the confirmed email, GitHub, and LinkedIn contact details.
+- Moved Swift Concurrency from Architecture to its own Concurrency skill category.
 - Preserved the current resume rewrite in `source/resume.md`.
 - Added the complete employment timeline from 2016 to the present.
 - Separated Crypto.com Onchain and Cronos App as distinct work phases.

@@ -1,6 +1,6 @@
 # Senior iOS Resume Repository
 
-An ATS-friendly, one-page LaTeX resume system with focused variants for US
+An ATS-friendly, one-to-two-page LaTeX resume system with focused variants for US
 technology companies, Web3 teams, and the Taiwan market. Facts are shared;
 positioning changes by audience.
 
@@ -14,7 +14,7 @@ config/       Shared LaTeX setup, identity, metadata, and overlay loading
 resumes/      Small entrypoints that compose each audience variant
 sections/     Shared and audience-specific resume content
 companies/    Optional, tracked company-specific overlays
-scripts/      Build and one-page/ATS smoke-test scripts
+scripts/      Build and page-count/ATS smoke-test scripts
 dist/         Generated PDFs
 ```
 
@@ -50,7 +50,7 @@ make all              # all three PDFs
 make us-tech          # dist/us-tech.pdf
 make web3             # dist/web3.pdf
 make taiwan           # dist/taiwan.pdf
-make validate         # build, enforce one page, verify extractable headings
+make validate         # build, enforce 1–2 pages, verify extractable headings
 make clean
 ```
 
@@ -69,7 +69,6 @@ by Git; source remains the reviewable artifact of record.
 Use `config/company.local.tex` for private details you do not want committed:
 
 ```tex
-\renewcommand{\ResumePhone}{+1 555 555 0100}
 \renewcommand{\ResumeEmail}{name@example.com}
 ```
 
@@ -95,7 +94,7 @@ scoped command to `config/commands.tex` and use it in a section; avoid copying a
 whole resume or experience section. Keep claims truthful and retain keywords
 only when they match actual experience.
 
-## ATS and one-page guidance
+## ATS and page-count guidance
 
 - The template uses a single reading order, conventional headings, text links,
   and no icons, sidebars, graphics, or skill-rating charts.
@@ -103,8 +102,8 @@ only when they match actual experience.
 - Validation checks page count and required extractable headings. It cannot
   guarantee performance in every ATS, so test the final PDF by copying its text
   into a plain-text editor.
-- Prefer removing weak bullets over shrinking below 10 pt or tightening margins
-  further.
+- Validation allows one or two pages. Prefer removing weak bullets over shrinking
+  below 10 pt or tightening margins further.
 - Use US Letter for US/Web3 applications. If a Taiwan employer explicitly
   requests A4, add a separate paper-size override rather than silently changing
   every variant.

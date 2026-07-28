@@ -3,6 +3,7 @@ set -euo pipefail
 
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 expected=(us-tech web3 taiwan)
+max_pages=2
 
 command -v pdfinfo >/dev/null || {
   echo "pdfinfo is required for validation." >&2
@@ -21,8 +22,8 @@ for variant in "${expected[@]}"; do
   }
 
   pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
-  [[ "$pages" == "1" ]] || {
-    echo "$variant.pdf has $pages pages; expected exactly 1." >&2
+  [[ "$pages" =~ ^[0-9]+$ && "$pages" -ge 1 && "$pages" -le "$max_pages" ]] || {
+    echo "$variant.pdf has $pages pages; expected between 1 and $max_pages." >&2
     exit 1
   }
 
@@ -33,5 +34,5 @@ for variant in "${expected[@]}"; do
       exit 1
     }
   done
-  echo "Validated dist/$variant.pdf: one page with extractable text"
+  echo "Validated dist/$variant.pdf: $pages page(s) with extractable text"
 done
