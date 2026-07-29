@@ -8,8 +8,8 @@ min_words_per_page=100
 required_contact=(
   "+886 929070110"
   "timyeou1234@hotmail.com"
-  "linkedin.com/in/timothy-yeou-0134a9117"
-  "github.com/timyeou1234"
+  "LinkedIn"
+  "GitHub"
 )
 forbidden_output=(
   "you@example.com"

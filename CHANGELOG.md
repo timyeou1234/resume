@@ -7,6 +7,8 @@
 - Rebalanced earlier experience and added validation for underfilled second pages.
 - Disabled duplicate branch push builds when a pull request build already applies.
 - Updated PDF artifact uploads to the Node.js 24-compatible GitHub Action.
+- Shortened the visible LinkedIn and GitHub links while preserving their full
+  clickable URLs.
 - Allowed readable one- or two-page resume variants in validation and guidance.
 - Added the confirmed email, GitHub, and LinkedIn contact details.
 - Moved Swift Concurrency from Architecture to its own Concurrency skill category.
