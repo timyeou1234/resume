@@ -21,6 +21,8 @@ dist/         Generated PDFs
 The three entrypoints deliberately contain almost no content. Common facts live
 in `sections/experience.tex` and `sections/education.tex`; summaries and skill
 ordering vary because recruiters in each market scan for different signals.
+Shared skill values live in `config/commands.tex`, while the audience-specific
+skill files control only ordering and line breaks.
 Every variant must remain within the factual boundaries of `source/resume.md`.
 
 The Taiwan variant is English-first for maximum ATS portability. If a role
