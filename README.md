@@ -1,4 +1,4 @@
-# Senior iOS Resume Repository
+# Timothy Yu - Senior iOS Engineer Resume
 
 An ATS-friendly, one-to-two-page LaTeX resume system with focused variants for US
 technology companies, Web3 teams, and the Taiwan market. Facts are shared;
