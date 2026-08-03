@@ -1,13 +1,14 @@
-name: Build resumes
+name: Build resumes and publish site
 
 on:
   push:
-    branches: ["main"]
   pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
@@ -32,4 +33,51 @@ jobs:
           name: resumes-${{ github.sha }}
           path: dist/*.pdf
           if-no-files-found: error
-          retention-days: 30
+          retention-days: 90
+
+  build-pages:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Download validated PDFs
+        uses: actions/download-artifact@v8
+        with:
+          name: resumes-${{ github.sha }}
+          path: dist
+
+      - name: Prepare Markdown site
+        run: ./scripts/build-site.sh
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build GitHub Pages
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: site
+          destination: _site
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy-pages:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build-pages
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

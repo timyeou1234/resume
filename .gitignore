@@ -1,5 +1,6 @@
 build/
 dist/*.pdf
+_site/
 config/company.local.tex
 *.aux
 *.fdb_latexmk
