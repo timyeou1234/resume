@@ -51,12 +51,20 @@ make us-tech          # dist/us-tech.pdf
 make web3             # dist/web3.pdf
 make taiwan           # dist/taiwan.pdf
 make validate         # build, enforce 1–2 pages, verify extractable headings
+make site             # validate and prepare the Markdown/PDF site in site/
 make clean
 ```
 
-GitHub Actions runs `make validate` for pushes and pull requests, then uploads
-the three PDFs as a workflow artifact. Generated PDFs are intentionally ignored
-by Git; source remains the reviewable artifact of record.
+GitHub Actions runs `make validate` for every branch push and pull request, then
+uploads the three PDFs as a workflow artifact. Artifacts are retained for 90
+days. After a successful build on `main`, the same validated PDFs and the
+Markdown source are published to GitHub Pages. Generated PDFs are intentionally
+ignored by Git; source remains the reviewable artifact of record.
+
+The public reading page is expected at
+<https://timyeou1234.github.io/resume/> after GitHub Pages is configured to use
+**GitHub Actions** as its source in the repository settings. It includes the
+readable Markdown resume and direct downloads for all three PDF variants.
 
 ## Customize your resume
 
