@@ -16,7 +16,7 @@ Owns features from product and API discussions through implementation and produc
 **Architecture:** MVVM  
 **Concurrency:** Swift Concurrency  
 **Networking:** REST APIs, WebSocket  
-**Blockchain:** Trust Wallet Core, EVM, Smart Contract Wallets  
+**Blockchain:** Trust Wallet Core, Smart Contract Wallets, Transaction Signing, Staking Integrations\
 **Tools:** Xcode, Git, GitHub Actions
 
 ## Professional Experience
