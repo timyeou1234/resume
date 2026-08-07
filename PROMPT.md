@@ -20,7 +20,7 @@ Convert the approved Markdown content into a clean, ATS-compatible resume for Se
 - Do not add TCP Socket, Account Abstraction, or DeFi to the skills section.
 - Account Abstraction-related implementation may be described only through the factual Cronos experience already present, such as smart contract wallets and UserOperation construction.
 - Keep Morpho in experience, not in skills.
-- Preserve current-tense verbs for the current Crypto.com role and past tense for previous roles.
+- Use past-tense verbs for the completed Crypto.com role and all earlier roles.
 - Prefer direct, natural engineering language over marketing language or generic AI-style phrasing.
 - Do not force an impact statement or percentage where none is documented.
 - Every claim must be explainable in an interview.

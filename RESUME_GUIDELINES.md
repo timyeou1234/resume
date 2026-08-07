@@ -18,6 +18,10 @@ The strongest themes are:
 - Use only facts recorded in `source/resume.md` or subsequently confirmed by the candidate.
 - Approximate DAU values must remain clearly approximate.
 - Cronos App work is pre-launch; do not describe it as a released production feature.
+- The Cronos App phase used React Native and TypeScript throughout, including
+  Fabric and TurboModules; approximately six months of hands-on React Native
+  experience is confirmed.
+- Crypto.com employment ended in July 2026.
 - Crypto.com Onchain is an existing production product.
 - San Orange Technology is the employer; KINTO is the client/product context.
 - Do not imply direct employment by Toyota or KINTO.
@@ -80,7 +84,7 @@ Before publishing, confirm:
 
 - Every statement is factually correct.
 - Every bullet can be explained with concrete implementation details.
-- Current and past verb tenses are correct.
+- Past-tense verbs are used for the completed Crypto.com role and all earlier roles.
 - Onchain and Cronos are not incorrectly merged into a single project phase.
 - No placeholder employer, metric, link, or education detail remains.
 - The PDF text extracts in the expected reading order.
