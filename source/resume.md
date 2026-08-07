@@ -36,7 +36,7 @@ Sep 2024 – Jul 2026
 
 #### Cronos App
 
-- Worked exclusively in React Native and TypeScript during the Cronos App phase, building the Earn tab with Fabric and TurboModules in the React Native New Architecture.
+- Worked exclusively in React Native and TypeScript during the Cronos App phase, building the Earn tab with Fabric and TurboModules in the New Architecture.
 - Implemented smart contract wallet features, including transaction signing and UserOperation construction.
 - Built Morpho vault flows for deposits, withdrawals, and position tracking.
 - Worked with Backend Engineers on API discussions and multi-step blockchain transaction flows, and validated vault features on Cronos Testnet with mocked Morpho vaults.
