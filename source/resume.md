@@ -7,12 +7,13 @@ Taiwan · [+886 929070110](tel:+886929070110) · [timyeou1234@hotmail.com](mailt
 
 Senior iOS Engineer with 9+ years delivering self-custodial wallets, real-time betting products, and connected vehicle applications.
 
-Owns features from product and API discussions through implementation and production support.
+Experienced in owning features from product and API discussions through implementation and production support.
 
 ## Technical Skills
 
-**Languages:** Swift, Objective-C  
+**Languages:** Swift, Objective-C, TypeScript\
 **Frameworks:** UIKit, SwiftUI, RxSwift, Combine  
+**React Native:** TypeScript, Fabric, TurboModules\
 **Architecture:** MVVM  
 **Concurrency:** Swift Concurrency  
 **Networking:** REST APIs, WebSocket  
@@ -24,17 +25,18 @@ Owns features from product and API discussions through implementation and produc
 ### Crypto.com
 
 **Senior iOS Developer**  
-Sep 2024 – Present
+Sep 2024 – Jul 2026
 
 #### Crypto.com Onchain
 
-- Own iOS development for the Earn module, including feature delivery, maintenance, and refactoring across multiple blockchain protocols.
+- Owned iOS development for the Earn module, including feature delivery, maintenance, and refactoring across multiple blockchain protocols.
 - Delivered Buy & Swap by extending the existing fiat purchase journey with a user-initiated on-chain swap after the purchased asset reached the wallet.
 - Built and maintained staking flows across major EVM-compatible protocols, covering staking, unstaking, reward claiming, and position management.
 - Worked with Product Managers and Backend Engineers throughout feature planning, API discussions, implementation, and production delivery for a self-custodial wallet serving approximately 20K daily active users.
 
 #### Cronos App
 
+- Worked exclusively in React Native and TypeScript during the Cronos App phase, building the Earn tab with Fabric and TurboModules in the React Native New Architecture.
 - Implemented smart contract wallet features, including transaction signing and UserOperation construction.
 - Built Morpho vault flows for deposits, withdrawals, and position tracking.
 - Worked with Backend Engineers on API discussions and multi-step blockchain transaction flows, and validated vault features on Cronos Testnet with mocked Morpho vaults.
