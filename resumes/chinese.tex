@@ -1,5 +1,8 @@
 \documentclass[10pt]{article}
 \input{config/base}
+% CJKutf8 supplies its own Unicode maps; avoid duplicate /ToUnicode entries
+% from the Latin-font mapping enabled by config/base.tex.
+\pdfgentounicode=0
 \usepackage{CJKutf8}
 \newcommand{\VariantLabel}{Traditional Chinese}
 \renewcommand{\ResumeLocation}{台灣}
