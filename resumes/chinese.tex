@@ -1,9 +1,5 @@
 \documentclass[10pt]{article}
-\input{config/base}
-% CJKutf8 supplies its own Unicode maps; avoid duplicate /ToUnicode entries
-% from the Latin-font mapping enabled by config/base.tex.
-\pdfgentounicode=0
-\usepackage{CJKutf8}
+\input{config/base-cjk}
 \newcommand{\VariantLabel}{Traditional Chinese}
 \renewcommand{\ResumeLocation}{台灣}
 \renewcommand{\ResumeTagline}{資深 iOS 工程師｜行動應用架構與產品交付}
@@ -16,11 +12,9 @@
 }
 
 \begin{document}
-\begin{CJK*}{UTF8}{bsmi}
 \resumeHeader
 \input{sections/summary/chinese}
 \input{sections/skills/chinese}
 \input{sections/experience-chinese}
 \input{sections/education-chinese}
-\end{CJK*}
 \end{document}

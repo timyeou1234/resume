@@ -30,8 +30,13 @@ else
   printf '\\input{resumes/%s.tex}\\n' "$variant" > "$entrypoint"
 fi
 
+engine="-pdf"
+if [[ "$variant" == "chinese" ]]; then
+  engine="-xelatex"
+fi
+
 latexmk \
-  -pdf \
+  "$engine" \
   -interaction=nonstopmode \
   -halt-on-error \
   -file-line-error \
