@@ -5,7 +5,7 @@ Taiwan · [+886 929070110](tel:+886929070110) · [timyeou1234@hotmail.com](mailt
 
 ## Summary
 
-Senior iOS Engineer with 9+ years delivering self-custodial wallets, real-time betting products, and connected vehicle applications.
+Senior iOS Engineer with 10+ years delivering self-custodial wallets, real-time betting products, and connected vehicle applications.
 
 Experienced in owning features from product and API discussions through implementation and production support.
 

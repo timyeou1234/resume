@@ -6,7 +6,7 @@ company="${2:-}"
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 case "$variant" in
-  us-tech|web3|taiwan) ;;
+  us-tech|web3|taiwan|chinese) ;;
   *)
     echo "Unknown variant: $variant" >&2
     exit 2
