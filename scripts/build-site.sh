@@ -19,7 +19,7 @@ for variant in "${required_pdfs[@]}"; do
 done
 
 {
-  printf '%s\n' '---' 'layout: default' 'title: Timothy Yu - Senior iOS Engineer' '---' ''
+  printf '%s\n' '---' 'layout: default' 'title: Timothy Yu - Senior iOS Engineer' 'permalink: /resume.html' '---' ''
   printf '%s\n' '[Download US Tech PDF](./assets/us-tech.pdf) · [Download Web3 PDF](./assets/web3.pdf) · [Download Taiwan PDF](./assets/taiwan.pdf) · [下載繁體中文 PDF](./assets/chinese.pdf)' ''
   sed -n '1,$p' "$repo_dir/source/resume.md"
   if [[ -n "${GITHUB_SHA:-}" && -n "${GITHUB_REPOSITORY:-}" ]]; then
@@ -28,6 +28,6 @@ done
   else
     printf '%s\n' '' '---' '' '_Generated locally._'
   fi
-} > "$site_dir/index.md"
+} > "$site_dir/resume.md"
 
-echo "Prepared Markdown site in site/"
+echo "Prepared resume page and PDF assets in site/"
