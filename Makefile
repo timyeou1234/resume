@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
 
-VARIANTS := us-tech web3 taiwan
+VARIANTS := us-tech web3 taiwan chinese
 COMPANY ?=
 
 .PHONY: all clean help site validate $(VARIANTS)

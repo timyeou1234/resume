@@ -6,7 +6,7 @@ company="${2:-}"
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 case "$variant" in
-  us-tech|web3|taiwan) ;;
+  us-tech|web3|taiwan|chinese) ;;
   *)
     echo "Unknown variant: $variant" >&2
     exit 2
@@ -30,8 +30,13 @@ else
   printf '\\input{resumes/%s.tex}\\n' "$variant" > "$entrypoint"
 fi
 
+engine="-pdf"
+if [[ "$variant" == "chinese" ]]; then
+  engine="-xelatex"
+fi
+
 latexmk \
-  -pdf \
+  "$engine" \
   -interaction=nonstopmode \
   -halt-on-error \
   -file-line-error \

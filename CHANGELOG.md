@@ -1,7 +1,17 @@
 # Changelog
 
+## 2026-08-31
+
+- Added a Traditional Chinese resume variant for Taiwan-focused applications.
+- Added the Chinese PDF to validation, CI artifacts, and the GitHub Pages download links.
+- Updated the experience summary from 9+ to 10+ years across all variants.
+
 ## Unreleased — Resume content baseline
 
+- Updated Crypto.com employment to end in July 2026 and changed its bullets to
+  past tense.
+- Added the confirmed React Native and TypeScript Cronos App phase, including
+  Fabric and TurboModules.
 - Synchronized every LaTeX variant with the reviewed factual source.
 - Added the confirmed phone number and removed unverified variant-only claims.
 - Rebalanced earlier experience and added validation for underfilled second pages.

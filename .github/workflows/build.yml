@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Install PDF validation tools
-        run: apk add --no-cache poppler-utils
+        run: apk add --no-cache poppler-utils poppler-data font-noto-cjk
 
       - name: Build and validate PDFs
         run: make validate

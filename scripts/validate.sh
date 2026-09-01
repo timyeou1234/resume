@@ -2,7 +2,7 @@
 set -euo pipefail
 
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-expected=(us-tech web3 taiwan)
+expected=(us-tech web3 taiwan chinese)
 max_pages=2
 min_words_per_page=100
 required_contact=(
@@ -43,7 +43,11 @@ for variant in "${expected[@]}"; do
   }
 
   text="$(pdftotext "$pdf" -)"
-  for heading in "Summary" "Technical Skills" "Experience" "Education"; do
+  headings=("Summary" "Technical Skills" "Experience" "Education")
+  if [[ "$variant" == "chinese" ]]; then
+    headings=("專業摘要" "技術能力" "工作經歷" "學歷")
+  fi
+  for heading in "${headings[@]}"; do
     grep -Fq "$heading" <<<"$text" || {
       echo "$variant.pdf is missing extractable heading: $heading" >&2
       exit 1
