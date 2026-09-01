@@ -56,10 +56,10 @@
 
   setLanguage(safeStorageGet("portfolio-language") || "en");
 
-  var year = doc.querySelector("[data-year]");
+  var year = doc.querySelector("#year, [data-year]");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  var progress = doc.querySelector(".scroll-progress");
+  var progress = doc.querySelector(".scroll-progress span");
   var siteHeader = doc.querySelector(".site-header");
   var scrollTicking = false;
 
