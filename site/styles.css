@@ -25,13 +25,16 @@
 
 html {
   scroll-behavior: smooth;
+  overscroll-behavior-y: none;
   background: var(--bg);
 }
 
 body {
   margin: 0;
   min-width: 320px;
+  min-height: 100%;
   overflow-x: hidden;
+  overscroll-behavior-y: none;
   background:
     radial-gradient(circle at 12% -10%, rgba(117, 85, 255, 0.16), transparent 33rem),
     radial-gradient(circle at 92% 35%, rgba(39, 203, 230, 0.08), transparent 32rem),
@@ -1252,14 +1255,13 @@ main {
 .product-symbol {
   width: 4rem;
   height: 4rem;
-  display: grid;
-  place-items: center;
+  display: block;
   margin: 5rem 0 1.5rem;
   border: 1px solid var(--line-bright);
   border-radius: 1.1rem;
   background: rgba(255, 255, 255, 0.04);
-  font-size: 1.5rem;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
+  object-fit: cover;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.3), inset 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .scale-card h3 {
@@ -1703,6 +1705,48 @@ footer .legal {
   .cursor-glow,
   .grain {
     display: none;
+  }
+
+  #field {
+    opacity: 0.42;
+  }
+
+  .site-header {
+    transition-duration: 160ms;
+  }
+
+  .site-header.is-scrolled {
+    background: rgba(7, 9, 14, 0.96);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .button-ghost,
+  .orbit-node,
+  .mock-window,
+  .map-node {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .hero-system,
+  .hero-system::before,
+  .scale-card::before,
+  .contact::before {
+    filter: none;
+  }
+
+  .native-contract::before {
+    display: none;
+  }
+
+  .scale-card::before {
+    opacity: 0.2;
+  }
+
+  .mock-window,
+  .case-study:hover .mock-window {
+    transform: none;
   }
 }
 

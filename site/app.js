@@ -5,6 +5,8 @@
   var root = doc.documentElement;
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   var finePointer = window.matchMedia("(pointer: fine)");
+  var coarsePointer = window.matchMedia("(pointer: coarse)");
+  var compactViewport = window.matchMedia("(max-width: 720px)");
   var languageButton = doc.querySelector(".lang-toggle");
   var currentLanguage = "en";
 
@@ -130,18 +132,23 @@
 
           var node = entry.target;
           var index = Number(node.getAttribute("data-reveal-index") || "0");
-          node.animate(
-            [
-              { opacity: 0, transform: "translateY(24px)", filter: "blur(6px)" },
-              { opacity: 1, transform: "translateY(0)", filter: "blur(0)" }
-            ],
-            {
-              duration: 720,
-              delay: Math.min(index * 55, 275),
-              easing: "cubic-bezier(.2,.72,.18,1)",
-              fill: "both"
-            }
-          );
+          var compactReveal = compactViewport.matches || coarsePointer.matches;
+          var keyframes = compactReveal
+            ? [
+                { opacity: 0, transform: "translateY(12px)" },
+                { opacity: 1, transform: "translateY(0)" }
+              ]
+            : [
+                { opacity: 0, transform: "translateY(24px)", filter: "blur(6px)" },
+                { opacity: 1, transform: "translateY(0)", filter: "blur(0)" }
+              ];
+
+          node.animate(keyframes, {
+            duration: compactReveal ? 440 : 720,
+            delay: compactReveal ? 0 : Math.min(index * 55, 275),
+            easing: "cubic-bezier(.2,.72,.18,1)",
+            fill: "backwards"
+          });
           observer.unobserve(node);
         });
       },
@@ -252,11 +259,17 @@
   var canvasHeight = 0;
   var pixelRatio = 1;
   var pointerActive = false;
+  var particlesPaused = false;
+  var particleResizeTimer = 0;
+  var particleScrollTimer = 0;
+  var lastParticleTime = 0;
 
   function createParticles() {
     if (!canvasContext || reducedMotion.matches) return;
 
-    var count = Math.max(28, Math.min(64, Math.floor(canvasWidth / 24)));
+    var count = coarsePointer.matches
+      ? 18
+      : Math.max(28, Math.min(64, Math.floor(canvasWidth / 24)));
     particles = [];
 
     for (var index = 0; index < count; index += 1) {
@@ -274,7 +287,10 @@
   function resizeCanvas() {
     if (!canvas || !canvasContext) return;
 
-    pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+    pixelRatio = Math.min(
+      window.devicePixelRatio || 1,
+      coarsePointer.matches || compactViewport.matches ? 1 : 1.5
+    );
     canvasWidth = window.innerWidth;
     canvasHeight = window.innerHeight;
     canvas.width = Math.round(canvasWidth * pixelRatio);
@@ -291,9 +307,15 @@
     return "rgba(162, 116, 255," + alpha + ")";
   }
 
-  function animateParticles() {
-    if (!canvasContext || reducedMotion.matches) return;
+  function animateParticles(timestamp) {
+    if (!canvasContext || reducedMotion.matches || particlesPaused) return;
 
+    if (coarsePointer.matches && timestamp - lastParticleTime < 32) {
+      particleFrame = window.requestAnimationFrame(animateParticles);
+      return;
+    }
+
+    lastParticleTime = timestamp;
     canvasContext.clearRect(0, 0, canvasWidth, canvasHeight);
 
     for (var i = 0; i < particles.length; i += 1) {
@@ -354,29 +376,64 @@
     window.addEventListener(
       "resize",
       function () {
-        window.cancelAnimationFrame(particleFrame);
-        resizeCanvas();
-        particleFrame = window.requestAnimationFrame(animateParticles);
+        var widthChanged = Math.abs(window.innerWidth - canvasWidth) > 2;
+        var heightDelta = Math.abs(window.innerHeight - canvasHeight);
+        var browserChromeShift =
+          coarsePointer.matches &&
+          !widthChanged &&
+          heightDelta < Math.max(180, canvasHeight * 0.28);
+
+        if (browserChromeShift) return;
+
+        window.clearTimeout(particleResizeTimer);
+        particleResizeTimer = window.setTimeout(function () {
+          window.cancelAnimationFrame(particleFrame);
+          resizeCanvas();
+          if (!doc.hidden && !particlesPaused && !reducedMotion.matches) {
+            particleFrame = window.requestAnimationFrame(animateParticles);
+          }
+        }, 120);
       },
       { passive: true }
     );
+
+    if (finePointer.matches) {
+      window.addEventListener(
+        "pointermove",
+        function () {
+          pointerActive = true;
+        },
+        { passive: true }
+      );
+
+      window.addEventListener("pointerout", function (event) {
+        if (!event.relatedTarget) pointerActive = false;
+      });
+    }
 
     window.addEventListener(
-      "pointermove",
+      "scroll",
       function () {
-        pointerActive = true;
+        if (!coarsePointer.matches) return;
+
+        particlesPaused = true;
+        window.cancelAnimationFrame(particleFrame);
+        window.clearTimeout(particleScrollTimer);
+        particleScrollTimer = window.setTimeout(function () {
+          particlesPaused = false;
+          lastParticleTime = 0;
+          if (!doc.hidden && !reducedMotion.matches) {
+            particleFrame = window.requestAnimationFrame(animateParticles);
+          }
+        }, 140);
       },
       { passive: true }
     );
-
-    window.addEventListener("pointerout", function (event) {
-      if (!event.relatedTarget) pointerActive = false;
-    });
 
     doc.addEventListener("visibilitychange", function () {
       if (doc.hidden) {
         window.cancelAnimationFrame(particleFrame);
-      } else if (!reducedMotion.matches) {
+      } else if (!reducedMotion.matches && !particlesPaused) {
         particleFrame = window.requestAnimationFrame(animateParticles);
       }
     });
@@ -391,6 +448,8 @@
       if (canvasContext) canvasContext.clearRect(0, 0, canvasWidth, canvasHeight);
       if (glow) glow.style.transform = "";
     } else {
+      particlesPaused = false;
+      lastParticleTime = 0;
       resizeCanvas();
       particleFrame = window.requestAnimationFrame(animateParticles);
       if (glow && finePointer.matches) glowFrame = window.requestAnimationFrame(animateGlow);
