@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Timothy Yu — senior product engineer building AI-native systems, self-custodial wallets, real-time products, and connected experiences.">
+  <meta name="theme-color" content="#080a0f">
+  <meta property="og:title" content="Timothy Yu — AI-Native Product Engineer">
+  <meta property="og:description" content="AI-native systems with durable state, explicit authority, and recoverable automation.">
+  <meta property="og:type" content="website">
+  <title>Timothy Yu — AI-Native Product Engineer</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Timothy Yu, home">
+      <span class="brand-mark">TY</span>
+      <span class="brand-name">Timothy Yu</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#work" data-en="Selected work" data-zh="精選作品">Selected work</a>
+      <a href="#scale" data-en="At scale" data-zh="規模化產品">At scale</a>
+      <a href="#method" data-en="Method" data-zh="方法">Method</a>
+      <a href="#contact" data-en="Contact" data-zh="聯絡">Contact</a>
+      <a href="./resume.html" data-en="Résumé" data-zh="履歷">Résumé</a>
+    </nav>
+    <button class="lang-toggle" type="button" aria-label="Switch language">
+      <span class="lang-current">EN</span><span aria-hidden="true">／</span><span class="lang-next">中</span>
+    </button>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow" data-reveal>
+          <span class="signal"></span>
+          <span data-en="Senior product engineer · Taiwan" data-zh="資深產品工程師 · 台灣">Senior product engineer · Taiwan</span>
+        </p>
+        <h1 data-reveal>
+          <span data-en="I build products where" data-zh="我打造的產品，讓">I build products where</span>
+          <span class="gradient-word" data-en="intelligence is infrastructure." data-zh="智慧成為基礎設施。">intelligence is infrastructure.</span>
+        </h1>
+        <p class="hero-lede" data-reveal data-en="10+ years shipping production iOS products. Now designing AI-native systems with durable state, explicit authority, and recoverable automation." data-zh="十年以上正式環境 iOS 產品經驗。現在專注於具備持久狀態、明確權限與可恢復自動化的 AI Native 系統。">
+          10+ years shipping production iOS products. Now designing AI-native systems with durable state, explicit authority, and recoverable automation.
+        </p>
+        <div class="hero-actions" data-reveal>
+          <a class="button button-primary magnetic" href="#work">
+            <span data-en="Explore the systems" data-zh="探索系統作品">Explore the systems</span>
+            <span aria-hidden="true">↘</span>
+          </a>
+          <a class="button button-ghost magnetic" href="https://github.com/timyeou1234" target="_blank" rel="noreferrer">
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <dl class="hero-stats" data-reveal>
+          <div><dt>10+</dt><dd data-en="years shipping" data-zh="年產品經驗">years shipping</dd></div>
+          <div><dt>~100K</dt><dd data-en="DAU · real-time" data-zh="DAU · 即時產品">DAU · real-time</dd></div>
+          <div><dt>~20K</dt><dd data-en="DAU · wallets" data-zh="DAU · 錢包產品">DAU · wallets</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero-system" aria-label="AI-native system model" data-reveal>
+        <div class="orbit orbit-outer"></div>
+        <div class="orbit orbit-middle"></div>
+        <div class="orbit orbit-inner"></div>
+        <div class="orbit-node node-intent"><span>01</span><b data-en="Intent" data-zh="意圖">Intent</b></div>
+        <div class="orbit-node node-structure"><span>02</span><b data-en="Structure" data-zh="結構">Structure</b></div>
+        <div class="orbit-node node-evidence"><span>03</span><b data-en="Evidence" data-zh="證據">Evidence</b></div>
+        <div class="orbit-node node-recovery"><span>04</span><b data-en="Recovery" data-zh="恢復">Recovery</b></div>
+        <div class="orbit-core">
+          <span class="core-pulse"></span>
+          <small>AI NATIVE</small>
+          <strong data-en="System" data-zh="系統">System</strong>
+        </div>
+      </div>
+
+      <a class="scroll-cue" href="#native">
+        <span data-en="Scroll to inspect" data-zh="向下探索">Scroll to inspect</span>
+        <i aria-hidden="true"></i>
+      </a>
+    </section>
+
+    <section class="native-contract section" id="native">
+      <div class="section-heading" data-reveal>
+        <p class="kicker">AI, STRUCTURALLY</p>
+        <h2 data-en="AI is not a feature. It is a new product contract." data-zh="AI 不是功能，而是一種新的產品契約。">AI is not a feature. It is a new product contract.</h2>
+        <p data-en="The interface can feel fluid. Underneath, authority, truth, recovery, and evidence stay explicit." data-zh="介面可以流暢，但底層的權限、真實性、恢復能力與證據必須保持明確。">
+          The interface can feel fluid. Underneath, authority, truth, recovery, and evidence stay explicit.
+        </p>
+      </div>
+      <div class="contract-grid">
+        <article class="principle tilt" data-reveal>
+          <span>01</span>
+          <h3 data-en="Intent → contract" data-zh="意圖 → 契約">Intent → contract</h3>
+          <p data-en="Natural language becomes an editable, bounded structure — never an opaque command." data-zh="自然語言被轉化為可編輯、有邊界的結構，而不是不透明的指令。">Natural language becomes an editable, bounded structure — never an opaque command.</p>
+        </article>
+        <article class="principle tilt" data-reveal>
+          <span>02</span>
+          <h3 data-en="AI proposes. Product owns." data-zh="AI 提案，產品負責">AI proposes. Product owns.</h3>
+          <p data-en="Validation, rendering, persistence, and recovery remain deterministic product responsibilities." data-zh="驗證、呈現、持久化與恢復仍是確定性的產品責任。">Validation, rendering, persistence, and recovery remain deterministic product responsibilities.</p>
+        </article>
+        <article class="principle tilt" data-reveal>
+          <span>03</span>
+          <h3 data-en="Human authority" data-zh="人類權限">Human authority</h3>
+          <p data-en="The user can inspect state, understand the next action, and stop unsafe mutations." data-zh="使用者能檢視狀態、理解下一步，並阻止不安全的變更。">The user can inspect state, understand the next action, and stop unsafe mutations.</p>
+        </article>
+        <article class="principle tilt" data-reveal>
+          <span>04</span>
+          <h3 data-en="Evidence over theater" data-zh="證據高於表演">Evidence over theater</h3>
+          <p data-en="Receipts, checks, and recovery paths matter more than an agent merely appearing busy." data-zh="收據、檢查與恢復路徑，比代理看起來很忙更重要。">Receipts, checks, and recovery paths matter more than an agent merely appearing busy.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="featured section" id="work">
+      <div class="section-heading compact" data-reveal>
+        <p class="kicker">SELECTED SYSTEMS</p>
+        <h2 data-en="Three expressions of one idea." data-zh="同一個理念的三種實踐。">Three expressions of one idea.</h2>
+      </div>
+
+      <article class="case-study case-moment" data-case="moment">
+        <div class="case-copy">
+          <div class="case-meta" data-reveal><span>01</span><span data-en="AI-native product · In development" data-zh="AI Native 產品 · 開發中">AI-native product · In development</span></div>
+          <h3 data-reveal>Moment OS</h3>
+          <p class="case-thesis" data-reveal data-en="From a life intent to one truthful next action." data-zh="把生活意圖轉化為一個真實、可執行的下一步。">From a life intent to one truthful next action.</p>
+          <p data-reveal data-en="Moment turns natural-language intent into understandable, editable, durable preparation. AI may propose a task-local structure; the product owns validation, rendering, persistence, recovery, and the boundary between observed and unverified outcomes." data-zh="Moment 將自然語言意圖轉化為可理解、可編輯、可持續的準備結果。AI 可以提出任務結構，但驗證、呈現、持久化、恢復，以及已觀察與未驗證結果之間的界線，都由產品負責。">
+            Moment turns natural-language intent into understandable, editable, durable preparation. AI may propose a task-local structure; the product owns validation, rendering, persistence, recovery, and the boundary between observed and unverified outcomes.
+          </p>
+          <div class="case-role" data-reveal>
+            <span data-en="ROLE" data-zh="角色">ROLE</span>
+            <strong data-en="Creator · Product, architecture, iOS" data-zh="創作者 · 產品、架構、iOS">Creator · Product, architecture, iOS</strong>
+          </div>
+          <ul class="tag-list" data-reveal>
+            <li>Natural language</li><li>Local-first</li><li>Durable state</li><li>Swift</li><li>Figma-first</li>
+          </ul>
+        </div>
+        <div class="case-visual moment-ui" data-reveal>
+          <div class="mock-window">
+            <div class="mock-bar"><i></i><i></i><i></i><span>MOMENT / NOW</span></div>
+            <div class="moment-prompt"><small>INTENT</small><p data-en="Help me prepare for the conversation that matters." data-zh="協助我準備那場重要的對話。">Help me prepare for the conversation that matters.</p><b>↵</b></div>
+            <div class="moment-flow">
+              <div><span>01</span><p data-en="Understand" data-zh="理解">Understand</p><small data-en="Bounded context" data-zh="有界上下文">Bounded context</small></div>
+              <div><span>02</span><p data-en="Propose" data-zh="提出">Propose</p><small data-en="Editable structure" data-zh="可編輯結構">Editable structure</small></div>
+              <div><span>03</span><p data-en="Prepare" data-zh="準備">Prepare</p><small data-en="Durable result" data-zh="持久結果">Durable result</small></div>
+            </div>
+            <div class="truth-row"><span class="truth-dot"></span><span data-en="Local state validated" data-zh="本機狀態已驗證">Local state validated</span><b data-en="Next: review" data-zh="下一步：檢視">Next: review</b></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-study case-productdev" data-case="productdev">
+        <div class="case-copy">
+          <div class="case-meta" data-reveal><span>02</span><span data-en="Auto Product · Local-first macOS" data-zh="自動化產品 · Local-first macOS">Auto Product · Local-first macOS</span></div>
+          <h3 data-reveal>ProductDev</h3>
+          <p class="case-thesis" data-reveal data-en="A workbench for automation you can actually trust." data-zh="一個真正可被信任的自動化工作台。">A workbench for automation you can actually trust.</p>
+          <p data-reveal data-en="ProductDev observes and safely manages repository automation without stealing authority from the existing scheduler. GitHub Issues remain the work contract; mutations are guarded, dry-runs are exact, and every supported action produces a durable receipt." data-zh="ProductDev 在不奪走既有排程器權限的前提下，觀察並安全管理 repository automation。GitHub Issues 仍是工作契約；變更受到保護、dry-run 精確，而且每個受支援的動作都會產生持久收據。">
+            ProductDev observes and safely manages repository automation without stealing authority from the existing scheduler. GitHub Issues remain the work contract; mutations are guarded, dry-runs are exact, and every supported action produces a durable receipt.
+          </p>
+          <div class="case-role" data-reveal>
+            <span data-en="ROLE" data-zh="角色">ROLE</span>
+            <strong data-en="Creator · Product, systems, macOS" data-zh="創作者 · 產品、系統、macOS">Creator · Product, systems, macOS</strong>
+          </div>
+          <ul class="tag-list" data-reveal>
+            <li>Swift 6</li><li>Automation</li><li>Typed contracts</li><li>Receipts</li><li>Recovery</li>
+          </ul>
+        </div>
+        <div class="case-visual productdev-ui" data-reveal>
+          <div class="mock-window">
+            <div class="mock-bar"><i></i><i></i><i></i><span>PRODUCTDEV / MONITOR</span></div>
+            <div class="dev-shell">
+              <aside><b>Monitor</b><span>Runs</span><span>Work</span><span>Health &amp; Usage</span><span>Automation</span></aside>
+              <div class="dev-main">
+                <div class="health"><span><i></i> HEALTHY</span><b>03 active contracts</b></div>
+                <div class="run active"><span>M1 / Production increment</span><b>VERIFYING</b><small>Exact-head checks · 08:42</small></div>
+                <div class="run"><span>Context transfer</span><b>READY</b><small>Checkpoint verified · 07:16</small></div>
+                <div class="receipt"><span>IMMUTABLE RECEIPT</span><code>effect: none · dry_run: exact</code></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-study case-timwork" data-case="timwork">
+        <div class="case-copy">
+          <div class="case-meta" data-reveal><span>03</span><span data-en="Tim Work · AI engineering system" data-zh="Tim Work · AI 工程系統">Tim Work · AI engineering system</span></div>
+          <h3 data-reveal>Continuity, truth, pace.</h3>
+          <p class="case-thesis" data-reveal data-en="The tooling behind long-running AI work." data-zh="支撐長時間 AI 工作的工具系統。">The tooling behind long-running AI work.</p>
+          <p data-reveal data-en="A family of open tools turns fragile agent sessions into reviewable engineering: Context Handoff preserves acceptance criteria across fresh threads, Task ETA Tracker forecasts from observable milestones, and Moment Monitor exposes live state without gaining mutation authority." data-zh="一組開放工具把脆弱的代理工作階段轉化為可審查的工程流程：Context Handoff 在新 thread 間保存驗收條件，Task ETA Tracker 以可觀察里程碑預測進度，Moment Monitor 則在不取得變更權限的情況下呈現即時狀態。">
+            A family of open tools turns fragile agent sessions into reviewable engineering: Context Handoff preserves acceptance criteria across fresh threads, Task ETA Tracker forecasts from observable milestones, and Moment Monitor exposes live state without gaining mutation authority.
+          </p>
+          <div class="case-links" data-reveal>
+            <a href="https://github.com/timyeou1234/context-handoff" target="_blank" rel="noreferrer">Context Handoff ↗</a>
+            <a href="https://github.com/timyeou1234/task-eta-tracker" target="_blank" rel="noreferrer">Task ETA Tracker ↗</a>
+            <a href="https://github.com/timyeou1234/MomentMonitor" target="_blank" rel="noreferrer">Moment Monitor ↗</a>
+          </div>
+          <ul class="tag-list" data-reveal>
+            <li>Codex skills</li><li>Lifecycle hooks</li><li>Verification</li><li>Observability</li><li>MIT</li>
+          </ul>
+        </div>
+        <div class="case-visual timwork-ui" data-reveal>
+          <div class="system-map">
+            <div class="map-node map-context"><small>CONTEXT</small><b data-en="Verified handoff" data-zh="已驗證交接">Verified handoff</b><span>85% pressure</span></div>
+            <div class="map-node map-work"><small>WORK</small><b data-en="Observable state" data-zh="可觀察狀態">Observable state</b><span>Issue → PR → checks</span></div>
+            <div class="map-node map-pace"><small>PACE</small><b data-en="Honest forecast" data-zh="誠實預測">Honest forecast</b><span>range · confidence</span></div>
+            <svg viewBox="0 0 600 420" aria-hidden="true">
+              <path d="M160,110 C280,80 320,160 410,160"></path>
+              <path d="M455,205 C460,280 360,310 270,305"></path>
+              <path d="M200,270 C125,245 105,185 135,145"></path>
+            </svg>
+            <div class="map-core"><span></span><b data-en="Evidence loop" data-zh="證據迴圈">Evidence loop</b><small>human authority</small></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="scale section" id="scale">
+      <div class="section-heading" data-reveal>
+        <p class="kicker">SHIPPED AT SCALE</p>
+        <h2 data-en="Complex systems, real users, production stakes." data-zh="複雜系統、真實使用者、正式環境責任。">Complex systems, real users, production stakes.</h2>
+        <p data-en="AI-native thinking is grounded in a decade of shipping products where state, latency, and correctness already mattered." data-zh="AI Native 的思考，建立在十年產品經驗之上；那些產品裡，狀態、延遲與正確性早已至關重要。">AI-native thinking is grounded in a decade of shipping products where state, latency, and correctness already mattered.</p>
+      </div>
+      <div class="scale-grid">
+        <article class="scale-card tilt onchain" data-reveal>
+          <div class="card-index">01 / WALLET</div>
+          <div class="product-symbol">◎</div>
+          <h3>Crypto.com Onchain</h3>
+          <p data-en="Owned iOS Earn across multiple blockchain protocols. Shipped staking, rewards, position management, and Buy & Swap for a self-custodial wallet." data-zh="負責跨多個區塊鏈協議的 iOS Earn，交付質押、獎勵、部位管理，以及自託管錢包的 Buy & Swap。">Owned iOS Earn across multiple blockchain protocols. Shipped staking, rewards, position management, and Buy & Swap for a self-custodial wallet.</p>
+          <dl><div><dt>~20K</dt><dd>DAU</dd></div><div><dt>iOS</dt><dd>Ownership</dd></div><div><dt>Multi-chain</dt><dd>Protocols</dd></div></dl>
+          <a href="https://crypto.com/onchain" target="_blank" rel="noreferrer" aria-label="Visit Crypto.com Onchain">Public product ↗</a>
+        </article>
+        <article class="scale-card tilt sporty" data-reveal>
+          <div class="card-index">02 / REAL-TIME</div>
+          <div class="product-symbol">↯</div>
+          <h3>SportyBet</h3>
+          <p data-en="Built live odds, open bets, and betting-history synchronization. Prevented duplicated WebSocket updates across multiple betting slips and evolved legacy modules." data-zh="建立即時賠率、未結算投注與投注紀錄同步，避免多張投注單重複接收 WebSocket 更新，並演進既有模組。">Built live odds, open bets, and betting-history synchronization. Prevented duplicated WebSocket updates across multiple betting slips and evolved legacy modules.</p>
+          <dl><div><dt>~100K</dt><dd>DAU</dd></div><div><dt>WebSocket</dt><dd>Live state</dd></div><div><dt>RxSwift</dt><dd>Migration</dd></div></dl>
+          <a href="https://www.sportybet.com/" target="_blank" rel="noreferrer" aria-label="Visit SportyBet">Public product ↗</a>
+        </article>
+        <article class="scale-card tilt kinto" data-reveal>
+          <div class="card-index">03 / MOBILITY</div>
+          <div class="product-symbol">⌁</div>
+          <h3>KINTO</h3>
+          <p data-en="Delivered vehicle usage tracking, vehicle status, and in-app guidance for a connected vehicle application on a focused three-month production cycle." data-zh="在三個月的密集正式開發週期中，交付聯網車輛應用的使用紀錄、車況資訊與 App 內操作引導。">Delivered vehicle usage tracking, vehicle status, and in-app guidance for a connected vehicle application on a focused three-month production cycle.</p>
+          <dl><div><dt>3 mo</dt><dd>Contract</dd></div><div><dt>Vehicle</dt><dd>Live state</dd></div><div><dt>iOS</dt><dd>Production</dd></div></dl>
+          <a href="https://www.kinto-mobility.com/unlimited" target="_blank" rel="noreferrer" aria-label="Visit KINTO Unlimited">Public product ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="method section" id="method">
+      <div class="section-heading compact" data-reveal>
+        <p class="kicker">HOW I BUILD</p>
+        <h2 data-en="Product clarity before model cleverness." data-zh="先有產品清晰度，再談模型聰明度。">Product clarity before model cleverness.</h2>
+      </div>
+      <ol class="method-list">
+        <li data-reveal><span>01</span><div><h3 data-en="Define the truthful outcome" data-zh="定義真實的成果">Define the truthful outcome</h3><p data-en="Name the user problem, observable done condition, and what the product must never claim." data-zh="說清楚使用者問題、可觀察的完成條件，以及產品絕不能聲稱的事。">Name the user problem, observable done condition, and what the product must never claim.</p></div></li>
+        <li data-reveal><span>02</span><div><h3 data-en="Separate intelligence from authority" data-zh="分離智慧與權限">Separate intelligence from authority</h3><p data-en="Let models interpret and propose; keep validation, persistence, and mutations behind explicit contracts." data-zh="讓模型理解並提案；驗證、持久化與變更則保留在明確契約之後。">Let models interpret and propose; keep validation, persistence, and mutations behind explicit contracts.</p></div></li>
+        <li data-reveal><span>03</span><div><h3 data-en="Design failure and recovery" data-zh="設計失敗與恢復">Design failure and recovery</h3><p data-en="Treat checkpoints, stale writes, degraded modes, and receipts as product surfaces — not backend trivia." data-zh="把 checkpoint、過期寫入、降級模式與收據視為產品介面，而不是後端細節。">Treat checkpoints, stale writes, degraded modes, and receipts as product surfaces — not backend trivia.</p></div></li>
+        <li data-reveal><span>04</span><div><h3 data-en="Verify the experience" data-zh="驗證體驗">Verify the experience</h3><p data-en="Prototype the interaction, test deterministic gates, then measure whether the system helps the user move." data-zh="先原型化互動、測試確定性關卡，再衡量系統是否真的幫助使用者前進。">Prototype the interaction, test deterministic gates, then measure whether the system helps the user move.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="contact section" id="contact">
+      <p class="kicker" data-reveal>BUILD THE NEXT SYSTEM</p>
+      <h2 data-reveal data-en="If the product needs both imagination and operational truth, let's talk." data-zh="如果產品同時需要想像力與可運作的真實性，我們聊聊。">If the product needs both imagination and operational truth, let's talk.</h2>
+      <div class="contact-actions" data-reveal>
+        <a class="contact-email magnetic" href="mailto:timyeou1234@hotmail.com">timyeou1234@hotmail.com <span>↗</span></a>
+        <div><a href="https://www.linkedin.com/in/timothy-yeou-0134a9117" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/timyeou1234" target="_blank" rel="noreferrer">GitHub ↗</a><a href="./resume.html" data-en="Résumé ↗" data-zh="履歷 ↗">Résumé ↗</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> Timothy Yu</span>
+    <span data-en="Designed as a living system." data-zh="被設計成一個持續演進的系統。">Designed as a living system.</span>
+    <span class="legal" data-en="Product names are trademarks of their respective owners." data-zh="產品名稱為各自所有者的商標。">Product names are trademarks of their respective owners.</span>
+  </footer>
+</body>
+</html>
