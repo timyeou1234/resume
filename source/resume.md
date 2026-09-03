@@ -20,6 +20,29 @@ Experienced in owning features from product and API discussions through implemen
 **Blockchain:** EOA & Smart Contract Wallets, Transaction Signing, Wallet SDK Integration, Staking & Vault Integrations\
 **Tools:** Xcode, Git, GitHub Actions
 
+## AI-Assisted Engineering
+
+- At Crypto.com, used AI tooling to review open Jira work, decompose features into subtasks under the relevant Epic, and turn ticket and Figma context into architecture notes when needed.
+- Used AI for codebase exploration, implementation support, refactoring, debugging, and edge-case discovery, followed by manual validation of UI/UX, parameters, network behavior, failure states, and edge cases.
+- Used AI to prepare commits and pull requests, then reviewed changes personally and with GitHub Copilot and Claude. Evaluated every review comment manually, replied with the decision and reasoning, resolved all discussions, and requested code-owner approval before merge and the weekly CI release.
+
+## Selected Side Projects
+
+### Moment OS — AI-Native Planning Product (In Development)
+
+- Building an iOS-first React Native, Expo, and TypeScript application that turns natural-language intentions into editable, durable preparation plans.
+- Keeps AI actions bounded behind proposal interfaces while the product owns schema validation, local persistence, rendering, recovery, and the distinction between observed and unverified outcomes.
+
+### Tim Work — Open-Source AI Engineering Tooling
+
+- Created tools for reliable long-running agent work: Context Handoff preserves acceptance criteria across fresh threads, Task ETA Tracker forecasts from observable milestones, and Moment Monitor provides read-only live status.
+- Uses Codex skills, lifecycle hooks, verification, observability, and explicit mutation boundaries to keep agent work reviewable and recoverable.
+
+### Wealth OS — Full-Stack Personal Finance Platform (In Development)
+
+- Building a private, balance-sheet-first product with Kotlin, Spring Boot, Next.js, TypeScript, PostgreSQL, Redis, Auth0, Docker, and generated OpenAPI clients.
+- Designed a modular-monolith domain, deterministic financial calculations, OIDC/BFF authentication, server-side sessions, and owner-isolated data access.
+
 ## Professional Experience
 
 ### Crypto.com

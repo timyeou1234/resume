@@ -22,6 +22,10 @@ The strongest themes are:
   Fabric and TurboModules; approximately six months of hands-on React Native
   experience is confirmed.
 - Crypto.com employment ended in July 2026.
+- The AI-company variant may describe the user-provided AI-assisted engineering workflow at Crypto.com: Jira review and task decomposition, optional architecture notes from ticket and Figma context, AI-assisted implementation, manual QA, AI-assisted commit and PR preparation, multi-model review, manual comment adjudication, code-owner approval, and weekly release CI.
+- Moment OS is an in-development, iOS-first React Native/Expo/TypeScript product. AI proposes task-local structure; validation, persistence, rendering, recovery, and evidence boundaries remain product-owned.
+- Tim Work consists of the public Context Handoff, Task ETA Tracker, and Moment Monitor tools for reliable, observable, and recoverable agent work.
+- Wealth OS is an in-development full-stack personal finance platform using Kotlin/Spring Boot, Next.js/TypeScript, PostgreSQL, Redis, Auth0, Docker, and OpenAPI-generated clients.
 - Crypto.com Onchain is an existing production product.
 - San Orange Technology is the employer; KINTO is the client/product context.
 - Do not imply direct employment by Toyota or KINTO.
