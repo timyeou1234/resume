@@ -52,6 +52,11 @@ if (html.includes("figma.com/")) errors.push("Portfolio must not contain Figma l
 if (!html.includes("./assets/moments-demo.png")) errors.push("Current Moments demo is missing");
 if (!html.includes("Products I contributed to in production.")) errors.push("Company-product ownership wording is missing");
 
+const css = fs.readFileSync(path.join(site, "styles.css"), "utf8");
+if (/\.project-shot\s*\{[^}]*content-visibility\s*:\s*auto/s.test(css)) {
+  errors.push("Project media must not use unstable offscreen height placeholders");
+}
+
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
