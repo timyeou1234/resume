@@ -11,6 +11,7 @@
 - Updated the portfolio title and Moment OS technology details, removed unreliable Figma links, and repaired navigation and reveal selectors.
 - Removed Objective-C from every current resume variant.
 - Added automated portfolio checks for JavaScript syntax, internal anchors, and local assets.
+- Replaced the Moment demo with the current Moments overview, removed every public Figma link, reformatted the Tim Work title, and clarified that company products are team contributions.
 
 ## 2026-08-31
 

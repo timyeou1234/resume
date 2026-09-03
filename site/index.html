@@ -26,7 +26,7 @@
     </a>
     <nav class="site-nav" aria-label="Primary navigation">
       <a href="#work" data-en="Selected work" data-zh="精選作品">Selected work</a>
-      <a href="#scale" data-en="At scale" data-zh="規模化產品">At scale</a>
+      <a href="#scale" data-en="Company work" data-zh="公司經驗">Company work</a>
       <a href="#method" data-en="Method" data-zh="方法">Method</a>
       <a href="#contact" data-en="Contact" data-zh="聯絡">Contact</a>
       <a href="./resume.html" data-en="Résumé" data-zh="履歷">Résumé</a>
@@ -141,12 +141,11 @@
             <li>React Native</li><li>Expo</li><li>TypeScript</li><li>Local-first</li><li>Figma</li>
           </ul>
         </div>
-        <figure class="case-visual figma-shot moment-ui" data-reveal>
-          <a class="figma-shot-link" href="https://www.figma.com/design/k5rztIwEJgCd9jBL4KsQet/Moments?node-id=0-1" target="_blank" rel="noreferrer" aria-label="Open the Moment design in Figma">
-            <img class="figma-shot-image" src="./assets/moment-figma.svg" alt="Moment mobile product screens from the original Figma file" width="1200" height="750" loading="lazy" decoding="async">
-            <span class="figma-shot-badge">ORIGINAL FIGMA ↗</span>
-          </a>
-          <figcaption data-en="Moment · Capture and AI-assisted preparation" data-zh="Moment · 捕捉與 AI 輔助準備流程">Moment · Capture and AI-assisted preparation</figcaption>
+        <figure class="case-visual project-shot moment-ui" data-reveal>
+          <div class="project-shot-frame project-shot-frame-phone">
+            <img class="project-shot-image" src="./assets/moments-demo.png" alt="Current Moments overview showing active and waiting life events" width="390" height="844" loading="lazy" decoding="async">
+          </div>
+          <figcaption data-en="Moment · Current Moments overview and next actions" data-zh="Moment · 最新 Moments 總覽與下一步行動">Moment · Current Moments overview and next actions</figcaption>
         </figure>
       </article>
 
@@ -166,10 +165,9 @@
             <li>Swift 6</li><li>Automation</li><li>Typed contracts</li><li>Receipts</li><li>Recovery</li>
           </ul>
         </div>
-        <figure class="case-visual figma-shot productdev-ui" data-reveal>
-          <div class="figma-shot-link">
-            <img class="figma-shot-image" src="./assets/productdev-figma.svg" alt="ProductDev native monitor dashboard from the original Figma file" width="1200" height="750" loading="lazy" decoding="async">
-            <span class="figma-shot-badge">FIGMA SOURCE</span>
+        <figure class="case-visual project-shot productdev-ui" data-reveal>
+          <div class="project-shot-frame">
+            <img class="project-shot-image" src="./assets/productdev-figma.svg" alt="ProductDev native monitor dashboard" width="1200" height="750" loading="lazy" decoding="async">
           </div>
           <figcaption data-en="ProductDev · Native monitor and observable automation state" data-zh="ProductDev · 原生監控與可觀察的自動化狀態">ProductDev · Native monitor and observable automation state</figcaption>
         </figure>
@@ -178,7 +176,10 @@
       <article class="case-study case-timwork" data-case="timwork">
         <div class="case-copy">
           <div class="case-meta" data-reveal><span>03</span><span data-en="Tim Work · AI engineering system" data-zh="Tim Work · AI 工程系統">Tim Work · AI engineering system</span></div>
-          <h3 data-reveal>Continuity, truth, pace.</h3>
+          <h3 class="timwork-title" data-reveal>
+            <span data-en="Continuity." data-zh="延續。">Continuity.</span>
+            <span data-en="Truth. Pace." data-zh="真實。節奏。">Truth. Pace.</span>
+          </h3>
           <p class="case-thesis" data-reveal data-en="The tooling behind long-running AI work." data-zh="支撐長時間 AI 工作的工具系統。">The tooling behind long-running AI work.</p>
           <p data-reveal data-en="A family of open tools turns fragile agent sessions into reviewable engineering: Context Handoff preserves acceptance criteria across fresh threads, Task ETA Tracker forecasts from observable milestones, and Moment Monitor exposes live state without gaining mutation authority." data-zh="一組開放工具把脆弱的代理工作階段轉化為可審查的工程流程：Context Handoff 在新 thread 間保存驗收條件，Task ETA Tracker 以可觀察里程碑預測進度，Moment Monitor 則在不取得變更權限的情況下呈現即時狀態。">
             A family of open tools turns fragile agent sessions into reviewable engineering: Context Handoff preserves acceptance criteria across fresh threads, Task ETA Tracker forecasts from observable milestones, and Moment Monitor exposes live state without gaining mutation authority.
@@ -192,10 +193,9 @@
             <li>Codex skills</li><li>Lifecycle hooks</li><li>Verification</li><li>Observability</li><li>MIT</li>
           </ul>
         </div>
-        <figure class="case-visual figma-shot timwork-ui" data-reveal>
-          <div class="figma-shot-link">
-            <img class="figma-shot-image" src="./assets/timwork-figma.svg" alt="Codex Handoff continuity screen from the original Tim Work Figma system" width="1200" height="750" loading="lazy" decoding="async">
-            <span class="figma-shot-badge">FIGMA SOURCE</span>
+        <figure class="case-visual project-shot timwork-ui" data-reveal>
+          <div class="project-shot-frame">
+            <img class="project-shot-image" src="./assets/timwork-figma.svg" alt="Codex Handoff continuity screen" width="1200" height="750" loading="lazy" decoding="async">
           </div>
           <figcaption data-en="Tim Work · Verified context handoff across agent sessions" data-zh="Tim Work · 跨代理工作階段的已驗證上下文交接">Tim Work · Verified context handoff across agent sessions</figcaption>
         </figure>
@@ -204,9 +204,9 @@
 
     <section class="scale section" id="scale">
       <div class="section-heading" data-reveal>
-        <p class="kicker">SHIPPED AT SCALE</p>
-        <h2 data-en="Complex systems, real users, production stakes." data-zh="複雜系統、真實使用者、正式環境責任。">Complex systems, real users, production stakes.</h2>
-        <p data-en="My AI-assisted product work is grounded in a decade of shipping products where state, latency, and correctness already mattered." data-zh="我的 AI 輔助產品經驗，建立在十年產品交付經驗之上；那些產品裡，狀態、延遲與正確性早已至關重要。">My AI-assisted product work is grounded in a decade of shipping products where state, latency, and correctness already mattered.</p>
+        <p class="kicker" data-en="SELECTED COMPANY PRODUCTS" data-zh="參與過的公司產品">SELECTED COMPANY PRODUCTS</p>
+        <h2 data-en="Products I contributed to in production." data-zh="我曾參與正式環境產品的開發。">Products I contributed to in production.</h2>
+        <p data-en="Selected contributions made as part of engineering teams across self-custodial wallets, real-time betting, and connected mobility." data-zh="以下是我在自託管錢包、即時投注平台與聯網移動服務工程團隊中負責或參與的工作，並非個人獨立完成的產品。">Selected contributions made as part of engineering teams across self-custodial wallets, real-time betting, and connected mobility.</p>
       </div>
       <div class="scale-grid">
         <article class="scale-card tilt onchain" data-reveal>
@@ -215,7 +215,7 @@
           <h3>Crypto.com Onchain</h3>
           <p data-en="Owned iOS Earn across multiple blockchain protocols. Shipped staking, rewards, position management, and Buy & Swap for a self-custodial wallet." data-zh="負責跨多個區塊鏈協議的 iOS Earn，交付質押、獎勵、部位管理，以及自託管錢包的 Buy & Swap。">Owned iOS Earn across multiple blockchain protocols. Shipped staking, rewards, position management, and Buy & Swap for a self-custodial wallet.</p>
           <dl><div><dt>~20K</dt><dd>DAU</dd></div><div><dt>iOS</dt><dd>Ownership</dd></div><div><dt>Multi-chain</dt><dd>Protocols</dd></div></dl>
-          <a href="https://crypto.com/onchain" target="_blank" rel="noreferrer" aria-label="Visit Crypto.com Onchain">Public product ↗</a>
+          <a href="https://crypto.com/onchain" target="_blank" rel="noreferrer" aria-label="Visit Crypto.com Onchain" data-en="Company product ↗" data-zh="公司產品 ↗">Company product ↗</a>
         </article>
         <article class="scale-card tilt sporty" data-reveal>
           <div class="card-index">02 / REAL-TIME</div>
@@ -223,7 +223,7 @@
           <h3>SportyBet</h3>
           <p data-en="Built live odds, open bets, and betting-history synchronization. Prevented duplicated WebSocket updates across multiple betting slips and evolved legacy modules." data-zh="建立即時賠率、未結算投注與投注紀錄同步，避免多張投注單重複接收 WebSocket 更新，並演進既有模組。">Built live odds, open bets, and betting-history synchronization. Prevented duplicated WebSocket updates across multiple betting slips and evolved legacy modules.</p>
           <dl><div><dt>~100K</dt><dd>DAU</dd></div><div><dt>WebSocket</dt><dd>Live state</dd></div><div><dt>RxSwift</dt><dd>Migration</dd></div></dl>
-          <a href="https://www.sportybet.com/" target="_blank" rel="noreferrer" aria-label="Visit SportyBet">Public product ↗</a>
+          <a href="https://www.sportybet.com/" target="_blank" rel="noreferrer" aria-label="Visit SportyBet" data-en="Company product ↗" data-zh="公司產品 ↗">Company product ↗</a>
         </article>
         <article class="scale-card tilt kinto" data-reveal>
           <div class="card-index">03 / MOBILITY</div>
@@ -231,7 +231,7 @@
           <h3>KINTO</h3>
           <p data-en="Delivered vehicle usage tracking, vehicle status, and in-app guidance for a connected vehicle application on a focused three-month production cycle." data-zh="在三個月的密集正式開發週期中，交付聯網車輛應用的使用紀錄、車況資訊與 App 內操作引導。">Delivered vehicle usage tracking, vehicle status, and in-app guidance for a connected vehicle application on a focused three-month production cycle.</p>
           <dl><div><dt>3 mo</dt><dd>Contract</dd></div><div><dt>Vehicle</dt><dd>Live state</dd></div><div><dt>iOS</dt><dd>Production</dd></div></dl>
-          <a href="https://www.kinto-mobility.com/unlimited" target="_blank" rel="noreferrer" aria-label="Visit KINTO Unlimited">Public product ↗</a>
+          <a href="https://www.kinto-mobility.com/unlimited" target="_blank" rel="noreferrer" aria-label="Visit KINTO Unlimited" data-en="Company product ↗" data-zh="公司產品 ↗">Company product ↗</a>
         </article>
       </div>
     </section>

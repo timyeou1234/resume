@@ -48,6 +48,9 @@ for (const text of retiredText) {
 }
 
 if (!html.includes('class="site-nav"')) errors.push("Primary navigation is missing the site-nav hook");
+if (html.includes("figma.com/")) errors.push("Portfolio must not contain Figma links");
+if (!html.includes("./assets/moments-demo.png")) errors.push("Current Moments demo is missing");
+if (!html.includes("Products I contributed to in production.")) errors.push("Company-product ownership wording is missing");
 
 if (errors.length) {
   console.error(errors.join("\n"));
