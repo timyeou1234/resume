@@ -56,6 +56,9 @@ const css = fs.readFileSync(path.join(site, "styles.css"), "utf8");
 if (/\.project-shot\s*\{[^}]*content-visibility\s*:\s*auto/s.test(css)) {
   errors.push("Project media must not use unstable offscreen height placeholders");
 }
+if (!/\.project-shot-frame-phone \.project-shot-image\s*\{[^}]*width\s*:\s*100%[^}]*height\s*:\s*100%[^}]*object-fit\s*:\s*contain/s.test(css)) {
+  errors.push("Phone demo must fit the complete screenshot inside its frame");
+}
 
 if (errors.length) {
   console.error(errors.join("\n"));
