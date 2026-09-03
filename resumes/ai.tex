@@ -1,25 +1,24 @@
 \documentclass[10pt]{article}
 \input{config/base}
-\newcommand{\VariantLabel}{AI Company}
+\newcommand{\VariantLabel}{AI Product}
 \renewcommand{\ResumeTagline}{Senior iOS Engineer}
 \renewcommand{\ResumeWebsite}{Portfolio}
 \renewcommand{\ResumeWebsiteURL}{https://timyeou1234.github.io/resume/}
-\renewcommand{\resumeExperienceDetail}[2]{#2}
 \input{config/company-loader}
 \input{config/metadata}
 \hypersetup{
-  pdftitle={Timothy Yu - AI Company Resume},
-  pdfsubject={Senior iOS Engineer resume for AI product teams},
-  pdfkeywords={AI-assisted engineering, Codex, React Native, TypeScript, iOS, side projects}
+  pdftitle={Timothy Yu - AI Product Resume},
+  pdfsubject={Senior iOS Engineer resume for AI-native product teams},
+  pdfkeywords={AI product engineering, Swift, SwiftUI, Swift Concurrency, WebSocket, React Native, production iOS, AI UX}
 }
 
 \begin{document}
 \resumeHeader
 \input{sections/summary/ai}
 \input{sections/skills/ai}
-\input{sections/ai-workflow}
-\input{sections/projects-ai}
+\input{sections/experience-ai-primary}
 \newpage
-\input{sections/experience}
+\input{sections/projects-ai}
+\input{sections/experience-ai-additional}
 \input{sections/education}
 \end{document}
