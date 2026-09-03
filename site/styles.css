@@ -1511,8 +1511,6 @@ footer .legal {
 .project-shot {
   margin: 0;
   min-width: 0;
-  content-visibility: auto;
-  contain-intrinsic-size: 750px;
 }
 
 .project-shot-frame {
@@ -1646,8 +1644,10 @@ footer .legal {
   }
 
   .site-header {
-    width: calc(100% - 1.5rem);
+    width: 100%;
+    padding-inline: 0.75rem;
     grid-template-columns: 1fr auto;
+    transition: background 160ms ease, border-color 160ms ease;
   }
 
   .site-header.is-scrolled {
@@ -1794,11 +1794,7 @@ footer .legal {
   }
 
   #field {
-    opacity: 0.42;
-  }
-
-  .site-header {
-    transition-duration: 160ms;
+    display: none;
   }
 
   .site-header.is-scrolled {

@@ -119,7 +119,12 @@
   function revealElements() {
     var nodes = Array.prototype.slice.call(doc.querySelectorAll("[data-reveal]"));
 
-    if (reducedMotion.matches || !("IntersectionObserver" in window)) return;
+    if (
+      reducedMotion.matches ||
+      compactViewport.matches ||
+      coarsePointer.matches ||
+      !("IntersectionObserver" in window)
+    ) return;
 
     var revealObserver = new IntersectionObserver(
       function (entries, observer) {
@@ -128,20 +133,14 @@
 
           var node = entry.target;
           var index = Number(node.getAttribute("data-reveal-index") || "0");
-          var compactReveal = compactViewport.matches || coarsePointer.matches;
-          var keyframes = compactReveal
-            ? [
-                { opacity: 0, transform: "translateY(12px)" },
-                { opacity: 1, transform: "translateY(0)" }
-              ]
-            : [
-                { opacity: 0, transform: "translateY(24px)", filter: "blur(6px)" },
-                { opacity: 1, transform: "translateY(0)", filter: "blur(0)" }
-              ];
+          var keyframes = [
+            { opacity: 0, transform: "translateY(24px)", filter: "blur(6px)" },
+            { opacity: 1, transform: "translateY(0)", filter: "blur(0)" }
+          ];
 
           node.animate(keyframes, {
-            duration: compactReveal ? 440 : 720,
-            delay: compactReveal ? 0 : Math.min(index * 55, 275),
+            duration: 720,
+            delay: Math.min(index * 55, 275),
             easing: "cubic-bezier(.2,.72,.18,1)",
             fill: "backwards"
           });
@@ -257,7 +256,6 @@
   var pointerActive = false;
   var particlesPaused = false;
   var particleResizeTimer = 0;
-  var particleScrollTimer = 0;
   var lastParticleTime = 0;
 
   function createParticles() {
@@ -366,7 +364,13 @@
     particleFrame = window.requestAnimationFrame(animateParticles);
   }
 
-  if (canvas && canvasContext && !reducedMotion.matches) {
+  if (
+    canvas &&
+    canvasContext &&
+    !reducedMotion.matches &&
+    !compactViewport.matches &&
+    !coarsePointer.matches
+  ) {
     resizeCanvas();
 
     window.addEventListener(
@@ -407,25 +411,6 @@
       });
     }
 
-    window.addEventListener(
-      "scroll",
-      function () {
-        if (!coarsePointer.matches) return;
-
-        particlesPaused = true;
-        window.cancelAnimationFrame(particleFrame);
-        window.clearTimeout(particleScrollTimer);
-        particleScrollTimer = window.setTimeout(function () {
-          particlesPaused = false;
-          lastParticleTime = 0;
-          if (!doc.hidden && !reducedMotion.matches) {
-            particleFrame = window.requestAnimationFrame(animateParticles);
-          }
-        }, 140);
-      },
-      { passive: true }
-    );
-
     doc.addEventListener("visibilitychange", function () {
       if (doc.hidden) {
         window.cancelAnimationFrame(particleFrame);
@@ -443,7 +428,7 @@
       window.cancelAnimationFrame(glowFrame);
       if (canvasContext) canvasContext.clearRect(0, 0, canvasWidth, canvasHeight);
       if (glow) glow.style.transform = "";
-    } else {
+    } else if (!compactViewport.matches && !coarsePointer.matches) {
       particlesPaused = false;
       lastParticleTime = 0;
       resizeCanvas();
