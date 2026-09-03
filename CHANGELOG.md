@@ -6,6 +6,7 @@
 - Added Moment OS, Tim Work, and Wealth OS as accurately scoped side projects.
 - Added the AI PDF to validation, CI artifacts, and GitHub Pages downloads.
 - Separated production expertise from AI-assisted side-project exposure and simplified unfamiliar architecture terminology.
+- Expanded historically verified work-experience details in the AI-company variant and removed Objective-C from its Core Languages line.
 
 ## 2026-08-31
 

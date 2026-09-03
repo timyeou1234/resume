@@ -27,6 +27,7 @@ The strongest themes are:
 - Tim Work consists of the public Context Handoff, Task ETA Tracker, and Moment Monitor tools for reliable, observable, and recoverable agent work.
 - Wealth OS is an in-development, AI-assisted full-stack personal finance project using Kotlin/Spring Boot, Next.js/TypeScript, PostgreSQL, Redis, Auth0, Docker, and OpenAPI-generated clients. These technologies are side-project exposure, not claimed as core professional expertise.
 - Separate production expertise, AI-assisted engineering capabilities, and AI-assisted side-project exposure. Do not list modular monolith, BFF, durable state, Kotlin, or Spring Boot as unqualified core skills.
+- The AI-company variant omits Objective-C from its Core Languages line and uses the fuller, historically verified experience wording. Other variants retain their concise experience rendering.
 - Crypto.com Onchain is an existing production product.
 - San Orange Technology is the employer; KINTO is the client/product context.
 - Do not imply direct employment by Toyota or KINTO.
