@@ -2,7 +2,7 @@
 set -euo pipefail
 
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-expected=(us-tech web3 taiwan chinese)
+expected=(us-tech web3 taiwan chinese ai)
 max_pages=2
 min_words_per_page=100
 required_contact=(

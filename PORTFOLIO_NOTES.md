@@ -34,18 +34,18 @@ Source: `source/resume.md`
 
 Product names are used nominatively. No proprietary screenshots, logos, internal analytics, or non-public product URLs are included.
 
-## AI-native project narrative
+## AI-assisted project narrative
 
-The selected-work copy is derived from current project READMEs and deliberately focuses on system boundaries rather than model hype.
+The selected-work copy is derived from current project READMEs and explains how AI supports the work without overstating autonomous behavior.
 
-- Moment: intent-to-structure, durable preparation, truthful next action, local/user/external evidence boundaries.
-- ProductDev ("Auto Product"): local-first observability, guarded automation, explicit authority, immutable receipts, recovery.
+- Moment: a React Native, Expo, and TypeScript product that turns natural-language intent into editable preparation while keeping suggestions separate from saved data.
+- ProductDev: a Swift 6 macOS workbench for observing repository automation, reviewing guarded actions, and recovering from interruptions.
 - Tim Work:
   - https://github.com/timyeou1234/context-handoff
   - https://github.com/timyeou1234/task-eta-tracker
   - https://github.com/timyeou1234/MomentMonitor
 
-The unifying AI-native position is: models interpret and propose; products own validation, persistence, mutation authority, evidence, and recovery.
+The unifying position is: AI assists with interpretation and proposals, while the product keeps validation, saved data, user approval, and recovery explicit.
 
 ## Interaction stack
 

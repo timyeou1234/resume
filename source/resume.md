@@ -11,7 +11,7 @@ Experienced in owning features from product and API discussions through implemen
 
 ## Technical Skills
 
-**Languages:** Swift, Objective-C, TypeScript\
+**Languages:** Swift, TypeScript\
 **Frameworks:** UIKit, SwiftUI, RxSwift, Combine  
 **React Native:** TypeScript, Fabric, TurboModules\
 **Architecture:** MVVM  
@@ -19,6 +19,29 @@ Experienced in owning features from product and API discussions through implemen
 **Networking:** REST APIs, WebSocket  
 **Blockchain:** EOA & Smart Contract Wallets, Transaction Signing, Wallet SDK Integration, Staking & Vault Integrations\
 **Tools:** Xcode, Git, GitHub Actions
+
+## AI-Assisted Engineering
+
+- At Crypto.com, used AI tooling to review open Jira work, decompose features into subtasks under the relevant Epic, and turn ticket and Figma context into architecture notes when needed.
+- Used AI for codebase exploration, implementation support, refactoring, debugging, and edge-case discovery, followed by manual validation of UI/UX, parameters, network behavior, failure states, and edge cases.
+- Used AI to prepare commits and pull requests, then reviewed changes personally and with GitHub Copilot and Claude. Evaluated every review comment manually, replied with the decision and reasoning, resolved all discussions, and requested code-owner approval before merge and the weekly CI release.
+
+## Selected Side Projects
+
+### Moment OS — AI-Assisted Planning Product (In Development)
+
+- Using AI-assisted development to build an iOS-first React Native, Expo, and TypeScript application that turns natural-language intentions into editable preparation plans.
+- Keeps AI suggestions separate from saved application data so user-approved plans remain recoverable and the interface distinguishes confirmed results from unverified suggestions.
+
+### Tim Work — Open-Source AI Engineering Tooling
+
+- Created tools for reliable long-running agent work: Context Handoff preserves acceptance criteria across fresh threads, Task ETA Tracker forecasts from observable milestones, and Moment Monitor provides read-only live status.
+- Uses Codex skills, lifecycle hooks, explicit approval boundaries, verification, progress visibility, and recovery paths to keep agent work reviewable and reliable.
+
+### ProductDev — AI-Assisted Automation Workbench (In Development)
+
+- Using AI-assisted development to build a local-first macOS workbench that observes repository automation through native Monitor, Runs, health, and recovery views.
+- Keeps GitHub Issues and the existing scheduler authoritative while guarded actions, exact dry-runs, and permanent receipts make automation reviewable and recoverable.
 
 ## Professional Experience
 

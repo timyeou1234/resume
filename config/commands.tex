@@ -12,8 +12,12 @@
 \newcommand{\TargetCompany}{}
 \newcommand{\ResumeTagline}{Senior iOS Engineer}
 
+% Keep shared experience content in one file while allowing selected variants
+% to use the fuller, historically verified wording.
+\newcommand{\resumeExperienceDetail}[2]{#1}
+
 % Shared skill values. Audience-specific files control ordering and line breaks.
-\newcommand{\SkillLanguages}{Swift, Objective-C, TypeScript}
+\newcommand{\SkillLanguages}{Swift, TypeScript}
 \newcommand{\SkillFrameworks}{UIKit, SwiftUI, RxSwift, Combine}
 \newcommand{\SkillReactNative}{TypeScript, Fabric, TurboModules}
 \newcommand{\SkillArchitecture}{MVVM}
@@ -30,7 +34,10 @@
     \href{\ResumePhoneURL}{\ResumePhone} \enspace|\enspace
     \href{mailto:\ResumeEmail}{\ResumeEmail}\\[-1pt]
     \href{\ResumeLinkedInURL}{\ResumeLinkedIn} \enspace|\enspace
-    \href{\ResumeGitHubURL}{\ResumeGitHub}
+    \href{\ResumeGitHubURL}{\ResumeGitHub}%
+    \ifx\ResumeWebsite\empty\else
+      \enspace|\enspace \href{\ResumeWebsiteURL}{\ResumeWebsite}%
+    \fi
   \end{center}
   \vspace{-7pt}
 }

@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
 
-VARIANTS := us-tech web3 taiwan chinese
+VARIANTS := us-tech web3 taiwan chinese ai
 COMPANY ?=
 
 .PHONY: all clean help site validate $(VARIANTS)
@@ -22,6 +22,7 @@ clean:
 help:
 	@echo "make all                         Build every resume"
 	@echo "make us-tech                     Build one variant"
+	@echo "make ai                          Build the AI-company variant"
 	@echo "make web3 COMPANY=example        Apply companies/example.tex"
 	@echo "make validate                    Build and enforce PDF checks"
 	@echo "make site                        Validate PDFs and prepare the Markdown site"
