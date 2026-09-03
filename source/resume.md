@@ -11,7 +11,7 @@ Experienced in owning features from product and API discussions through implemen
 
 ## Technical Skills
 
-**Languages:** Swift, Objective-C, TypeScript\
+**Languages:** Swift, TypeScript\
 **Frameworks:** UIKit, SwiftUI, RxSwift, Combine  
 **React Native:** TypeScript, Fabric, TurboModules\
 **Architecture:** MVVM  
@@ -38,10 +38,10 @@ Experienced in owning features from product and API discussions through implemen
 - Created tools for reliable long-running agent work: Context Handoff preserves acceptance criteria across fresh threads, Task ETA Tracker forecasts from observable milestones, and Moment Monitor provides read-only live status.
 - Uses Codex skills, lifecycle hooks, explicit approval boundaries, verification, progress visibility, and recovery paths to keep agent work reviewable and reliable.
 
-### Wealth OS — AI-Assisted Full-Stack Project (In Development)
+### ProductDev — AI-Assisted Automation Workbench (In Development)
 
-- Using AI-assisted implementation to build a private, balance-sheet-first product with Kotlin, Spring Boot, Next.js, TypeScript, PostgreSQL, Redis, Auth0, Docker, and generated OpenAPI clients.
-- Gaining hands-on exposure to backend APIs, authentication, server-side sessions, data persistence, and access control while manually reviewing behavior and test results.
+- Using AI-assisted development to build a local-first macOS workbench that observes repository automation through native Monitor, Runs, health, and recovery views.
+- Keeps GitHub Issues and the existing scheduler authoritative while guarded actions, exact dry-runs, and permanent receipts make automation reviewable and recoverable.
 
 ## Professional Experience
 

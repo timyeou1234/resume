@@ -25,9 +25,9 @@ The strongest themes are:
 - The AI-company variant may describe the user-provided AI-assisted engineering workflow at Crypto.com: Jira review and task decomposition, optional architecture notes from ticket and Figma context, AI-assisted implementation, manual QA, AI-assisted commit and PR preparation, multi-model review, manual comment adjudication, code-owner approval, and weekly release CI.
 - Moment OS is an in-development, iOS-first React Native/Expo/TypeScript product built with AI-assisted development. Describe its validation, persistence, rendering, recovery, and evidence boundaries in plain language rather than presenting those concepts as standalone core skills.
 - Tim Work consists of the public Context Handoff, Task ETA Tracker, and Moment Monitor tools for reliable, observable, and recoverable agent work.
-- Wealth OS is an in-development, AI-assisted full-stack personal finance project using Kotlin/Spring Boot, Next.js/TypeScript, PostgreSQL, Redis, Auth0, Docker, and OpenAPI-generated clients. These technologies are side-project exposure, not claimed as core professional expertise.
-- Separate production expertise, AI-assisted engineering capabilities, and AI-assisted side-project exposure. Do not list modular monolith, BFF, durable state, Kotlin, or Spring Boot as unqualified core skills.
-- The AI-company variant omits Objective-C from its Core Languages line and uses the fuller, historically verified experience wording. Other variants retain their concise experience rendering.
+- ProductDev is an in-development, local-first macOS workbench built with AI-assisted development and Swift 6. It observes existing repository automation; GitHub Issues and the existing scheduler retain authority. Guarded actions, exact dry-runs, permanent receipts, and recovery views may be described in plain language.
+- Separate production expertise, AI-assisted engineering capabilities, and side-project technologies. Do not list unfamiliar architecture terms or side-project technologies as unqualified core skills.
+- Objective-C is intentionally omitted from every current resume variant. The AI-company variant uses the fuller, historically verified experience wording; other variants retain their concise experience rendering.
 - Crypto.com Onchain is an existing production product.
 - San Orange Technology is the employer; KINTO is the client/product context.
 - Do not imply direct employment by Toyota or KINTO.

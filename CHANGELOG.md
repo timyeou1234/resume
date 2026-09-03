@@ -7,6 +7,10 @@
 - Added the AI PDF to validation, CI artifacts, and GitHub Pages downloads.
 - Separated production expertise from AI-assisted side-project exposure and simplified unfamiliar architecture terminology.
 - Expanded historically verified work-experience details in the AI-company variant and removed Objective-C from its Core Languages line.
+- Synchronized the AI resume and portfolio around Moment OS, ProductDev, and Tim Work.
+- Updated the portfolio title and Moment OS technology details, removed unreliable Figma links, and repaired navigation and reveal selectors.
+- Removed Objective-C from every current resume variant.
+- Added automated portfolio checks for JavaScript syntax, internal anchors, and local assets.
 
 ## 2026-08-31
 

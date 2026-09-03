@@ -117,11 +117,7 @@
   }
 
   function revealElements() {
-    var nodes = Array.prototype.slice.call(
-      doc.querySelectorAll(
-        ".eyebrow, .section-title, .section-lede, .principle-card, .case-copy > *, .case-visual, .scale-card, .method-step, .contact-inner > *"
-      )
-    );
+    var nodes = Array.prototype.slice.call(doc.querySelectorAll("[data-reveal]"));
 
     if (reducedMotion.matches || !("IntersectionObserver" in window)) return;
 

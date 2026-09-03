@@ -35,9 +35,20 @@ jobs:
           if-no-files-found: error
           retention-days: 90
 
+  site-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Validate portfolio source
+        run: bash ./scripts/validate-site.sh
+
   build-pages:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    needs: build
+    needs: [build, site-check]
     runs-on: ubuntu-24.04
     timeout-minutes: 10
 
@@ -53,6 +64,9 @@ jobs:
 
       - name: Prepare Markdown site
         run: ./scripts/build-site.sh
+
+      - name: Validate portfolio source
+        run: bash ./scripts/validate-site.sh
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
