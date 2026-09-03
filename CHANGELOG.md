@@ -14,6 +14,7 @@
 - Replaced the Moment demo with the current Moments overview, removed every public Figma link, reformatted the Tim Work title, and clarified that company products are team contributions.
 - Stabilized portfolio scrolling by removing offscreen media reflow and disabling scroll-triggered motion and particle rendering on compact or touch-first devices.
 - Updated the Moments portfolio frame to show the complete phone screenshot without cropping its lower content.
+- Corrected the Moments demo sizing after browser verification: the image now defines a dedicated portrait card at its natural aspect ratio on every viewport.
 
 ## 2026-08-31
 
