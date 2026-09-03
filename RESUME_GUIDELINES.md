@@ -15,13 +15,14 @@ The strongest themes are:
 
 ## Factual boundaries
 
-- Use only facts recorded in `source/resume.md` or subsequently confirmed by the candidate.
+- Use only facts recorded in `source/resume.md`, `source/production-tooling.md`, or subsequently confirmed by the candidate.
 - Approximate DAU values must remain clearly approximate.
 - Cronos App work is pre-launch; do not describe it as a released production feature.
 - The Cronos App phase used React Native and TypeScript throughout, including
   Fabric and TurboModules; approximately six months of hands-on React Native
   experience is confirmed.
 - Crypto.com employment ended in July 2026.
+- Confirmed cross-role production tooling includes Firebase Crashlytics, Firebase Performance monitoring for page or screen rendering and API response latency, Slack alerts, Datadog, Segment-based analytics and A/B testing, an in-house feature-flag system, and Firebase Remote Config. Do not attribute an individual tool to a named employer or project until the candidate confirms that attribution.
 - The AI-company variant may describe the user-provided AI-assisted engineering workflow at Crypto.com: Jira review and task decomposition, optional architecture notes from ticket and Figma context, AI-assisted implementation, manual QA, AI-assisted commit and PR preparation, multi-model review, manual comment adjudication, code-owner approval, and weekly release CI.
 - Moment OS is an in-development, iOS-first React Native/Expo/TypeScript product built with AI-assisted development. Describe its validation, persistence, rendering, recovery, and evidence boundaries in plain language rather than presenting those concepts as standalone core skills.
 - Tim Work consists of the public Context Handoff, Task ETA Tracker, and Moment Monitor tools for reliable, observable, and recoverable agent work.
@@ -34,7 +35,7 @@ The strongest themes are:
 - JSON-RPC was handled through SDK abstractions and should not be listed as a skill.
 - Do not list TCP Socket, Account Abstraction, or DeFi in the skills section.
 - Variant-specific summaries and skill ordering must use only facts already
-  present in `source/resume.md`.
+  present in the accepted source files.
 
 ## Bullet style
 
