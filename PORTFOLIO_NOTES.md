@@ -33,6 +33,7 @@ Source: `source/resume.md`
 - KINTO Unlimited: https://www.kinto-mobility.com/unlimited
 
 Product names are used nominatively. No proprietary screenshots, logos, internal analytics, or non-public product URLs are included.
+The company-product section explicitly describes Timothy's contributions as part of engineering teams and does not imply ownership of the products themselves.
 
 ## AI-assisted project narrative
 
@@ -46,6 +47,8 @@ The selected-work copy is derived from current project READMEs and explains how 
   - https://github.com/timyeou1234/MomentMonitor
 
 The unifying position is: AI assists with interpretation and proposals, while the product keeps validation, saved data, user approval, and recovery explicit.
+
+Portfolio project media is bundled locally so visitors never need Figma permissions. The Moment demo uses the current default view from the `05 · Moments` design page; the Figma file is a source reference only and is not linked from the public site.
 
 ## Interaction stack
 
