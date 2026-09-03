@@ -13,6 +13,7 @@
 - Added automated portfolio checks for JavaScript syntax, internal anchors, and local assets.
 - Replaced the Moment demo with the current Moments overview, removed every public Figma link, reformatted the Tim Work title, and clarified that company products are team contributions.
 - Stabilized portfolio scrolling by removing offscreen media reflow and disabling scroll-triggered motion and particle rendering on compact or touch-first devices.
+- Updated the Moments portfolio frame to show the complete phone screenshot without cropping its lower content.
 
 ## 2026-08-31
 
