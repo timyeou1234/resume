@@ -28,20 +28,20 @@ Experienced in owning features from product and API discussions through implemen
 
 ## Selected Side Projects
 
-### Moment OS — AI-Native Planning Product (In Development)
+### Moment OS — AI-Assisted Planning Product (In Development)
 
-- Building an iOS-first React Native, Expo, and TypeScript application that turns natural-language intentions into editable, durable preparation plans.
-- Keeps AI actions bounded behind proposal interfaces while the product owns schema validation, local persistence, rendering, recovery, and the distinction between observed and unverified outcomes.
+- Using AI-assisted development to build an iOS-first React Native, Expo, and TypeScript application that turns natural-language intentions into editable preparation plans.
+- Keeps AI suggestions separate from saved application data so user-approved plans remain recoverable and the interface distinguishes confirmed results from unverified suggestions.
 
 ### Tim Work — Open-Source AI Engineering Tooling
 
 - Created tools for reliable long-running agent work: Context Handoff preserves acceptance criteria across fresh threads, Task ETA Tracker forecasts from observable milestones, and Moment Monitor provides read-only live status.
-- Uses Codex skills, lifecycle hooks, verification, observability, and explicit mutation boundaries to keep agent work reviewable and recoverable.
+- Uses Codex skills, lifecycle hooks, explicit approval boundaries, verification, progress visibility, and recovery paths to keep agent work reviewable and reliable.
 
-### Wealth OS — Full-Stack Personal Finance Platform (In Development)
+### Wealth OS — AI-Assisted Full-Stack Project (In Development)
 
-- Building a private, balance-sheet-first product with Kotlin, Spring Boot, Next.js, TypeScript, PostgreSQL, Redis, Auth0, Docker, and generated OpenAPI clients.
-- Designed a modular-monolith domain, deterministic financial calculations, OIDC/BFF authentication, server-side sessions, and owner-isolated data access.
+- Using AI-assisted implementation to build a private, balance-sheet-first product with Kotlin, Spring Boot, Next.js, TypeScript, PostgreSQL, Redis, Auth0, Docker, and generated OpenAPI clients.
+- Gaining hands-on exposure to backend APIs, authentication, server-side sessions, data persistence, and access control while manually reviewing behavior and test results.
 
 ## Professional Experience
 

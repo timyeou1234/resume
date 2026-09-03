@@ -5,6 +5,7 @@
 - Added an AI-company resume variant with an expanded AI-assisted engineering workflow.
 - Added Moment OS, Tim Work, and Wealth OS as accurately scoped side projects.
 - Added the AI PDF to validation, CI artifacts, and GitHub Pages downloads.
+- Separated production expertise from AI-assisted side-project exposure and simplified unfamiliar architecture terminology.
 
 ## 2026-08-31
 
