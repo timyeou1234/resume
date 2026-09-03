@@ -22,7 +22,9 @@ The strongest themes are:
   Fabric and TurboModules; approximately six months of hands-on React Native
   experience is confirmed.
 - Crypto.com employment ended in July 2026.
-- Confirmed cross-role production tooling includes Firebase Crashlytics, Firebase Performance monitoring for page or screen rendering and API response latency, Slack alerts, Datadog, Segment-based analytics and A/B testing, an in-house feature-flag system, and Firebase Remote Config. Do not attribute an individual tool to a named employer or project until the candidate confirms that attribution.
+- At Crypto.com, confirmed production tooling includes Firebase Crashlytics, Firebase Performance for page or screen rendering and API response latency, Datadog, and Segment for product analytics and A/B testing.
+- At OpenNet, confirmed production tooling includes Firebase and Elasticsearch-based logs for production issue investigation.
+- Slack alerts, the in-house feature-flag system, and Firebase Remote Config are confirmed cross-role experience but remain unattributed to a named employer until the candidate confirms that mapping.
 - The AI-company variant may describe the user-provided AI-assisted engineering workflow at Crypto.com: Jira review and task decomposition, optional architecture notes from ticket and Figma context, AI-assisted implementation, manual QA, AI-assisted commit and PR preparation, multi-model review, manual comment adjudication, code-owner approval, and weekly release CI.
 - Moment OS is an in-development, iOS-first React Native/Expo/TypeScript product built with AI-assisted development. Describe its validation, persistence, rendering, recovery, and evidence boundaries in plain language rather than presenting those concepts as standalone core skills.
 - Tim Work consists of the public Context Handoff, Task ETA Tracker, and Moment Monitor tools for reliable, observable, and recoverable agent work.
