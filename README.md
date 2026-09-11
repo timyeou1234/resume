@@ -6,7 +6,8 @@ connected vehicle applications.
 
 ## View the resume
 
-- [Readable web version](https://timyeou1234.github.io/resume/)
+- [Portfolio](https://timyeou.com/)
+- [Readable resume](https://timyeou1234.github.io/resume/resume.html)
 - [US Tech PDF](https://timyeou1234.github.io/resume/assets/us-tech.pdf)
 - [Web3 PDF](https://timyeou1234.github.io/resume/assets/web3.pdf)
 - [Taiwan PDF](https://timyeou1234.github.io/resume/assets/taiwan.pdf)
@@ -35,6 +36,12 @@ Pages version and acts as the reviewed factual baseline.
 Every push and pull request builds and validates all PDF variants and checks the
 portfolio's local links and JavaScript. A successful build on `main` publishes
 the Markdown resume and validated PDFs to GitHub Pages.
+
+`timyeou.com` serves the standalone portfolio directly from Cloudflare. The
+Cloudflare bundle contains only the portfolio HTML, CSS, JavaScript, and project
+images. Resume pages and PDFs continue to be built and published separately on
+GitHub Pages, and the portfolio links to that release. The `www` hostname serves
+the same Cloudflare deployment.
 
 For local setup, repository architecture, build commands, company tailoring,
 and release checks, see [DEVELOPMENT.md](DEVELOPMENT.md).

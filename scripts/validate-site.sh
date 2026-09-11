@@ -4,6 +4,7 @@ set -euo pipefail
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 node --check "$repo_dir/site/app.js"
+bash "$repo_dir/scripts/build-portfolio.sh"
 
 RESUME_REPO_DIR="$repo_dir" node <<'NODE'
 const fs = require("fs");
@@ -11,6 +12,7 @@ const path = require("path");
 
 const repo = process.env.RESUME_REPO_DIR;
 const site = path.join(repo, "site");
+const portfolio = path.join(repo, ".portfolio-dist");
 const html = fs.readFileSync(path.join(site, "index.html"), "utf8");
 const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
 const uniqueIds = new Set(ids);
@@ -48,6 +50,9 @@ for (const text of retiredText) {
 }
 
 if (!html.includes('class="site-nav"')) errors.push("Primary navigation is missing the site-nav hook");
+if (!html.includes('<link rel="canonical" href="https://timyeou.com/">')) errors.push("Canonical domain metadata is missing");
+if (!html.includes('<meta property="og:url" content="https://timyeou.com/">')) errors.push("Open Graph domain metadata is missing");
+if (!html.includes('href="https://timyeou1234.github.io/resume/resume.html"')) errors.push("GitHub Pages resume link is missing");
 if (html.includes("figma.com/")) errors.push("Portfolio must not contain Figma links");
 if (!html.includes("./assets/moments-demo.png")) errors.push("Current Moments demo is missing");
 if (!html.includes("Products I contributed to in production.")) errors.push("Company-product ownership wording is missing");
@@ -59,6 +64,13 @@ if (/\.project-shot\s*\{[^}]*content-visibility\s*:\s*auto/s.test(css)) {
 if (!/\.project-shot-frame-phone\s*\{[^}]*aspect-ratio\s*:\s*auto/s.test(css) ||
     !/\.project-shot-frame-phone \.project-shot-image\s*\{[^}]*width\s*:\s*100%[^}]*height\s*:\s*auto/s.test(css)) {
   errors.push("Phone demo must fit the complete screenshot inside its frame");
+}
+
+const portfolioFiles = fs.readdirSync(portfolio, { recursive: true, withFileTypes: true })
+  .filter((entry) => entry.isFile())
+  .map((entry) => path.join(entry.parentPath || entry.path, entry.name));
+if (portfolioFiles.some((file) => file.endsWith(".pdf") || file.endsWith("resume.md") || file.endsWith("resume.html"))) {
+  errors.push("Cloudflare portfolio bundle must not contain resume documents");
 }
 
 if (errors.length) {
