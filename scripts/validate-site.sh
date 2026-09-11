@@ -4,6 +4,8 @@ set -euo pipefail
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 node --check "$repo_dir/site/app.js"
+node --check "$repo_dir/cloudflare/portfolio-worker.js"
+node --test "$repo_dir/test/portfolio-worker.test.mjs"
 
 RESUME_REPO_DIR="$repo_dir" node <<'NODE'
 const fs = require("fs");
@@ -48,6 +50,8 @@ for (const text of retiredText) {
 }
 
 if (!html.includes('class="site-nav"')) errors.push("Primary navigation is missing the site-nav hook");
+if (!html.includes('<link rel="canonical" href="https://timyeou.com/">')) errors.push("Canonical domain metadata is missing");
+if (!html.includes('<meta property="og:url" content="https://timyeou.com/">')) errors.push("Open Graph domain metadata is missing");
 if (html.includes("figma.com/")) errors.push("Portfolio must not contain Figma links");
 if (!html.includes("./assets/moments-demo.png")) errors.push("Current Moments demo is missing");
 if (!html.includes("Products I contributed to in production.")) errors.push("Company-product ownership wording is missing");
