@@ -6,12 +6,13 @@ connected vehicle applications.
 
 ## View the resume
 
-- [Portfolio and readable web version](https://timyeou.com/)
-- [US Tech PDF](https://timyeou.com/assets/us-tech.pdf)
-- [Web3 PDF](https://timyeou.com/assets/web3.pdf)
-- [Taiwan PDF](https://timyeou.com/assets/taiwan.pdf)
-- [AI Company PDF](https://timyeou.com/assets/ai.pdf)
-- [Traditional Chinese PDF](https://timyeou.com/assets/chinese.pdf)
+- [Portfolio](https://timyeou.com/)
+- [Readable resume](https://timyeou1234.github.io/resume/resume.html)
+- [US Tech PDF](https://timyeou1234.github.io/resume/assets/us-tech.pdf)
+- [Web3 PDF](https://timyeou1234.github.io/resume/assets/web3.pdf)
+- [Taiwan PDF](https://timyeou1234.github.io/resume/assets/taiwan.pdf)
+- [AI Company PDF](https://timyeou1234.github.io/resume/assets/ai.pdf)
+- [Traditional Chinese PDF](https://timyeou1234.github.io/resume/assets/chinese.pdf)
 
 ## Resume variants
 
@@ -36,10 +37,11 @@ Every push and pull request builds and validates all PDF variants and checks the
 portfolio's local links and JavaScript. A successful build on `main` publishes
 the Markdown resume and validated PDFs to GitHub Pages.
 
-`timyeou.com` is served by the lightweight Cloudflare Worker in `cloudflare/`.
-It maps the custom domain to the GitHub Pages release, so the existing validated
-publish workflow remains the single source of deployed website content. The
-`www` hostname redirects to the apex domain.
+`timyeou.com` serves the standalone portfolio directly from Cloudflare. The
+Cloudflare bundle contains only the portfolio HTML, CSS, JavaScript, and project
+images. Resume pages and PDFs continue to be built and published separately on
+GitHub Pages, and the portfolio links to that release. The `www` hostname serves
+the same Cloudflare deployment.
 
 For local setup, repository architecture, build commands, company tailoring,
 and release checks, see [DEVELOPMENT.md](DEVELOPMENT.md).
