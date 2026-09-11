@@ -1,6 +1,7 @@
 build/
 dist/*.pdf
 _site/
+.wrangler/
 config/company.local.tex
 *.aux
 *.fdb_latexmk
