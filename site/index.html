@@ -143,13 +143,48 @@
             <li>React Native</li><li>Expo</li><li>TypeScript</li><li>Local-first</li><li>Figma</li>
           </ul>
         </div>
-        <figure class="case-visual project-shot moment-ui" data-reveal>
-          <div class="project-shot-frame project-shot-frame-phone">
-            <img class="project-shot-image" src="./assets/moments-demo.png" alt="Current Moments overview showing active and waiting life events" width="390" height="844" loading="lazy" decoding="async">
+        <figure class="case-visual project-shot moment-video-showcase" data-reveal>
+          <div class="moment-video-frame">
+            <video id="moment-loop" class="moment-loop-video" width="1920" height="1080" muted loop playsinline preload="none" data-src-en="./assets/moment/loop-en-v4.mp4" data-src-zh="./assets/moment/loop-zh-v4.mp4" data-poster-en="./assets/moment/poster-en-v4.jpg" data-poster-zh="./assets/moment/poster-zh-v4.jpg" data-aria-en="Moment product film preview in English" data-aria-zh="Moment 產品影片繁體中文預覽" aria-label="Moment product film preview in English" aria-describedby="moment-loop-caption moment-loop-status"></video>
+            <button class="moment-loop-toggle" type="button" aria-controls="moment-loop">
+              <span class="moment-control-icon" aria-hidden="true">▶</span>
+              <span class="moment-control-label" data-en="Play preview" data-zh="播放預覽">Play preview</span>
+            </button>
           </div>
-          <figcaption data-en="Moment · Current Moments overview and next actions" data-zh="Moment · 最新 Moments 總覽與下一步行動">Moment · Current Moments overview and next actions</figcaption>
+          <div class="moment-video-actions">
+            <a id="moment-film-open" class="moment-film-link" href="./assets/moment/film-en-v4.mp4" data-href-en="./assets/moment/film-en-v4.mp4" data-href-zh="./assets/moment/film-zh-v4.mp4" target="_blank" rel="noreferrer" aria-haspopup="dialog" aria-controls="moment-film-dialog">
+              <span data-en="Watch the full film · 24 sec" data-zh="觀看完整介紹 · 24 秒">Watch the full film · 24 sec</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <figcaption id="moment-loop-caption" data-en="Moment · Product interface and next actions · English film" data-zh="Moment · 產品介面與下一步行動 · 繁體中文影片">Moment · Product interface and next actions · English film</figcaption>
+          <p id="moment-loop-status" class="visually-hidden" aria-live="polite" data-en="Preview ready." data-zh="預覽已就緒。">Preview ready.</p>
         </figure>
       </article>
+
+      <dialog id="moment-film-dialog" class="moment-film-dialog" aria-labelledby="moment-film-title" aria-describedby="moment-film-description moment-film-status">
+        <div class="moment-film-shell">
+          <div class="moment-film-header">
+            <div>
+              <h3 id="moment-film-title" data-en="Moment · Full introduction" data-zh="Moment · 完整介紹">Moment · Full introduction</h3>
+              <p id="moment-film-description" data-en="24 sec · English product film" data-zh="24 秒 · 繁體中文產品影片">24 sec · English product film</p>
+            </div>
+            <div class="moment-film-header-actions">
+              <button class="lang-toggle moment-film-lang-toggle" type="button" aria-label="Switch language">
+                <span class="lang-current">EN</span><span aria-hidden="true">／</span><span class="lang-next">中</span>
+              </button>
+              <button class="moment-film-close" type="button" data-aria-en="Close full introduction" data-aria-zh="關閉完整介紹" aria-label="Close full introduction">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+          </div>
+          <video id="moment-film" class="moment-film-video" width="1920" height="1080" controls playsinline preload="none" data-src-en="./assets/moment/film-en-v4.mp4" data-src-zh="./assets/moment/film-zh-v4.mp4" data-poster-en="./assets/moment/poster-en-v4.jpg" data-poster-zh="./assets/moment/poster-zh-v4.jpg" aria-labelledby="moment-film-title" aria-describedby="moment-film-description moment-film-status"></video>
+          <div class="moment-film-footer">
+            <p id="moment-film-status" class="moment-film-status" aria-live="polite" data-en="Use the player controls for playback, volume, progress, and fullscreen." data-zh="可使用播放器控制播放、音量、進度與全螢幕。">Use the player controls for playback, volume, progress, and fullscreen.</p>
+            <a class="moment-film-direct" href="./assets/moment/film-en-v4.mp4" data-href-en="./assets/moment/film-en-v4.mp4" data-href-zh="./assets/moment/film-zh-v4.mp4" target="_blank" rel="noreferrer" data-en="Open the English film directly ↗" data-zh="直接開啟繁體中文影片 ↗">Open the English film directly ↗</a>
+          </div>
+        </div>
+      </dialog>
 
       <article class="case-study case-productdev" data-case="productdev">
         <div class="case-copy">

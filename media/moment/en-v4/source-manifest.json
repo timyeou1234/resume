@@ -1,0 +1,25 @@
+{
+  "figmaFileKey": "k5rztIwEJgCd9jBL4KsQet",
+  "sourceNode": "162:765",
+  "sourceNodeName": "Phone / All",
+  "englishVariantFound": false,
+  "localization": "localization.json",
+  "uiGenerator": "make_ui_assets.py",
+  "figmaAssets": [
+    {
+      "path": "assets/travel-icon.svg",
+      "sourceNode": "I835:3011;829:2823;928:3094",
+      "description": "Travel / Tile Artwork / 28",
+      "sha256": "fb7279e9aa6659cebc9a703358b0894c706e0d2fe5bff997851dac421e8bad41"
+    }
+  ],
+  "generatedUiAssets": [
+    {"path": "assets/overview-detail.png", "pixelDimensions": [390, 496]},
+    {"path": "assets/travel-card.png", "pixelDimensions": [350, 248]},
+    {"path": "assets/preparation.png", "pixelDimensions": [318, 42]},
+    {"path": "assets/confirmed.png", "pixelDimensions": [318, 46]},
+    {"path": "assets/next-step.png", "pixelDimensions": [954, 198]}
+  ],
+  "audio": "Copy from the approved zh-Hant A V4 film with --audio-from; make_audio.py is the deterministic fallback.",
+  "writesToOriginalFigmaOrAppRepo": false
+}

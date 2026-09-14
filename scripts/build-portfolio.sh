@@ -12,8 +12,20 @@ mkdir -p "$output_dir/assets"
 cp "$source_dir/index.html" "$output_dir/index.html"
 cp "$source_dir/styles.css" "$output_dir/styles.css"
 cp "$source_dir/app.js" "$output_dir/app.js"
-cp "$source_dir/assets/moments-demo.png" "$output_dir/assets/moments-demo.png"
-cp "$source_dir/assets/productdev-figma.svg" "$output_dir/assets/productdev-figma.svg"
-cp "$source_dir/assets/timwork-figma.svg" "$output_dir/assets/timwork-figma.svg"
+portfolio_assets=(
+  "productdev-figma.svg"
+  "timwork-figma.svg"
+  "moment/loop-zh-v4.mp4"
+  "moment/film-zh-v4.mp4"
+  "moment/poster-zh-v4.jpg"
+  "moment/loop-en-v4.mp4"
+  "moment/film-en-v4.mp4"
+  "moment/poster-en-v4.jpg"
+)
+
+for asset in "${portfolio_assets[@]}"; do
+  mkdir -p "$(dirname "$output_dir/assets/$asset")"
+  cp "$source_dir/assets/$asset" "$output_dir/assets/$asset"
+done
 
 echo "Prepared Cloudflare portfolio assets in .portfolio-dist/"

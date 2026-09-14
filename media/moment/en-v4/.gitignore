@@ -1,0 +1,7 @@
+assets/*.png
+__pycache__/
+.venv/
+output/
+qa-render/
+renders/
+score.wav

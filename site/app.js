@@ -7,8 +7,9 @@
   var finePointer = window.matchMedia("(pointer: fine)");
   var coarsePointer = window.matchMedia("(pointer: coarse)");
   var compactViewport = window.matchMedia("(max-width: 720px)");
-  var languageButton = doc.querySelector(".lang-toggle");
+  var languageButtons = Array.prototype.slice.call(doc.querySelectorAll(".lang-toggle"));
   var currentLanguage = "en";
+  var momentLanguageChange = null;
 
   function safeStorageGet(key) {
     try {
@@ -34,32 +35,333 @@
       node.textContent = node.getAttribute("data-" + currentLanguage);
     });
 
-    var current = doc.querySelector(".lang-current");
-    var next = doc.querySelector(".lang-next");
+    doc.querySelectorAll("[data-aria-en][data-aria-zh]").forEach(function (node) {
+      node.setAttribute("aria-label", node.getAttribute("data-aria-" + currentLanguage));
+    });
 
-    if (current) current.textContent = currentLanguage === "en" ? "EN" : "中";
-    if (next) next.textContent = currentLanguage === "en" ? "中" : "EN";
+    doc.querySelectorAll("[data-href-en][data-href-zh]").forEach(function (node) {
+      node.setAttribute("href", node.getAttribute("data-href-" + currentLanguage));
+    });
 
-    if (languageButton) {
-      languageButton.setAttribute(
+    doc.querySelectorAll(".lang-current").forEach(function (current) {
+      current.textContent = currentLanguage === "en" ? "EN" : "中";
+    });
+    doc.querySelectorAll(".lang-next").forEach(function (next) {
+      next.textContent = currentLanguage === "en" ? "中" : "EN";
+    });
+
+    languageButtons.forEach(function (button) {
+      button.setAttribute(
         "aria-label",
         currentLanguage === "en" ? "切換為繁體中文" : "Switch to English"
       );
-    }
+    });
 
     safeStorageSet("portfolio-language", currentLanguage);
+    if (momentLanguageChange) momentLanguageChange(currentLanguage);
   }
 
-  if (languageButton) {
-    languageButton.addEventListener("click", function () {
+  languageButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
       setLanguage(currentLanguage === "en" ? "zh" : "en");
     });
-  }
+  });
 
   setLanguage(safeStorageGet("portfolio-language") || "en");
 
   var year = doc.querySelector("#year, [data-year]");
   if (year) year.textContent = String(new Date().getFullYear());
+
+  function setupMomentVideos() {
+    var loopVideo = doc.getElementById("moment-loop");
+    var loopButton = doc.querySelector(".moment-loop-toggle");
+    var loopIcon = doc.querySelector(".moment-control-icon");
+    var loopLabel = doc.querySelector(".moment-control-label");
+    var loopStatus = doc.getElementById("moment-loop-status");
+    var loopFrame = doc.querySelector(".moment-video-frame");
+    var filmLink = doc.getElementById("moment-film-open");
+    var filmDialog = doc.getElementById("moment-film-dialog");
+    var filmVideo = doc.getElementById("moment-film");
+    var filmClose = doc.querySelector(".moment-film-close");
+    var filmStatus = doc.getElementById("moment-film-status");
+
+    if (!loopVideo || !loopButton || !filmLink || !filmDialog || !filmVideo) return;
+
+    var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var saveData = Boolean(connection && connection.saveData);
+    var nearViewport = false;
+    var inViewport = false;
+    var userPaused = false;
+    var autoplayBlocked = false;
+    var loopLanguage = null;
+    var loadGeneration = 0;
+    var failedLanguages = { en: false, zh: false };
+    var dialogOpen = false;
+
+    var loopMessages = {
+      ready: { en: "Preview ready.", zh: "預覽已就緒。" },
+      playing: { en: "Preview playing.", zh: "預覽播放中。" },
+      paused: { en: "Preview paused.", zh: "預覽已暫停。" },
+      reduced: { en: "Motion is reduced. Play the preview when ready.", zh: "已啟用減少動態效果，可手動播放預覽。" },
+      saveData: { en: "Data Saver is on. Play the preview to load it.", zh: "已啟用數據節省，可手動載入並播放預覽。" },
+      blocked: { en: "Playback did not start. Use the play button to try again.", zh: "瀏覽器未開始播放，請使用播放按鈕重試。" },
+      error: { en: "This preview is unavailable. The full film link remains available.", zh: "此預覽目前無法播放，仍可使用完整影片連結。" }
+    };
+    var filmMessages = {
+      controls: { en: "Use the player controls for playback, volume, progress, and fullscreen.", zh: "可使用播放器控制播放、音量、進度與全螢幕。" },
+      changed: { en: "Language changed. Press play to start the English film.", zh: "語言已切換，請按下播放以開始繁體中文影片。" },
+      blocked: { en: "Playback did not start automatically. Use the player controls to begin.", zh: "影片未自動開始，請使用播放器控制開始播放。" },
+      error: { en: "The English film could not be loaded. You can still use the direct link.", zh: "繁體中文影片無法載入，仍可使用直接開啟連結。" }
+    };
+
+    function applyMessage(node, messages, key) {
+      var message = messages[key];
+      if (!node || !message) return;
+      node.setAttribute("data-en", message.en);
+      node.setAttribute("data-zh", message.zh);
+      node.textContent = message[currentLanguage];
+    }
+
+    function setLoopStatus(key) {
+      applyMessage(loopStatus, loopMessages, key);
+    }
+
+    function setFilmStatus(key) {
+      applyMessage(filmStatus, filmMessages, key);
+    }
+
+    function setLoopControl() {
+      var failed = failedLanguages[currentLanguage];
+      var playing = !loopVideo.paused && !loopVideo.ended;
+      var copy = failed
+        ? { en: "Retry preview", zh: "重試預覽" }
+        : playing
+          ? { en: "Pause preview", zh: "暫停預覽" }
+          : { en: "Play preview", zh: "播放預覽" };
+      loopLabel.setAttribute("data-en", copy.en);
+      loopLabel.setAttribute("data-zh", copy.zh);
+      loopLabel.textContent = copy[currentLanguage];
+      loopIcon.textContent = failed ? "↻" : playing ? "Ⅱ" : "▶";
+    }
+
+    function mediaPath(node, kind, language) {
+      return node.getAttribute("data-" + kind + "-" + language);
+    }
+
+    function setPoster(node, language) {
+      var poster = mediaPath(node, "poster", language);
+      if (!poster) return;
+      node.setAttribute("poster", poster);
+      node.style.backgroundImage = "url('" + poster.replace(/'/g, "%27") + "')";
+      if (node === loopVideo && loopFrame) {
+        loopFrame.style.backgroundImage = "url('" + poster.replace(/'/g, "%27") + "')";
+      }
+    }
+
+    function unloadVideo(video) {
+      video.pause();
+      video.removeAttribute("src");
+      video.preload = "none";
+      video.load();
+    }
+
+    function loadLoop(forceReload) {
+      var language = currentLanguage;
+      if (!forceReload && loopLanguage === language && loopVideo.getAttribute("src")) return;
+      loadGeneration += 1;
+      loopVideo.classList.remove("is-unavailable");
+      loopVideo.preload = "metadata";
+      loopVideo.setAttribute("src", mediaPath(loopVideo, "src", language));
+      loopLanguage = language;
+      loopVideo.load();
+    }
+
+    function canAutoPlay() {
+      return !reducedMotion.matches && !saveData && !userPaused && !autoplayBlocked &&
+        !doc.hidden && inViewport && !dialogOpen && !failedLanguages[currentLanguage];
+    }
+
+    function tryLoopPlay(manual) {
+      if (!manual && !canAutoPlay()) return;
+      if (manual) {
+        userPaused = false;
+        autoplayBlocked = false;
+        if (failedLanguages[currentLanguage]) {
+          failedLanguages[currentLanguage] = false;
+          loadLoop(true);
+        }
+      } else if (!loopVideo.getAttribute("src")) {
+        loadLoop(false);
+      }
+      if (!loopVideo.getAttribute("src")) loadLoop(false);
+
+      var generation = loadGeneration;
+      var promise;
+      try {
+        promise = loopVideo.play();
+      } catch (error) {
+        promise = Promise.reject(error);
+      }
+      if (promise && typeof promise.catch === "function") {
+        promise.catch(function () {
+          if (generation !== loadGeneration) return;
+          autoplayBlocked = true;
+          setLoopStatus("blocked");
+          setLoopControl();
+        });
+      }
+    }
+
+    function pauseLoop(statusKey) {
+      loopVideo.pause();
+      if (statusKey) setLoopStatus(statusKey);
+      setLoopControl();
+    }
+
+    function applyMomentLanguage(language) {
+      loadGeneration += 1;
+      loopVideo.pause();
+      filmVideo.pause();
+      setPoster(loopVideo, language);
+      setPoster(filmVideo, language);
+      loopVideo.classList.toggle("is-unavailable", failedLanguages[language]);
+      unloadVideo(loopVideo);
+      loopLanguage = null;
+      autoplayBlocked = false;
+
+      if (dialogOpen) {
+        unloadVideo(filmVideo);
+        filmVideo.preload = "metadata";
+        filmVideo.setAttribute("src", mediaPath(filmVideo, "src", language));
+        filmVideo.load();
+        setFilmStatus("changed");
+      } else {
+        unloadVideo(filmVideo);
+        setFilmStatus("controls");
+      }
+
+      if (failedLanguages[language]) setLoopStatus("error");
+      else if (reducedMotion.matches) setLoopStatus("reduced");
+      else if (saveData) setLoopStatus("saveData");
+      else setLoopStatus(userPaused ? "paused" : "ready");
+      setLoopControl();
+
+      if (nearViewport && !saveData && !failedLanguages[language]) loadLoop(false);
+      if (!dialogOpen && canAutoPlay()) tryLoopPlay(false);
+    }
+
+    loopButton.addEventListener("click", function () {
+      if (!loopVideo.paused && !loopVideo.ended) {
+        userPaused = true;
+        pauseLoop("paused");
+        return;
+      }
+      tryLoopPlay(true);
+    });
+
+    loopVideo.addEventListener("play", function () {
+      setLoopStatus("playing");
+      setLoopControl();
+    });
+    loopVideo.addEventListener("pause", function () {
+      setLoopControl();
+    });
+    loopVideo.addEventListener("canplay", function () {
+      if (loopLanguage === currentLanguage && canAutoPlay()) tryLoopPlay(false);
+    });
+    loopVideo.addEventListener("error", function () {
+      if (!loopVideo.getAttribute("src")) return;
+      failedLanguages[currentLanguage] = true;
+      loopVideo.classList.add("is-unavailable");
+      pauseLoop("error");
+    });
+
+    if ("IntersectionObserver" in window) {
+      var loadObserver = new IntersectionObserver(function (entries) {
+        nearViewport = entries.some(function (entry) { return entry.isIntersecting; });
+        if (nearViewport && !saveData && !failedLanguages[currentLanguage]) loadLoop(false);
+      }, { rootMargin: "280px 0px", threshold: 0 });
+      loadObserver.observe(loopFrame || loopVideo);
+
+      var playbackObserver = new IntersectionObserver(function (entries) {
+        var entry = entries[0];
+        inViewport = Boolean(entry && entry.isIntersecting && entry.intersectionRatio >= 0.35);
+        if (inViewport) tryLoopPlay(false);
+        else pauseLoop();
+      }, { threshold: [0, 0.35, 0.65] });
+      playbackObserver.observe(loopFrame || loopVideo);
+    }
+
+    doc.addEventListener("visibilitychange", function () {
+      if (doc.hidden) pauseLoop();
+      else if (canAutoPlay()) tryLoopPlay(false);
+    });
+
+    reducedMotion.addEventListener("change", function (event) {
+      if (event.matches) pauseLoop("reduced");
+      else if (canAutoPlay()) tryLoopPlay(false);
+      else setLoopStatus(userPaused ? "paused" : saveData ? "saveData" : "ready");
+    });
+
+    function openFilm(event) {
+      if (typeof filmDialog.showModal !== "function") return;
+      event.preventDefault();
+      dialogOpen = true;
+      pauseLoop();
+      setFilmStatus("controls");
+      setPoster(filmVideo, currentLanguage);
+      filmVideo.preload = "metadata";
+      filmVideo.setAttribute("src", mediaPath(filmVideo, "src", currentLanguage));
+      filmVideo.load();
+      filmVideo.muted = false;
+      filmDialog.showModal();
+      doc.body.classList.add("moment-dialog-open");
+
+      var promise;
+      try {
+        promise = filmVideo.play();
+      } catch (error) {
+        promise = Promise.reject(error);
+      }
+      if (promise && typeof promise.catch === "function") {
+        promise.catch(function () {
+          if (!dialogOpen) return;
+          setFilmStatus("blocked");
+        });
+      }
+    }
+
+    function finishFilmClose() {
+      if (!dialogOpen && !filmVideo.getAttribute("src")) return;
+      dialogOpen = false;
+      unloadVideo(filmVideo);
+      doc.body.classList.remove("moment-dialog-open");
+      setFilmStatus("controls");
+      if (filmLink && filmLink.isConnected) filmLink.focus();
+      if (canAutoPlay()) tryLoopPlay(false);
+    }
+
+    filmLink.addEventListener("click", openFilm);
+    if (filmClose) {
+      filmClose.addEventListener("click", function () {
+        filmDialog.close();
+      });
+    }
+    filmDialog.addEventListener("click", function (event) {
+      if (event.target === filmDialog) filmDialog.close();
+    });
+    filmDialog.addEventListener("close", finishFilmClose);
+    filmVideo.addEventListener("error", function () {
+      if (!filmVideo.getAttribute("src")) return;
+      filmVideo.pause();
+      setFilmStatus("error");
+    });
+
+    momentLanguageChange = applyMomentLanguage;
+    applyMomentLanguage(currentLanguage);
+  }
+
+  setupMomentVideos();
 
   var progress = doc.querySelector(".scroll-progress span");
   var siteHeader = doc.querySelector(".site-header");

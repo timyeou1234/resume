@@ -1,0 +1,40 @@
+{
+  "marketing": {
+    "生活很多事。": "Life is full.",
+    "下一步，很清楚。": "Your next step is clear.",
+    "把重要的事，放回眼前。": "Bring what matters back into focus.",
+    "你的生活事件。": "Your life events.",
+    "不再散落各處。": "No longer scattered.",
+    "從事件總覽，找到正在準備的事。": "See what needs attention from one clear overview.",
+    "準備到哪裡，一眼就知道。": "See what's ready at a glance.",
+    "該補的、已確認的，清楚分開。": "What needs work and what's confirmed stay distinct.",
+    "已確認的，留得住。": "Keep what's confirmed.",
+    "重要資訊，不用一再翻找。": "No more searching for important details.",
+    "下一步，清楚就好。": "One clear next step.",
+    "知道接下來做什麼，就能繼續往前。": "Know what to do next, then keep moving.",
+    "從準備，到清楚的行動。": "From preparation to clear action.",
+    "Moment — 清楚的下一步。": "Moment — One clear next step."
+  },
+  "ui": {
+    "你的生活事件": "Your life events",
+    "搜尋 Moments": "Search Moments",
+    "全部": "All",
+    "現在": "Now",
+    "等待": "Waiting",
+    "完成": "Done",
+    "暫停": "Paused",
+    "沖繩家族旅行": "Family trip to Okinawa",
+    "10/1–10/4 · 家庭旅行": "Oct 1–4 · Family trip",
+    "準備概況": "Preparation",
+    "行程 1 待補": "1 item to plan",
+    "交通已確認": "Transport confirmed",
+    "住宿已確認": "Stay confirmed",
+    "目前已確認": "Confirmed",
+    "航班、取車與入住時間已保存": "Flight, pickup and check-in details saved.",
+    "下一步": "Next step",
+    "補齊第一天抵達後安排": "Plan what comes after arrival."
+  },
+  "disclosure": {
+    "介面設計示意 · 非實機錄影": "UI DESIGN CONCEPT · NOT APP FOOTAGE"
+  }
+}
