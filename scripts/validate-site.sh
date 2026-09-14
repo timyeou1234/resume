@@ -9,6 +9,7 @@ bash "$repo_dir/scripts/build-portfolio.sh"
 RESUME_REPO_DIR="$repo_dir" node <<'NODE'
 const fs = require("fs");
 const path = require("path");
+const crypto = require("crypto");
 
 const repo = process.env.RESUME_REPO_DIR;
 const site = path.join(repo, "site");
@@ -40,6 +41,7 @@ const requiredText = [
   "Timothy Yu — Senior iOS Engineer",
   "Senior iOS Engineer · Taiwan",
   "React Native, Expo, and TypeScript",
+  "Family LINE Translator",
   "ProductDev",
   "Tim Work"
 ];
@@ -57,35 +59,66 @@ if (!html.includes('<link rel="canonical" href="https://timyeou.com/">')) errors
 if (!html.includes('<meta property="og:url" content="https://timyeou.com/">')) errors.push("Open Graph domain metadata is missing");
 if (!html.includes('href="https://timyeou1234.github.io/resume/resume.html"')) errors.push("GitHub Pages resume link is missing");
 if (html.includes("figma.com/")) errors.push("Portfolio must not contain Figma links");
-const momentAssets = [
-  "assets/moment/loop-zh-v4.mp4",
-  "assets/moment/film-zh-v4.mp4",
-  "assets/moment/poster-zh-v4.jpg",
-  "assets/moment/loop-en-v4.mp4",
-  "assets/moment/film-en-v4.mp4",
-  "assets/moment/poster-en-v4.jpg"
-];
-for (const asset of momentAssets) {
-  for (const root of [site, portfolio]) {
-    const target = path.join(root, asset);
-    if (!fs.existsSync(target) || fs.statSync(target).size === 0) {
-      errors.push(`Missing or empty Moment asset: ${path.relative(repo, target)}`);
+const mediaManifestPath = path.join(repo, "media", "side-projects-a-v6", "media-manifest.json");
+if (!fs.existsSync(mediaManifestPath)) errors.push("Side-project media manifest is missing");
+const mediaManifest = JSON.parse(fs.readFileSync(mediaManifestPath, "utf8"));
+const mediaAssets = [];
+for (const [product, languages] of Object.entries(mediaManifest.products)) {
+  for (const [language, media] of Object.entries(languages)) {
+    for (const [kind, expected] of Object.entries(media)) {
+      const asset = expected.path;
+      mediaAssets.push(asset);
+      if (!asset.startsWith(`assets/products/${product}/`)) {
+        errors.push(`Unexpected media path for ${product}/${language}/${kind}: ${asset}`);
+      }
+      if (product === "line-family-translator" ? !asset.includes("-v6.") : !asset.includes("-v5.")) {
+        errors.push(`Unexpected media version for ${product}/${language}/${kind}: ${asset}`);
+      }
+      for (const root of [site, portfolio]) {
+        const target = path.join(root, asset);
+        if (!fs.existsSync(target) || fs.statSync(target).size === 0) {
+          errors.push(`Missing or empty side-project asset: ${path.relative(repo, target)}`);
+          continue;
+        }
+        if (fs.statSync(target).size !== expected.bytes) {
+          errors.push(`Media byte count differs from manifest: ${path.relative(repo, target)}`);
+        }
+        if (expected.sha256) {
+          const digest = crypto.createHash("sha256").update(fs.readFileSync(target)).digest("hex");
+          if (digest !== expected.sha256) errors.push(`Media hash differs from manifest: ${path.relative(repo, target)}`);
+        }
+      }
+      if (!localReferences.includes(asset)) errors.push(`Side-project asset is not referenced by the page: ${asset}`);
     }
   }
-  if (!localReferences.includes(asset)) errors.push(`Moment asset is not referenced by the page: ${asset}`);
 }
-if (html.includes("moments-demo.png")) errors.push("Retired static Moment screenshot remains referenced");
-if (!html.includes('id="moment-loop"') || !html.includes('id="moment-film-dialog"')) {
-  errors.push("Moment video player hooks are missing");
+if (mediaAssets.filter((asset) => asset.endsWith(".mp4")).length !== 16 ||
+    mediaAssets.filter((asset) => asset.endsWith(".jpg")).length !== 8) {
+  errors.push("Side-project media manifest must contain 16 MP4 files and 8 posters");
 }
-if (!/<video id="moment-loop"[^>]*\bmuted\b[^>]*\bloop\b[^>]*\bplaysinline\b[^>]*preload="none"/.test(html)) {
-  errors.push("Moment loop must be muted, looping, inline, and initially unloaded");
+if (new Set(mediaAssets).size !== mediaAssets.length) errors.push("Duplicate paths found in side-project media manifest");
+if (mediaManifest.company_apps_included !== false) errors.push("Company products must remain outside the side-project media package");
+for (const retiredAsset of ["moments-demo.png", "productdev-figma.svg", "timwork-figma.svg", "assets/moment/"]) {
+  if (html.includes(retiredAsset)) errors.push(`Retired static or V4 project media remains referenced: ${retiredAsset}`);
 }
-if (!/<video id="moment-film"[^>]*\bcontrols\b[^>]*preload="none"[^>]*data-src-en=/.test(html)) {
-  errors.push("Moment full film must expose native controls and remain unloaded before interaction");
+const projectHooks = ["moment", "line-family-translator", "productdev", "timwork"];
+for (const project of projectHooks) {
+  if (!html.includes(`data-project-video="${project}"`) || !html.includes(`id="${project}-loop"`) || !html.includes(`id="${project}-film-open"`)) {
+    errors.push(`Video player hooks are missing for ${project}`);
+  }
 }
-if (/<video id="moment-film"[^>]*\ssrc=/.test(html)) {
-  errors.push("Moment full film must not have an eager src");
+const loopTags = [...html.matchAll(/<video\b[^>]*class="[^"]*project-loop-video[^"]*"[^>]*>/g)].map((match) => match[0]);
+if (loopTags.length !== 4) errors.push(`Expected four side-project loop players, found ${loopTags.length}`);
+for (const tag of loopTags) {
+  for (const attribute of ["muted", "loop", "playsinline", 'preload="none"', "data-src-en", "data-src-zh", "data-poster-en", "data-poster-zh"]) {
+    if (!tag.includes(attribute)) errors.push(`Side-project loop is missing ${attribute}: ${tag}`);
+  }
+}
+if (!/<video id="project-film"[^>]*\bcontrols\b[^>]*preload="none"/.test(html)) {
+  errors.push("Shared full-film player must expose native controls and remain initially unloaded");
+}
+if (/<video id="project-film"[^>]*\ssrc=/.test(html)) {
+  errors.push("Shared full-film player must not have an eager src");
 }
 if (!html.includes("Products I contributed to in production.")) errors.push("Company-product ownership wording is missing");
 
@@ -93,9 +126,9 @@ const css = fs.readFileSync(path.join(site, "styles.css"), "utf8");
 if (/\.project-shot\s*\{[^}]*content-visibility\s*:\s*auto/s.test(css)) {
   errors.push("Project media must not use unstable offscreen height placeholders");
 }
-if (!/\.moment-video-frame\s*\{[^}]*aspect-ratio\s*:\s*16\s*\/\s*9/s.test(css) ||
-    !/\.moment-loop-video[^}]*\{[^}]*width\s*:\s*100%[^}]*height\s*:\s*100%[^}]*object-fit\s*:\s*contain/s.test(css)) {
-  errors.push("Moment video must reserve a 16:9 frame and contain the complete image");
+if (!/\.project-video-frame\s*\{[^}]*aspect-ratio\s*:\s*16\s*\/\s*9/s.test(css) ||
+    !/\.project-loop-video[^}]*\{[^}]*width\s*:\s*100%[^}]*height\s*:\s*100%[^}]*object-fit\s*:\s*contain/s.test(css)) {
+  errors.push("Side-project videos must reserve 16:9 frames and contain the complete image");
 }
 
 const portfolioFiles = fs.readdirSync(portfolio, { recursive: true, withFileTypes: true })
@@ -105,26 +138,17 @@ const portfolioFiles = fs.readdirSync(portfolio, { recursive: true, withFileType
 if (portfolioFiles.some((file) => file.endsWith(".pdf") || file.endsWith("resume.md") || file.endsWith("resume.html"))) {
   errors.push("Cloudflare portfolio bundle must not contain resume documents");
 }
-const allowedPortfolioFiles = [
-  "app.js",
-  "assets/moment/film-en-v4.mp4",
-  "assets/moment/film-zh-v4.mp4",
-  "assets/moment/loop-en-v4.mp4",
-  "assets/moment/loop-zh-v4.mp4",
-  "assets/moment/poster-en-v4.jpg",
-  "assets/moment/poster-zh-v4.jpg",
-  "assets/productdev-figma.svg",
-  "assets/timwork-figma.svg",
-  "index.html",
-  "styles.css"
-].sort();
+const allowedPortfolioFiles = ["app.js", "index.html", "styles.css", ...mediaAssets].sort();
 if (JSON.stringify(portfolioFiles) !== JSON.stringify(allowedPortfolioFiles)) {
   errors.push(`Cloudflare portfolio bundle differs from the explicit allowlist: ${portfolioFiles.join(", ")}`);
+}
+if (portfolioFiles.some((file) => /(?:source-notes|qa\/|viewer|\.zip$)/i.test(file))) {
+  errors.push("Cloudflare portfolio bundle contains source notes, QA, a viewer, or a ZIP archive");
 }
 
 const app = fs.readFileSync(path.join(site, "app.js"), "utf8");
 for (const behavior of ["IntersectionObserver", "visibilitychange", "saveData", "showModal", "mediaPath"]) {
-  if (!app.includes(behavior)) errors.push(`Moment media behavior is missing: ${behavior}`);
+  if (!app.includes(behavior)) errors.push(`Side-project media behavior is missing: ${behavior}`);
 }
 
 const englishSource = path.join(repo, "media", "moment", "en-v4");

@@ -9,7 +9,7 @@
   var compactViewport = window.matchMedia("(max-width: 720px)");
   var languageButtons = Array.prototype.slice.call(doc.querySelectorAll(".lang-toggle"));
   var currentLanguage = "en";
-  var momentLanguageChange = null;
+  var projectLanguageChange = null;
 
   function safeStorageGet(key) {
     try {
@@ -58,7 +58,7 @@
     });
 
     safeStorageSet("portfolio-language", currentLanguage);
-    if (momentLanguageChange) momentLanguageChange(currentLanguage);
+    if (projectLanguageChange) projectLanguageChange(currentLanguage);
   }
 
   languageButtons.forEach(function (button) {
@@ -72,31 +72,24 @@
   var year = doc.querySelector("#year, [data-year]");
   if (year) year.textContent = String(new Date().getFullYear());
 
-  function setupMomentVideos() {
-    var loopVideo = doc.getElementById("moment-loop");
-    var loopButton = doc.querySelector(".moment-loop-toggle");
-    var loopIcon = doc.querySelector(".moment-control-icon");
-    var loopLabel = doc.querySelector(".moment-control-label");
-    var loopStatus = doc.getElementById("moment-loop-status");
-    var loopFrame = doc.querySelector(".moment-video-frame");
-    var filmLink = doc.getElementById("moment-film-open");
-    var filmDialog = doc.getElementById("moment-film-dialog");
-    var filmVideo = doc.getElementById("moment-film");
-    var filmClose = doc.querySelector(".moment-film-close");
-    var filmStatus = doc.getElementById("moment-film-status");
+  function setupProjectVideos() {
+    var showcases = Array.prototype.slice.call(doc.querySelectorAll("[data-project-video]"));
+    var filmDialog = doc.getElementById("project-film-dialog");
+    var filmVideo = doc.getElementById("project-film");
+    var filmTitle = doc.getElementById("project-film-title");
+    var filmClose = doc.querySelector(".project-film-close");
+    var filmStatus = doc.getElementById("project-film-status");
+    var filmDirect = doc.querySelector(".project-film-direct");
 
-    if (!loopVideo || !loopButton || !filmLink || !filmDialog || !filmVideo) return;
+    if (!showcases.length || !filmDialog || !filmVideo || !filmTitle || !filmDirect) return;
 
     var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
     var saveData = Boolean(connection && connection.saveData);
-    var nearViewport = false;
-    var inViewport = false;
-    var userPaused = false;
-    var autoplayBlocked = false;
-    var loopLanguage = null;
-    var loadGeneration = 0;
-    var failedLanguages = { en: false, zh: false };
+    var controllers = [];
     var dialogOpen = false;
+    var activeController = null;
+    var filmGeneration = 0;
+    var returnFocus = null;
 
     var loopMessages = {
       ready: { en: "Preview ready.", zh: "預覽已就緒。" },
@@ -111,7 +104,7 @@
       controls: { en: "Use the player controls for playback, volume, progress, and fullscreen.", zh: "可使用播放器控制播放、音量、進度與全螢幕。" },
       changed: { en: "Language changed. Press play to start the English film.", zh: "語言已切換，請按下播放以開始繁體中文影片。" },
       blocked: { en: "Playback did not start automatically. Use the player controls to begin.", zh: "影片未自動開始，請使用播放器控制開始播放。" },
-      error: { en: "The English film could not be loaded. You can still use the direct link.", zh: "繁體中文影片無法載入，仍可使用直接開啟連結。" }
+      error: { en: "The selected film could not be loaded. You can still use the direct link.", zh: "所選影片無法載入，仍可使用直接開啟連結。" }
     };
 
     function applyMessage(node, messages, key) {
@@ -122,40 +115,20 @@
       node.textContent = message[currentLanguage];
     }
 
-    function setLoopStatus(key) {
-      applyMessage(loopStatus, loopMessages, key);
-    }
-
-    function setFilmStatus(key) {
-      applyMessage(filmStatus, filmMessages, key);
-    }
-
-    function setLoopControl() {
-      var failed = failedLanguages[currentLanguage];
-      var playing = !loopVideo.paused && !loopVideo.ended;
-      var copy = failed
-        ? { en: "Retry preview", zh: "重試預覽" }
-        : playing
-          ? { en: "Pause preview", zh: "暫停預覽" }
-          : { en: "Play preview", zh: "播放預覽" };
-      loopLabel.setAttribute("data-en", copy.en);
-      loopLabel.setAttribute("data-zh", copy.zh);
-      loopLabel.textContent = copy[currentLanguage];
-      loopIcon.textContent = failed ? "↻" : playing ? "Ⅱ" : "▶";
-    }
-
     function mediaPath(node, kind, language) {
       return node.getAttribute("data-" + kind + "-" + language);
     }
 
-    function setPoster(node, language) {
-      var poster = mediaPath(node, "poster", language);
+    function backgroundImage(path) {
+      return "url('" + path.replace(/'/g, "%27") + "')";
+    }
+
+    function setPoster(controller, language) {
+      var poster = mediaPath(controller.loopVideo, "poster", language);
       if (!poster) return;
-      node.setAttribute("poster", poster);
-      node.style.backgroundImage = "url('" + poster.replace(/'/g, "%27") + "')";
-      if (node === loopVideo && loopFrame) {
-        loopFrame.style.backgroundImage = "url('" + poster.replace(/'/g, "%27") + "')";
-      }
+      controller.loopVideo.setAttribute("poster", poster);
+      controller.loopVideo.style.backgroundImage = backgroundImage(poster);
+      controller.loopFrame.style.backgroundImage = backgroundImage(poster);
     }
 
     function unloadVideo(video) {
@@ -165,157 +138,130 @@
       video.load();
     }
 
-    function loadLoop(forceReload) {
+    function setLoopStatus(controller, key) {
+      applyMessage(controller.loopStatus, loopMessages, key);
+    }
+
+    function setFilmStatus(key) {
+      applyMessage(filmStatus, filmMessages, key);
+    }
+
+    function setLoopControl(controller) {
+      var failed = controller.failedLanguages[currentLanguage];
+      var playing = !controller.loopVideo.paused && !controller.loopVideo.ended;
+      var copy = failed
+        ? { en: "Retry preview", zh: "重試預覽" }
+        : playing
+          ? { en: "Pause preview", zh: "暫停預覽" }
+          : { en: "Play preview", zh: "播放預覽" };
+      controller.loopLabel.setAttribute("data-en", copy.en);
+      controller.loopLabel.setAttribute("data-zh", copy.zh);
+      controller.loopLabel.textContent = copy[currentLanguage];
+      controller.loopIcon.textContent = failed ? "↻" : playing ? "Ⅱ" : "▶";
+    }
+
+    function loadLoop(controller, forceReload) {
       var language = currentLanguage;
-      if (!forceReload && loopLanguage === language && loopVideo.getAttribute("src")) return;
-      loadGeneration += 1;
-      loopVideo.classList.remove("is-unavailable");
-      loopVideo.preload = "metadata";
-      loopVideo.setAttribute("src", mediaPath(loopVideo, "src", language));
-      loopLanguage = language;
-      loopVideo.load();
+      if (!forceReload && controller.loopLanguage === language && controller.loopVideo.getAttribute("src")) return;
+      controller.loadGeneration += 1;
+      controller.loopVideo.classList.remove("is-unavailable");
+      controller.loopVideo.preload = "metadata";
+      controller.loopVideo.setAttribute("src", mediaPath(controller.loopVideo, "src", language));
+      controller.loopLanguage = language;
+      controller.loopVideo.load();
     }
 
-    function canAutoPlay() {
-      return !reducedMotion.matches && !saveData && !userPaused && !autoplayBlocked &&
-        !doc.hidden && inViewport && !dialogOpen && !failedLanguages[currentLanguage];
+    function canAutoPlay(controller) {
+      return !reducedMotion.matches && !saveData && !controller.userPaused && !controller.autoplayBlocked &&
+        !doc.hidden && controller.inViewport && !dialogOpen && !controller.failedLanguages[currentLanguage];
     }
 
-    function tryLoopPlay(manual) {
-      if (!manual && !canAutoPlay()) return;
+    function pauseLoop(controller, statusKey) {
+      controller.loopVideo.pause();
+      if (statusKey) setLoopStatus(controller, statusKey);
+      setLoopControl(controller);
+    }
+
+    function pauseOtherLoops(active) {
+      controllers.forEach(function (controller) {
+        if (controller !== active) pauseLoop(controller);
+      });
+    }
+
+    function tryLoopPlay(controller, manual) {
+      if (!manual && !canAutoPlay(controller)) return;
       if (manual) {
-        userPaused = false;
-        autoplayBlocked = false;
-        if (failedLanguages[currentLanguage]) {
-          failedLanguages[currentLanguage] = false;
-          loadLoop(true);
+        controller.userPaused = false;
+        controller.autoplayBlocked = false;
+        if (controller.failedLanguages[currentLanguage]) {
+          controller.failedLanguages[currentLanguage] = false;
+          loadLoop(controller, true);
         }
-      } else if (!loopVideo.getAttribute("src")) {
-        loadLoop(false);
       }
-      if (!loopVideo.getAttribute("src")) loadLoop(false);
+      if (!controller.loopVideo.getAttribute("src")) loadLoop(controller, false);
 
-      var generation = loadGeneration;
+      var generation = controller.loadGeneration;
       var promise;
       try {
-        promise = loopVideo.play();
+        promise = controller.loopVideo.play();
       } catch (error) {
         promise = Promise.reject(error);
       }
       if (promise && typeof promise.catch === "function") {
         promise.catch(function () {
-          if (generation !== loadGeneration) return;
-          autoplayBlocked = true;
-          setLoopStatus("blocked");
-          setLoopControl();
+          if (generation !== controller.loadGeneration) return;
+          controller.autoplayBlocked = true;
+          setLoopStatus(controller, "blocked");
+          setLoopControl(controller);
         });
       }
     }
 
-    function pauseLoop(statusKey) {
-      loopVideo.pause();
-      if (statusKey) setLoopStatus(statusKey);
-      setLoopControl();
+    function applyControllerLanguage(controller, language) {
+      controller.loadGeneration += 1;
+      pauseLoop(controller);
+      setPoster(controller, language);
+      controller.loopVideo.classList.toggle("is-unavailable", controller.failedLanguages[language]);
+      unloadVideo(controller.loopVideo);
+      controller.loopLanguage = null;
+      controller.autoplayBlocked = false;
+
+      if (controller.failedLanguages[language]) setLoopStatus(controller, "error");
+      else if (reducedMotion.matches) setLoopStatus(controller, "reduced");
+      else if (saveData) setLoopStatus(controller, "saveData");
+      else setLoopStatus(controller, controller.userPaused ? "paused" : "ready");
+      setLoopControl(controller);
+
+      if (controller.nearViewport && !saveData && !controller.failedLanguages[language]) loadLoop(controller, false);
+      if (canAutoPlay(controller)) tryLoopPlay(controller, false);
     }
 
-    function applyMomentLanguage(language) {
-      loadGeneration += 1;
-      loopVideo.pause();
-      filmVideo.pause();
-      setPoster(loopVideo, language);
-      setPoster(filmVideo, language);
-      loopVideo.classList.toggle("is-unavailable", failedLanguages[language]);
-      unloadVideo(loopVideo);
-      loopLanguage = null;
-      autoplayBlocked = false;
-
-      if (dialogOpen) {
-        unloadVideo(filmVideo);
-        filmVideo.preload = "metadata";
-        filmVideo.setAttribute("src", mediaPath(filmVideo, "src", language));
-        filmVideo.load();
-        setFilmStatus("changed");
-      } else {
-        unloadVideo(filmVideo);
-        setFilmStatus("controls");
-      }
-
-      if (failedLanguages[language]) setLoopStatus("error");
-      else if (reducedMotion.matches) setLoopStatus("reduced");
-      else if (saveData) setLoopStatus("saveData");
-      else setLoopStatus(userPaused ? "paused" : "ready");
-      setLoopControl();
-
-      if (nearViewport && !saveData && !failedLanguages[language]) loadLoop(false);
-      if (!dialogOpen && canAutoPlay()) tryLoopPlay(false);
+    function projectTitle(controller, language) {
+      return controller.showcase.getAttribute("data-project-title-" + language) ||
+        controller.showcase.getAttribute("data-project-title") || controller.project;
     }
 
-    loopButton.addEventListener("click", function () {
-      if (!loopVideo.paused && !loopVideo.ended) {
-        userPaused = true;
-        pauseLoop("paused");
-        return;
-      }
-      tryLoopPlay(true);
-    });
-
-    loopVideo.addEventListener("play", function () {
-      setLoopStatus("playing");
-      setLoopControl();
-    });
-    loopVideo.addEventListener("pause", function () {
-      setLoopControl();
-    });
-    loopVideo.addEventListener("canplay", function () {
-      if (loopLanguage === currentLanguage && canAutoPlay()) tryLoopPlay(false);
-    });
-    loopVideo.addEventListener("error", function () {
-      if (!loopVideo.getAttribute("src")) return;
-      failedLanguages[currentLanguage] = true;
-      loopVideo.classList.add("is-unavailable");
-      pauseLoop("error");
-    });
-
-    if ("IntersectionObserver" in window) {
-      var loadObserver = new IntersectionObserver(function (entries) {
-        nearViewport = entries.some(function (entry) { return entry.isIntersecting; });
-        if (nearViewport && !saveData && !failedLanguages[currentLanguage]) loadLoop(false);
-      }, { rootMargin: "280px 0px", threshold: 0 });
-      loadObserver.observe(loopFrame || loopVideo);
-
-      var playbackObserver = new IntersectionObserver(function (entries) {
-        var entry = entries[0];
-        inViewport = Boolean(entry && entry.isIntersecting && entry.intersectionRatio >= 0.35);
-        if (inViewport) tryLoopPlay(false);
-        else pauseLoop();
-      }, { threshold: [0, 0.35, 0.65] });
-      playbackObserver.observe(loopFrame || loopVideo);
+    function updateFilmIdentity() {
+      if (!activeController) return;
+      filmTitle.textContent = projectTitle(activeController, currentLanguage) +
+        (currentLanguage === "en" ? " · Full introduction" : " · 完整介紹");
+      filmDirect.setAttribute("href", mediaPath(activeController.filmLink, "href", currentLanguage));
     }
 
-    doc.addEventListener("visibilitychange", function () {
-      if (doc.hidden) pauseLoop();
-      else if (canAutoPlay()) tryLoopPlay(false);
-    });
-
-    reducedMotion.addEventListener("change", function (event) {
-      if (event.matches) pauseLoop("reduced");
-      else if (canAutoPlay()) tryLoopPlay(false);
-      else setLoopStatus(userPaused ? "paused" : saveData ? "saveData" : "ready");
-    });
-
-    function openFilm(event) {
-      if (typeof filmDialog.showModal !== "function") return;
-      event.preventDefault();
-      dialogOpen = true;
-      pauseLoop();
-      setFilmStatus("controls");
-      setPoster(filmVideo, currentLanguage);
+    function prepareFilm(startPlayback) {
+      if (!activeController) return;
+      filmGeneration += 1;
+      var generation = filmGeneration;
+      unloadVideo(filmVideo);
+      updateFilmIdentity();
+      var poster = mediaPath(activeController.loopVideo, "poster", currentLanguage);
+      filmVideo.setAttribute("poster", poster);
+      filmVideo.style.backgroundImage = backgroundImage(poster);
       filmVideo.preload = "metadata";
-      filmVideo.setAttribute("src", mediaPath(filmVideo, "src", currentLanguage));
+      filmVideo.setAttribute("src", mediaPath(activeController.filmLink, "href", currentLanguage));
       filmVideo.load();
       filmVideo.muted = false;
-      filmDialog.showModal();
-      doc.body.classList.add("moment-dialog-open");
+      if (!startPlayback) return;
 
       var promise;
       try {
@@ -325,23 +271,126 @@
       }
       if (promise && typeof promise.catch === "function") {
         promise.catch(function () {
-          if (!dialogOpen) return;
+          if (!dialogOpen || generation !== filmGeneration) return;
           setFilmStatus("blocked");
         });
       }
     }
 
-    function finishFilmClose() {
-      if (!dialogOpen && !filmVideo.getAttribute("src")) return;
-      dialogOpen = false;
-      unloadVideo(filmVideo);
-      doc.body.classList.remove("moment-dialog-open");
+    function openFilm(controller, event) {
+      if (typeof filmDialog.showModal !== "function") return;
+      try {
+        filmDialog.showModal();
+      } catch (error) {
+        return;
+      }
+      event.preventDefault();
+      dialogOpen = true;
+      activeController = controller;
+      returnFocus = controller.filmLink;
+      controllers.forEach(function (item) { pauseLoop(item); });
       setFilmStatus("controls");
-      if (filmLink && filmLink.isConnected) filmLink.focus();
-      if (canAutoPlay()) tryLoopPlay(false);
+      doc.body.classList.add("project-dialog-open");
+      prepareFilm(true);
     }
 
-    filmLink.addEventListener("click", openFilm);
+    showcases.forEach(function (showcase) {
+      var controller = {
+        showcase: showcase,
+        project: showcase.getAttribute("data-project-video"),
+        loopVideo: showcase.querySelector(".project-loop-video"),
+        loopButton: showcase.querySelector(".project-loop-toggle"),
+        loopIcon: showcase.querySelector(".project-control-icon"),
+        loopLabel: showcase.querySelector(".project-control-label"),
+        loopStatus: showcase.querySelector("[aria-live]"),
+        loopFrame: showcase.querySelector(".project-video-frame"),
+        filmLink: showcase.querySelector(".project-film-link"),
+        nearViewport: false,
+        inViewport: false,
+        userPaused: false,
+        autoplayBlocked: false,
+        loopLanguage: null,
+        loadGeneration: 0,
+        failedLanguages: { en: false, zh: false }
+      };
+      if (!controller.loopVideo || !controller.loopButton || !controller.loopFrame || !controller.filmLink) return;
+      controllers.push(controller);
+
+      controller.loopButton.addEventListener("click", function () {
+        if (!controller.loopVideo.paused && !controller.loopVideo.ended) {
+          controller.userPaused = true;
+          pauseLoop(controller, "paused");
+          return;
+        }
+        tryLoopPlay(controller, true);
+      });
+      controller.loopVideo.addEventListener("play", function () {
+        pauseOtherLoops(controller);
+        setLoopStatus(controller, "playing");
+        setLoopControl(controller);
+      });
+      controller.loopVideo.addEventListener("pause", function () {
+        setLoopControl(controller);
+      });
+      controller.loopVideo.addEventListener("canplay", function () {
+        if (controller.loopLanguage === currentLanguage && canAutoPlay(controller)) tryLoopPlay(controller, false);
+      });
+      controller.loopVideo.addEventListener("error", function () {
+        var failedLanguage = controller.loopLanguage;
+        if (!failedLanguage || !controller.loopVideo.getAttribute("src")) return;
+        controller.failedLanguages[failedLanguage] = true;
+        if (failedLanguage !== currentLanguage) return;
+        controller.loopVideo.classList.add("is-unavailable");
+        pauseLoop(controller, "error");
+      });
+      controller.filmLink.addEventListener("click", function (event) {
+        openFilm(controller, event);
+      });
+
+      if ("IntersectionObserver" in window) {
+        var loadObserver = new IntersectionObserver(function (entries) {
+          controller.nearViewport = entries.some(function (entry) { return entry.isIntersecting; });
+          if (controller.nearViewport && !saveData && !controller.failedLanguages[currentLanguage]) loadLoop(controller, false);
+        }, { rootMargin: "280px 0px", threshold: 0 });
+        loadObserver.observe(controller.loopFrame);
+
+        var playbackObserver = new IntersectionObserver(function (entries) {
+          var entry = entries[0];
+          controller.inViewport = Boolean(entry && entry.isIntersecting && entry.intersectionRatio >= 0.35);
+          if (controller.inViewport) tryLoopPlay(controller, false);
+          else pauseLoop(controller);
+        }, { threshold: [0, 0.35, 0.65] });
+        playbackObserver.observe(controller.loopFrame);
+      }
+    });
+
+    function applyProjectLanguage(language) {
+      controllers.forEach(function (controller) {
+        applyControllerLanguage(controller, language);
+      });
+      if (dialogOpen && activeController) {
+        prepareFilm(false);
+        setFilmStatus("changed");
+      } else {
+        setFilmStatus("controls");
+      }
+    }
+
+    function finishFilmClose() {
+      if (!dialogOpen && !filmVideo.getAttribute("src")) return;
+      filmGeneration += 1;
+      dialogOpen = false;
+      activeController = null;
+      unloadVideo(filmVideo);
+      doc.body.classList.remove("project-dialog-open");
+      setFilmStatus("controls");
+      if (returnFocus && returnFocus.isConnected) returnFocus.focus();
+      returnFocus = null;
+      controllers.forEach(function (controller) {
+        if (canAutoPlay(controller)) tryLoopPlay(controller, false);
+      });
+    }
+
     if (filmClose) {
       filmClose.addEventListener("click", function () {
         filmDialog.close();
@@ -357,11 +406,25 @@
       setFilmStatus("error");
     });
 
-    momentLanguageChange = applyMomentLanguage;
-    applyMomentLanguage(currentLanguage);
+    doc.addEventListener("visibilitychange", function () {
+      controllers.forEach(function (controller) {
+        if (doc.hidden) pauseLoop(controller);
+        else if (canAutoPlay(controller)) tryLoopPlay(controller, false);
+      });
+    });
+    reducedMotion.addEventListener("change", function (event) {
+      controllers.forEach(function (controller) {
+        if (event.matches) pauseLoop(controller, "reduced");
+        else if (canAutoPlay(controller)) tryLoopPlay(controller, false);
+        else setLoopStatus(controller, controller.userPaused ? "paused" : saveData ? "saveData" : "ready");
+      });
+    });
+
+    projectLanguageChange = applyProjectLanguage;
+    applyProjectLanguage(currentLanguage);
   }
 
-  setupMomentVideos();
+  setupProjectVideos();
 
   var progress = doc.querySelector(".scroll-progress span");
   var siteHeader = doc.querySelector(".site-header");

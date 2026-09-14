@@ -713,6 +713,7 @@ main {
 }
 
 .case-moment { --case-glow: rgba(116, 78, 232, 0.16); }
+.case-line { --case-glow: rgba(6, 199, 85, 0.1); }
 .case-productdev { --case-glow: rgba(33, 171, 211, 0.12); }
 .case-timwork { --case-glow: rgba(72, 214, 155, 0.1); }
 
@@ -1519,18 +1520,18 @@ footer .legal {
 
 
 /* Project media */
-.case-moment {
+.case-video {
   min-height: auto;
   grid-template-columns: minmax(0, 1fr);
   align-items: start;
   gap: clamp(2.75rem, 5vw, 4.5rem);
 }
 
-.case-moment .case-copy {
+.case-video .case-copy {
   max-width: 50rem;
 }
 
-.case-moment .case-visual {
+.case-video .case-visual {
   width: 100%;
   max-width: var(--max);
   margin-inline: auto;
@@ -1541,7 +1542,7 @@ footer .legal {
   min-width: 0;
 }
 
-.moment-video-frame {
+.project-video-frame {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -1556,8 +1557,8 @@ footer .legal {
   isolation: isolate;
 }
 
-.moment-loop-video,
-.moment-film-video {
+.project-loop-video,
+.project-film-video {
   display: block;
   width: 100%;
   height: 100%;
@@ -1565,15 +1566,15 @@ footer .legal {
   object-fit: contain;
 }
 
-.moment-loop-video {
+.project-loop-video {
   transition: opacity 180ms ease;
 }
 
-.moment-loop-video.is-unavailable {
+.project-loop-video.is-unavailable {
   opacity: 0;
 }
 
-.moment-loop-toggle {
+.project-loop-toggle {
   position: absolute;
   z-index: 2;
   left: clamp(0.65rem, 1.5vw, 1.1rem);
@@ -1592,44 +1593,44 @@ footer .legal {
   cursor: pointer;
 }
 
-.moment-loop-toggle:hover,
-.moment-loop-toggle:focus-visible {
+.project-loop-toggle:hover,
+.project-loop-toggle:focus-visible {
   border-color: rgba(85, 223, 248, 0.62);
   background: rgba(15, 20, 31, 0.94);
 }
 
-.moment-loop-toggle:focus-visible,
-.moment-film-link:focus-visible,
-.moment-film-close:focus-visible,
-.moment-film-direct:focus-visible {
+.project-loop-toggle:focus-visible,
+.project-film-link:focus-visible,
+.project-film-close:focus-visible,
+.project-film-direct:focus-visible {
   outline: 2px solid var(--cyan);
   outline-offset: 3px;
 }
 
-.moment-loop-toggle:disabled {
+.project-loop-toggle:disabled {
   color: var(--muted);
   cursor: not-allowed;
 }
 
-.moment-control-icon {
+.project-control-icon {
   width: 1rem;
   color: var(--cyan);
   font-size: 0.78rem;
   text-align: center;
 }
 
-.moment-control-label {
+.project-control-label {
   font-size: 0.7rem;
   font-weight: 620;
 }
 
-.moment-video-actions {
+.project-video-actions {
   display: flex;
   justify-content: flex-end;
   margin-top: 1rem;
 }
 
-.moment-film-link {
+.project-film-link {
   min-height: 2.75rem;
   display: inline-flex;
   align-items: center;
@@ -1644,13 +1645,13 @@ footer .legal {
   transition: border-color 180ms ease, background 180ms ease;
 }
 
-.moment-film-link:hover,
-.moment-film-link:focus-visible {
+.project-film-link:hover,
+.project-film-link:focus-visible {
   border-color: rgba(155, 124, 255, 0.65);
   background: rgba(155, 124, 255, 0.1);
 }
 
-.moment-film-dialog {
+.project-film-dialog {
   width: min(calc(100% - 2rem), 76rem);
   max-width: none;
   max-height: calc(100dvh - 2rem);
@@ -1663,42 +1664,42 @@ footer .legal {
   box-shadow: 0 38px 120px rgba(0, 0, 0, 0.72);
 }
 
-.moment-film-dialog::backdrop {
+.project-film-dialog::backdrop {
   background: rgba(2, 4, 8, 0.82);
   backdrop-filter: blur(8px);
 }
 
-.moment-film-shell {
+.project-film-shell {
   padding: clamp(0.75rem, 2vw, 1.4rem);
 }
 
-.moment-film-header,
-.moment-film-footer {
+.project-film-header,
+.project-film-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.25rem;
 }
 
-.moment-film-header {
+.project-film-header {
   margin-bottom: 1rem;
 }
 
-.moment-film-header h3 {
+.project-film-header h3 {
   margin: 0;
   font-size: clamp(1.15rem, 2vw, 1.55rem);
   font-weight: 580;
   letter-spacing: -0.025em;
 }
 
-.moment-film-header p,
-.moment-film-status {
+.project-film-header p,
+.project-film-status {
   margin: 0.2rem 0 0;
   color: var(--muted);
   font-size: 0.7rem;
 }
 
-.moment-film-close {
+.project-film-close {
   width: 2.75rem;
   height: 2.75rem;
   flex: 0 0 auto;
@@ -1712,13 +1713,13 @@ footer .legal {
   cursor: pointer;
 }
 
-.moment-film-header-actions {
+.project-film-header-actions {
   display: flex;
   align-items: center;
   gap: 0.6rem;
 }
 
-.moment-film-lang-toggle {
+.project-film-lang-toggle {
   position: static;
   min-width: 4rem;
   height: 2.75rem;
@@ -1728,7 +1729,7 @@ footer .legal {
   background: rgba(255, 255, 255, 0.035);
 }
 
-.moment-film-video {
+.project-film-video {
   aspect-ratio: 16 / 9;
   border: 1px solid var(--line);
   border-radius: 1rem;
@@ -1738,15 +1739,15 @@ footer .legal {
   background-size: contain;
 }
 
-.moment-film-footer {
+.project-film-footer {
   margin-top: 0.8rem;
 }
 
-.moment-film-status {
+.project-film-status {
   max-width: 44rem;
 }
 
-.moment-film-direct {
+.project-film-direct {
   flex: 0 0 auto;
   padding-bottom: 0.12rem;
   border-bottom: 1px solid var(--line-bright);
@@ -1754,7 +1755,7 @@ footer .legal {
   font-size: 0.68rem;
 }
 
-body.moment-dialog-open {
+body.project-dialog-open {
   overflow: hidden;
 }
 
@@ -1953,31 +1954,31 @@ body.moment-dialog-open {
     padding-inline: 0.75rem;
   }
 
-  .case-moment {
+  .case-video {
     gap: 2.5rem;
   }
 
-  .moment-loop-toggle {
+  .project-loop-toggle {
     min-height: 2.4rem;
     padding: 0.5rem 0.7rem;
   }
 
-  .moment-video-actions {
+  .project-video-actions {
     justify-content: flex-start;
   }
 
-  .moment-film-dialog {
+  .project-film-dialog {
     width: calc(100% - 1rem);
     max-height: calc(100dvh - 1rem);
     border-radius: 1rem;
   }
 
-  .moment-film-header,
-  .moment-film-footer {
+  .project-film-header,
+  .project-film-footer {
     align-items: flex-start;
   }
 
-  .moment-film-footer {
+  .project-film-footer {
     flex-direction: column;
     gap: 0.65rem;
   }
