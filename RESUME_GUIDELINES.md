@@ -13,6 +13,8 @@ The strongest themes are:
 - Cross-functional product and API collaboration
 - Experience as a sole or lead iOS engineer
 
+The AI / Mobile Product variant is the default English application baseline: production iOS and React Native experience first, with evidenced AI projects as differentiation. It does not position the candidate as a senior model-training or AI-infrastructure specialist.
+
 ## Factual boundaries
 
 - Use only facts recorded in `source/resume.md`, `source/production-tooling.md`, or subsequently confirmed by the candidate.
@@ -26,8 +28,10 @@ The strongest themes are:
 - At OpenNet, confirmed production tooling includes Firebase and Elasticsearch-based logs for production issue investigation.
 - Slack alerts, the in-house feature-flag system, and Firebase Remote Config are confirmed cross-role experience but remain unattributed to a named employer until the candidate confirms that mapping.
 - The AI-company variant may describe the user-provided AI-assisted engineering workflow at Crypto.com: Jira review and task decomposition, optional architecture notes from ticket and Figma context, AI-assisted implementation, manual QA, AI-assisted commit and PR preparation, multi-model review, manual comment adjudication, code-owner approval, and weekly release CI.
-- Moment OS is an in-development, iOS-first React Native/Expo/TypeScript product built with AI-assisted development. Describe its validation, persistence, rendering, recovery, and evidence boundaries in plain language rather than presenting those concepts as standalone core skills.
-- Tim Work consists of the public Context Handoff, Task ETA Tracker, and Moment Monitor tools for reliable, observable, and recoverable agent work.
+- Moment is an in-development native Swift/SwiftUI iOS product. TypeScript supports schema validation and evaluation tooling; do not describe the current app as React Native/Expo. Keep bounded private-prototype evidence distinct from the current end-to-end target and public release. Describe concrete user behavior rather than listing design principles as standalone core skills.
+- Use purpose-based headings for personal tools; keep the Moment product name. The public Context Handoff, Task ETA Tracker, and Moment Monitor tools are distinct from the newer local ticket platform, which must not inherit an unqualified Open Source label.
+- The local ticket platform supports CLI/HTTP/MCP content operations, recoverable deletion/restoration, revision and digest guards, idempotency, and audit history in a sandbox. Do not claim completed production authority cutover or production worker control.
+- The LINE family translator is a private pilot with verified Chinese-Indonesian private-message E2E and a first family-group translation. Its 100-case development set and separate 40-case holdout do not establish human-validated accuracy; native-speaker acceptance and always-on operation remain pending. Local Mac/model/tunnel dependency must not be presented as a continuously available public service.
 - ProductDev is an in-development, local-first macOS workbench built with AI-assisted development and Swift 6. It observes existing repository automation; GitHub Issues and the existing scheduler retain authority. Guarded actions, exact dry-runs, permanent receipts, and recovery views may be described in plain language.
 - Separate production expertise, AI-assisted engineering capabilities, and side-project technologies. Do not list unfamiliar architecture terms or side-project technologies as unqualified core skills.
 - Objective-C is intentionally omitted from every current resume variant. The AI-company variant uses the fuller, historically verified experience wording; other variants retain their concise experience rendering.

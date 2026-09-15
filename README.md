@@ -11,7 +11,7 @@ connected vehicle applications.
 - [US Tech PDF](https://timyeou1234.github.io/resume/assets/us-tech.pdf)
 - [Web3 PDF](https://timyeou1234.github.io/resume/assets/web3.pdf)
 - [Taiwan PDF](https://timyeou1234.github.io/resume/assets/taiwan.pdf)
-- [AI Company PDF](https://timyeou1234.github.io/resume/assets/ai.pdf)
+- [AI / Mobile Product PDF — default English baseline](https://timyeou1234.github.io/resume/assets/ai.pdf)
 - [Traditional Chinese PDF](https://timyeou1234.github.io/resume/assets/chinese.pdf)
 
 ## Resume variants
@@ -21,11 +21,16 @@ connected vehicle applications.
 | US Tech | Product ownership, iOS delivery, architecture, and scale |
 | Web3 | Wallet infrastructure, transaction signing, and DeFi integrations |
 | Taiwan | Mobile architecture, cross-functional delivery, and local relevance |
-| AI Company | AI-assisted engineering, product development, and engineering tools |
+| AI / Mobile Product | Default English baseline: production iOS, React Native, and evidenced AI projects |
 | Traditional Chinese | Taiwan-focused Traditional Chinese resume |
 
 All variants share the same reviewed employment history and education. Their
 summaries, skill ordering, and positioning change for the intended audience.
+
+Use `ai.pdf` as the starting point for Senior iOS/Mobile and AI-product-team
+applications. Tailor the headline, summary, and project order for a specific role;
+it is not a model-training or AI-infrastructure resume. Other variants remain
+available for more specialized applications.
 
 ## Repository purpose
 

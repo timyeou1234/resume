@@ -28,20 +28,25 @@ Experienced in owning features from product and API discussions through implemen
 
 ## Selected Side Projects
 
-### Moment OS — AI-Assisted Planning Product (In Development)
+### Moment — AI-Powered Planning App (In Development)
 
-- Using AI-assisted development to build an iOS-first React Native, Expo, and TypeScript application that turns natural-language intentions into editable preparation plans.
-- Keeps AI suggestions separate from saved application data so user-approved plans remain recoverable and the interface distinguishes confirmed results from unverified suggestions.
+- Building a native Swift/SwiftUI iOS application that turns natural-language requests, such as planning a birthday, into editable preparation plans. TypeScript supports schema validation and evaluation tooling.
+- Built a bounded private capture-to-review prototype with local persistence and an AI-unavailable path that preserves the user's original input.
+- Developing schema validation and scenario-based checks for ambiguous requests, user confirmation, retry, and recovery before release. The app owns validation, rendering, persistence, and recovery; the full product remains in development.
 
-### Tim Work — Open-Source AI Engineering Tooling
+### LINE-Based Family Translator — Chinese-Indonesian Translation (Private Pilot)
 
-- Created tools for reliable long-running agent work: Context Handoff preserves acceptance criteria across fresh threads, Task ETA Tracker forecasts from observable milestones, and Moment Monitor provides read-only live status.
-- Uses Codex skills, lifecycle hooks, explicit approval boundaries, verification, progress visibility, and recovery paths to keep agent work reviewable and reliable.
+- Built a family translation bot using LINE, Cloudflare Workers, D1, and a local LLM gateway. Both translation directions were verified in live private messages, and a first family-group translation was confirmed.
+- Added webhook signature verification, source allowlisting, persistent message deduplication, and daily request limits.
+- Evaluated prompts on 100 development cases and a separate 40-case holdout. The holdout run produced 37 translations and 3 clarification responses with no service failures; this is runtime evidence, not a human-validated translation accuracy score.
+- Native-speaker acceptance and always-on operation remain pending. The private pilot depends on a local Mac, its model, and a tunnel.
 
-### ProductDev — AI-Assisted Automation Workbench (In Development)
+### AI Development Workflow & Task Tooling (Personal Tooling / Local Sandbox)
 
-- Using AI-assisted development to build a local-first macOS workbench that observes repository automation through native Monitor, Runs, health, and recovery views.
-- Keeps GitHub Issues and the existing scheduler authoritative while guarded actions, exact dry-runs, and permanent receipts make automation reviewable and recoverable.
+- Built a shared CLI, HTTP, and Model Context Protocol (MCP) interface for creating, editing, soft-deleting, restoring, and inspecting local work tickets.
+- Added revision and record-digest checks, idempotent writes, and audit history to reject stale edits and preserve recoverable changes. Content writes require explicit opt-in and remain isolated from production worker control.
+- Created companion context-handoff, task-estimation, and read-only run-monitoring tools. The companion tools are public; the sandbox task platform remains personal tooling.
+- The in-development Swift 6/macOS workbench observes existing repository automation and provides health and recovery views. Run monitoring and sandbox ticket editing remain separate responsibilities.
 
 ## Professional Experience
 
@@ -57,7 +62,7 @@ Sep 2024 – Jul 2026
 - Built and maintained staking flows across major EVM-compatible protocols, covering staking, unstaking, reward claiming, and position management.
 - Worked with Product Managers and Backend Engineers throughout feature planning, API discussions, implementation, and production delivery for a self-custodial wallet serving approximately 20K daily active users.
 
-#### Cronos App
+#### Cronos App (Pre-launch)
 
 - Worked exclusively in React Native and TypeScript during the Cronos App phase, building the Earn tab with Fabric and TurboModules in the New Architecture.
 - Implemented smart contract wallet features, including transaction signing and UserOperation construction.
