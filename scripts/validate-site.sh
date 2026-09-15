@@ -38,12 +38,22 @@ for (const match of html.matchAll(/\s(?:href|src|poster|data-(?:src|poster|href)
 }
 
 const requiredText = [
-  "Timothy Yu — Senior iOS Engineer",
-  "Senior iOS Engineer · Taiwan",
-  "React Native, Expo, and TypeScript",
+  "Timothy Yu — Software Consulting &amp; Development",
+  "軟體開發與技術顧問",
+  "Scope &amp; technical assessment",
+  "App development &amp; improvements",
+  "LINE bots &amp; workflow integration",
+  "Life &amp; travel planning",
+  "生活事項與行程整理",
   "Family LINE Translator",
-  "ProductDev",
-  "Tim Work"
+  "Development task monitoring",
+  "開發任務監控",
+  "Project tasks &amp; handover",
+  "跨專案任務與交接管理",
+  "個人自用工具",
+  "Family trial",
+  "not client commissions or products for sale",
+  "依約定條件驗收"
 ];
 for (const text of requiredText) {
   if (!html.includes(text)) errors.push(`Missing current portfolio text: ${text}`);
@@ -53,6 +63,33 @@ const retiredText = ["AI-Native Product Engineer", "Senior product engineer", "O
 for (const text of retiredText) {
   if (html.includes(text)) errors.push(`Retired portfolio text remains: ${text}`);
 }
+
+// Keep opaque media keys/paths stable, but do not market self-use tools by internal names.
+const displayCopy = [
+  ...[...html.matchAll(/>([^<>]+)</g)].map((match) => match[1]),
+  ...[...html.matchAll(/\s(?:data-(?:en|zh|aria-en|aria-zh|project-title(?:-en|-zh)?)|aria-label)="([^"]*)"/g)].map((match) => match[1])
+].join("\n");
+for (const text of ["Moment OS", "ProductDev", "Tim Work", "Context Handoff", "Task ETA Tracker", "Moment Monitor",
+  "intelligence is infrastructure", "AI is not a feature", "AI proposes.", "AI, STRUCTURALLY", "AI ASSISTED",
+  "Product clarity before model cleverness", "A bilingual LINE bot concept"]) {
+  if (displayCopy.includes(text)) errors.push(`Retired marketing copy remains: ${text}`);
+}
+for (const project of ["moment", "productdev", "timwork"]) {
+  const article = html.match(new RegExp(`<article[^>]*data-case="${project}"[^>]*>([\\s\\S]*?)<\\/article>`));
+  if (!article || !article[1].includes("Personal tool") || !article[1].includes("個人自用工具")) {
+    errors.push(`Personal-use status is missing for ${project}`);
+  }
+  for (const language of ["en", "zh"]) {
+    if (!article || !article[1].includes(`data-project-title-${language}=`)) {
+      errors.push(`Localized purpose-based player title is missing for ${project}/${language}`);
+    }
+  }
+}
+if ((html.match(/class="service-card"/g) || []).length !== 3) errors.push("Expected three concrete consulting services");
+if (html.includes('class="hero-system"') || html.includes('class="native-contract section"')) {
+  errors.push("Retired AI diagram or manifesto is still present");
+}
+if (!/class="hero-actions"[^>]*>\s*<a[^>]*href="#contact"/.test(html)) errors.push("The primary CTA must lead to project contact");
 
 if (!html.includes('class="site-nav"')) errors.push("Primary navigation is missing the site-nav hook");
 if (!html.includes('<link rel="canonical" href="https://timyeou.com/">')) errors.push("Canonical domain metadata is missing");
@@ -146,12 +183,15 @@ if (!headers.includes("/assets/products/*") ||
 if (fs.readFileSync(path.join(portfolio, "_headers"), "utf8") !== headers) {
   errors.push("Cloudflare portfolio bundle has a different _headers policy");
 }
-const allowedPortfolioFiles = ["_headers", "app.js", "index.html", "styles.css", ...mediaAssets].sort();
+const allowedPortfolioFiles = ["_headers", "app.js", "consulting.css", "index.html", "styles.css", ...mediaAssets].sort();
 if (JSON.stringify(portfolioFiles) !== JSON.stringify(allowedPortfolioFiles)) {
   errors.push(`Cloudflare portfolio bundle differs from the explicit allowlist: ${portfolioFiles.join(", ")}`);
 }
 if (portfolioFiles.some((file) => /(?:source-notes|qa\/|viewer|\.zip$)/i.test(file))) {
   errors.push("Cloudflare portfolio bundle contains source notes, QA, a viewer, or a ZIP archive");
+}
+if (fs.readFileSync(path.join(site, "consulting.css"), "utf8") !== fs.readFileSync(path.join(portfolio, "consulting.css"), "utf8")) {
+  errors.push("Purpose-first layout stylesheet differs in deployment output");
 }
 
 const app = fs.readFileSync(path.join(site, "app.js"), "utf8");

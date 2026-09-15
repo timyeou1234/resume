@@ -1,65 +1,38 @@
 # Portfolio content and delivery notes
 
-## Hosting decision
+## Current direction (2026-09-15)
 
-Use the repository's existing GitHub Pages workflow for the first release.
+The owner wants timyeou.com to support freelance development and technical consulting conversations, not to market a collection of named software products or a generic AI philosophy.
 
-Why:
+Lead with what a client can ask Timothy to do: clarify requirements and technical options, develop or improve a mobile app, or connect LINE and existing tools to a specific workflow. Keep the contact action primary. Do not add unsupported consulting clients, testimonials, prices, availability dates, performance promises, or claims that personal tools are established commercial products.
 
-- the portfolio is a static HTML/CSS/JavaScript site with no server runtime;
-- the repository already validates resume PDFs, assembles `site/`, and deploys Pages from `main`;
-- deployment stays versioned with the source material and requires no additional account or SDK;
-- the implementation keeps the homepage hand-authored while the generated résumé and PDF downloads remain available at `/resume.html`.
+The bilingual hero is: “Define the problem. Build the right tool.” / “把需求釐清，把工具做出來。”
 
-Cloudflare Pages remains the preferred next move if a custom domain, branch previews, edge functions, or Web Analytics become release requirements. The current site has no platform lock-in.
+## Work examples, not a product catalogue
 
-## Information boundary
+| Internal media key (unchanged) | English display title | Traditional Chinese display title | Context |
+| --- | --- | --- | --- |
+| `moment` | Life & travel planning | 生活事項與行程整理 | Personal tool in development; design preview |
+| `line-family-translator` | Family LINE Translator | 家庭 LINE 翻譯 Bot | Family trial, not public signup; scripted video demonstration |
+| `productdev` | Development task monitoring | 開發任務監控 | Personal development tool; workflow illustration |
+| `timwork` | Project tasks & handover | 跨專案任務與交接管理 | Personal project organization; workflow illustration |
 
-Portfolio claims are limited to resume-backed work and public product surfaces.
+Use the purpose-based titles for headings, video captions, accessible names, and full-film dialog titles in both languages. Internal data keys, media filenames, and the asset manifest remain stable. Explain the problem, what the tool does, and Timothy's role in plain language. These are not client commissions or products for sale.
 
-### Resume-backed metrics and responsibilities
+The LINE bot was built for actual family communication; the film itself is a scripted illustration. Do not call the working bot merely a concept, and do not imply public access, guaranteed availability, perfect translation, or LINE endorsement.
 
-Source: `source/resume.md`
+The existing video and poster bytes are unchanged in this copy/layout revision. Older working names remain baked into those assets. Removing them from footage requires a separately versioned media edit, not CSS masking, file renaming, or an unsupported claim that this page rewrite changed the films.
 
-- 10+ years shipping production iOS products.
-- Crypto.com Onchain: approximately 20K DAU; iOS Earn ownership across multiple protocols; staking, rewards, position management, Buy & Swap.
-- SportyBet: approximately 100K DAU; live odds, open bets, betting history, WebSocket update deduplication.
-- KINTO: vehicle usage tracking, vehicle status, and in-app guidance delivered during a three-month contract.
+## Company experience and evidence
 
-### Public product links
+The company-work section describes Timothy's contributions within teams, not product ownership. Its content, assets, and links are preserved. Resume facts remain bounded by `source/resume.md`; the existing ten-plus years of mobile experience can support the biography but not invented consulting outcomes.
 
-- Crypto.com Onchain: https://crypto.com/onchain
-- SportyBet: https://www.sportybet.com/
-- KINTO Unlimited: https://www.kinto-mobility.com/unlimited
+The website should not lead with slogans about intelligence, contracts, authority, checkpoints, or AI implementation. Technical concepts may appear only when needed to explain a concrete job or documented contribution, not as standalone manifesto sections.
 
-Product names are used nominatively. No proprietary screenshots, logos, internal analytics, or non-public product URLs are included.
-The company-product section explicitly describes Timothy's contributions as part of engineering teams and does not imply ownership of the products themselves.
+## Delivery
 
-## AI-assisted project narrative
+The portfolio remains dependency-free HTML/CSS/JavaScript with the existing bilingual media controller. `site/consulting.css` contains scoped layout adjustments for longer descriptive titles. Keep the existing `#native` and `#method` anchors for incoming links; they now contain services and practical collaboration steps.
 
-The selected-work copy is derived from current project READMEs and explains how AI supports the work without overstating autonomous behavior.
+Cloudflare Workers Static Assets serves the portfolio from `.portfolio-dist`, built by `scripts/build-portfolio.sh`. The GitHub Pages workflow separately publishes resume pages. Do not assume a merged PR or successful Pages deployment updates timyeou.com.
 
-- Moment: a React Native, Expo, and TypeScript product that turns natural-language intent into editable preparation while keeping suggestions separate from saved data.
-- ProductDev: a Swift 6 macOS workbench for observing repository automation, reviewing guarded actions, and recovering from interruptions.
-- Tim Work:
-  - https://github.com/timyeou1234/context-handoff
-  - https://github.com/timyeou1234/task-eta-tracker
-  - https://github.com/timyeou1234/MomentMonitor
-
-The unifying position is: AI assists with interpretation and proposals, while the product keeps validation, saved data, user approval, and recovery explicit.
-
-Portfolio project media is bundled locally so visitors never need Figma permissions. The Moment demo uses the current default view from the `05 · Moments` design page; the Figma file is a source reference only and is not linked from the public site.
-
-## Interaction stack
-
-No runtime dependencies are required.
-
-- semantic HTML and bilingual content attributes;
-- CSS Grid, custom properties, gradients, container-friendly responsive layouts, and CSS product mockups;
-- Web Animations API for scroll reveals;
-- Canvas 2D for the ambient particle network;
-- IntersectionObserver for reveal and navigation state;
-- pointer-driven tilt, magnetic links, and cursor illumination;
-- `prefers-reduced-motion` support, keyboard focus styles, a skip link, and progressive enhancement.
-
-The deliberate dependency-free stack keeps the first paint and deployment path simple. React, GSAP, Three.js, or Rive should only be introduced when a future case study needs stateful components, authored timelines, or 3D assets that the platform APIs cannot express cleanly.
+Publish only the explicit build allowlist. Media sources, these notes, private URLs, PDFs, and QA evidence must not enter the Cloudflare bundle. Run `bash scripts/validate-site.sh` and verify bilingual layouts and media switching before release. Do not deploy as part of a content review without explicit authorization.

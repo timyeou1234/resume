@@ -11,6 +11,7 @@ mkdir -p "$output_dir/assets"
 
 cp "$source_dir/index.html" "$output_dir/index.html"
 cp "$source_dir/styles.css" "$output_dir/styles.css"
+cp "$source_dir/consulting.css" "$output_dir/consulting.css"
 cp "$source_dir/app.js" "$output_dir/app.js"
 cp "$source_dir/_headers" "$output_dir/_headers"
 portfolio_assets=(
