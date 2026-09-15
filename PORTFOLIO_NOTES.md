@@ -27,9 +27,13 @@ The LINE bot was built for actual family communication; the film itself is a scr
 
 The checked-in Moment V5 film/loop/poster assets are the approved branded media and remain appropriate. Do not replace them with the debranded life-planning V7 assets. The earlier blanket V7 debranding instructions are superseded for Moment.
 
-The separately delivered Portfolio-Media-v8 bundle restores the original Moment V5 media byte-for-byte and retains the V7 purpose-led media for the other three entries. The bundle version is not a claim that every film was newly rendered or renamed to V8. All paths, versions, sizes, and hashes are explicit in its manifest. Import that bundle only after reviewing its local manifest; no binary media import or deployment is implied by this documentation change.
+The local Portfolio-Media-v8.zip has now been imported after ZIP path/CRC and all 24 source byte-count/SHA-256 checks. Moment's six V5 originals were already identical and retained. Eighteen V7 originals were added for the other entries; no old immutable resources were overwritten.
 
-This branch correction updates website positioning and validation, not video bytes. Until the separate media import is completed, the two personal-tool films in the repo still contain their old working names. Do not describe the new bundle as already deployed. Do not apply the old `apply-media-v7.py` script, which would put the debranded Moment film back.
+The owner subsequently requested removal of all music. Eight full films now use new `film-<language>-v5-silent.mp4` / `film-<language>-v7-silent.mp4` paths. FFmpeg removed only the audio stream with `-c:v copy -an`; the encoded video-stream hashes match the originals. All loops and posters retain their exact approved bytes. The deployment contains only the selected 16 silent MP4 and 8 JPEG, not the original films with music. Both original source hashes and silent derivative hashes are recorded in `media/portfolio-media-v8/media-manifest.json`.
+
+No runtime consumer reads `display_titles` or `displayNames`; website names use the existing HTML bilingual attributes. Both manifest name fields are retained and normalized, including Moment in both languages. The validator rejects conflicts in either field and incorrect classification/version/hash/provenance/audio metadata. `python3 scripts/test-portfolio-manifest.py` exercises nine rejection paths in an isolated temporary fixture.
+
+See [this integration's acceptance record](docs/portfolio-media-v8-acceptance.md) for browser coverage, limitations, and release/recovery instructions. This branch is reviewable and awaits approval for release; no production deployment has run.
 
 ## Company experience and evidence
 

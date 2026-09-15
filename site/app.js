@@ -106,7 +106,7 @@
       unavailable: { en: "Preview cover unavailable", zh: "預覽封面無法載入" }
     };
     var filmMessages = {
-      controls: { en: "Use the player controls for playback, volume, progress, and fullscreen.", zh: "可使用播放器控制播放、音量、進度與全螢幕。" },
+      controls: { en: "Use the player controls for playback, progress, and fullscreen.", zh: "可使用播放器控制播放、進度與全螢幕。" },
       changed: { en: "Language changed. Press play to start the English film.", zh: "語言已切換，請按下播放以開始繁體中文影片。" },
       blocked: { en: "Playback did not start automatically. Use the player controls to begin.", zh: "影片未自動開始，請使用播放器控制開始播放。" },
       error: { en: "The selected film could not be loaded. You can still use the direct link.", zh: "所選影片無法載入，仍可使用直接開啟連結。" }
@@ -261,6 +261,7 @@
       if (promise && typeof promise.catch === "function") {
         promise.catch(function () {
           if (generation !== controller.loadGeneration) return;
+          if (controller.failedLanguages[currentLanguage]) return;
           controller.autoplayBlocked = true;
           setLoopStatus(controller, "blocked");
           setLoopControl(controller);
@@ -284,7 +285,7 @@
       setLoopControl(controller);
 
       if (controller.posterNearViewport) loadPoster(controller, language);
-      if (controller.nearViewport && !saveData && !controller.failedLanguages[language]) loadLoop(controller, false);
+      if (controller.nearViewport && !reducedMotion.matches && !saveData && !controller.failedLanguages[language]) loadLoop(controller, false);
       if (canAutoPlay(controller)) tryLoopPlay(controller, false);
     }
 
@@ -324,6 +325,7 @@
       if (promise && typeof promise.catch === "function") {
         promise.catch(function () {
           if (!dialogOpen || generation !== filmGeneration) return;
+          if (filmVideo.error) return;
           setFilmStatus("blocked");
         });
       }
@@ -419,7 +421,7 @@
 
         var loadObserver = new IntersectionObserver(function (entries) {
           controller.nearViewport = entries.some(function (entry) { return entry.isIntersecting; });
-          if (controller.nearViewport && !saveData && !controller.failedLanguages[currentLanguage]) loadLoop(controller, false);
+          if (controller.nearViewport && !reducedMotion.matches && !saveData && !controller.failedLanguages[currentLanguage]) loadLoop(controller, false);
         }, { rootMargin: "240px 0px", threshold: 0 });
         loadObserver.observe(controller.loopFrame);
 
@@ -479,6 +481,7 @@
     });
 
     doc.addEventListener("visibilitychange", function () {
+      if (doc.hidden) filmVideo.pause();
       controllers.forEach(function (controller) {
         if (doc.hidden) pauseLoop(controller);
         else if (canAutoPlay(controller)) tryLoopPlay(controller, false);

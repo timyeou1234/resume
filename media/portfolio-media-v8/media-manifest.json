@@ -1,0 +1,471 @@
+{
+  "version": "v8",
+  "scope": "Moment: branded app preparing for launch; family LINE bot; two purpose-led personal development tools",
+  "languages": [
+    "zh",
+    "en"
+  ],
+  "company_apps_included": false,
+  "products": {
+    "moment": {
+      "zh": {
+        "film": {
+          "path": "assets/products/moment/film-zh-v5-silent.mp4",
+          "seconds": 24,
+          "bytes": 7234296,
+          "sha256": "67c0eb8aca7b65e84099ffeba0714a1343f3370625d81bef753fb40b25de049e",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 720,
+          "codec": "h264",
+          "pixelFormat": "yuvj420p",
+          "colorRange": "pc",
+          "audioTracks": 0,
+          "faststart": true,
+          "source": {
+            "path": "assets/products/moment/film-zh-v5.mp4",
+            "bytes": 7837992,
+            "sha256": "d7029d5359f96c6eb97d08aa93be66cec3df25c49dd774ad60591c10b22f4262",
+            "audioTracks": 1
+          },
+          "transformation": "Audio stream removed at owner request; video stream copied without re-encoding."
+        },
+        "loop": {
+          "path": "assets/products/moment/loop-zh-v5.mp4",
+          "seconds": 12,
+          "bytes": 3284639,
+          "sha256": "e1725028c5f543e06086cb1cd37e3eb1d3b1bb8b05246def8a7dd46b021281e9",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 360,
+          "codec": "h264",
+          "pixelFormat": "yuvj420p",
+          "colorRange": "pc",
+          "audioTracks": 0,
+          "faststart": true
+        },
+        "poster": {
+          "path": "assets/products/moment/poster-zh-v5.jpg",
+          "bytes": 149946,
+          "width": 1920,
+          "height": 1080,
+          "sha256": "d6db3347572c7822fcfabc4e8838049bb1946319930e93e3f910b1c5e13355ee"
+        }
+      },
+      "en": {
+        "film": {
+          "path": "assets/products/moment/film-en-v5-silent.mp4",
+          "seconds": 24,
+          "bytes": 4716139,
+          "sha256": "865aa78309cf0f0ed5945490360e31a1108f5349669cea2fdc68cbfa2836a5e9",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 720,
+          "codec": "h264",
+          "pixelFormat": "yuvj420p",
+          "colorRange": "pc",
+          "audioTracks": 0,
+          "faststart": true,
+          "source": {
+            "path": "assets/products/moment/film-en-v5.mp4",
+            "bytes": 5219604,
+            "sha256": "d2905d8b35b3d253e483bed74927d890e1242e2680d1fe55c680a1f40c9a3e6d",
+            "audioTracks": 1
+          },
+          "transformation": "Audio stream removed at owner request; video stream copied without re-encoding."
+        },
+        "loop": {
+          "path": "assets/products/moment/loop-en-v5.mp4",
+          "seconds": 12,
+          "bytes": 2541119,
+          "sha256": "d839b0ebb0f7fbc557bb58cc36f15de6122742ceec1ea63d276f4702a477ac56",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 360,
+          "codec": "h264",
+          "pixelFormat": "yuvj420p",
+          "colorRange": "pc",
+          "audioTracks": 0,
+          "faststart": true
+        },
+        "poster": {
+          "path": "assets/products/moment/poster-en-v5.jpg",
+          "bytes": 139100,
+          "width": 1920,
+          "height": 1080,
+          "sha256": "b6b9a3f43fe6e7e3d9597ab60e810e9ab27e00ed644a9be49832ccfb2fdf0c9f"
+        }
+      }
+    },
+    "line-family-translator": {
+      "zh": {
+        "film": {
+          "path": "assets/products/line-family-translator/film-zh-v7-silent.mp4",
+          "seconds": 24,
+          "bytes": 953213,
+          "sha256": "99f8f07752bc71aa9d8da42b9a236d5f3f438d23965a85e084ba3ede7aee0b7f",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 720,
+          "codec": "h264",
+          "pixelFormat": "yuv420p",
+          "colorRange": "tv",
+          "colorSpace": "bt709",
+          "audioTracks": 0,
+          "faststart": true,
+          "fullDecode": "passed",
+          "source": {
+            "path": "assets/products/line-family-translator/film-zh-v7.mp4",
+            "bytes": 1454279,
+            "sha256": "30a642c830030c8d3b49d97c303eefaf9c3dc72defe2c353a93460bc38cf346d",
+            "audioTracks": 1
+          },
+          "transformation": "Audio stream removed at owner request; video stream copied without re-encoding."
+        },
+        "loop": {
+          "path": "assets/products/line-family-translator/loop-zh-v7.mp4",
+          "seconds": 12,
+          "bytes": 548115,
+          "sha256": "736b49fdf36c1e714e6a79e7aa619d9ea560f324c97d4506180e8dc69e7d9f23",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 360,
+          "codec": "h264",
+          "pixelFormat": "yuv420p",
+          "colorRange": "tv",
+          "colorSpace": "bt709",
+          "audioTracks": 0,
+          "faststart": true,
+          "fullDecode": "passed"
+        },
+        "poster": {
+          "path": "assets/products/line-family-translator/poster-zh-v7.jpg",
+          "bytes": 269212,
+          "sha256": "ad9172be0914bf93eebc5a356dcded292a6d579ffba83f3aee60941234287ba0",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "en": {
+        "film": {
+          "path": "assets/products/line-family-translator/film-en-v7-silent.mp4",
+          "seconds": 24,
+          "bytes": 974875,
+          "sha256": "a950ccea88ae885f69156e7d8391f140da709dfae3af8ed565b153e7766ce3ce",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 720,
+          "codec": "h264",
+          "pixelFormat": "yuv420p",
+          "colorRange": "tv",
+          "colorSpace": "bt709",
+          "audioTracks": 0,
+          "faststart": true,
+          "fullDecode": "passed",
+          "source": {
+            "path": "assets/products/line-family-translator/film-en-v7.mp4",
+            "bytes": 1475941,
+            "sha256": "9b195af5e9e05748fafadac0f32f6ac72baa9fdfecbaeeebcb70137493e1ac21",
+            "audioTracks": 1
+          },
+          "transformation": "Audio stream removed at owner request; video stream copied without re-encoding."
+        },
+        "loop": {
+          "path": "assets/products/line-family-translator/loop-en-v7.mp4",
+          "seconds": 12,
+          "bytes": 566126,
+          "sha256": "857825c57661f848efa6ad09c2c7bcb445045672de284fd074bb677e3ea6ec21",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 360,
+          "codec": "h264",
+          "pixelFormat": "yuv420p",
+          "colorRange": "tv",
+          "colorSpace": "bt709",
+          "audioTracks": 0,
+          "faststart": true,
+          "fullDecode": "passed"
+        },
+        "poster": {
+          "path": "assets/products/line-family-translator/poster-en-v7.jpg",
+          "bytes": 289404,
+          "sha256": "b2c7270cd3ca5caf21f350bc6ff9bd721793c0d17a88be8c1385654c0f3c182b",
+          "width": 1920,
+          "height": 1080
+        }
+      }
+    },
+    "productdev": {
+      "zh": {
+        "film": {
+          "path": "assets/products/productdev/film-zh-v7-silent.mp4",
+          "seconds": 24,
+          "bytes": 3433052,
+          "sha256": "2d16d2c2be7f44eae267d9bd9be485373f303ccd6453d4710aee854d6b9ff519",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 720,
+          "codec": "h264",
+          "pixelFormat": "yuv420p",
+          "colorRange": "tv",
+          "colorSpace": "bt709",
+          "audioTracks": 0,
+          "faststart": true,
+          "fullDecode": "passed",
+          "source": {
+            "path": "assets/products/productdev/film-zh-v7.mp4",
+            "bytes": 3934889,
+            "sha256": "76e46f15ce75303261fc5efd4d7e62bc4e76bb6fc7fe94db90f3e2fcc5255ade",
+            "audioTracks": 1
+          },
+          "transformation": "Audio stream removed at owner request; video stream copied without re-encoding."
+        },
+        "loop": {
+          "path": "assets/products/productdev/loop-zh-v7.mp4",
+          "seconds": 12,
+          "bytes": 1824965,
+          "sha256": "59d15e0b9ec2cd3e508f367bd41bbb7f30152e4127a0ba51762dace8178dbff3",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 360,
+          "codec": "h264",
+          "pixelFormat": "yuv420p",
+          "colorRange": "tv",
+          "colorSpace": "bt709",
+          "audioTracks": 0,
+          "faststart": true,
+          "fullDecode": "passed"
+        },
+        "poster": {
+          "path": "assets/products/productdev/poster-zh-v7.jpg",
+          "bytes": 321695,
+          "sha256": "e33f626869d758a8d70e65129cc9b2b83b5fbc00e2fa0616fefb26ba4fec4166",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "en": {
+        "film": {
+          "path": "assets/products/productdev/film-en-v7-silent.mp4",
+          "seconds": 24,
+          "bytes": 3327419,
+          "sha256": "d265c7ce1a1290de8d6f4e4ba1213d3c6ee8aefd7d9123d71fae9d0ee78fd933",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 720,
+          "codec": "h264",
+          "pixelFormat": "yuv420p",
+          "colorRange": "tv",
+          "colorSpace": "bt709",
+          "audioTracks": 0,
+          "faststart": true,
+          "fullDecode": "passed",
+          "source": {
+            "path": "assets/products/productdev/film-en-v7.mp4",
+            "bytes": 3829256,
+            "sha256": "2cd0666de91a0e77492a32a8459445eca0bdbf4903e4e2ed8310c96797a58ae2",
+            "audioTracks": 1
+          },
+          "transformation": "Audio stream removed at owner request; video stream copied without re-encoding."
+        },
+        "loop": {
+          "path": "assets/products/productdev/loop-en-v7.mp4",
+          "seconds": 12,
+          "bytes": 1841670,
+          "sha256": "3fbb0c02faefc0298ca5aecdff5eefb06a39d87f6f13cf1965c086ef1c5f9c06",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 360,
+          "codec": "h264",
+          "pixelFormat": "yuv420p",
+          "colorRange": "tv",
+          "colorSpace": "bt709",
+          "audioTracks": 0,
+          "faststart": true,
+          "fullDecode": "passed"
+        },
+        "poster": {
+          "path": "assets/products/productdev/poster-en-v7.jpg",
+          "bytes": 335184,
+          "sha256": "cce769b615e4077f5d9caf3479bc51caf1daea519f014dce097b3088183a68c0",
+          "width": 1920,
+          "height": 1080
+        }
+      }
+    },
+    "timwork": {
+      "zh": {
+        "film": {
+          "path": "assets/products/timwork/film-zh-v7-silent.mp4",
+          "seconds": 24,
+          "bytes": 3715852,
+          "sha256": "a9a16d22d754708e32684314e12ce2eda5bc98bb7398735c342a113617f9b422",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 720,
+          "codec": "h264",
+          "pixelFormat": "yuv420p",
+          "colorRange": "tv",
+          "colorSpace": "bt709",
+          "audioTracks": 0,
+          "faststart": true,
+          "fullDecode": "passed",
+          "source": {
+            "path": "assets/products/timwork/film-zh-v7.mp4",
+            "bytes": 4217142,
+            "sha256": "6dc4b21e01840302f61d4c2b363582f0c25a9baf307caf66a97b859ab57bd2d1",
+            "audioTracks": 1
+          },
+          "transformation": "Audio stream removed at owner request; video stream copied without re-encoding."
+        },
+        "loop": {
+          "path": "assets/products/timwork/loop-zh-v7.mp4",
+          "seconds": 12,
+          "bytes": 1256520,
+          "sha256": "fa8a655d4f78ae36d0e7ba6403d2d95986ed494c73bc5957a8bb4ac998016295",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 360,
+          "codec": "h264",
+          "pixelFormat": "yuv420p",
+          "colorRange": "tv",
+          "colorSpace": "bt709",
+          "audioTracks": 0,
+          "faststart": true,
+          "fullDecode": "passed"
+        },
+        "poster": {
+          "path": "assets/products/timwork/poster-zh-v7.jpg",
+          "bytes": 334270,
+          "sha256": "e1ea824ab3ad74be47fc5cc781f77cc8193fabe6756c372edc82217d2ac931e5",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "en": {
+        "film": {
+          "path": "assets/products/timwork/film-en-v7-silent.mp4",
+          "seconds": 24,
+          "bytes": 3924160,
+          "sha256": "9aac14b230bb799aa31d5ed0757d81951dbe588afdd7d4f036aaa988ac160df3",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 720,
+          "codec": "h264",
+          "pixelFormat": "yuv420p",
+          "colorRange": "tv",
+          "colorSpace": "bt709",
+          "audioTracks": 0,
+          "faststart": true,
+          "fullDecode": "passed",
+          "source": {
+            "path": "assets/products/timwork/film-en-v7.mp4",
+            "bytes": 4425450,
+            "sha256": "793f62d55689b30bd16463636577bda18e069b01cba2e3f8f0c6e120c7e9c1f9",
+            "audioTracks": 1
+          },
+          "transformation": "Audio stream removed at owner request; video stream copied without re-encoding."
+        },
+        "loop": {
+          "path": "assets/products/timwork/loop-en-v7.mp4",
+          "seconds": 12,
+          "bytes": 1357817,
+          "sha256": "6ab0de5f1f5309f60c7ae771cc49284d14fe04d34ccdb5df96f07ba6a4694a05",
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "frames": 360,
+          "codec": "h264",
+          "pixelFormat": "yuv420p",
+          "colorRange": "tv",
+          "colorSpace": "bt709",
+          "audioTracks": 0,
+          "faststart": true,
+          "fullDecode": "passed"
+        },
+        "poster": {
+          "path": "assets/products/timwork/poster-en-v7.jpg",
+          "bytes": 341493,
+          "sha256": "31b60317bc7dc2b6fefd5496be675eb34435eecbebcf083261e2ee2ecfc36021",
+          "width": 1920,
+          "height": 1080
+        }
+      }
+    }
+  },
+  "display_titles": {
+    "moment": {
+      "zh": "Moment",
+      "en": "Moment"
+    },
+    "line-family-translator": {
+      "zh": "家庭 LINE 翻譯 Bot",
+      "en": "Family LINE Translator"
+    },
+    "productdev": {
+      "zh": "開發任務監控",
+      "en": "Development task monitoring"
+    },
+    "timwork": {
+      "zh": "跨專案任務與交接管理",
+      "en": "Project tasks & handover"
+    }
+  },
+  "revisionNote": "Packaging correction only: Moment restores approved V5 branded media byte-for-byte; the other three products retain V7 media byte-for-byte. No new video renders. Owner subsequently requested removal of all music: eight full films are silent derivatives with unchanged video streams and new immutable paths; source bytes/hashes preserved in products.*.*.film.source.",
+  "displayNames": {
+    "moment": {
+      "zh": "Moment",
+      "en": "Moment"
+    },
+    "line-family-translator": {
+      "zh": "家庭 LINE 翻譯 Bot",
+      "en": "Family LINE Translator"
+    },
+    "productdev": {
+      "zh": "開發任務監控",
+      "en": "Development task monitoring"
+    },
+    "timwork": {
+      "zh": "跨專案任務與交接管理",
+      "en": "Project tasks & handover"
+    }
+  },
+  "positioning": {
+    "moment": {
+      "type": "launch-bound-app",
+      "brandPreserved": true,
+      "status": {
+        "zh": "自有 App · 準備推出",
+        "en": "Independent app · Preparing for launch"
+      }
+    },
+    "line-family-translator": {
+      "type": "family-trial-bot",
+      "brandPreserved": true
+    },
+    "productdev": {
+      "type": "personal-development-tool",
+      "brandPreserved": false
+    },
+    "timwork": {
+      "type": "personal-development-tool",
+      "brandPreserved": false
+    }
+  },
+  "validationScope": "Hashes verified against source archives and all 16 videos fully decoded in this correction; no new render or new app/live-service tests."
+}

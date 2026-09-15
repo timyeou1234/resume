@@ -82,7 +82,14 @@ for (const language of ["en", "zh"]) {
   if (!momentArticle || !momentArticle[1].includes(`data-project-title-${language}="Moment"`)) {
     errors.push(`Moment must retain its brand in the ${language} player title`);
   }
+  if (!momentArticle || !momentArticle[1].includes(`data-${language}="Moment"`) ||
+      !momentArticle[1].includes(`data-aria-${language}="Moment `) ||
+      !new RegExp(`<figcaption[^>]*data-${language}="Moment `).test(momentArticle[1])) {
+    errors.push(`Moment brand is missing from localized heading, accessible name or caption: ${language}`);
+  }
 }
+if (!momentArticle?.[1].includes('data-en="Independent app · Preparing for launch"') ||
+    !momentArticle?.[1].includes('data-zh="自有 App · 準備推出"')) errors.push("Moment article must retain its localized launch status");
 if (momentArticle && /Personal tool|個人自用工具|not a public service|非公開服務|not for sale|非對外販售/i.test(momentArticle[1])) {
   errors.push("Moment must not be classified as a personal-only tool or a non-public-service project");
 }
@@ -111,20 +118,76 @@ if (!html.includes('<link rel="canonical" href="https://timyeou.com/">')) errors
 if (!html.includes('<meta property="og:url" content="https://timyeou.com/">')) errors.push("Open Graph domain metadata is missing");
 if (!html.includes('href="https://timyeou1234.github.io/resume/resume.html"')) errors.push("GitHub Pages resume link is missing");
 if (html.includes("figma.com/")) errors.push("Portfolio must not contain Figma links");
-const mediaManifestPath = path.join(repo, "media", "side-projects-a-v6", "media-manifest.json");
+const mediaManifestPath = path.join(repo, "media", "portfolio-media-v8", "media-manifest.json");
 if (!fs.existsSync(mediaManifestPath)) errors.push("Side-project media manifest is missing");
 const mediaManifest = JSON.parse(fs.readFileSync(mediaManifestPath, "utf8"));
+const versions = { moment: "v5", "line-family-translator": "v7", productdev: "v7", timwork: "v7" };
+const names = {
+  moment: { en: "Moment", zh: "Moment" },
+  "line-family-translator": { en: "Family LINE Translator", zh: "家庭 LINE 翻譯 Bot" },
+  productdev: { en: "Development task monitoring", zh: "開發任務監控" },
+  timwork: { en: "Project tasks & handover", zh: "跨專案任務與交接管理" }
+};
+const sameKeys = (object, keys) => JSON.stringify(Object.keys(object || {}).sort()) === JSON.stringify(keys.slice().sort());
+if (mediaManifest.version !== "v8" || !sameKeys(mediaManifest.products, Object.keys(versions)) ||
+    JSON.stringify(mediaManifest.languages) !== JSON.stringify(["zh", "en"])) {
+  errors.push("Expected the V8 collection with exactly four selected products and two languages");
+}
+for (const field of ["display_titles", "displayNames"]) {
+  if (!sameKeys(mediaManifest[field], Object.keys(names))) errors.push(`Invalid name metadata keys: ${field}`);
+  for (const [product, localized] of Object.entries(names)) {
+    if (!sameKeys(mediaManifest[field]?.[product], ["en", "zh"])) errors.push(`Invalid localized names: ${field}/${product}`);
+    for (const language of ["en", "zh"]) {
+      if (mediaManifest[field]?.[product]?.[language] !== localized[language]) {
+        errors.push(`Conflicting or incorrect name metadata: ${field}/${product}/${language}`);
+      }
+    }
+  }
+}
+const momentPosition = mediaManifest.positioning?.moment;
+if (momentPosition?.type !== "launch-bound-app" || momentPosition?.brandPreserved !== true ||
+    momentPosition?.status?.en !== "Independent app · Preparing for launch" ||
+    momentPosition?.status?.zh !== "自有 App · 準備推出") errors.push("Moment metadata must preserve the branded app preparing for launch");
+for (const product of ["productdev", "timwork"]) {
+  if (mediaManifest.positioning?.[product]?.type !== "personal-development-tool") errors.push(`Invalid personal-tool classification: ${product}`);
+}
 const mediaAssets = [];
 for (const [product, languages] of Object.entries(mediaManifest.products)) {
+  if (!sameKeys(languages, ["en", "zh"])) errors.push(`Expected exactly two media languages: ${product}`);
   for (const [language, media] of Object.entries(languages)) {
+    if (!sameKeys(media, ["film", "loop", "poster"])) errors.push(`Expected film, loop and poster: ${product}/${language}`);
     for (const [kind, expected] of Object.entries(media)) {
       const asset = expected.path;
       mediaAssets.push(asset);
       if (!asset.startsWith(`assets/products/${product}/`)) {
         errors.push(`Unexpected media path for ${product}/${language}/${kind}: ${asset}`);
       }
-      if (product === "line-family-translator" ? !asset.includes("-v6.") : !asset.includes("-v5.")) {
+      const exactPath = `assets/products/${product}/${kind}-${language}-${versions[product]}${kind === "film" ? "-silent" : ""}.${kind === "poster" ? "jpg" : "mp4"}`;
+      if (asset !== exactPath) {
         errors.push(`Unexpected media version for ${product}/${language}/${kind}: ${asset}`);
+      }
+      if (!Number.isInteger(expected.bytes) || expected.bytes <= 0 || !/^[a-f0-9]{64}$/.test(expected.sha256 || "")) {
+        errors.push(`Missing required bytes or SHA-256: ${asset}`);
+      }
+      if (kind !== "poster" && expected.audioTracks !== 0) errors.push(`Selected videos must be silent: ${asset}`);
+      if (kind === "film") {
+        const source = expected.source;
+        const sourcePath = `assets/products/${product}/film-${language}-${versions[product]}.mp4`;
+        if (source?.path !== sourcePath || source?.audioTracks !== 1 ||
+            !Number.isInteger(source?.bytes) || !/^[a-f0-9]{64}$/.test(source?.sha256 || "")) {
+          errors.push(`Missing original film provenance: ${asset}`);
+        } else {
+          const original = path.join(site, sourcePath);
+          if (!fs.existsSync(original) || fs.statSync(original).size !== source.bytes ||
+              crypto.createHash("sha256").update(fs.readFileSync(original)).digest("hex") !== source.sha256) {
+            errors.push(`Original film differs from recorded source: ${sourcePath}`);
+          }
+        }
+      }
+      const article = html.match(new RegExp(`<article[^>]*data-case="${product}"[^>]*>([\\s\\S]*?)<\\/article>`));
+      const attribute = kind === "film" ? "href" : kind === "loop" ? "src" : "poster";
+      if (!article?.[1].includes(`data-${attribute}-${language}="./${asset}"`)) {
+        errors.push(`Incorrect localized ${kind} reference: ${product}/${language}`);
       }
       for (const root of [site, portfolio]) {
         const target = path.join(root, asset);
@@ -162,6 +225,7 @@ for (const project of projectHooks) {
 const loopTags = [...html.matchAll(/<video\b[^>]*class="[^"]*project-loop-video[^"]*"[^>]*>/g)].map((match) => match[0]);
 if (loopTags.length !== 4) errors.push(`Expected four side-project loop players, found ${loopTags.length}`);
 for (const tag of loopTags) {
+  if (/\ssrc=|\sposter=|\bautoplay\b/.test(tag)) errors.push("Loop players must select localized media lazily");
   for (const attribute of ["muted", "loop", "playsinline", 'preload="none"', "data-src-en", "data-src-zh", "data-poster-en", "data-poster-zh"]) {
     if (!tag.includes(attribute)) errors.push(`Side-project loop is missing ${attribute}: ${tag}`);
   }
