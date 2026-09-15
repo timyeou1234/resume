@@ -1,0 +1,16 @@
+{
+  "duration": 24,
+  "fps": 30,
+  "sourceVersion": "Moment A V4 zh-Hant",
+  "scenes": [
+    {"start": 0, "end": 3.32, "name": "Brand opening", "copy": "Life is full. Your next step is clear."},
+    {"start": 2.94, "end": 6.68, "name": "Moment overview", "copy": "Your life events. No longer scattered."},
+    {"start": 6.3, "end": 10.38, "name": "Preparation", "copy": "See what's ready at a glance."},
+    {"start": 10, "end": 14.48, "name": "Confirmed information", "copy": "Keep what's confirmed."},
+    {"start": 14.1, "end": 18.82, "name": "Next step", "copy": "One clear next step."},
+    {"start": 18.44, "end": 22.02, "name": "From context to action", "copy": "From preparation to clear action."},
+    {"start": 21.64, "end": 24, "name": "Brand close", "copy": "Moment — One clear next step."}
+  ],
+  "transition": "0.38-second overlaps, unchanged from approved A V4",
+  "sound": "Approved zh-Hant A V4 audio stream is copied without re-encoding; no voiceover"
+}

@@ -1,0 +1,69 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Moment — A / Life in Focus · English</title>
+<style>*{box-sizing:border-box}html,body{margin:0;background:#0c0e14;width:1280px;height:720px;overflow:hidden}canvas{display:block;width:1280px;height:720px}</style></head>
+<body><canvas id="film" width="1920" height="1080" aria-label="Moment product design animation"></canvas>
+<script>
+'use strict';
+const W=1280,H=720,FPS=30,DURATION=24;
+const C={bg:'#0c0e14',white:'#f7f5ef',muted:'#a6aec0',quiet:'#667188',line:'#45516a',blue:'#c3cee9',lav:'#e8ebf5',amber:'#d4a36a',green:'#8bc1a8'};
+const canvas=document.getElementById('film'),ctx=canvas.getContext('2d',{alpha:false});
+const files=['overview-detail','travel-card','preparation','confirmed','next-step'];
+const images={};
+const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
+const mix=(a,b,t)=>a+(b-a)*t;
+const sm=(a,b,t)=>{let p=clamp((t-a)/(b-a));return p*p*(3-2*p)};
+const out=(a,b,t)=>1-Math.pow(1-clamp((t-a)/(b-a)),4);
+const win=(t,a,b,fade=.38)=>sm(a,a+fade,t)*(1-sm(b-fade,b,t));
+const NATIVE='-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif';
+const LATIN=NATIVE;
+function round(x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r)}
+function line(x,y,x2,y2,color,alpha=1,width=1){ctx.save();ctx.globalAlpha*=alpha;ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x2,y2);ctx.stroke();ctx.restore()}
+function text(str,x,y,size=24,color=C.white,weight=500,align='left',font=NATIVE){ctx.save();ctx.fillStyle=color;ctx.font=`${weight} ${size}px ${font}`;ctx.textAlign=align;ctx.textBaseline='top';ctx.fillText(str,x,y);ctx.restore()}
+function tracking(str,x,y,size=11,color=C.muted,gap=2.5,alpha=1){ctx.save();ctx.globalAlpha*=alpha;ctx.fillStyle=color;ctx.font=`500 ${size}px ${LATIN}`;ctx.textBaseline='top';for(const c of str){ctx.fillText(c,x,y);x+=ctx.measureText(c).width+gap}ctx.restore()}
+function reveal(str,x,y,size,color,t,delay=0,weight=500){const p=out(delay,delay+.75,t);ctx.save();ctx.beginPath();ctx.rect(x-3,y-3,1160,size*1.55);ctx.clip();ctx.globalAlpha*=sm(delay,delay+.4,t);text(str,x,y+(1-p)*size*1.18,size,color,weight);ctx.restore()}
+function photo(name,x,y,w,alpha=1,shadow=0,source=null,r=0){const im=images[name];if(!im)throw Error(name);ctx.save();ctx.globalAlpha*=clamp(alpha);let sw=source?source[2]:im.naturalWidth,sh=source?source[3]:im.naturalHeight;const h=w*sh/sw;if(shadow){ctx.shadowColor='rgba(0,0,0,.4)';ctx.shadowBlur=shadow;ctx.shadowOffsetY=16;ctx.fillStyle='#10141d';round(x,y,w,h,r);ctx.fill();ctx.shadowBlur=0;ctx.shadowOffsetY=0}if(r){round(x,y,w,h,r);ctx.clip()}if(source)ctx.drawImage(im,source[0],source[1],sw,sh,x,y,w,h);else ctx.drawImage(im,x,y,w,h);ctx.restore();return h}
+function plate(x,y,w,h,r=20,color='#fff',alpha=1,shadow=30){ctx.save();ctx.globalAlpha*=alpha;ctx.fillStyle=color;if(shadow){ctx.shadowBlur=shadow;ctx.shadowColor='#0006';ctx.shadowOffsetY=14}round(x,y,w,h,r);ctx.fill();ctx.restore()}
+function ring(x,y,w,h,r,color,alpha=1,width=1){ctx.save();ctx.globalAlpha*=alpha;ctx.strokeStyle=color;ctx.lineWidth=width;round(x,y,w,h,r);ctx.stroke();ctx.restore()}
+function section(t,a,b,fn){let alpha=win(t,a,b);if(alpha<.001)return;ctx.save();ctx.globalAlpha*=alpha;fn(t-a);ctx.restore()}
+function background(t){ctx.setTransform(1.5,0,0,1.5,0,0);ctx.fillStyle=C.bg;ctx.fillRect(0,0,W,H);let x=890+90*Math.sin(t*.14),y=260+70*Math.cos(t*.1);let g=ctx.createRadialGradient(x,y,0,x,y,700);g.addColorStop(0,'#30384f');g.addColorStop(.43,'#1c2333');g.addColorStop(1,'#0c0e14');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);let v=ctx.createLinearGradient(0,0,0,H);v.addColorStop(0,'#0000');v.addColorStop(.65,'#0000');v.addColorStop(1,'#07090fbb');ctx.fillStyle=v;ctx.fillRect(0,0,W,H);
+// Static, very low-contrast grain prevents large gradients looking flat.
+ctx.save();ctx.globalAlpha=.025;ctx.fillStyle=grain;ctx.fillRect(0,0,W,H);ctx.restore();
+}
+let grain;
+function chrome(t,chapter){ctx.save();ctx.globalAlpha=1-sm(21.1,21.8,t);text('Moment',78,43,22,C.white,500,'left',LATIN);tracking('LIFE, IN FOCUS',970,51,10,C.muted,2.1,.65);line(78,94,1202,94,C.line,.35);if(chapter){tracking(chapter,80,661,10,C.quiet,1.55,.9);line(930,666,1200,666,C.line,.45);line(930,666,930+270*clamp(t/DURATION),666,C.blue,.65,1.4)}ctx.restore()}
+function intro(t){const p=out(.2,1.9,t);ctx.save();ctx.globalAlpha=.95;photo('travel-card',mix(865,817,p),mix(224,201,p),330+8*p,1,40,null,16);ctx.restore();
+// Two extracted panels drift at a different speed, not with perspective.
+photo('preparation',mix(884,794,out(.5,2.3,t)),145+6*Math.sin(t),288,sm(.5,1.2,t)*.44,0,null,3);
+photo('next-step',mix(742,766,out(.8,2.3,t)),496-12*p,360,sm(.8,1.4,t)*.68,24,null,13);
+tracking('LIFE, IN FOCUS',82,184,12,C.blue,3,sm(.12,.6,t));reveal('Life is full.',76,234,74,C.white,t,.2,500);reveal('Your next step is clear.',78,331,48,C.muted,t,.75,400);ctx.save();ctx.globalAlpha=sm(1.2,1.8,t);text('Bring what matters back into focus.',82,440,21,C.muted,400);ctx.restore();
+}
+function overview(t){let p=out(.05,.95,t);let w=318;let x=mix(920,828,p),y=mix(147,136,p)-3*t;photo('overview-detail',x,y,w,1,42,null,12);ring(x-9,y-9,w+18,w*496/390+18,19,C.blue,.15);tracking('YOUR MOMENTS',82,170,12,C.blue,2.6);reveal('Your life events.',78,220,55,C.white,t,.14);reveal('No longer scattered.',78,300,55,C.white,t,.33);ctx.save();ctx.globalAlpha=sm(.8,1.3,t);text('See what needs attention from one clear overview.',83,411,19,C.muted,400);ctx.restore();
+let q=sm(1.35,2.35,t);if(q>0){let cx=x+20*w/390,cy=y+240*w/390;photo('travel-card',mix(cx,690,q),mix(cy,306,q),mix(350*w/390,400,q),q,35,null,16);line(552,468,655,468,C.blue,q*.45);ctx.save();ctx.globalAlpha=q;text('Family trip to Okinawa',550,496,15,C.muted,400);ctx.restore()}}
+function preparation(t){tracking('PREPARATION, AT A GLANCE',81,141,12,C.blue,2.6);reveal("See what's ready at a glance.",77,187,51,C.white,t,.08);
+const cats=['PLAN','TRANSPORT','STAY'];const cols=[C.amber,C.green,C.green];
+for(let i=0;i<3;i++){const p=out(.34+i*.17,1.2+i*.17,t),x=90+i*374,y=328+mix(68,0,p);ctx.save();ctx.globalAlpha=sm(.28+i*.17,.8+i*.17,t);tracking(`0${i+1}`,x,291,11,C.quiet,1.7);tracking(cats[i],x+194,291,10,C.muted,1.4);// Editorial annotations, not native app controls.
+plate(x,y,304,144,20,'#192233',1,26);ring(x,y,304,144,20,cols[i],.5*sm(.7+i*.27,1.1+i*.27,t),1.2);ctx.save();ctx.fillStyle=cols[i];ctx.beginPath();ctx.arc(x+30,y+72,4,0,Math.PI*2);ctx.fill();text(['1 item to plan','Transport confirmed','Stay confirmed'][i],x+48,y+52,i===1?23:27,C.white,400);ctx.restore();ctx.restore();}
+ctx.save();ctx.globalAlpha=sm(1.5,2.1,t);text("What needs work and what's confirmed stay distinct.",640,536,23,C.muted,400,'center');ctx.restore();
+}
+function confirmed(t){tracking('KEEP WHAT IS CONFIRMED',82,171,12,C.blue,2.3);reveal("Keep what's",78,224,61,C.white,t,.08);reveal('confirmed.',78,305,61,C.white,t,.28);ctx.save();ctx.globalAlpha=sm(.85,1.35,t);text('No more searching for important details.',82,418,21,C.muted,400);ctx.restore();
+const p=out(.05,1.05,t),x=612,y=290+mix(48,0,p);// Large-format editorial quote of the accepted fact from the Figma source.
+plate(x,y,576,143,21,'#192233',1,42);text('CONFIRMED',x+28,y+23,13,C.muted,500);text('Flight, pickup and check-in details saved.',x+28,y+65,23,C.white,400);ring(x-8,y-8,592,159,29,C.blue,.2);tracking('FAMILY TRIP TO OKINAWA',x+4,251,11,C.muted,1.7,.7);
+const labels=['Flight','Pickup','Check-in'];for(let i=0;i<3;i++){let q=out(1.1+i*.2,1.8+i*.2,t);ctx.save();ctx.globalAlpha=q;let lx=622+i*192,ly=483+18*(1-q);line(lx+76,y+160,lx+76,ly-14,C.line,.65);ring(lx,ly,174,54,27,C.line,.9);text(labels[i],lx+87,ly+15,18,C.blue,400,'center');ctx.restore()}}
+function action(t){tracking('ONE CLEAR NEXT STEP',82,143,12,C.blue,2.9);reveal('One clear next step.',78,193,61,C.white,t,.1);let p=out(.32,1.18,t),w=mix(792,872,p),x=(W-w)/2,y=362+mix(54,0,p)-2*t;
+photo('next-step',x,y,w,sm(.22,.7,t),50,null,w/318*12);ring(x-9,y-9,w+18,w*66/318+18,42,C.blue,.22*sm(.5,1.2,t));
+const k=sm(1.2,2.4,t);line(x+34,y+w*66/318+37,x+34+480*k,y+w*66/318+37,C.blue,.48,1.4);ctx.save();ctx.globalAlpha=sm(1.3,1.8,t);text('Know what to do next, then keep moving.',640,593,22,C.muted,400,'center');ctx.restore();
+}
+function gallery(t){tracking('FROM CONTEXT TO ACTION',82,140,12,C.blue,2.7);reveal('From preparation to clear action.',77,183,49,C.white,t,.06);
+let p=out(.15,1.1,t);photo('overview-detail',122+mix(-48,0,p),281,239,sm(.1,.65,t),24,null,9);photo('travel-card',448,334+mix(44,0,p),343,sm(.32,.84,t),28,null,15);photo('next-step',851+mix(60,0,p),401,322,sm(.54,1.08,t),30,null,12);
+for(let i=0;i<2;i++){let q=sm(.7+i*.25,1.3+i*.25,t);line(390+i*410,432,418+i*410,432,C.blue,.5*q);line(412+i*410,428,418+i*410,432,C.blue,.5*q);line(412+i*410,436,418+i*410,432,C.blue,.5*q)}
+const x=[240,620,1012],labels=['See the moment','Keep confirmed','Focus next'];for(let i=0;i<3;i++){ctx.save();ctx.globalAlpha=sm(1+i*.12,1.5+i*.12,t);tracking(`0${i+1}`,x[i]-11,604,10,C.quiet,1);text(labels[i],x[i],627,17,C.muted,400,'center');ctx.restore()}}
+function outro(t){const p=out(.05,1,t);ctx.save();ctx.globalAlpha=p;let g=ctx.createRadialGradient(640,329,0,640,329,420);g.addColorStop(0,'#7888b114');g.addColorStop(1,'#0000');ctx.fillStyle=g;ctx.fillRect(150,0,980,720);text('Moment',640,247+22*(1-p),133,C.white,500,'center',LATIN);ctx.restore();line(609,423,609+62*sm(.35,1.25,t),423,C.blue,.78,2);ctx.save();ctx.globalAlpha=sm(.55,1.3,t);text('One clear next step.',640,460,35,C.white,400,'center');tracking('LIFE, IN FOCUS',536,526,12,C.muted,2.5);ctx.restore();ctx.save();ctx.globalAlpha=sm(.85,1.5,t)*.6;tracking('UI DESIGN CONCEPT · NOT APP FOOTAGE',80,665,10,C.quiet,1.3);text('timyeou.com',1200,664,12,C.muted,400,'right',LATIN);ctx.restore()}
+function full(t){background(t);section(t,-.4,3.32,intro);section(t,2.94,6.68,overview);section(t,6.30,10.38,preparation);section(t,10,14.48,confirmed);section(t,14.10,18.82,action);section(t,18.44,22.02,gallery);
+if(t>21.64){ctx.save();ctx.globalAlpha=sm(21.64,22.06,t);outro(t-21.64);ctx.restore()}
+let label=t<2.94?'01 / LIFE EVENTS':t<6.3?'02 / OVERVIEW':t<10?'03 / PREPARATION':t<14.1?'04 / CONFIRMED':t<18.44?'05 / NEXT STEP':'06 / TO ACTION';chrome(t,label);
+}
+function loop(t){let phase=(1-Math.cos(t*Math.PI*2/12))/2; background(2.8+Math.sin(t*Math.PI*2/12)*1.2);text('Moment',78,44,22,C.white,500,'left',LATIN);tracking('LIFE, IN FOCUS',970,51,10,C.muted,2.1,.65);line(78,94,1202,94,C.line,.35);tracking('ONE CLEAR NEXT STEP',81,188,12,C.blue,2.5);text('Life is full.',77,239,65,C.white,500);text('Your next step is clear.',79,334,48,C.white,400);text("From preparation to what's confirmed.",82,436,21,C.muted,400);
+let ox=850-38*phase,oy=142+8*Math.sin(t*Math.PI*2/12),ow=286;photo('overview-detail',ox,oy,ow,1-.28*phase,32,null,10);let cx=ox+20*ow/390,cy=oy+240*ow/390;photo('travel-card',mix(cx,687,phase),mix(cy,311,phase),mix(350*ow/390,405,phase),1,35,null,16);ctx.save();ctx.globalAlpha=.68;tracking('ANIMATED UI DESIGN CONCEPT',82,664,9,C.quiet,1.25);ctx.restore();}
+window.renderFrame=(f,version='main')=>{if(!window.__loaded)throw Error('assets not loaded');ctx.globalAlpha=1;let d=version==='loop'?12:24,t=clamp(f/FPS,0,d);version==='loop'?loop(t):full(t);return true};
+window.getSpec=()=>({width:1920,height:1080,fps:FPS,duration:DURATION,loopDuration:12,images:files.map(n=>({name:n,w:images[n].naturalWidth,h:images[n].naturalHeight}))});
+Promise.all(files.map(name=>new Promise((res,rej)=>{let i=new Image();i.onload=()=>{images[name]=i;res()};i.onerror=()=>rej(Error(name));i.src=`assets/${name}.png`;}))).then(async()=>{await document.fonts.load(`500 65px ${NATIVE}`);await document.fonts.load(`500 90px ${LATIN}`);await document.fonts.ready;const g=document.createElement('canvas');g.width=160;g.height=160;const gc=g.getContext('2d'),id=gc.createImageData(160,160);let seed=1924;for(let i=0;i<id.data.length;i+=4){seed=(Math.imul(seed,1664525)+1013904223)>>>0;let b=(seed>>>24);id.data[i]=id.data[i+1]=id.data[i+2]=b;id.data[i+3]=255}gc.putImageData(id,0,0);grain=ctx.createPattern(g,'repeat');window.__loaded=true;renderFrame(65);});
+</script></body></html>

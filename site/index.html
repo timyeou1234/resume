@@ -124,10 +124,10 @@
     <section class="featured section" id="work">
       <div class="section-heading compact" data-reveal>
         <p class="kicker">SELECTED SYSTEMS</p>
-        <h2 data-en="Three expressions of one idea." data-zh="同一個理念的三種實踐。">Three expressions of one idea.</h2>
+        <h2 data-en="Four expressions of one idea." data-zh="同一個理念的四種實踐。">Four expressions of one idea.</h2>
       </div>
 
-      <article class="case-study case-moment" data-case="moment">
+      <article class="case-study case-video case-moment" data-case="moment">
         <div class="case-copy">
           <div class="case-meta" data-reveal><span>01</span><span data-en="AI-assisted product · In development" data-zh="AI 輔助產品 · 開發中">AI-assisted product · In development</span></div>
           <h3 data-reveal>Moment OS</h3>
@@ -143,17 +143,65 @@
             <li>React Native</li><li>Expo</li><li>TypeScript</li><li>Local-first</li><li>Figma</li>
           </ul>
         </div>
-        <figure class="case-visual project-shot moment-ui" data-reveal>
-          <div class="project-shot-frame project-shot-frame-phone">
-            <img class="project-shot-image" src="./assets/moments-demo.png" alt="Current Moments overview showing active and waiting life events" width="390" height="844" loading="lazy" decoding="async">
+        <figure class="case-visual project-shot project-video-showcase" data-project-video="moment" data-project-title="Moment" data-reveal>
+          <div class="project-video-frame">
+            <video id="moment-loop" class="project-loop-video" width="1920" height="1080" muted loop playsinline preload="none" data-src-en="./assets/products/moment/loop-en-v5.mp4" data-src-zh="./assets/products/moment/loop-zh-v5.mp4" data-poster-en="./assets/products/moment/poster-en-v5.jpg" data-poster-zh="./assets/products/moment/poster-zh-v5.jpg" data-aria-en="Moment product film preview in English" data-aria-zh="Moment 產品影片繁體中文預覽" aria-label="Moment product film preview in English" aria-describedby="moment-loop-caption moment-loop-status"></video>
+            <span class="project-loading-label" aria-hidden="true" data-en="Loading preview…" data-zh="載入預覽中…">Loading preview…</span>
+            <button class="project-loop-toggle" type="button" aria-controls="moment-loop">
+              <span class="project-control-icon" aria-hidden="true">▶</span>
+              <span class="project-control-label" data-en="Play preview" data-zh="播放預覽">Play preview</span>
+            </button>
           </div>
-          <figcaption data-en="Moment · Current Moments overview and next actions" data-zh="Moment · 最新 Moments 總覽與下一步行動">Moment · Current Moments overview and next actions</figcaption>
+          <div class="project-video-actions">
+            <a id="moment-film-open" class="project-film-link" href="./assets/products/moment/film-en-v5.mp4" data-href-en="./assets/products/moment/film-en-v5.mp4" data-href-zh="./assets/products/moment/film-zh-v5.mp4" target="_blank" rel="noreferrer" aria-haspopup="dialog" aria-controls="project-film-dialog">
+              <span data-en="Watch the full film · 24 sec" data-zh="觀看完整介紹 · 24 秒">Watch the full film · 24 sec</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <figcaption id="moment-loop-caption" data-en="Moment · Product interface and next actions · English film" data-zh="Moment · 產品介面與下一步行動 · 繁體中文影片">Moment · Product interface and next actions · English film</figcaption>
+          <p id="moment-loop-status" class="visually-hidden" aria-live="polite" data-en="The preview loads as it approaches the screen." data-zh="預覽接近畫面時載入。">The preview loads as it approaches the screen.</p>
         </figure>
       </article>
 
-      <article class="case-study case-productdev" data-case="productdev">
+      <article class="case-study case-video case-line" data-case="line-family-translator">
         <div class="case-copy">
-          <div class="case-meta" data-reveal><span>02</span><span data-en="Auto Product · Local-first macOS" data-zh="自動化產品 · Local-first macOS">Auto Product · Local-first macOS</span></div>
+          <div class="case-meta" data-reveal><span>02</span><span data-en="LINE bot · Family translation" data-zh="LINE Bot · 家庭翻譯">LINE bot · Family translation</span></div>
+          <h3 data-reveal data-en="Family LINE Translator" data-zh="家庭 LINE 翻譯 Bot">Family LINE Translator</h3>
+          <p class="case-thesis" data-reveal data-en="Clearer family conversations, across languages." data-zh="讓跨語言的家庭對話更清楚。">Clearer family conversations, across languages.</p>
+          <p data-reveal data-en="A bilingual LINE bot concept for clearer Chinese–Indonesian family conversations. The showcase makes translation direction, context, and reply flow easy to follow while keeping the scripted demonstration distinct from private chat or newly captured model output." data-zh="一個協助中文與印尼文家庭溝通的 LINE 翻譯 Bot 概念。展示清楚呈現翻譯方向、上下文與回覆流程，同時明確區分腳本示意、私人對話與新產生的模型輸出。">
+            A bilingual LINE bot concept for clearer Chinese–Indonesian family conversations. The showcase makes translation direction, context, and reply flow easy to follow while keeping the scripted demonstration distinct from private chat or newly captured model output.
+          </p>
+          <div class="case-role" data-reveal>
+            <span data-en="ROLE" data-zh="角色">ROLE</span>
+            <strong data-en="Creator · Product, conversation design, integration" data-zh="創作者 · 產品、對話設計、整合">Creator · Product, conversation design, integration</strong>
+          </div>
+          <ul class="tag-list" data-reveal>
+            <li>LINE</li><li>Chinese ↔ Indonesian</li><li>Conversation design</li><li>Safety boundaries</li>
+          </ul>
+        </div>
+        <figure class="case-visual project-shot project-video-showcase" data-project-video="line-family-translator" data-project-title-en="Family LINE Translator" data-project-title-zh="家庭 LINE 翻譯 Bot" data-reveal>
+          <div class="project-video-frame">
+            <video id="line-family-translator-loop" class="project-loop-video" width="1920" height="1080" muted loop playsinline preload="none" data-src-en="./assets/products/line-family-translator/loop-en-v6.mp4" data-src-zh="./assets/products/line-family-translator/loop-zh-v6.mp4" data-poster-en="./assets/products/line-family-translator/poster-en-v6.jpg" data-poster-zh="./assets/products/line-family-translator/poster-zh-v6.jpg" data-aria-en="Family LINE Translator product film preview in English" data-aria-zh="家庭 LINE 翻譯 Bot 產品影片繁體中文預覽" aria-label="Family LINE Translator product film preview in English" aria-describedby="line-family-translator-loop-caption line-family-translator-loop-status"></video>
+            <span class="project-loading-label" aria-hidden="true" data-en="Loading preview…" data-zh="載入預覽中…">Loading preview…</span>
+            <button class="project-loop-toggle" type="button" aria-controls="line-family-translator-loop">
+              <span class="project-control-icon" aria-hidden="true">▶</span>
+              <span class="project-control-label" data-en="Play preview" data-zh="播放預覽">Play preview</span>
+            </button>
+          </div>
+          <div class="project-video-actions">
+            <a id="line-family-translator-film-open" class="project-film-link" href="./assets/products/line-family-translator/film-en-v6.mp4" data-href-en="./assets/products/line-family-translator/film-en-v6.mp4" data-href-zh="./assets/products/line-family-translator/film-zh-v6.mp4" target="_blank" rel="noreferrer" aria-haspopup="dialog" aria-controls="project-film-dialog">
+              <span data-en="Watch the full film · 24 sec" data-zh="觀看完整介紹 · 24 秒">Watch the full film · 24 sec</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <figcaption id="line-family-translator-loop-caption" data-en="Family LINE Translator · Scripted Chinese–Indonesian conversation · English film" data-zh="家庭 LINE 翻譯 Bot · 中文與印尼文腳本對話 · 繁體中文影片">Family LINE Translator · Scripted Chinese–Indonesian conversation · English film</figcaption>
+          <p id="line-family-translator-loop-status" class="visually-hidden" aria-live="polite" data-en="The preview loads as it approaches the screen." data-zh="預覽接近畫面時載入。">The preview loads as it approaches the screen.</p>
+        </figure>
+      </article>
+
+      <article class="case-study case-video case-productdev" data-case="productdev">
+        <div class="case-copy">
+          <div class="case-meta" data-reveal><span>03</span><span data-en="Auto Product · Local-first macOS" data-zh="自動化產品 · Local-first macOS">Auto Product · Local-first macOS</span></div>
           <h3 data-reveal>ProductDev</h3>
           <p class="case-thesis" data-reveal data-en="A workbench for automation you can actually trust." data-zh="一個真正可被信任的自動化工作台。">A workbench for automation you can actually trust.</p>
           <p data-reveal data-en="ProductDev observes and safely manages repository automation without taking control from the existing scheduler. GitHub Issues remain the work contract; changes are guarded, previews match the real action, and every supported action leaves a permanent record." data-zh="ProductDev 在不接管既有排程器的前提下，觀察並安全管理 repository automation。GitHub Issues 仍是工作契約；變更受到保護、預覽與實際動作一致，而且每個受支援的動作都會留下永久紀錄。">
@@ -167,17 +215,29 @@
             <li>Swift 6</li><li>Automation</li><li>Typed contracts</li><li>Receipts</li><li>Recovery</li>
           </ul>
         </div>
-        <figure class="case-visual project-shot productdev-ui" data-reveal>
-          <div class="project-shot-frame">
-            <img class="project-shot-image" src="./assets/productdev-figma.svg" alt="ProductDev native monitor dashboard" width="1200" height="750" loading="lazy" decoding="async">
+        <figure class="case-visual project-shot project-video-showcase" data-project-video="productdev" data-project-title="ProductDev" data-reveal>
+          <div class="project-video-frame">
+            <video id="productdev-loop" class="project-loop-video" width="1920" height="1080" muted loop playsinline preload="none" data-src-en="./assets/products/productdev/loop-en-v5.mp4" data-src-zh="./assets/products/productdev/loop-zh-v5.mp4" data-poster-en="./assets/products/productdev/poster-en-v5.jpg" data-poster-zh="./assets/products/productdev/poster-zh-v5.jpg" data-aria-en="ProductDev product film preview in English" data-aria-zh="ProductDev 產品影片繁體中文預覽" aria-label="ProductDev product film preview in English" aria-describedby="productdev-loop-caption productdev-loop-status"></video>
+            <span class="project-loading-label" aria-hidden="true" data-en="Loading preview…" data-zh="載入預覽中…">Loading preview…</span>
+            <button class="project-loop-toggle" type="button" aria-controls="productdev-loop">
+              <span class="project-control-icon" aria-hidden="true">▶</span>
+              <span class="project-control-label" data-en="Play preview" data-zh="播放預覽">Play preview</span>
+            </button>
           </div>
-          <figcaption data-en="ProductDev · Native monitor and observable automation state" data-zh="ProductDev · 原生監控與可觀察的自動化狀態">ProductDev · Native monitor and observable automation state</figcaption>
+          <div class="project-video-actions">
+            <a id="productdev-film-open" class="project-film-link" href="./assets/products/productdev/film-en-v5.mp4" data-href-en="./assets/products/productdev/film-en-v5.mp4" data-href-zh="./assets/products/productdev/film-zh-v5.mp4" target="_blank" rel="noreferrer" aria-haspopup="dialog" aria-controls="project-film-dialog">
+              <span data-en="Watch the full film · 24 sec" data-zh="觀看完整介紹 · 24 秒">Watch the full film · 24 sec</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <figcaption id="productdev-loop-caption" data-en="ProductDev · Observable automation state · English film" data-zh="ProductDev · 可觀察的自動化狀態 · 繁體中文影片">ProductDev · Observable automation state · English film</figcaption>
+          <p id="productdev-loop-status" class="visually-hidden" aria-live="polite" data-en="The preview loads as it approaches the screen." data-zh="預覽接近畫面時載入。">The preview loads as it approaches the screen.</p>
         </figure>
       </article>
 
-      <article class="case-study case-timwork" data-case="timwork">
+      <article class="case-study case-video case-timwork" data-case="timwork">
         <div class="case-copy">
-          <div class="case-meta" data-reveal><span>03</span><span data-en="Tim Work · AI engineering system" data-zh="Tim Work · AI 工程系統">Tim Work · AI engineering system</span></div>
+          <div class="case-meta" data-reveal><span>04</span><span data-en="Tim Work · AI engineering system" data-zh="Tim Work · AI 工程系統">Tim Work · AI engineering system</span></div>
           <h3 class="timwork-title" data-reveal>
             <span data-en="Continuity." data-zh="延續。">Continuity.</span>
             <span data-en="Truth. Pace." data-zh="真實。節奏。">Truth. Pace.</span>
@@ -195,13 +255,49 @@
             <li>Codex skills</li><li>Lifecycle hooks</li><li>Verification</li><li>Observability</li><li>MIT</li>
           </ul>
         </div>
-        <figure class="case-visual project-shot timwork-ui" data-reveal>
-          <div class="project-shot-frame">
-            <img class="project-shot-image" src="./assets/timwork-figma.svg" alt="Codex Handoff continuity screen" width="1200" height="750" loading="lazy" decoding="async">
+        <figure class="case-visual project-shot project-video-showcase" data-project-video="timwork" data-project-title="Tim Work" data-reveal>
+          <div class="project-video-frame">
+            <video id="timwork-loop" class="project-loop-video" width="1920" height="1080" muted loop playsinline preload="none" data-src-en="./assets/products/timwork/loop-en-v5.mp4" data-src-zh="./assets/products/timwork/loop-zh-v5.mp4" data-poster-en="./assets/products/timwork/poster-en-v5.jpg" data-poster-zh="./assets/products/timwork/poster-zh-v5.jpg" data-aria-en="Tim Work product film preview in English" data-aria-zh="Tim Work 產品影片繁體中文預覽" aria-label="Tim Work product film preview in English" aria-describedby="timwork-loop-caption timwork-loop-status"></video>
+            <span class="project-loading-label" aria-hidden="true" data-en="Loading preview…" data-zh="載入預覽中…">Loading preview…</span>
+            <button class="project-loop-toggle" type="button" aria-controls="timwork-loop">
+              <span class="project-control-icon" aria-hidden="true">▶</span>
+              <span class="project-control-label" data-en="Play preview" data-zh="播放預覽">Play preview</span>
+            </button>
           </div>
-          <figcaption data-en="Tim Work · Verified context handoff across agent sessions" data-zh="Tim Work · 跨代理工作階段的已驗證上下文交接">Tim Work · Verified context handoff across agent sessions</figcaption>
+          <div class="project-video-actions">
+            <a id="timwork-film-open" class="project-film-link" href="./assets/products/timwork/film-en-v5.mp4" data-href-en="./assets/products/timwork/film-en-v5.mp4" data-href-zh="./assets/products/timwork/film-zh-v5.mp4" target="_blank" rel="noreferrer" aria-haspopup="dialog" aria-controls="project-film-dialog">
+              <span data-en="Watch the full film · 24 sec" data-zh="觀看完整介紹 · 24 秒">Watch the full film · 24 sec</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <figcaption id="timwork-loop-caption" data-en="Tim Work · Verified context handoff across agent sessions · English film" data-zh="Tim Work · 跨代理工作階段的已驗證上下文交接 · 繁體中文影片">Tim Work · Verified context handoff across agent sessions · English film</figcaption>
+          <p id="timwork-loop-status" class="visually-hidden" aria-live="polite" data-en="The preview loads as it approaches the screen." data-zh="預覽接近畫面時載入。">The preview loads as it approaches the screen.</p>
         </figure>
       </article>
+
+      <dialog id="project-film-dialog" class="project-film-dialog" aria-labelledby="project-film-title" aria-describedby="project-film-description project-film-status">
+        <div class="project-film-shell">
+          <div class="project-film-header">
+            <div>
+              <h3 id="project-film-title">Full introduction</h3>
+              <p id="project-film-description" data-en="24 sec · English product film" data-zh="24 秒 · 繁體中文產品影片">24 sec · English product film</p>
+            </div>
+            <div class="project-film-header-actions">
+              <button class="lang-toggle project-film-lang-toggle" type="button" aria-label="Switch language">
+                <span class="lang-current">EN</span><span aria-hidden="true">／</span><span class="lang-next">中</span>
+              </button>
+              <button class="project-film-close" type="button" data-aria-en="Close full introduction" data-aria-zh="關閉完整介紹" aria-label="Close full introduction">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+          </div>
+          <video id="project-film" class="project-film-video" width="1920" height="1080" controls playsinline preload="none" aria-labelledby="project-film-title" aria-describedby="project-film-description project-film-status"></video>
+          <div class="project-film-footer">
+            <p id="project-film-status" class="project-film-status" aria-live="polite" data-en="Use the player controls for playback, volume, progress, and fullscreen." data-zh="可使用播放器控制播放、音量、進度與全螢幕。">Use the player controls for playback, volume, progress, and fullscreen.</p>
+            <a class="project-film-direct" href="./assets/products/moment/film-en-v5.mp4" target="_blank" rel="noreferrer" data-en="Open the English film directly ↗" data-zh="直接開啟繁體中文影片 ↗">Open the English film directly ↗</a>
+          </div>
+        </div>
+      </dialog>
     </section>
 
     <section class="scale section" id="scale">
