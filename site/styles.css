@@ -1557,6 +1557,31 @@ footer .legal {
   isolation: isolate;
 }
 
+.project-video-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(110deg, #0c0e14 20%, #171b27 38%, #0c0e14 56%);
+  background-size: 220% 100%;
+  opacity: 0.8;
+  transition: opacity 180ms ease;
+}
+
+.project-video-frame.is-poster-loading::before {
+  animation: project-preview-loading 1.35s ease-in-out infinite;
+}
+
+.project-video-frame.has-poster::before,
+.project-video-frame.has-media::before {
+  opacity: 0;
+}
+
+@keyframes project-preview-loading {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
 .project-loop-video,
 .project-film-video {
   display: block;
@@ -1567,6 +1592,8 @@ footer .legal {
 }
 
 .project-loop-video {
+  position: relative;
+  z-index: 1;
   transition: opacity 180ms ease;
 }
 
@@ -1574,9 +1601,34 @@ footer .legal {
   opacity: 0;
 }
 
+.project-loading-label {
+  position: absolute;
+  z-index: 1;
+  inset: 50% auto auto 50%;
+  max-width: calc(100% - 2rem);
+  color: rgba(238, 244, 255, 0.58);
+  font-family: ui-monospace, monospace;
+  font-size: clamp(0.62rem, 1.1vw, 0.75rem);
+  letter-spacing: 0.08em;
+  pointer-events: none;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  transition: opacity 180ms ease;
+  white-space: nowrap;
+}
+
+.project-video-frame.has-poster .project-loading-label,
+.project-video-frame.has-media .project-loading-label {
+  opacity: 0;
+}
+
+.project-video-frame.is-poster-unavailable .project-loading-label {
+  white-space: normal;
+}
+
 .project-loop-toggle {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   left: clamp(0.65rem, 1.5vw, 1.1rem);
   bottom: clamp(0.65rem, 1.5vw, 1.1rem);
   min-height: 2.75rem;
@@ -2116,6 +2168,9 @@ body.project-dialog-open {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .project-video-frame.is-poster-loading::before {
+    animation: none;
+  }
   html {
     scroll-behavior: auto;
   }

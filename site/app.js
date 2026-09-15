@@ -92,6 +92,7 @@
     var returnFocus = null;
 
     var loopMessages = {
+      waiting: { en: "The preview loads as it approaches the screen.", zh: "預覽接近畫面時載入。" },
       ready: { en: "Preview ready.", zh: "預覽已就緒。" },
       playing: { en: "Preview playing.", zh: "預覽播放中。" },
       paused: { en: "Preview paused.", zh: "預覽已暫停。" },
@@ -99,6 +100,10 @@
       saveData: { en: "Data Saver is on. Play the preview to load it.", zh: "已啟用數據節省，可手動載入並播放預覽。" },
       blocked: { en: "Playback did not start. Use the play button to try again.", zh: "瀏覽器未開始播放，請使用播放按鈕重試。" },
       error: { en: "This preview is unavailable. The full film link remains available.", zh: "此預覽目前無法播放，仍可使用完整影片連結。" }
+    };
+    var frameMessages = {
+      loading: { en: "Loading preview…", zh: "載入預覽中…" },
+      unavailable: { en: "Preview cover unavailable", zh: "預覽封面無法載入" }
     };
     var filmMessages = {
       controls: { en: "Use the player controls for playback, volume, progress, and fullscreen.", zh: "可使用播放器控制播放、音量、進度與全螢幕。" },
@@ -123,12 +128,57 @@
       return "url('" + path.replace(/'/g, "%27") + "')";
     }
 
-    function setPoster(controller, language) {
+    function clearPoster(controller) {
+      controller.posterGeneration += 1;
+      if (controller.posterImage) {
+        controller.posterImage.onload = null;
+        controller.posterImage.onerror = null;
+      }
+      controller.posterImage = null;
+      controller.posterLanguage = null;
+      controller.loopVideo.removeAttribute("poster");
+      controller.loopVideo.style.backgroundImage = "";
+      controller.loopFrame.style.backgroundImage = "";
+      controller.loopFrame.classList.remove("has-poster", "has-media", "is-poster-loading", "is-poster-unavailable");
+      applyMessage(controller.loadingLabel, frameMessages, "loading");
+    }
+
+    function loadPoster(controller, language) {
       var poster = mediaPath(controller.loopVideo, "poster", language);
       if (!poster) return;
-      controller.loopVideo.setAttribute("poster", poster);
-      controller.loopVideo.style.backgroundImage = backgroundImage(poster);
-      controller.loopFrame.style.backgroundImage = backgroundImage(poster);
+      if (controller.posterLanguage === language &&
+          (controller.loopFrame.classList.contains("has-poster") || controller.posterImage)) return;
+
+      controller.posterGeneration += 1;
+      var generation = controller.posterGeneration;
+      var image = new Image();
+      controller.posterImage = image;
+      controller.posterLanguage = language;
+      controller.loopFrame.classList.remove("is-poster-unavailable");
+      controller.loopFrame.classList.add("is-poster-loading");
+      applyMessage(controller.loadingLabel, frameMessages, "loading");
+      image.decoding = "async";
+      image.fetchPriority = controller.inViewport ? "high" : "low";
+      image.onload = function () {
+        if (generation !== controller.posterGeneration || language !== currentLanguage) return;
+        controller.posterImage = null;
+        controller.loopVideo.setAttribute("poster", poster);
+        controller.loopVideo.style.backgroundImage = backgroundImage(poster);
+        controller.loopFrame.style.backgroundImage = backgroundImage(poster);
+        controller.loopFrame.classList.remove("is-poster-loading", "is-poster-unavailable");
+        controller.loopFrame.classList.add("has-poster");
+        if (!controller.loopVideo.getAttribute("src") && !reducedMotion.matches && !saveData && !controller.userPaused) {
+          setLoopStatus(controller, "ready");
+        }
+      };
+      image.onerror = function () {
+        if (generation !== controller.posterGeneration || language !== currentLanguage) return;
+        controller.posterImage = null;
+        controller.loopFrame.classList.remove("is-poster-loading");
+        controller.loopFrame.classList.add("is-poster-unavailable");
+        applyMessage(controller.loadingLabel, frameMessages, "unavailable");
+      };
+      image.src = poster;
     }
 
     function unloadVideo(video) {
@@ -163,6 +213,7 @@
     function loadLoop(controller, forceReload) {
       var language = currentLanguage;
       if (!forceReload && controller.loopLanguage === language && controller.loopVideo.getAttribute("src")) return;
+      loadPoster(controller, language);
       controller.loadGeneration += 1;
       controller.loopVideo.classList.remove("is-unavailable");
       controller.loopVideo.preload = "metadata";
@@ -220,7 +271,7 @@
     function applyControllerLanguage(controller, language) {
       controller.loadGeneration += 1;
       pauseLoop(controller);
-      setPoster(controller, language);
+      clearPoster(controller);
       controller.loopVideo.classList.toggle("is-unavailable", controller.failedLanguages[language]);
       unloadVideo(controller.loopVideo);
       controller.loopLanguage = null;
@@ -229,9 +280,10 @@
       if (controller.failedLanguages[language]) setLoopStatus(controller, "error");
       else if (reducedMotion.matches) setLoopStatus(controller, "reduced");
       else if (saveData) setLoopStatus(controller, "saveData");
-      else setLoopStatus(controller, controller.userPaused ? "paused" : "ready");
+      else setLoopStatus(controller, controller.userPaused ? "paused" : controller.posterNearViewport ? "ready" : "waiting");
       setLoopControl(controller);
 
+      if (controller.posterNearViewport) loadPoster(controller, language);
       if (controller.nearViewport && !saveData && !controller.failedLanguages[language]) loadLoop(controller, false);
       if (canAutoPlay(controller)) tryLoopPlay(controller, false);
     }
@@ -303,17 +355,22 @@
         loopIcon: showcase.querySelector(".project-control-icon"),
         loopLabel: showcase.querySelector(".project-control-label"),
         loopStatus: showcase.querySelector("[aria-live]"),
+        loadingLabel: showcase.querySelector(".project-loading-label"),
         loopFrame: showcase.querySelector(".project-video-frame"),
         filmLink: showcase.querySelector(".project-film-link"),
+        posterNearViewport: false,
         nearViewport: false,
         inViewport: false,
         userPaused: false,
         autoplayBlocked: false,
         loopLanguage: null,
         loadGeneration: 0,
+        posterGeneration: 0,
+        posterLanguage: null,
+        posterImage: null,
         failedLanguages: { en: false, zh: false }
       };
-      if (!controller.loopVideo || !controller.loopButton || !controller.loopFrame || !controller.filmLink) return;
+      if (!controller.loopVideo || !controller.loopButton || !controller.loadingLabel || !controller.loopFrame || !controller.filmLink) return;
       controllers.push(controller);
 
       controller.loopButton.addEventListener("click", function () {
@@ -335,6 +392,11 @@
       controller.loopVideo.addEventListener("canplay", function () {
         if (controller.loopLanguage === currentLanguage && canAutoPlay(controller)) tryLoopPlay(controller, false);
       });
+      controller.loopVideo.addEventListener("loadeddata", function () {
+        if (controller.loopLanguage !== currentLanguage) return;
+        controller.loopFrame.classList.remove("is-poster-loading", "is-poster-unavailable");
+        controller.loopFrame.classList.add("has-media");
+      });
       controller.loopVideo.addEventListener("error", function () {
         var failedLanguage = controller.loopLanguage;
         if (!failedLanguage || !controller.loopVideo.getAttribute("src")) return;
@@ -348,10 +410,17 @@
       });
 
       if ("IntersectionObserver" in window) {
+        var posterObserver = new IntersectionObserver(function (entries) {
+          var entry = entries[0];
+          controller.posterNearViewport = Boolean(entry && entry.isIntersecting);
+          if (controller.posterNearViewport) loadPoster(controller, currentLanguage);
+        }, { rootMargin: "640px 0px", threshold: 0 });
+        posterObserver.observe(controller.loopFrame);
+
         var loadObserver = new IntersectionObserver(function (entries) {
           controller.nearViewport = entries.some(function (entry) { return entry.isIntersecting; });
           if (controller.nearViewport && !saveData && !controller.failedLanguages[currentLanguage]) loadLoop(controller, false);
-        }, { rootMargin: "280px 0px", threshold: 0 });
+        }, { rootMargin: "240px 0px", threshold: 0 });
         loadObserver.observe(controller.loopFrame);
 
         var playbackObserver = new IntersectionObserver(function (entries) {
@@ -361,6 +430,9 @@
           else pauseLoop(controller);
         }, { threshold: [0, 0.35, 0.65] });
         playbackObserver.observe(controller.loopFrame);
+      } else {
+        controller.posterNearViewport = true;
+        loadPoster(controller, currentLanguage);
       }
     });
 

@@ -138,7 +138,15 @@ const portfolioFiles = fs.readdirSync(portfolio, { recursive: true, withFileType
 if (portfolioFiles.some((file) => file.endsWith(".pdf") || file.endsWith("resume.md") || file.endsWith("resume.html"))) {
   errors.push("Cloudflare portfolio bundle must not contain resume documents");
 }
-const allowedPortfolioFiles = ["app.js", "index.html", "styles.css", ...mediaAssets].sort();
+const headers = fs.readFileSync(path.join(site, "_headers"), "utf8");
+if (!headers.includes("/assets/products/*") ||
+    !headers.includes("Cache-Control: public, max-age=31556952, immutable")) {
+  errors.push("Versioned product media must use an explicit immutable cache policy");
+}
+if (fs.readFileSync(path.join(portfolio, "_headers"), "utf8") !== headers) {
+  errors.push("Cloudflare portfolio bundle has a different _headers policy");
+}
+const allowedPortfolioFiles = ["_headers", "app.js", "index.html", "styles.css", ...mediaAssets].sort();
 if (JSON.stringify(portfolioFiles) !== JSON.stringify(allowedPortfolioFiles)) {
   errors.push(`Cloudflare portfolio bundle differs from the explicit allowlist: ${portfolioFiles.join(", ")}`);
 }
@@ -147,7 +155,7 @@ if (portfolioFiles.some((file) => /(?:source-notes|qa\/|viewer|\.zip$)/i.test(fi
 }
 
 const app = fs.readFileSync(path.join(site, "app.js"), "utf8");
-for (const behavior of ["IntersectionObserver", "visibilitychange", "saveData", "showModal", "mediaPath"]) {
+for (const behavior of ["IntersectionObserver", "visibilitychange", "saveData", "showModal", "mediaPath", "loadPoster"]) {
   if (!app.includes(behavior)) errors.push(`Side-project media behavior is missing: ${behavior}`);
 }
 
