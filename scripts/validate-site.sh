@@ -43,8 +43,8 @@ const requiredText = [
   "Scope &amp; technical assessment",
   "App development &amp; improvements",
   "LINE bots &amp; workflow integration",
-  "Life &amp; travel planning",
-  "生活事項與行程整理",
+  "Independent app · Preparing for launch",
+  "自有 App · 準備推出",
   "Family LINE Translator",
   "Development task monitoring",
   "開發任務監控",
@@ -52,7 +52,7 @@ const requiredText = [
   "跨專案任務與交接管理",
   "個人自用工具",
   "Family trial",
-  "not client commissions or products for sale",
+  "not client commissions",
   "依約定條件驗收"
 ];
 for (const text of requiredText) {
@@ -64,7 +64,7 @@ for (const text of retiredText) {
   if (html.includes(text)) errors.push(`Retired portfolio text remains: ${text}`);
 }
 
-// Keep opaque media keys/paths stable, but do not market self-use tools by internal names.
+// Keep media keys stable. Moment is a branded launch-bound app, not a self-use tool.
 const displayCopy = [
   ...[...html.matchAll(/>([^<>]+)</g)].map((match) => match[1]),
   ...[...html.matchAll(/\s(?:data-(?:en|zh|aria-en|aria-zh|project-title(?:-en|-zh)?)|aria-label)="([^"]*)"/g)].map((match) => match[1])
@@ -74,7 +74,22 @@ for (const text of ["Moment OS", "ProductDev", "Tim Work", "Context Handoff", "T
   "Product clarity before model cleverness", "A bilingual LINE bot concept"]) {
   if (displayCopy.includes(text)) errors.push(`Retired marketing copy remains: ${text}`);
 }
-for (const project of ["moment", "productdev", "timwork"]) {
+const momentArticle = html.match(/<article[^>]*data-case="moment"[^>]*>([\s\S]*?)<\/article>/);
+if (!momentArticle || !/<h3\b[^>]*>Moment<\/h3>/.test(momentArticle[1])) {
+  errors.push("Moment must retain its app brand as the project heading");
+}
+for (const language of ["en", "zh"]) {
+  if (!momentArticle || !momentArticle[1].includes(`data-project-title-${language}="Moment"`)) {
+    errors.push(`Moment must retain its brand in the ${language} player title`);
+  }
+}
+if (momentArticle && /Personal tool|個人自用工具|not a public service|非公開服務|not for sale|非對外販售/i.test(momentArticle[1])) {
+  errors.push("Moment must not be classified as a personal-only tool or a non-public-service project");
+}
+for (const text of ["not client commissions or products for sale", "不是客戶委託案，也不是對外販售的產品"]) {
+  if (displayCopy.includes(text)) errors.push("Do not apply a personal-only or not-for-sale disclaimer to every project");
+}
+for (const project of ["productdev", "timwork"]) {
   const article = html.match(new RegExp(`<article[^>]*data-case="${project}"[^>]*>([\\s\\S]*?)<\\/article>`));
   if (!article || !article[1].includes("Personal tool") || !article[1].includes("個人自用工具")) {
     errors.push(`Personal-use status is missing for ${project}`);
