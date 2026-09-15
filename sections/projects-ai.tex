@@ -1,23 +1,22 @@
-\section{Selected AI Product}
+\section{Selected AI Projects}
 
-\resumeRole{Moments}{In Development}{AI-Native Planning Product}{React Native, Expo, TypeScript}
+\resumeRole{Moment}{In Development}{AI-Powered Planning App}{Swift, SwiftUI, TypeScript}
 \begin{itemize}
-  \resumeBullet{Building an iOS-first product that turns natural-language intentions into typed, editable preparation plans through structured AI interpretation and validated schemas.}
-  \resumeBullet{Keeping model output provisional and separate from saved application data; only explicit user review and confirmation can persist a plan.}
-  \resumeBullet{Designing loading, cancellation, retry, fallback, and recovery states so AI failures preserve manual input and the complete non-AI path.}
-  \resumeBullet{Using scenario-based validation to check structured-output correctness, ambiguity handling, fallback behavior, and user-trust boundaries.}
+  \resumeBullet{Building a native iOS app that turns requests such as planning a birthday into editable preparation plans.}
+  \resumeBullet{Built a private prototype that saves the original request locally and shows AI output for review. Users can still save their input when AI is unavailable.}
+  \resumeBullet{Developing schema validation and scenario-based checks for ambiguous requests, user confirmation, retries, and recovery before release.}
 \end{itemize}
 
-\section{AI Engineering Tools}
-
-\resumeRole{Tim Work}{Open Source}{Agent Workflow Tooling}{Codex Skills, Lifecycle Hooks}
+\resumeRole{LINE-Based Family Translator}{Private Pilot}{Chinese-Indonesian Translation}{Cloudflare Workers, D1, Local LLM}
 \begin{itemize}
-  \resumeBullet{Created Context Handoff, Task ETA Tracker, and Moment Monitor to preserve acceptance criteria, forecast progress from observable milestones, and expose read-only live agent state.}
-  \resumeBullet{Added explicit approval boundaries, verification, progress visibility, and recovery paths so long-running AI-assisted work remains reviewable and reliable.}
+  \resumeBullet{Built a LINE bot for Chinese-Indonesian family communication; tested both directions in live private messages and confirmed the first family-group translation.}
+  \resumeBullet{Connected Cloudflare Workers and D1 to a local LLM gateway; added webhook signature checks, message deduplication, and daily request limits.}
+  \resumeBullet{Used 100 development cases to refine prompts, then evaluated a separate 40-case holdout set. Native-speaker review and always-on operation are still pending.}
 \end{itemize}
 
-\resumeRole{ProductDev}{In Development}{Local Automation Workbench}{Swift 6, macOS, GitHub}
+\resumeRole{Development Task \& Handoff Tools}{Personal Tooling}{Local Sandbox}{CLI, HTTP, MCP, macOS}
 \begin{itemize}
-  \resumeBullet{Building a local-first macOS workbench that observes repository automation through native Monitor, Runs, health, and recovery views.}
-  \resumeBullet{Keeping GitHub Issues and the existing scheduler authoritative while guarded actions, exact dry-runs, and durable receipts make automation reviewable and recoverable.}
+  \resumeBullet{Built CLI, HTTP, and MCP access to a shared local ticket store, with create, edit, recoverable delete, and restore operations.}
+  \resumeBullet{Added revision and digest checks to reject stale edits, idempotency keys to prevent duplicate writes, and an audit history for recovering earlier ticket content.}
+  \resumeBullet{Created tools to carry task context between agent sessions and inspect run status. Ticket editing does not start or control production workers.}
 \end{itemize}
