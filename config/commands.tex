@@ -3,12 +3,12 @@
 \newcommand{\ResumePhone}{+886 929070110}
 \newcommand{\ResumePhoneURL}{tel:+886929070110}
 \newcommand{\ResumeEmail}{timyeou1234@hotmail.com}
-\newcommand{\ResumeLinkedIn}{LinkedIn}
+\newcommand{\ResumeLinkedIn}{LinkedIn: linkedin.com/in/timothy-yeou-0134a9117}
 \newcommand{\ResumeLinkedInURL}{https://www.linkedin.com/in/timothy-yeou-0134a9117}
-\newcommand{\ResumeGitHub}{GitHub}
+\newcommand{\ResumeGitHub}{GitHub: github.com/timyeou1234}
 \newcommand{\ResumeGitHubURL}{https://github.com/timyeou1234}
-\newcommand{\ResumeWebsite}{}
-\newcommand{\ResumeWebsiteURL}{}
+\newcommand{\ResumeWebsite}{Portfolio: timyeou.com}
+\newcommand{\ResumeWebsiteURL}{https://timyeou.com/}
 \newcommand{\TargetCompany}{}
 \newcommand{\ResumeTagline}{Senior iOS Engineer}
 
@@ -35,7 +35,7 @@
     \href{mailto:\ResumeEmail}{\ResumeEmail}\\[-1pt]
     \href{\ResumeLinkedInURL}{\ResumeLinkedIn} \enspace|\enspace
     \href{\ResumeGitHubURL}{\ResumeGitHub}%
-    \ifx\ResumeWebsite\empty\else
+    \if\relax\expandafter\detokenize\expandafter{\ResumeWebsite}\relax\else
       \enspace|\enspace \href{\ResumeWebsiteURL}{\ResumeWebsite}%
     \fi
   \end{center}

@@ -79,8 +79,17 @@ Avoid generic phrases when a concrete description is available:
 - Prefer named features, user actions, technical problems, and verified results over generic claims about reliability or end-to-end delivery.
 - Explain what a validation or recovery mechanism does. Keep useful terms such as idempotency and MCP, but do not stack internal design phrases without context.
 - Preserve pre-launch, private-pilot, and sandbox limits. Editing for natural language must not turn planned work into completed or production work.
-- In the AI / Mobile Product variant, show the actual LinkedIn, GitHub, and portfolio addresses as text as well as clickable links. Do not rely on PDF annotations alone.
+- In every PDF variant and the readable Markdown resume, show the actual LinkedIn, GitHub, and portfolio addresses as text as well as clickable links. Keep shared PDF defaults in `config/commands.tex`; do not rely on annotations alone.
 - Review for clarity and factual support, not an AI-detector score. Do not introduce mistakes, remove useful keywords, or hide AI experience to make the prose appear human-written.
+
+## Cross-variant consistency
+
+- Employer names, employment dates, education, approximate scale, technology ownership, and pre-launch status must agree across every version.
+- The 10+ years statement describes the mobile career, not 10+ years of React Native or blockchain specialization. Keep the pre-launch Cronos experience distinct from production Onchain work.
+- Apply confirmed production diagnostics and analytics experience to the non-AI variants as relevant mobile experience; do not imply that every listed tool serves the same purpose.
+- Keep headlines, summary emphasis, skill ordering, AI workflow detail, and project selection audience-specific. Do not copy the entire AI projects section into every version.
+- Lead the AI variant's employer section with delivered product work, not with the use of AI tools. Keep shared development methods distinct from individual product phases.
+- Treat `source/resume.md` as published copy too: synchronize project names, readable links, and corrections there, while retaining additional factual detail.
 
 ## Metrics
 

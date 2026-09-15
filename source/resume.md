@@ -1,13 +1,11 @@
 # Timothy Yu
 
 **Senior iOS Engineer**  
-Taiwan · [+886 929070110](tel:+886929070110) · [timyeou1234@hotmail.com](mailto:timyeou1234@hotmail.com) · [GitHub](https://github.com/timyeou1234) · [LinkedIn](https://www.linkedin.com/in/timothy-yeou-0134a9117)
+Taiwan · [+886 929070110](tel:+886929070110) · [timyeou1234@hotmail.com](mailto:timyeou1234@hotmail.com) · [GitHub: github.com/timyeou1234](https://github.com/timyeou1234) · [LinkedIn: linkedin.com/in/timothy-yeou-0134a9117](https://www.linkedin.com/in/timothy-yeou-0134a9117) · [Portfolio: timyeou.com](https://timyeou.com/)
 
 ## Summary
 
-Senior iOS Engineer with 10+ years delivering self-custodial wallets, real-time betting products, and connected vehicle applications.
-
-Experienced in owning features from product and API discussions through implementation and production support.
+Senior iOS engineer with 10+ years in mobile development. Built self-custodial wallet, real-time betting, and connected vehicle features from product and API discussions through production support. Additional React Native experience on the pre-launch Cronos App.
 
 ## Technical Skills
 
@@ -31,7 +29,7 @@ Experienced in owning features from product and API discussions through implemen
 ### Moment — AI-Powered Planning App (In Development)
 
 - Building a native Swift/SwiftUI iOS application that turns natural-language requests, such as planning a birthday, into editable preparation plans. TypeScript supports schema validation and evaluation tooling.
-- Built a bounded private capture-to-review prototype with local persistence and an AI-unavailable path that preserves the user's original input.
+- Built a private prototype that saves the original request locally and shows AI output for review. Users can still save their input when AI is unavailable.
 - Developing schema validation and scenario-based checks for ambiguous requests, user confirmation, retry, and recovery before release. The app owns validation, rendering, persistence, and recovery; the full product remains in development.
 
 ### LINE-Based Family Translator — Chinese-Indonesian Translation (Private Pilot)
@@ -41,10 +39,10 @@ Experienced in owning features from product and API discussions through implemen
 - Evaluated prompts on 100 development cases and a separate 40-case holdout. The holdout run produced 37 translations and 3 clarification responses with no service failures; this is runtime evidence, not a human-validated translation accuracy score.
 - Native-speaker acceptance and always-on operation remain pending. The private pilot depends on a local Mac, its model, and a tunnel.
 
-### AI Development Workflow & Task Tooling (Personal Tooling / Local Sandbox)
+### Development Task & Handoff Tools (Personal Tooling / Local Sandbox)
 
 - Built a shared CLI, HTTP, and Model Context Protocol (MCP) interface for creating, editing, soft-deleting, restoring, and inspecting local work tickets.
-- Added revision and record-digest checks, idempotent writes, and audit history to reject stale edits and preserve recoverable changes. Content writes require explicit opt-in and remain isolated from production worker control.
+- Added revision and digest checks to reject stale edits, idempotency keys to prevent duplicate writes, and an audit history for recovering earlier ticket content. Content writes require explicit opt-in; ticket editing does not start or control production workers.
 - Created companion context-handoff, task-estimation, and read-only run-monitoring tools. The companion tools are public; the sandbox task platform remains personal tooling.
 - The in-development Swift 6/macOS workbench observes existing repository automation and provides health and recovery views. Run monitoring and sandbox ticket editing remain separate responsibilities.
 
@@ -61,6 +59,8 @@ Sep 2024 – Jul 2026
 - Delivered Buy & Swap by extending the existing fiat purchase journey with a user-initiated on-chain swap after the purchased asset reached the wallet.
 - Built and maintained staking flows across major EVM-compatible protocols, covering staking, unstaking, reward claiming, and position management.
 - Worked with Product Managers and Backend Engineers throughout feature planning, API discussions, implementation, and production delivery for a self-custodial wallet serving approximately 20K daily active users.
+
+- Investigated crashes, screen rendering delays, and API latency with Firebase Crashlytics, Firebase Performance, and Datadog; used Segment for analytics and A/B testing.
 
 #### Cronos App (Pre-launch)
 
@@ -88,6 +88,7 @@ Oct 2020 – Apr 2024
 
 - Built real-time betting features for SportyBet, a sports betting platform serving approximately 100K daily active users.
 - Implemented WebSocket synchronization for live odds, open bets, and betting history, and improved subscription management to prevent duplicated updates across multiple betting slips.
+- Investigated production issues using Firebase and Elasticsearch logs.
 - Adapted Android-first product requirements into native iOS flows instead of directly copying the Android implementation.
 - Migrated legacy modules to RxSwift and MVVM to improve maintainability and support ongoing feature development.
 - Built an internal mock server for UI development and automated testing, reviewed pull requests, and mentored junior iOS engineers.

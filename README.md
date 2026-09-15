@@ -26,6 +26,10 @@ connected vehicle applications.
 
 All variants share the same reviewed employment history and education. Their
 summaries, skill ordering, and positioning change for the intended audience.
+Visible contact links and confirmed employment facts are maintained across all
+five versions. AI project selection and the fuller AI-assisted workflow remain
+specific to the AI / Mobile Product version; the four focused variants retain
+their compact professional-experience layout.
 
 Use `ai.pdf` as the starting point for Senior iOS/Mobile and AI-product-team
 applications. Tailor the headline, summary, and project order for a specific role;
