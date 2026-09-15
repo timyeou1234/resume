@@ -2,21 +2,21 @@
 
 \resumeRole{Moment}{In Development}{AI-Powered Planning App}{Swift, SwiftUI, TypeScript}
 \begin{itemize}
-  \resumeBullet{Building a native iOS app that turns natural-language requests, such as planning a birthday, into editable preparation plans.}
-  \resumeBullet{Built a private capture-to-review prototype with local persistence and an AI-unavailable path that preserves the user's original input.}
-  \resumeBullet{Developing schema validation and scenario-based checks for ambiguous requests, user confirmation, retry, and recovery before release.}
+  \resumeBullet{Building a native iOS app that turns requests such as planning a birthday into editable preparation plans.}
+  \resumeBullet{Built a private prototype that saves the original request locally and shows AI output for review. Users can still save their input when AI is unavailable.}
+  \resumeBullet{Developing schema validation and scenario-based checks for ambiguous requests, user confirmation, retries, and recovery before release.}
 \end{itemize}
 
 \resumeRole{LINE-Based Family Translator}{Private Pilot}{Chinese-Indonesian Translation}{Cloudflare Workers, D1, Local LLM}
 \begin{itemize}
-  \resumeBullet{Built a Chinese-Indonesian family translator on LINE; verified live private messages in both directions and a first family-group translation.}
-  \resumeBullet{Integrated Cloudflare Workers and D1 with a local LLM gateway, adding webhook signature checks, message deduplication, and daily request limits.}
-  \resumeBullet{Evaluated prompts on 100 development cases and a separate 40-case holdout; native-speaker acceptance and always-on operation remain pending.}
+  \resumeBullet{Built a LINE bot for Chinese-Indonesian family communication; tested both directions in live private messages and confirmed the first family-group translation.}
+  \resumeBullet{Connected Cloudflare Workers and D1 to a local LLM gateway; added webhook signature checks, message deduplication, and daily request limits.}
+  \resumeBullet{Used 100 development cases to refine prompts, then evaluated a separate 40-case holdout set. Native-speaker review and always-on operation are still pending.}
 \end{itemize}
 
-\resumeRole{AI Development Workflow \& Task Tooling}{Personal Tooling}{Local Sandbox}{CLI, HTTP, MCP, macOS}
+\resumeRole{Development Task \& Handoff Tools}{Personal Tooling}{Local Sandbox}{CLI, HTTP, MCP, macOS}
 \begin{itemize}
-  \resumeBullet{Built a shared CLI, HTTP, and MCP interface for creating, editing, soft-deleting, and restoring local work tickets.}
-  \resumeBullet{Added revision and record-digest checks, idempotent writes, and audit history to reject stale edits and preserve recoverable changes.}
-  \resumeBullet{Built companion context-handoff and run-monitoring tools; ticket writes remain isolated from production worker control.}
+  \resumeBullet{Built CLI, HTTP, and MCP access to a shared local ticket store, with create, edit, recoverable delete, and restore operations.}
+  \resumeBullet{Added revision and digest checks to reject stale edits, idempotency keys to prevent duplicate writes, and an audit history for recovering earlier ticket content.}
+  \resumeBullet{Created tools to carry task context between agent sessions and inspect run status. Ticket editing does not start or control production workers.}
 \end{itemize}

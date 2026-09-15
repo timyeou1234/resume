@@ -61,6 +61,23 @@ for variant in "${expected[@]}"; do
     }
   done
 
+  # Plain-text consumers may discard hyperlink destinations. Keep these
+  # addresses visible in the primary application variant without changing
+  # the contact-label requirements of the other variants.
+  if [[ "$variant" == "ai" ]]; then
+    visible_links=(
+      "linkedin.com/in/timothy-yeou-0134a9117"
+      "github.com/timyeou1234"
+      "timyeou.com"
+    )
+    for link in "${visible_links[@]}"; do
+      grep -Fq "$link" <<<"$text" || {
+        echo "$variant.pdf is missing visible link text: $link" >&2
+        exit 1
+      }
+    done
+  fi
+
   for forbidden in "${forbidden_output[@]}"; do
     if grep -Fq "$forbidden" <<<"$text"; then
       echo "$variant.pdf contains forbidden placeholder or unverified text: $forbidden" >&2

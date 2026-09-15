@@ -74,6 +74,14 @@ Avoid generic phrases when a concrete description is available:
 - Helped with
 - Worked on
 
+## Concrete wording and readable links
+
+- Prefer named features, user actions, technical problems, and verified results over generic claims about reliability or end-to-end delivery.
+- Explain what a validation or recovery mechanism does. Keep useful terms such as idempotency and MCP, but do not stack internal design phrases without context.
+- Preserve pre-launch, private-pilot, and sandbox limits. Editing for natural language must not turn planned work into completed or production work.
+- In the AI / Mobile Product variant, show the actual LinkedIn, GitHub, and portfolio addresses as text as well as clickable links. Do not rely on PDF annotations alone.
+- Review for clarity and factual support, not an AI-detector score. Do not introduce mistakes, remove useful keywords, or hide AI experience to make the prose appear human-written.
+
 ## Metrics
 
 Metrics are optional, not mandatory.
