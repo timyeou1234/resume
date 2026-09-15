@@ -1,65 +1,50 @@
 # Portfolio content and delivery notes
 
-## Hosting decision
+## Current direction (2026-09-15, corrected)
 
-Use the repository's existing GitHub Pages workflow for the first release.
+The owner wants timyeou.com to support freelance development and technical consulting conversations, not a generic AI philosophy. Moment is an explicit exception to debranding: it is the owner's app being prepared for public release and must retain the Moment brand. The LINE bot also keeps its identity. Only the two personal development tools use purpose-based display names.
 
-Why:
+Lead with what a client can ask Timothy to do: clarify requirements and technical options, develop or improve a mobile app, or connect LINE and existing tools to a specific workflow. Keep the contact action primary. Do not add unsupported consulting clients, testimonials, prices, release dates, availability guarantees, or performance promises.
 
-- the portfolio is a static HTML/CSS/JavaScript site with no server runtime;
-- the repository already validates resume PDFs, assembles `site/`, and deploys Pages from `main`;
-- deployment stays versioned with the source material and requires no additional account or SDK;
-- the implementation keeps the homepage hand-authored while the generated résumé and PDF downloads remain available at `/resume.html`.
+The bilingual hero remains: “Define the problem. Build the right tool.” / “把需求釐清，把工具做出來。”
 
-Cloudflare Pages remains the preferred next move if a custom domain, branch previews, edge functions, or Web Analytics become release requirements. The current site has no platform lock-in.
+## App, bot, and personal tools
 
-## Information boundary
+| Internal media key (unchanged) | English display title | Traditional Chinese display title | Context |
+| --- | --- | --- | --- |
+| `moment` | Moment | Moment | Independent app preparing for launch; design preview |
+| `line-family-translator` | Family LINE Translator | 家庭 LINE 翻譯 Bot | Family trial, not public signup; scripted video demonstration |
+| `productdev` | Development task monitoring | 開發任務監控 | Personal development tool; workflow illustration |
+| `timwork` | Project tasks & handover | 跨專案任務與交接管理 | Personal project organization; workflow illustration |
 
-Portfolio claims are limited to resume-backed work and public product surfaces.
+Moment must retain its brand in the project heading, film opening/closing, existing product UI identity, posters, captions, accessible names, and full-film dialog titles in both languages. Explain its life-planning use in the description, not by replacing the brand. Its status is “Independent app · Preparing for launch” / “自有 App · 準備推出”. Do not label Moment personal-only, not for sale, or a non-public-service project. Do not invent a launch date, App Store availability, pricing, or a signup link. Preparing for launch is not the same as having launched.
 
-### Resume-backed metrics and responsibilities
+Use purpose-based titles only for `productdev` and `timwork`. Keep opaque data keys and media filenames stable. Explain the problem, what the software does, and Timothy's role in plain language. These examples are not client commissions, but do not apply a blanket “personal tools / not for sale” disclaimer to the whole collection.
 
-Source: `source/resume.md`
+The LINE bot was built for actual family communication; the film itself is a scripted illustration. Do not call the working bot merely a concept, and do not imply public access, guaranteed availability, perfect translation, or LINE endorsement.
 
-- 10+ years shipping production iOS products.
-- Crypto.com Onchain: approximately 20K DAU; iOS Earn ownership across multiple protocols; staking, rewards, position management, Buy & Swap.
-- SportyBet: approximately 100K DAU; live odds, open bets, betting history, WebSocket update deduplication.
-- KINTO: vehicle usage tracking, vehicle status, and in-app guidance delivered during a three-month contract.
+## Media correction
 
-### Public product links
+The checked-in Moment V5 film/loop/poster assets are the approved branded media and remain appropriate. Do not replace them with the debranded life-planning V7 assets. The earlier blanket V7 debranding instructions are superseded for Moment.
 
-- Crypto.com Onchain: https://crypto.com/onchain
-- SportyBet: https://www.sportybet.com/
-- KINTO Unlimited: https://www.kinto-mobility.com/unlimited
+The local Portfolio-Media-v8.zip has now been imported after ZIP path/CRC and all 24 source byte-count/SHA-256 checks. Moment's six V5 originals were already identical and retained. Eighteen V7 originals were added for the other entries; no old immutable resources were overwritten.
 
-Product names are used nominatively. No proprietary screenshots, logos, internal analytics, or non-public product URLs are included.
-The company-product section explicitly describes Timothy's contributions as part of engineering teams and does not imply ownership of the products themselves.
+The owner subsequently requested removal of all music. Eight full films now use new `film-<language>-v5-silent.mp4` / `film-<language>-v7-silent.mp4` paths. FFmpeg removed only the audio stream with `-c:v copy -an`; the encoded video-stream hashes match the originals. All loops and posters retain their exact approved bytes. The deployment contains only the selected 16 silent MP4 and 8 JPEG, not the original films with music. Both original source hashes and silent derivative hashes are recorded in `media/portfolio-media-v8/media-manifest.json`.
 
-## AI-assisted project narrative
+No runtime consumer reads `display_titles` or `displayNames`; website names use the existing HTML bilingual attributes. Both manifest name fields are retained and normalized, including Moment in both languages. The validator rejects conflicts in either field and incorrect classification/version/hash/provenance/audio metadata. `python3 scripts/test-portfolio-manifest.py` exercises nine rejection paths in an isolated temporary fixture.
 
-The selected-work copy is derived from current project READMEs and explains how AI supports the work without overstating autonomous behavior.
+See [this integration's acceptance record](docs/portfolio-media-v8-acceptance.md) for browser coverage, limitations, and release/recovery instructions. This branch is reviewable and awaits approval for release; no production deployment has run.
 
-- Moment: a React Native, Expo, and TypeScript product that turns natural-language intent into editable preparation while keeping suggestions separate from saved data.
-- ProductDev: a Swift 6 macOS workbench for observing repository automation, reviewing guarded actions, and recovering from interruptions.
-- Tim Work:
-  - https://github.com/timyeou1234/context-handoff
-  - https://github.com/timyeou1234/task-eta-tracker
-  - https://github.com/timyeou1234/MomentMonitor
+## Company experience and evidence
 
-The unifying position is: AI assists with interpretation and proposals, while the product keeps validation, saved data, user approval, and recovery explicit.
+The company-work section describes Timothy's contributions within teams, not product ownership. Its content, assets, and links are preserved. Resume facts remain bounded by `source/resume.md`; the existing ten-plus years of mobile experience can support the biography but not invented consulting outcomes.
 
-Portfolio project media is bundled locally so visitors never need Figma permissions. The Moment demo uses the current default view from the `05 · Moments` design page; the Figma file is a source reference only and is not linked from the public site.
+The website should not lead with slogans about intelligence, contracts, authority, checkpoints, or AI implementation. Technical concepts may appear only when needed to explain a concrete job or documented contribution, not as standalone manifesto sections. Keeping the Moment brand does not restore the removed generic AI manifesto.
 
-## Interaction stack
+## Delivery
 
-No runtime dependencies are required.
+The portfolio remains dependency-free HTML/CSS/JavaScript with the existing bilingual media controller. `site/consulting.css` contains scoped layout adjustments for longer descriptive titles. Keep the existing `#native` and `#method` anchors for incoming links; they contain services and practical collaboration steps.
 
-- semantic HTML and bilingual content attributes;
-- CSS Grid, custom properties, gradients, container-friendly responsive layouts, and CSS product mockups;
-- Web Animations API for scroll reveals;
-- Canvas 2D for the ambient particle network;
-- IntersectionObserver for reveal and navigation state;
-- pointer-driven tilt, magnetic links, and cursor illumination;
-- `prefers-reduced-motion` support, keyboard focus styles, a skip link, and progressive enhancement.
+Cloudflare Workers Static Assets serves the portfolio from `.portfolio-dist`, built by `scripts/build-portfolio.sh`. The GitHub Pages workflow separately publishes resume pages. Do not assume a merged PR or successful Pages deployment updates timyeou.com.
 
-The deliberate dependency-free stack keeps the first paint and deployment path simple. React, GSAP, Three.js, or Rive should only be introduced when a future case study needs stateful components, authored timelines, or 3D assets that the platform APIs cannot express cleanly.
+Publish only the explicit build allowlist. Media sources, these notes, private URLs, PDFs, and QA evidence must not enter the Cloudflare bundle. Run `bash scripts/validate-site.sh` and verify bilingual layouts and media switching before release. Do not deploy as part of a content review without explicit authorization.

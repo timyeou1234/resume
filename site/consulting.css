@@ -1,0 +1,98 @@
+/* Purpose-first portfolio copy. Existing media controls and company cards stay intact. */
+.consulting-site .consulting-hero {
+  grid-template-columns: minmax(0, 1fr);
+  min-height: min(780px, 100svh);
+  gap: 0;
+  padding-block: calc(var(--header) + 5rem) 5rem;
+}
+.consulting-hero .hero-copy { max-width: 65rem; }
+.consulting-site .hero h1 {
+  max-width: 22ch;
+  font-size: clamp(2.75rem, 6.2vw, 5.6rem);
+  line-height: 1.13;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+.consulting-accent { color: var(--cyan); }
+.consulting-site .hero-lede {
+  max-width: 47rem;
+  line-height: 1.85;
+}
+.consulting-availability { margin-top: 1.5rem; color: var(--muted); font-size: 0.85rem; }
+.services { border-top: 1px solid var(--line); }
+.consulting-site .services .section-heading h2,
+.consulting-site .featured > .section-heading h2,
+.consulting-site .method .section-heading h2 {
+  font-size: clamp(2rem, 3.7vw, 3.6rem);
+  letter-spacing: -0.035em;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.service-card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
+}
+.service-index { color: var(--cyan); font-size: 0.75rem; }
+.service-card h3 {
+  margin: 2rem 0 1rem;
+  font-size: clamp(1.2rem, 1.65vw, 1.5rem);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  font-weight: 550;
+}
+.service-card p { margin: 0 0 1.5rem; color: var(--muted); font-size: 0.92rem; line-height: 1.85; }
+.service-card .service-deliverable {
+  margin: auto 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  color: var(--text);
+  font-size: 0.83rem;
+}
+.consulting-site .case-video .case-copy { max-width: 54rem; }
+.consulting-site .case-copy h3 {
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1.22;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.consulting-site .case-copy > p { font-size: 1rem; line-height: 1.85; }
+.consulting-site .case-role { grid-template-columns: 7rem minmax(0, 1fr); }
+.consulting-site .case-role span { font-size: 0.7rem; letter-spacing: 0.03em; }
+.consulting-site .case-meta { font-family: inherit; font-size: 0.78rem; letter-spacing: 0.02em; text-transform: none; }
+.consulting-site .tag-list li { font-family: inherit; font-size: 0.72rem; }
+.consulting-site .project-film-header > div:first-child { min-width: 0; }
+.consulting-site #project-film-title { overflow-wrap: anywhere; line-height: 1.4; }
+.consulting-site .method-list h3 { line-height: 1.4; }
+.consulting-site .method-list p { font-size: 0.95rem; line-height: 1.85; }
+.consulting-site .contact h2 {
+  max-width: 22ch;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.contact-brief { max-width: 44rem; margin: 1.5rem 0 0; color: var(--muted); font-size: 1rem; line-height: 1.85; }
+:where(#native, #work, #scale, #method, #contact) { scroll-margin-top: calc(var(--header) + 1.5rem); }
+html[lang="zh-Hant"] .consulting-hero h1 { letter-spacing: -0.015em; }
+@media (max-width: 1040px) {
+  .service-grid { grid-template-columns: 1fr; }
+  .service-card h3 { margin-top: 1rem; }
+}
+@media (max-width: 720px) {
+  .consulting-site .consulting-hero { min-height: auto; padding-block: calc(var(--header) + 3rem) 4rem; }
+  .consulting-site .hero h1 { font-size: clamp(2rem, 9vw, 3.3rem); }
+  .consulting-site .eyebrow { font-size: 0.65rem; letter-spacing: 0.05em; line-height: 1.8; }
+  .consulting-site .case-role { grid-template-columns: 6rem minmax(0, 1fr); gap: 0.6rem; }
+  .consulting-site .case-copy h3 { font-size: clamp(1.8rem, 8vw, 2.6rem); }
+  .consulting-site .project-film-header { flex-wrap: wrap; }
+}
