@@ -55,7 +55,7 @@ for variant in "${expected[@]}"; do
   if [[ "$variant" == "ai-binance-full-stack-ai" && "$pages" -ne 2 ]]; then
     echo "$variant.pdf must contain two substantive pages." >&2
     exit 1
-  }
+  fi
 
   text="$(pdftotext "$pdf" -)"
   headings=("Summary" "Technical Skills" "Experience" "Education")
