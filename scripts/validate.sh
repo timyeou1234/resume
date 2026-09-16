@@ -3,13 +3,13 @@ set -euo pipefail
 
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 expected=(us-tech web3 taiwan chinese ai)
-# Optional explicit targets reuse the same factual and text checks.
+# Explicit targets reuse the same checks; the default remains all five variants.
 if [[ "$#" -gt 0 ]]; then
   expected=("$@")
 fi
 for variant in "${expected[@]}"; do
   case "$variant" in
-    us-tech|web3|taiwan|chinese|ai|us-tech-binance-futures) ;;
+    us-tech|web3|taiwan|chinese|ai|ai-binance-full-stack-ai) ;;
     *) echo "Unknown validation target: $variant" >&2; exit 2 ;;
   esac
 done
@@ -52,10 +52,10 @@ for variant in "${expected[@]}"; do
     exit 1
   }
 
-  if [[ "$variant" == "us-tech-binance-futures" && "$pages" -ne 1 ]]; then
-    echo "$variant.pdf must remain a single readable page." >&2
+  if [[ "$variant" == "ai-binance-full-stack-ai" && "$pages" -ne 2 ]]; then
+    echo "$variant.pdf must contain two substantive pages." >&2
     exit 1
-  fi
+  }
 
   text="$(pdftotext "$pdf" -)"
   headings=("Summary" "Technical Skills" "Experience" "Education")
@@ -110,11 +110,12 @@ for variant in "${expected[@]}"; do
       "Jan 2017 - Jul 2017" "Aug 2016 - Jan 2017"
     )
   fi
-  if [[ "$variant" == "us-tech-binance-futures" ]]; then
+  if [[ "$variant" == "ai-binance-full-stack-ai" ]]; then
     required_facts+=(
-      "Financial Products & Real-Time Applications"
-      "Swift" "UIKit" "Swift Concurrency" "WebSocket"
-      "AI-assisted development at Crypto.com:"
+      "Mobile, Web & AI Applications" "Selected AI & Cross-Stack Projects"
+      "React Web Workspace" "Node.js" "SQLite" "Model Context Protocol (MCP)"
+      "Personal Project / Local Sandbox" "Private Pilot" "In Development"
+      "AI-Assisted Development" "40-case holdout"
     )
   fi
   for fact in "${required_facts[@]}"; do

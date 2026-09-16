@@ -27,10 +27,10 @@ jobs:
       - name: Build and validate PDFs
         run: make validate
 
-      - name: Build and validate Binance Futures resume
+      - name: Build and validate Binance Full Stack AI resume
         run: |
-          make us-tech COMPANY=binance-futures
-          ./scripts/validate.sh us-tech-binance-futures
+          make ai COMPANY=binance-full-stack-ai
+          ./scripts/validate.sh ai-binance-full-stack-ai
 
       - name: Upload PDF artifacts
         uses: actions/upload-artifact@v7

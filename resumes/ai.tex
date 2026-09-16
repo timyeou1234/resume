@@ -2,6 +2,16 @@
 \input{config/base}
 \newcommand{\VariantLabel}{AI Product}
 \renewcommand{\ResumeTagline}{Senior iOS Engineer | React Native \& AI Product Engineering}
+% A company profile can reorder existing sections without copying employment facts.
+\newcommand{\ResumeContent}{%
+\input{sections/summary/ai}
+\input{sections/skills/ai}
+\input{sections/experience-ai-primary}
+\newpage
+\input{sections/projects-ai}
+\input{sections/experience-ai-additional}
+\input{sections/education}
+}
 \input{config/company-loader}
 \input{config/metadata}
 \hypersetup{
@@ -12,11 +22,5 @@
 
 \begin{document}
 \resumeHeader
-\input{sections/summary/ai}
-\input{sections/skills/ai}
-\input{sections/experience-ai-primary}
-\newpage
-\input{sections/projects-ai}
-\input{sections/experience-ai-additional}
-\input{sections/education}
+\ResumeContent{}
 \end{document}
