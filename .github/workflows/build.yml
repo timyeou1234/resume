@@ -27,6 +27,11 @@ jobs:
       - name: Build and validate PDFs
         run: make validate
 
+      - name: Build and validate Binance Futures resume
+        run: |
+          make us-tech COMPANY=binance-futures
+          ./scripts/validate.sh us-tech-binance-futures
+
       - name: Upload PDF artifacts
         uses: actions/upload-artifact@v7
         with:

@@ -2,13 +2,16 @@
 \input{config/base}
 \newcommand{\VariantLabel}{US Tech}
 \renewcommand{\ResumeTagline}{Senior iOS Engineer}
+% Company overlays may tailor these two sections without copying employment history.
+\newcommand{\ResumeSummarySection}{\input{sections/summary/us-tech}}
+\newcommand{\ResumeSkillsSection}{\input{sections/skills/us-tech}}
 \input{config/company-loader}
 \input{config/metadata}
 
 \begin{document}
 \resumeHeader
-\input{sections/summary/us-tech}
-\input{sections/skills/us-tech}
+\ResumeSummarySection{}
+\ResumeSkillsSection{}
 \input{sections/experience}
 \input{sections/education}
 \end{document}

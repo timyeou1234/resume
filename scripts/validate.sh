@@ -3,6 +3,16 @@ set -euo pipefail
 
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 expected=(us-tech web3 taiwan chinese ai)
+# Optional explicit targets reuse the same factual and text checks.
+if [[ "$#" -gt 0 ]]; then
+  expected=("$@")
+fi
+for variant in "${expected[@]}"; do
+  case "$variant" in
+    us-tech|web3|taiwan|chinese|ai|us-tech-binance-futures) ;;
+    *) echo "Unknown validation target: $variant" >&2; exit 2 ;;
+  esac
+done
 max_pages=2
 min_words_per_page=100
 required_contact=(
@@ -41,6 +51,11 @@ for variant in "${expected[@]}"; do
     echo "$variant.pdf has $pages pages; expected between 1 and $max_pages." >&2
     exit 1
   }
+
+  if [[ "$variant" == "us-tech-binance-futures" && "$pages" -ne 1 ]]; then
+    echo "$variant.pdf must remain a single readable page." >&2
+    exit 1
+  fi
 
   text="$(pdftotext "$pdf" -)"
   headings=("Summary" "Technical Skills" "Experience" "Education")
@@ -93,6 +108,13 @@ for variant in "${expected[@]}"; do
       "Sep 2024 - Jul 2026" "Jun 2024 - Aug 2024" "Oct 2020 - Apr 2024"
       "Apr 2019 - Aug 2020" "Apr 2018 - Jan 2019" "Aug 2017 - Apr 2018"
       "Jan 2017 - Jul 2017" "Aug 2016 - Jan 2017"
+    )
+  fi
+  if [[ "$variant" == "us-tech-binance-futures" ]]; then
+    required_facts+=(
+      "Financial Products & Real-Time Applications"
+      "Swift" "UIKit" "Swift Concurrency" "WebSocket"
+      "AI-assisted development at Crypto.com:"
     )
   fi
   for fact in "${required_facts[@]}"; do
