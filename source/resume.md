@@ -29,18 +29,21 @@ Senior iOS engineer with 10+ years in mobile development. Built self-custodial w
 ### Moment — AI-Powered Planning App (In Development)
 
 - Building a native Swift/SwiftUI iOS application that turns natural-language requests, such as planning a birthday, into editable preparation plans. TypeScript supports schema validation and evaluation tooling.
+- Built a separate TypeScript/Node.js HTTP service around the private AI SDK, with typed operations, SQLite-backed request state, and provider credentials kept outside the iOS app. Deterministic HTTP tests cover request replay and restart recovery without duplicate dispatch; this remains private development evidence, not a public production release.
 - Built a private prototype that saves the original request locally and shows AI output for review. Users can still save their input when AI is unavailable.
 - Developing schema validation and scenario-based checks for ambiguous requests, user confirmation, retry, and recovery before release. The app owns validation, rendering, persistence, and recovery; the full product remains in development.
 
 ### LINE-Based Family Translator — Chinese-Indonesian Translation (Private Pilot)
 
 - Built a family translation bot using LINE, Cloudflare Workers, D1, and a local LLM gateway. Both translation directions were verified in live private messages, and a first family-group translation was confirmed.
+- Implemented the local-model HTTP gateway in Node.js/JavaScript; Cloudflare Workers and D1 handle the LINE-facing service and message deduplication.
 - Added webhook signature verification, source allowlisting, persistent message deduplication, and daily request limits.
 - Evaluated prompts on 100 development cases and a separate 40-case holdout. The holdout run produced 37 translations and 3 clarification responses with no service failures; this is runtime evidence, not a human-validated translation accuracy score.
 - Native-speaker acceptance and always-on operation remain pending. The private pilot depends on a local Mac, its model, and a tunnel.
 
 ### Development Task & Handoff Tools (Personal Tooling / Local Sandbox)
 
+- Built a React/JavaScript web workspace for project work, task dependencies, run status, knowledge, and decisions. The local CLI/HTTP/MCP command tooling runs on Node.js; React web experience here is personal-project work, distinct from professional React Native experience.
 - Built a shared CLI, HTTP, and Model Context Protocol (MCP) interface for creating, editing, soft-deleting, restoring, and inspecting local work tickets.
 - Added revision and digest checks to reject stale edits, idempotency keys to prevent duplicate writes, and an audit history for recovering earlier ticket content. Content writes require explicit opt-in; ticket editing does not start or control production workers.
 - Created companion context-handoff, task-estimation, and read-only run-monitoring tools. The companion tools are public; the sandbox task platform remains personal tooling.
