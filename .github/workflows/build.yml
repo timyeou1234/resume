@@ -27,6 +27,11 @@ jobs:
       - name: Build and validate PDFs
         run: make validate
 
+      - name: Build and validate Wand FDE resume
+        run: |
+          make ai COMPANY=wand-fde
+          ./scripts/validate.sh ai-wand-fde
+
       - name: Upload PDF artifacts
         uses: actions/upload-artifact@v7
         with:

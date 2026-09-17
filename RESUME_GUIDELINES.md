@@ -24,6 +24,7 @@ The AI / Mobile Product variant is the default English application baseline: pro
   Fabric and TurboModules; approximately six months of hands-on React Native
   experience is confirmed.
 - Crypto.com employment ended in July 2026.
+- The candidate confirmed on 2026-09-17 that WeWork Technology (also referred to as WeWork Tech) was a Co-Founder / iOS Developer role with business development and client requirements interviews. Keep the recorded Jan 2017 - Jul 2017 dates, keep Royal Technology separate, and do not infer sales results, ownership percentages, external company affiliations or enterprise AI deployments.
 - At Crypto.com, confirmed production tooling includes Firebase Crashlytics, Firebase Performance for page or screen rendering and API response latency, Datadog, and Segment for product analytics and A/B testing.
 - At OpenNet, confirmed production tooling includes Firebase and Elasticsearch-based logs for production issue investigation.
 - Slack alerts, the in-house feature-flag system, and Firebase Remote Config are confirmed cross-role experience but remain unattributed to a named employer until the candidate confirms that mapping.
