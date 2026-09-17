@@ -119,9 +119,10 @@ Aug 2017 – Apr 2018
 
 ### WeWork Technology
 
-**iOS Developer**  
+**Co-Founder / iOS Developer**  
 Jan 2017 – Jul 2017
 
+- Handled business development and conducted client requirements interviews.
 - Independently delivered iOS applications involving barcode and QR-code scanning, vehicle rental services, Bluetooth accessories, and media playback.
 
 ### IdeaBus Technology
