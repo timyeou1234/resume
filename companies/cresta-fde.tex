@@ -1,0 +1,60 @@
+% Cresta Senior Forward Deployed Engineer (AI Agent), Taiwan (Remote).
+% Exact job ID: 5205398008. Build: make ai COMPANY=cresta-fde
+\renewcommand{\TargetCompany}{Cresta}
+\renewcommand{\VariantLabel}{Cresta FDE}
+\renewcommand{\ResumeLocation}{Taiwan (UTC+8)}
+\renewcommand{\ResumeTagline}{Software Engineer | Customer Solutions \& AI Integrations}
+
+\renewcommand{\ResumeContent}{%
+\section{Summary}
+Software engineer with 10+ years in mobile development and recent AI integration work in TypeScript/Node.js. Co-founded WeWork Technology, conducting business development and client requirements interviews while delivering iOS apps. Managed client projects at Royal Technology and owned production wallet features at Crypto.com.
+
+\section{Customer Delivery \& Technical Ownership}
+\begin{itemize}
+  \resumeBullet{\textbf{WeWork Technology (Co-Founder):} Handled business development and client requirements interviews alongside independent iOS implementation.}
+  \resumeBullet{\textbf{Royal Technology:} Managed client app projects from planning through App Store release, coordinating Product, Backend, and Android teams while serving as primary iOS developer.}
+  \resumeBullet{\textbf{Crypto.com:} Worked with Product and Backend on feature scope, APIs, and releases. Used Firebase and Datadog to investigate crashes, rendering delays, and API latency.}
+\end{itemize}
+
+\section{Technical Skills}
+\textbf{Integration:} REST APIs, WebSocket; HTTP services and webhooks (projects)\\
+\textbf{AI Integration (Projects):} LLM APIs, prompt evaluation, JSON Schema, Model Context Protocol (MCP)\\
+\textbf{Backend \& Data (Projects):} JavaScript, TypeScript, Node.js, SQLite, Cloudflare Workers, D1\\
+\textbf{Diagnostics \& Analytics:} Firebase Crashlytics, Firebase Performance, Datadog, Segment, Elasticsearch\\
+\textbf{Delivery:} GitHub Actions, automated testing, code review, cross-team coordination\\
+\textbf{Mobile:} Swift, UIKit, SwiftUI, Swift Concurrency, RxSwift, React Native
+
+\section{Selected AI Integration Projects}
+
+\resumeRole{LINE-Based Family Translator}{Private Pilot}{Chinese-Indonesian Translation}{Node.js, Cloudflare Workers, D1}
+\begin{itemize}
+  \resumeBullet{Built a family translation bot linking LINE webhooks, a Node.js local-model gateway, and Cloudflare Workers. Verified both translation directions in private messages and an initial family-group translation.}
+  \resumeBullet{Added signature verification, source allowlisting, D1-backed message deduplication, and daily request limits.}
+  \resumeBullet{Evaluated prompts on 100 development cases and a separate 40-case holdout; native-speaker acceptance and always-on operation remain pending.}
+\end{itemize}
+
+\resumeRole{Development Task \& Handoff Tools}{Local Sandbox}{Tool Interfaces \& Recoverable Operations}{CLI, HTTP, MCP}
+\begin{itemize}
+  \resumeBullet{Exposed local ticket operations through shared CLI, HTTP, and MCP interfaces, including creation, editing, deletion, and restoration.}
+  \resumeBullet{Used revision and digest checks to reject stale edits and idempotency keys to prevent duplicate writes. Audit history supports recovery; the sandbox does not control production workers.}
+\end{itemize}
+
+\resumeRole{Moment}{In Development}{Planning App \& Private AI Backend}{Swift, TypeScript, Node.js, SQLite}
+\begin{itemize}
+  \resumeBullet{Built a private iOS planning prototype and a separate TypeScript/Node.js HTTP service with typed operations and SQLite-backed request state; kept provider credentials outside the app.}
+  \resumeBullet{Added HTTP tests for request replay and restart recovery without duplicate dispatch. Users can save input when AI is unavailable; the product remains in development.}
+\end{itemize}
+
+\newpage
+\input{sections/experience-ai-primary}
+\input{sections/experience-ai-additional}
+\input{sections/education}
+}
+
+\AtBeginDocument{%
+  \hypersetup{
+    pdftitle={Timothy Yu - Software Engineer},
+    pdfsubject={Customer requirements, AI integration, and technical delivery},
+    pdfkeywords={customer requirements, API integration, TypeScript, JavaScript, Node.js, LLM evaluation, Model Context Protocol, SQLite, Cloudflare Workers, production diagnostics}
+  }
+}
