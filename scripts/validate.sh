@@ -9,7 +9,7 @@ if [[ "$#" -gt 0 ]]; then
 fi
 for variant in "${expected[@]}"; do
   case "$variant" in
-    us-tech|web3|taiwan|chinese|ai|ai-wand-fde) ;;
+    us-tech|web3|taiwan|chinese|ai|ai-wand-fde|ai-cresta-fde) ;;
     *) echo "Unknown validation target: $variant" >&2; exit 2 ;;
   esac
 done
@@ -52,7 +52,7 @@ for variant in "${expected[@]}"; do
     exit 1
   }
 
-  if [[ "$variant" == "ai-wand-fde" && "$pages" -ne 2 ]]; then
+  if [[ ( "$variant" == "ai-wand-fde" || "$variant" == "ai-cresta-fde" ) && "$pages" -ne 2 ]]; then
     echo "$variant.pdf must contain two substantive pages." >&2
     exit 1
   fi
@@ -116,6 +116,15 @@ for variant in "${expected[@]}"; do
       "Selected AI Integration Projects" "Node.js" "SQLite"
       "Model Context Protocol (MCP)" "Private Pilot" "Local Sandbox"
       "In Development" "40-case holdout" "AI-Assisted Development"
+    )
+  fi
+  if [[ "$variant" == "ai-cresta-fde" ]]; then
+    required_facts+=(
+      "Customer Solutions & AI Integrations" "Taiwan (UTC+8)"
+      "Customer Delivery & Technical Ownership" "Selected AI Integration Projects"
+      "Co-Founder / iOS Developer" "client requirements interviews"
+      "Model Context Protocol (MCP)" "Node.js" "SQLite" "40-case holdout"
+      "Private Pilot" "Local Sandbox" "In Development" "AI-Assisted Development"
     )
   fi
   for fact in "${required_facts[@]}"; do

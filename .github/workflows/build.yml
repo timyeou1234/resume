@@ -32,6 +32,11 @@ jobs:
           make ai COMPANY=wand-fde
           ./scripts/validate.sh ai-wand-fde
 
+      - name: Build and validate Cresta FDE resume
+        run: |
+          make ai COMPANY=cresta-fde
+          ./scripts/validate.sh ai-cresta-fde
+
       - name: Upload PDF artifacts
         uses: actions/upload-artifact@v7
         with:
