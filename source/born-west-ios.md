@@ -37,8 +37,6 @@ Technology; its title is Co-Founder / iOS Developer, Jan-Jul 2017.
 
 The candidate is based in Taiwan (UTC+8). This resume does not promise US/EU
 working hours, relocation, hiring eligibility, or any particular contract terms.
-U.S. citizenship confirmed for a separate Temu discussion is not needed to
-position this worldwide-remote application and is not added to the PDF.
 
 ## New candidate-confirmed details used in this profile
 
