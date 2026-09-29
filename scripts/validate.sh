@@ -9,7 +9,7 @@ if [[ "$#" -gt 0 ]]; then
 fi
 for variant in "${expected[@]}"; do
   case "$variant" in
-    us-tech|web3|taiwan|chinese|ai|ai-wand-fde) ;;
+    us-tech|web3|taiwan|chinese|ai|ai-wand-fde|ai-born-west-ios) ;;
     *) echo "Unknown validation target: $variant" >&2; exit 2 ;;
   esac
 done
@@ -52,7 +52,7 @@ for variant in "${expected[@]}"; do
     exit 1
   }
 
-  if [[ "$variant" == "ai-wand-fde" && "$pages" -ne 2 ]]; then
+  if [[ ( "$variant" == "ai-wand-fde" || "$variant" == "ai-born-west-ios" ) && "$pages" -ne 2 ]]; then
     echo "$variant.pdf must contain two substantive pages." >&2
     exit 1
   fi
@@ -116,6 +116,14 @@ for variant in "${expected[@]}"; do
       "Selected AI Integration Projects" "Node.js" "SQLite"
       "Model Context Protocol (MCP)" "Private Pilot" "Local Sandbox"
       "In Development" "40-case holdout" "AI-Assisted Development"
+    )
+  fi
+  if [[ "$variant" == "ai-born-west-ios" ]]; then
+    required_facts+=(
+      "Architecture & Product Delivery" "Taiwan (UTC+8)" "Core Data" "AFNetworking"
+      "queue-based" "Co-Founder / iOS Developer" "two intermediate screens"
+      "AI-Assisted Development" "In Development / Private Project"
+      "github.com/timyeou1234/swift-llm-output-validation" "34 deterministic XCTest"
     )
   fi
   for fact in "${required_facts[@]}"; do

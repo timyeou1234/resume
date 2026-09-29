@@ -32,6 +32,11 @@ jobs:
           make ai COMPANY=wand-fde
           ./scripts/validate.sh ai-wand-fde
 
+      - name: Build and validate Born West iOS resume
+        run: |
+          make ai COMPANY=born-west-ios
+          ./scripts/validate.sh ai-born-west-ios
+
       - name: Upload PDF artifacts
         uses: actions/upload-artifact@v7
         with:
