@@ -10,3 +10,7 @@ config/company.local.tex
 *.log
 *.out
 *.synctex.gz
+
+# Generated application evidence and Python caches
+dist/applications/
+__pycache__/

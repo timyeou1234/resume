@@ -22,36 +22,23 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Install PDF validation tools
-        run: apk add --no-cache poppler-utils poppler-data font-noto-cjk
+        run: apk add --no-cache poppler-utils poppler-data font-noto-cjk python3
 
-      - name: Build and validate PDFs
+      - name: Check application profiles and workflow regressions
+        run: |
+          make check-profiles
+          make test
+
+      - name: Build and validate all standard and ready application PDFs
         run: make validate
-
-      - name: Build and validate Wand FDE resume
-        run: |
-          make ai COMPANY=wand-fde
-          ./scripts/validate.sh ai-wand-fde
-
-      - name: Build and validate Cresta FDE resume
-        run: |
-          make ai COMPANY=cresta-fde
-          ./scripts/validate.sh ai-cresta-fde
-
-      - name: Build and validate Born West iOS resume
-        run: |
-          make ai COMPANY=born-west-ios
-          ./scripts/validate.sh ai-born-west-ios
-
-      - name: Build and validate Binance Full Stack AI resume
-        run: |
-          make ai COMPANY=binance-full-stack-ai
-          ./scripts/validate.sh ai-binance-full-stack-ai
 
       - name: Upload PDF artifacts
         uses: actions/upload-artifact@v7
         with:
           name: resumes-${{ github.sha }}
-          path: dist/*.pdf
+          path: |
+            dist/*.pdf
+            dist/applications/**
           if-no-files-found: error
           retention-days: 90
 

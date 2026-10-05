@@ -17,7 +17,7 @@ The AI / Mobile Product variant is the default English application baseline: pro
 
 ## Factual boundaries
 
-- Use only facts recorded in `source/resume.md`, `source/production-tooling.md`, or subsequently confirmed by the candidate.
+- Use only facts recorded in `source/resume.md`, `source/production-tooling.md`, the dated supplemental records listed in the application profile (such as `source/born-west-ios.md`), or subsequently confirmed by the candidate.
 - Approximate DAU values must remain clearly approximate.
 - Cronos App work is pre-launch; do not describe it as a released production feature.
 - The Cronos App phase used React Native and TypeScript throughout, including

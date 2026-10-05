@@ -1,0 +1,84 @@
+{
+  "max_pages": 2,
+  "min_words_per_page": 100,
+  "required_contact": [
+    "+886 929070110",
+    "timyeou1234@hotmail.com",
+    "LinkedIn",
+    "GitHub"
+  ],
+  "forbidden_text": [
+    "you@example.com",
+    "your-handle",
+    "Example Technology",
+    "Non-custodial Wallet Prototype",
+    "80% of new iOS surfaces",
+    "JSON-RPC"
+  ],
+  "visible_links": [
+    "linkedin.com/in/timothy-yeou-0134a9117",
+    "github.com/timyeou1234",
+    "timyeou.com"
+  ],
+  "required_facts": [
+    "Crypto.com",
+    "San Orange Technology",
+    "OpenNet",
+    "Royal Technology",
+    "Awesome Limited",
+    "Lion Travel Information",
+    "WeWork Technology",
+    "IdeaBus Technology",
+    "Firebase Crashlytics",
+    "Firebase Performance",
+    "Datadog",
+    "Segment",
+    "Elasticsearch"
+  ],
+  "languages": {
+    "en": {
+      "headings": [
+        "Summary",
+        "Technical Skills",
+        "Experience",
+        "Education"
+      ],
+      "required_facts": [
+        "Cronos App (Pre-launch)",
+        "National Taipei University",
+        "Bachelor of Business Administration",
+        "Sep 2024 - Jul 2026",
+        "Jun 2024 - Aug 2024",
+        "Oct 2020 - Apr 2024",
+        "Apr 2019 - Aug 2020",
+        "Apr 2018 - Jan 2019",
+        "Aug 2017 - Apr 2018",
+        "Jan 2017 - Jul 2017",
+        "Aug 2016 - Jan 2017",
+        "Co-Founder"
+      ]
+    },
+    "zh": {
+      "headings": [
+        "專業摘要",
+        "技術能力",
+        "工作經歷",
+        "學歷"
+      ],
+      "required_facts": [
+        "Cronos App（上線前開發）",
+        "國立臺北大學",
+        "企業管理學士",
+        "2024 年 9 月 - 2026 年 7 月",
+        "2024 年 6 月 - 2024 年 8 月",
+        "2020 年 10 月 - 2024 年 4 月",
+        "2019 年 4 月 - 2020 年 8 月",
+        "2018 年 4 月 - 2019 年 1 月",
+        "2017 年 8 月 - 2018 年 4 月",
+        "2017 年 1 月 - 2017 年 7 月",
+        "2016 年 8 月 - 2017 年 1 月",
+        "共同創辦人"
+      ]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "company": "Wand",
+  "role": "Forward Deployed Engineer (Remote, Asia Timezone)",
+  "job_url": "https://jobs.ashbyhq.com/wand-ai/9da2cf5f-38e6-4aa7-942e-6bd0e15cdbe8",
+  "reviewed_on": "2026-09-17",
+  "base": "ai",
+  "status": "ready",
+  "brief": "companies/wand-fde.md",
+  "sources": [
+    "source/resume.md",
+    "source/production-tooling.md"
+  ],
+  "validation": {
+    "exact_pages": 2,
+    "required_text": [
+      "Client Solutions & AI Applications",
+      "Client Delivery Highlights",
+      "Selected AI Integration Projects",
+      "Node.js",
+      "SQLite",
+      "Model Context Protocol (MCP)",
+      "Private Pilot",
+      "Local Sandbox",
+      "In Development",
+      "40-case holdout",
+      "AI-Assisted Development"
+    ],
+    "forbidden_text": []
+  }
+}
