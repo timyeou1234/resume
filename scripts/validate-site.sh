@@ -38,7 +38,7 @@ for (const match of html.matchAll(/\s(?:href|src|poster|data-(?:src|poster|href|
 }
 
 const requiredText = [
-  "Timothy Yu — Software Consulting &amp; Development",
+  "App Development &amp; Software Consulting | Timothy Yu",
   "軟體開發與技術顧問",
   "Scope &amp; technical assessment",
   "App development &amp; improvements",
@@ -309,7 +309,7 @@ if (!headers.includes("/assets/products/*") ||
 if (fs.readFileSync(path.join(portfolio, "_headers"), "utf8") !== headers) {
   errors.push("Cloudflare portfolio bundle has a different _headers policy");
 }
-const allowedPortfolioFiles = ["_headers", "app.js", "consulting.css", "index.html", "styles.css", ...mediaAssets].sort();
+const allowedPortfolioFiles = ["_headers", "app.js", "consulting.css", "index.html", "en/index.html", "robots.txt", "sitemap.xml", "styles.css", ...mediaAssets].sort();
 if (JSON.stringify(portfolioFiles) !== JSON.stringify(allowedPortfolioFiles)) {
   errors.push(`Cloudflare portfolio bundle differs from the explicit allowlist: ${portfolioFiles.join(", ")}`);
 }
@@ -321,7 +321,7 @@ if (fs.readFileSync(path.join(site, "consulting.css"), "utf8") !== fs.readFileSy
 }
 
 const app = fs.readFileSync(path.join(site, "app.js"), "utf8");
-for (const behavior of ["IntersectionObserver", "data-image-en", "data-alt-en", "portfolio-language"]) {
+for (const behavior of ["IntersectionObserver", "data-image-en", "data-alt-en", "updateLanguageLinks"]) {
   if (!app.includes(behavior)) errors.push(`Current page behavior is missing: ${behavior}`);
 }
 
@@ -340,3 +340,5 @@ if (errors.length) {
 
 console.log(`Validated portfolio: ${ids.length} ids and all local targets resolved.`);
 NODE
+
+python3 "$repo_dir/scripts/test-portfolio-locales.py"

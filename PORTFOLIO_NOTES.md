@@ -15,6 +15,34 @@ product interfaces, scripted chat videos, duplicate availability copy, and the
 inactive film player. Company experience stays grounded in `source/resume.md`;
 DAU labels explicitly refer to the period of employment.
 
+## Crawlable locales and external quality checks — V11
+
+The portfolio now serves Traditional Chinese at `/` and English at `/en/`.
+`scripts/render-locales.py` renders both from the same bilingual source; visible
+copy, metadata, alt text, and localized image links exist before JavaScript runs.
+Language links retain the current section when JavaScript is available. Each
+locale has a self canonical and reciprocal hreflang links, with both URLs in the
+sitemap. `robots.txt` points crawlers to that sitemap. Language follows the URL,
+so saved client preferences no longer override a shared page's language.
+
+The primary Taiwanese search phrase is “App 開發”. The title, description, hero,
+service heading, and relevant project context name the actual service. Product
+claims and original image bytes are unchanged. Do not manufacture claims,
+keyword-only domains, invisible text, or ranking guarantees to improve a score.
+
+The external baseline was measured using Google PageSpeed Insights and Seobility
+Keyword Checker, guided by Addy Osmani's `web-quality-skills` at commit
+`afa8da942115f2961fdbfa80807ea0b232ff6c00`. Raw reports, screenshots, repeated
+measurements and release records live in sibling `portfolio-quality-v11-qa/`;
+none is included in the public bundle. Lighthouse SEO checks technical
+eligibility, while Seobility's keyword score checks on-page usage of a selected
+phrase. Neither measures actual search rankings. No CrUX field data was available
+for the baseline. Report observed scores without implying legal certification.
+
+The standard validator additionally runs `scripts/test-portfolio-locales.py`,
+which checks both static documents, exact translations, metadata, language links,
+all local links, 11 showcase scenes, robots and sitemap without executing JS.
+
 ## Selected product material
 
 `media/portfolio-real-v9/media-manifest.json` records the six selected originals,

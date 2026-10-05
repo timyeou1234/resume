@@ -16,7 +16,7 @@ with tempfile.TemporaryDirectory(prefix="portfolio-manifest-tests-") as director
     root = pathlib.Path(directory)
     (root / "site").symlink_to(repo / "site", target_is_directory=True)
     (root / "scripts").mkdir()
-    for script in ("validate-site.sh", "build-portfolio.sh"):
+    for script in ("validate-site.sh", "build-portfolio.sh", "render-locales.py", "test-portfolio-locales.py"):
         shutil.copyfile(repo / "scripts" / script, root / "scripts" / script)
     (root / "media/portfolio-media-v8").mkdir(parents=True)
     (root / "media/moment").symlink_to(repo / "media/moment", target_is_directory=True)

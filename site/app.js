@@ -11,22 +11,6 @@
   var currentLanguage = "en";
   var updateShowcaseLanguage = function () {};
 
-  function safeStorageGet(key) {
-    try {
-      return window.localStorage.getItem(key);
-    } catch (error) {
-      return null;
-    }
-  }
-
-  function safeStorageSet(key, value) {
-    try {
-      window.localStorage.setItem(key, value);
-    } catch (error) {
-      return;
-    }
-  }
-
   function setLanguage(language) {
     currentLanguage = language === "zh" ? "zh" : "en";
     root.lang = currentLanguage === "zh" ? "zh-Hant" : "en";
@@ -65,17 +49,24 @@
       );
     });
 
-    safeStorageSet("portfolio-language", currentLanguage);
+    doc.querySelectorAll("[data-content-en][data-content-zh]").forEach(function (node) {
+      node.setAttribute("content", node.getAttribute("data-content-" + currentLanguage));
+    });
+    doc.querySelectorAll("[data-title-en][data-title-zh]").forEach(function (node) {
+      node.setAttribute("title", node.getAttribute("data-title-" + currentLanguage));
+    });
     updateShowcaseLanguage();
   }
 
-  languageButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      setLanguage(currentLanguage === "en" ? "zh" : "en");
+  // The URL and its prerendered HTML determine the language, including without JS.
+  setLanguage(root.lang === "zh-Hant" ? "zh" : "en");
+  function updateLanguageLinks() {
+    languageButtons.forEach(function (link) {
+      link.href = (currentLanguage === "en" ? "/" : "/en/") + window.location.hash;
     });
-  });
-
-  setLanguage(safeStorageGet("portfolio-language") || "en");
+  }
+  updateLanguageLinks();
+  window.addEventListener("hashchange", updateLanguageLinks);
 
   // Animate original captures. Each scene remains inspectable at its source size.
   (function setupProductShowcases() {

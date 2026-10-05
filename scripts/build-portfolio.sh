@@ -9,7 +9,7 @@ mkdir -p "$output_dir"
 find "$output_dir" -mindepth 1 -delete
 mkdir -p "$output_dir/assets"
 
-cp "$source_dir/index.html" "$output_dir/index.html"
+python3 "$repo_dir/scripts/render-locales.py"
 cp "$source_dir/styles.css" "$output_dir/styles.css"
 cp "$source_dir/consulting.css" "$output_dir/consulting.css"
 cp "$source_dir/app.js" "$output_dir/app.js"
