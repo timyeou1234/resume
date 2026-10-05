@@ -1,0 +1,59 @@
+% Wand Forward Deployed Engineer, Remote / Asia Timezone.
+% Exact job: 9da2cf5f-38e6-4aa7-942e-6bd0e15cdbe8
+% Build: make ai COMPANY=wand-fde
+\renewcommand{\TargetCompany}{Wand}
+\renewcommand{\VariantLabel}{Wand FDE}
+\renewcommand{\ResumeTagline}{Software Engineer | Client Solutions \& AI Applications}
+
+\renewcommand{\ResumeContent}{%
+\section{Summary}
+Software engineer with 10+ years in mobile development. Co-founded WeWork Technology, handling business development, client requirements interviews, and hands-on iOS delivery. Managed client projects at Royal Technology and owned wallet features at Crypto.com. Recent independent work includes a LINE translation pilot, MCP-based task tools, and a TypeScript/Node.js AI backend.
+
+\section{Client Delivery Highlights}
+\begin{itemize}
+  \resumeBullet{\textbf{WeWork Technology (Co-Founder):} Handled business development and client requirements interviews while independently building iOS applications.}
+  \resumeBullet{\textbf{Royal Technology:} Combined project management with primary iOS development, taking client projects from planning through App Store release and coordinating Product, Backend, and Android teams.}
+\end{itemize}
+
+\section{Technical Skills}
+\textbf{Integration:} REST APIs, WebSocket, API discussions, production troubleshooting\\
+\textbf{AI Integration (Projects):} LLM APIs, prompt design and evaluation, JSON Schema, Model Context Protocol (MCP)\\
+\textbf{Backend \& Runtime (Projects):} JavaScript, TypeScript, Node.js, SQLite, Cloudflare Workers, D1\\
+\textbf{Delivery:} GitHub Actions, automated testing, code review, cross-team coordination\\
+\textbf{Diagnostics:} Firebase Crashlytics, Firebase Performance, Datadog, Elasticsearch\\
+\textbf{Mobile:} Swift, UIKit, SwiftUI, Swift Concurrency, RxSwift, React Native
+
+\section{Selected AI Integration Projects}
+
+\resumeRole{LINE-Based Family Translator}{Private Pilot}{Chinese-Indonesian Family Communication}{Node.js, Cloudflare Workers, D1}
+\begin{itemize}
+  \resumeBullet{Built a translation bot for family communication, connecting LINE webhooks to a local LLM through a Node.js gateway and Cloudflare Workers.}
+  \resumeBullet{Added signature checks, source allowlisting, D1-backed message deduplication, and daily request limits. Verified private messages in both directions and an initial family-group translation.}
+  \resumeBullet{Refined prompts on 100 development cases and evaluated a separate 40-case holdout. Native-speaker review and always-on operation remain pending.}
+\end{itemize}
+
+\resumeRole{Development Task \& Handoff Tools}{Personal Tooling / Local Sandbox}{Agent Tool Interfaces \& Task Recovery}{CLI, HTTP, MCP}
+\begin{itemize}
+  \resumeBullet{Built shared CLI, HTTP, and MCP interfaces for local ticket creation, editing, recoverable deletion, and restoration; added tools for task-context handoff and run-status inspection.}
+  \resumeBullet{Added revision and digest checks to reject stale edits, idempotency keys to prevent duplicate writes, and audit history for restoring prior content. Ticket editing does not control production workers.}
+\end{itemize}
+
+\resumeRole{Moment}{In Development}{Planning App \& Private AI Backend}{Swift, TypeScript, Node.js, SQLite}
+\begin{itemize}
+  \resumeBullet{Built a private iOS prototype that saves original requests and presents AI-generated plans for review. Users can still save their input when AI is unavailable.}
+  \resumeBullet{Built a separate TypeScript/Node.js HTTP service with typed operations and SQLite-backed request state. Added replay and restart tests to check recovery without duplicate dispatch.}
+\end{itemize}
+
+\newpage
+\input{sections/experience-ai-primary}
+\input{sections/experience-ai-additional}
+\input{sections/education}
+}
+
+\AtBeginDocument{%
+  \hypersetup{
+    pdftitle={Timothy Yu - Software Engineer},
+    pdfsubject={Client project delivery and AI application integration},
+    pdfkeywords={client delivery, requirements, API integration, TypeScript, JavaScript, Node.js, LLM evaluation, Model Context Protocol, Cloudflare Workers, SQLite, Swift, production troubleshooting}
+  }
+}
