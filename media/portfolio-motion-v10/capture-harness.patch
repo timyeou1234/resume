@@ -1,9 +1,6 @@
 --- a/Sources/ProductDevApp/ProductDevStore.swift
 +++ b/Sources/ProductDevApp/ProductDevStore.swift
-@@ -28,12 +28,16 @@
-         refreshGates = Dictionary(uniqueKeysWithValues: ObservationSource.allCases.map {
-             ($0, ObservationRefreshGate())
-         })
+@@ -31,6 +31,10 @@
 -        profile = Self.loadProfile()
 -        adapter = try? MomentMonitorAdapter.live()
 -        if profile == nil { loadMessage = "The moments-v0 profile is unavailable." }
@@ -20,26 +17,14 @@
 +                    phase: "testing", updatedAt: Date()))
 +        ])
 +
-     }
- 
-     var menuTitle: String {
 --- a/Sources/ProductDevApp/ProductDevApp.swift
 +++ b/Sources/ProductDevApp/ProductDevApp.swift
-@@ -13,12 +13,12 @@
-         }
-         .defaultSize(width: 1180, height: 780)
- 
+@@ -16 +16 @@
 -        MenuBarExtra {
 +        /* MenuBarExtra {
-             ProductDevMenuView()
-                 .environmentObject(store)
-         } label: {
-             ProductDevMenuBarLabel(title: store.menuTitle)
-         }
+@@ -22 +22 @@
 -        .menuBarExtraStyle(.window)
 +        .menuBarExtraStyle(.window) */
-     }
- }
 --- a/Sources/ProductDevApp/PortfolioFixture.swift
 +++ b/Sources/ProductDevApp/PortfolioFixture.swift
 @@ -0,0 +1,76 @@
@@ -121,12 +106,7 @@
 +}
 --- a/Package.swift
 +++ b/Package.swift
-@@ -25,8 +25,5 @@
-             name: "ProductDevWeb",
-             dependencies: ["ProductDevCore", "ProductDevMomentAdapter", "ProductDevWebCore"]
-         ),
+@@ -28,3 +27,0 @@
 -        .testTarget(name: "ProductDevCoreTests", dependencies: ["ProductDevCore"]),
 -        .testTarget(name: "ProductDevMomentAdapterTests", dependencies: ["ProductDevMomentAdapter"]),
 -        .testTarget(name: "ProductDevWebCoreTests", dependencies: ["ProductDevWebCore"]),
-     ]
- )

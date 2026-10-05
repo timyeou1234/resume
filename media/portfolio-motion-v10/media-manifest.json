@@ -198,6 +198,7 @@
       "Sources/ProductDevApp/ProductDevViews.swift": "98cbd5f227d5693398832b50f9d343d6e0acece3475e99c354a86b5f18d839bf"
     },
     "isolation": "A temporary copy only. ProductDevStore uses synthetic fixtures with profile/adapter nil and no observation task. Menu bar scene disabled. Original views unchanged.",
-    "harnessPatch": "capture-harness.patch"
+    "harnessPatch": "capture-harness.patch",
+    "patchApplication": "Apply only to a temporary copy: git apply --unidiff-zero capture-harness.patch"
   }
 }
