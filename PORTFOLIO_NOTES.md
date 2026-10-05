@@ -1,50 +1,92 @@
 # Portfolio content and delivery notes
 
-## Current direction (2026-09-15, corrected)
+## Current direction — 2026-10-05
 
-The owner wants timyeou.com to support freelance development and technical consulting conversations, not a generic AI philosophy. Moment is an explicit exception to debranding: it is the owner's app being prepared for public release and must retain the Moment brand. The LINE bot also keeps its identity. Only the two personal development tools use purpose-based display names.
+The owner's current requirement is real products with copy tailored to each
+product, without filler, **including animated product showcases**. The initial static V9 revision missed the animation requirement; V10 restores it using original material. This supersedes the former V8 media selection and hero
+wording. The portfolio still supports freelance development and technical
+consulting; it does not invent clients, testimonials, prices, release dates,
+signup links, uptime guarantees, or performance outcomes.
 
-Lead with what a client can ask Timothy to do: clarify requirements and technical options, develop or improve a mobile app, or connect LINE and existing tools to a specific workflow. Keep the contact action primary. Do not add unsupported consulting clients, testimonials, prices, release dates, availability guarantees, or performance promises.
+The hero now names the services directly: mobile apps, LINE integrations, and
+workflow tools. Each case explains the use, implemented features, and Timothy's
+contribution. Removed material includes repeated promotional slogans, rebuilt
+product interfaces, scripted chat videos, duplicate availability copy, and the
+inactive film player. Company experience stays grounded in `source/resume.md`;
+DAU labels explicitly refer to the period of employment.
 
-The bilingual hero remains: “Define the problem. Build the right tool.” / “把需求釐清，把工具做出來。”
+## Selected product material
 
-## App, bot, and personal tools
+`media/portfolio-real-v9/media-manifest.json` records the six selected originals,
+their source, dimensions, bytes, and SHA-256. `media/portfolio-motion-v10/media-manifest.json` adds eight original captures and the authored LINE phrasebook examples. No source image was redrawn, translated, or retouched. Responsive presentation may clip a desktop capture; every capture links to its full original. Animation and bilingual copy live in HTML/CSS/JS.
 
-| Internal media key (unchanged) | English display title | Traditional Chinese display title | Context |
+| Media key | Display title | Current material | Evidence boundary |
 | --- | --- | --- | --- |
-| `moment` | Moment | Moment | Independent app preparing for launch; design preview |
-| `line-family-translator` | Family LINE Translator | 家庭 LINE 翻譯 Bot | Family trial, not public signup; scripted video demonstration |
-| `productdev` | Development task monitoring | 開發任務監控 | Personal development tool; workflow illustration |
-| `timwork` | Project tasks & handover | 跨專案任務與交接管理 | Personal project organization; workflow illustration |
+| `moment` | Moment | Three original iOS simulator captures from the app's September 21 visual-parity evidence | Test fixtures; Chinese UI preserved in both site languages; not a released App Store product |
+| `line-family-translator` | Family LINE Translator / 家庭 LINE 翻譯 Bot | Original product avatar with an animated two-way translation flow using authored phrasebook examples | Artwork, not a conversation capture; personal-chat and family-group trial claims are supported by the repository's trial record |
+| `productdev` | Development task monitoring / 開發任務監控 | Original macOS icon and three captures of actual compiled SwiftUI views with synthetic fixture data | Original native views, not a live run recording; observer and adapter disabled in a separate temporary copy; capture harness patch is retained |
+| `timwork` | Project tasks & handover / 跨專案任務與交接管理 | English and Chinese captures of the running `/portfolio`, `/knowledge`, and `/decisions` routes | Bundled mock fixtures in isolated mode; does not demonstrate production authority replacement or live project progress |
 
-Moment must retain its brand in the project heading, film opening/closing, existing product UI identity, posters, captions, accessible names, and full-film dialog titles in both languages. Explain its life-planning use in the description, not by replacing the brand. Its status is “Independent app · Preparing for launch” / “自有 App · 準備推出”. Do not label Moment personal-only, not for sale, or a non-public-service project. Do not invent a launch date, App Store availability, pricing, or a signup link. Preparing for launch is not the same as having launched.
+Moment retains its brand and “Independent app · Preparing for launch” /
+“自有 App · 準備推出” status. Its tested screenshots match the hashes in the
+source evidence and include the source app binary hash in the selected manifest.
+Do not relabel Moment a personal-only tool or invent a launch date.
 
-Use purpose-based titles only for `productdev` and `timwork`. Keep opaque data keys and media filenames stable. Explain the problem, what the software does, and Timothy's role in plain language. These examples are not client commissions, but do not apply a blanket “personal tools / not for sale” disclaimer to the whole collection.
+The LINE bot keeps its identity and family-trial status. The existing avatar is
+used instead of a fabricated LINE conversation or private family messages. Do not
+claim public signup, universal language support, perfect translation, or
+continuous availability from a bounded trial.
 
-The LINE bot was built for actual family communication; the film itself is a scripted illustration. Do not call the working bot merely a concept, and do not imply public access, guaranteed availability, perfect translation, or LINE endorsement.
+The two personal tools retain purpose-based public names. Tim Work OS is a web
+workspace, separate from the similarly named open-source skills described in the
+resume. ProductDev remains a personal macOS tool. Capturing private live
+telemetry is unnecessary for either case; the selected assets contain no live
+run records or private messages.
 
-## Media correction
+## What was retired
 
-The checked-in Moment V5 film/loop/poster assets are the approved branded media and remain appropriate. Do not replace them with the debranded life-planning V7 assets. The earlier blanket V7 debranding instructions are superseded for Moment.
+The V5/V7 promotional films used in the V8 release are historical source assets.
+Their originals, silent derivatives, manifests, and provenance are preserved
+unchanged. They are no longer referenced or shipped. The old acceptance record
+at `docs/portfolio-media-v8-acceptance.md` describes that earlier candidate only.
 
-The local Portfolio-Media-v8.zip has now been imported after ZIP path/CRC and all 24 source byte-count/SHA-256 checks. Moment's six V5 originals were already identical and retained. Eighteen V7 originals were added for the other entries; no old immutable resources were overwritten.
+V10 has four silent browser-native animated walkthroughs: Moment overview → edit → saved list; LINE Chinese → Indonesian and Indonesian → Chinese; native monitor → task graph → run detail; workspace overview → knowledge → decisions. Scenes advance every 5.5 seconds using elapsed time. These are animations of source captures (LINE is an explicit flow illustration), not screen recordings.
 
-The owner subsequently requested removal of all music. Eight full films now use new `film-<language>-v5-silent.mp4` / `film-<language>-v7-silent.mp4` paths. FFmpeg removed only the audio stream with `-c:v copy -an`; the encoded video-stream hashes match the originals. All loops and posters retain their exact approved bytes. The deployment contains only the selected 16 silent MP4 and 8 JPEG, not the original films with music. Both original source hashes and silent derivative hashes are recorded in `media/portfolio-media-v8/media-manifest.json`.
+Each walkthrough includes pause/play and direct step selection. Step selection pauses playback; inactive scenes leave the accessibility tree and keyboard order. Focusing an original-image link pauses its walkthrough. Offscreen and hidden-document playback stops. Reduced-motion and data-saver preferences default to manual playback. Without JavaScript the first scene remains readable. Tim Work screenshots and links switch with the page language; Moment and the native macOS UI preserve their original language.
 
-No runtime consumer reads `display_titles` or `displayNames`; website names use the existing HTML bilingual attributes. Both manifest name fields are retained and normalized, including Moment in both languages. The validator rejects conflicts in either field and incorrect classification/version/hash/provenance/audio metadata. `python3 scripts/test-portfolio-manifest.py` exercises nine rejection paths in an isolated temporary fixture.
+## Validation and delivery
 
-See [this integration's acceptance record](docs/portfolio-media-v8-acceptance.md) for browser coverage, limitations, and release/recovery instructions. This branch is reviewable and awaits approval for release; no production deployment has run.
+Run:
 
-## Company experience and evidence
+```sh
+bash scripts/validate-site.sh
+python3 scripts/test-portfolio-manifest.py
+node scripts/test-portfolio-showcases.cjs
+git diff --check
+```
 
-The company-work section describes Timothy's contributions within teams, not product ownership. Its content, assets, and links are preserved. Resume facts remain bounded by `source/resume.md`; the existing ten-plus years of mobile experience can support the biography but not invented consulting outcomes.
+The validator checks local anchors and assets, product identity and status,
+original-media provenance and hashes, bilingual source context, accessible image
+labels and dimensions, and the explicit deployment allowlist. It still verifies
+the historical V8 package and all nine existing rejection paths. Six additional
+rejection cases cover the current captures, their classification, dimensions,
+and source context. Five V10 cases additionally reject missing/altered captures, absent native fixture provenance, a flow mislabeled as chat recording, and loss of walkthrough scenes. Historical source-integrity and deployment-boundary checks remain intact.
 
-The website should not lead with slogans about intelligence, contracts, authority, checkpoints, or AI implementation. Technical concepts may appear only when needed to explain a concrete job or documented contribution, not as standalone manifesto sections. Keeping the Moment brand does not restore the removed generic AI manifesto.
+Browser verification for this candidate covers English and Traditional Chinese
+at 320px, 390px, and 1280px, all four cases, company experience, contact, image/link
+language agreement, no page-level horizontal overflow, reduced motion, and
+all 11 scenes at each language/width combination (66 views), actual autoplay for each product, manual step selection, keyboard selection, and reduced motion. The production-controller harness verifies throttled timing, wrap, offscreen/hidden-document pause, focus, localization, reduced motion, and save-data. V10 evidence is in the sibling `portfolio-motion-v10-qa/` folder; V9 evidence remains in `portfolio-real-v9-qa/`. Neither enters the deployment bundle.
 
-## Delivery
+Cloudflare still serves the output of `scripts/build-portfolio.sh` from
+`.portfolio-dist`. Its allowlist contains only the site files and fourteen selected
+product images. No source notes, QA evidence, private paths, resume files, or
+historical films enter that bundle. Resume/PDF publication remains separate on
+GitHub Pages. Keep `#native` and `#method` anchors for existing incoming links.
 
-The portfolio remains dependency-free HTML/CSS/JavaScript with the existing bilingual media controller. `site/consulting.css` contains scoped layout adjustments for longer descriptive titles. Keep the existing `#native` and `#method` anchors for incoming links; they contain services and practical collaboration steps.
-
-Cloudflare Workers Static Assets serves the portfolio from `.portfolio-dist`, built by `scripts/build-portfolio.sh`. The GitHub Pages workflow separately publishes resume pages. Do not assume a merged PR or successful Pages deployment updates timyeou.com.
-
-Publish only the explicit build allowlist. Media sources, these notes, private URLs, PDFs, and QA evidence must not enter the Cloudflare bundle. Run `bash scripts/validate-site.sh` and verify bilingual layouts and media switching before release. Do not deploy as part of a content review without explicit authorization.
+The owner approved publishing this candidate on 2026-10-05 (「可以，發佈」).
+The release uses the existing Cloudflare configuration and a clean checkout of
+the approved source commit. Prior active version:
+`12dac115-02ef-4119-9dc1-e84b455f90b1` at 100% traffic. Release output, deployed
+version, remote asset hashes, and live browser evidence are recorded under the
+sibling `portfolio-motion-v10-qa/release/` directory. GitHub Pages resumes have a
+separate release workflow. Preserve both generations' immutable source assets.

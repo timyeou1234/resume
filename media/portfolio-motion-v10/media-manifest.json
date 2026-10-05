@@ -1,0 +1,203 @@
+{
+  "version": "v10",
+  "presentation": "Silent browser-native animations of original captures; LINE is explicitly an authored translation-flow illustration, not a chat recording.",
+  "sceneDurationMs": 5500,
+  "scenes": {
+    "moment": 3,
+    "line-family-translator": 2,
+    "productdev": 3,
+    "timwork": 3
+  },
+  "assets": [
+    {
+      "path": "assets/products/moment/saved-runtime-zh-v10.png",
+      "product": "moment",
+      "kind": "runtime-screenshot",
+      "source": {
+        "repository": "Moment",
+        "capturedAt": "2026-09-21T14:22:45+00:00",
+        "data": "isolated synthetic fixtures",
+        "sha256": "d109fa8f00b22405e4b7a46e85adf121d6e55b0c137eb5c987877d2ef611a534",
+        "path": "design/visual-parity/evidence/latest/act-saved/simulator.png",
+        "appBinarySha256": "9f0f81e476221a767196502ea182e4ec46f2d42addbd851b19eb1272bb8ef5f4"
+      },
+      "transformation": "none",
+      "bytes": 168936,
+      "sha256": "d109fa8f00b22405e4b7a46e85adf121d6e55b0c137eb5c987877d2ef611a534",
+      "width": 1170,
+      "height": 2532,
+      "format": "PNG"
+    },
+    {
+      "path": "assets/products/productdev/monitor-native-v10.jpg",
+      "product": "productdev",
+      "kind": "runtime-screenshot",
+      "source": {
+        "repository": "ProductDev",
+        "capturedAt": "2026-10-05T04:07:06.926219+00:00",
+        "data": "isolated synthetic fixtures",
+        "sha256": "d2932c40af83b0c08ea56c229f57de42c59d087893d6035262e36ac3d75af91e",
+        "commit": "dd3280dba8eb38ae93d64dfa0ce9c41f45672c94",
+        "route": "monitor",
+        "captureMethod": "CUA screenshot of compiled original SwiftUI views with an isolated fixture store; observer/adapter disabled",
+        "harness": "capture-harness.patch",
+        "appBinarySha256": "0b10a1bdf0124b829d977f168b2e152f5d5e10cc7dac0bad8b53572be1f23172"
+      },
+      "transformation": "none",
+      "bytes": 261363,
+      "sha256": "d2932c40af83b0c08ea56c229f57de42c59d087893d6035262e36ac3d75af91e",
+      "width": 2360,
+      "height": 1560,
+      "format": "JPEG"
+    },
+    {
+      "path": "assets/products/productdev/run-detail-native-v10.jpg",
+      "product": "productdev",
+      "kind": "runtime-screenshot",
+      "source": {
+        "repository": "ProductDev",
+        "capturedAt": "2026-10-05T04:07:26.311960+00:00",
+        "data": "isolated synthetic fixtures",
+        "sha256": "9c6a3c14f5b973740408ced58ad6a98580b11b06c4c9228ff80f6e912b79e47b",
+        "commit": "dd3280dba8eb38ae93d64dfa0ce9c41f45672c94",
+        "route": "run-detail",
+        "captureMethod": "CUA screenshot of compiled original SwiftUI views with an isolated fixture store; observer/adapter disabled",
+        "harness": "capture-harness.patch",
+        "appBinarySha256": "0b10a1bdf0124b829d977f168b2e152f5d5e10cc7dac0bad8b53572be1f23172"
+      },
+      "transformation": "none",
+      "bytes": 228281,
+      "sha256": "9c6a3c14f5b973740408ced58ad6a98580b11b06c4c9228ff80f6e912b79e47b",
+      "width": 2360,
+      "height": 1560,
+      "format": "JPEG"
+    },
+    {
+      "path": "assets/products/productdev/runs-native-v10.jpg",
+      "product": "productdev",
+      "kind": "runtime-screenshot",
+      "source": {
+        "repository": "ProductDev",
+        "capturedAt": "2026-10-05T04:07:18.563189+00:00",
+        "data": "isolated synthetic fixtures",
+        "sha256": "0cd31b64263bad0ae4f92d079e3e584af3465b52942cf0d2b198b8ef59a80a1f",
+        "commit": "dd3280dba8eb38ae93d64dfa0ce9c41f45672c94",
+        "route": "runs",
+        "captureMethod": "CUA screenshot of compiled original SwiftUI views with an isolated fixture store; observer/adapter disabled",
+        "harness": "capture-harness.patch",
+        "appBinarySha256": "0b10a1bdf0124b829d977f168b2e152f5d5e10cc7dac0bad8b53572be1f23172"
+      },
+      "transformation": "none",
+      "bytes": 234018,
+      "sha256": "0cd31b64263bad0ae4f92d079e3e584af3465b52942cf0d2b198b8ef59a80a1f",
+      "width": 2360,
+      "height": 1560,
+      "format": "JPEG"
+    },
+    {
+      "path": "assets/products/timwork/decisions-en-v10.jpg",
+      "product": "timwork",
+      "kind": "runtime-screenshot",
+      "source": {
+        "repository": "Tim work/tim-work-os-app",
+        "capturedAt": "2026-10-05T03:59:18.270362+00:00",
+        "data": "isolated synthetic fixtures",
+        "sha256": "2d0128515c09e1db25d41e1a4d75056e8097f0d7338c779ad23cf811a9d4d635",
+        "commit": "035aa7bb694fb4786fc57ca1c9dd988a34e11af6",
+        "route": "/decisions",
+        "captureMethod": "CUA full-page screenshot of running Vite app; VITE_DATA_MODE=mock"
+      },
+      "transformation": "none",
+      "bytes": 69089,
+      "sha256": "2d0128515c09e1db25d41e1a4d75056e8097f0d7338c779ad23cf811a9d4d635",
+      "width": 1280,
+      "height": 751,
+      "format": "JPEG"
+    },
+    {
+      "path": "assets/products/timwork/decisions-zh-v10.jpg",
+      "product": "timwork",
+      "kind": "runtime-screenshot",
+      "source": {
+        "repository": "Tim work/tim-work-os-app",
+        "capturedAt": "2026-10-05T03:59:18.481920+00:00",
+        "data": "isolated synthetic fixtures",
+        "sha256": "41588203fd636333aa77b4ded5c49b0eaaa62edd1740bd4ba16fcb6e55c16202",
+        "commit": "035aa7bb694fb4786fc57ca1c9dd988a34e11af6",
+        "route": "/decisions",
+        "captureMethod": "CUA full-page screenshot of running Vite app; VITE_DATA_MODE=mock"
+      },
+      "transformation": "none",
+      "bytes": 63249,
+      "sha256": "41588203fd636333aa77b4ded5c49b0eaaa62edd1740bd4ba16fcb6e55c16202",
+      "width": 1280,
+      "height": 764,
+      "format": "JPEG"
+    },
+    {
+      "path": "assets/products/timwork/knowledge-en-v10.jpg",
+      "product": "timwork",
+      "kind": "runtime-screenshot",
+      "source": {
+        "repository": "Tim work/tim-work-os-app",
+        "capturedAt": "2026-10-05T03:59:04.565553+00:00",
+        "data": "isolated synthetic fixtures",
+        "sha256": "c860c0902f6fd07d2bf1f04c869b1595d06244813839633948d121e6a735804a",
+        "commit": "035aa7bb694fb4786fc57ca1c9dd988a34e11af6",
+        "route": "/knowledge",
+        "captureMethod": "CUA full-page screenshot of running Vite app; VITE_DATA_MODE=mock"
+      },
+      "transformation": "none",
+      "bytes": 76696,
+      "sha256": "c860c0902f6fd07d2bf1f04c869b1595d06244813839633948d121e6a735804a",
+      "width": 1280,
+      "height": 858,
+      "format": "JPEG"
+    },
+    {
+      "path": "assets/products/timwork/knowledge-zh-v10.jpg",
+      "product": "timwork",
+      "kind": "runtime-screenshot",
+      "source": {
+        "repository": "Tim work/tim-work-os-app",
+        "capturedAt": "2026-10-05T03:59:18.781310+00:00",
+        "data": "isolated synthetic fixtures",
+        "sha256": "e03978fa028b589155229db5aaa3037695e538aeb2366a8d84a2c22caf654286",
+        "commit": "035aa7bb694fb4786fc57ca1c9dd988a34e11af6",
+        "route": "/knowledge",
+        "captureMethod": "CUA full-page screenshot of running Vite app; VITE_DATA_MODE=mock"
+      },
+      "transformation": "none",
+      "bytes": 71289,
+      "sha256": "e03978fa028b589155229db5aaa3037695e538aeb2366a8d84a2c22caf654286",
+      "width": 1280,
+      "height": 862,
+      "format": "JPEG"
+    }
+  ],
+  "lineExamples": {
+    "repository": "Line Bot",
+    "path": "src/phrasebook-data.js",
+    "commit": "110d27a38ba6c2b31a8e0b9c54afe742bef82630",
+    "pairs": [
+      [
+        "早安",
+        "Selamat pagi"
+      ],
+      [
+        "謝謝",
+        "Terima kasih"
+      ]
+    ],
+    "classification": "authored synthetic examples; ai_draft phrasebook, not private conversations or native-speaker certification"
+  },
+  "nativeCapture": {
+    "uiSourceHashes": {
+      "Sources/ProductDevApp/MonitorScreens.swift": "571bbc27b465bd741e5602901a33521b28e286da6471bcc8460558c79cc2b561",
+      "Sources/ProductDevApp/RunTransparencyScreens.swift": "bb3d4efb2379767aeedc7486c7f16d8db24f73f702dfc258d5fc7c579084374a",
+      "Sources/ProductDevApp/ProductDevViews.swift": "98cbd5f227d5693398832b50f9d343d6e0acece3475e99c354a86b5f18d839bf"
+    },
+    "isolation": "A temporary copy only. ProductDevStore uses synthetic fixtures with profile/adapter nil and no observation task. Menu bar scene disabled. Original views unchanged.",
+    "harnessPatch": "capture-harness.patch"
+  }
+}
