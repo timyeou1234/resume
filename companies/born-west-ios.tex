@@ -1,0 +1,97 @@
+% Born West Senior iOS Engineer: https://www.bornwest.com/careers/senior-ios-engineer
+% Build: make ai COMPANY=born-west-ios
+% Candidate-confirmed additions are recorded in source/born-west-ios.md.
+\renewcommand{\TargetCompany}{Born West}
+\renewcommand{\VariantLabel}{Born West iOS}
+\renewcommand{\ResumeLocation}{Taiwan (UTC+8)}
+\renewcommand{\ResumeTagline}{Senior iOS Engineer | Architecture \& Product Delivery}
+
+\renewcommand{\ResumeContent}{%
+\section{Summary}
+Senior iOS engineer with 10+ years in mobile development, from client requirements and architecture to App Store release and production support. Built real-time betting interfaces at SportyBet and Buy and Earn features at Crypto.com. Co-founder with hands-on client discovery experience; currently building Moment, a SwiftUI planning app with validated LLM output.
+
+\section{Technical Skills}
+\textbf{iOS:} Swift, UIKit, SwiftUI, RxSwift, Combine \quad \textbf{Architecture:} MVVM\\
+\textbf{Data \& Concurrency:} Core Data, Swift Concurrency, queue-based event processing\\
+\textbf{Networking:} REST APIs, JSON, WebSocket, SDK integration\\
+\textbf{Diagnostics:} Firebase Crashlytics, Firebase Performance, Datadog, Elasticsearch\\
+\textbf{Delivery:} Xcode, Git, GitHub Actions, App Store releases, code review\\
+\textbf{Additional:} React Native, TypeScript; XCTest and LLM output validation (Moment / code sample)
+
+\section{Experience}
+\resumeRole{Crypto.com}{Remote}{Senior iOS Developer}{Sep 2024 - Jul 2026}
+\resumeSubrole{Crypto.com Onchain}
+\begin{itemize}
+  \resumeBullet{Owned the Buy feature and Earn iOS development, maintenance, and refactoring for a self-custodial wallet serving approximately 20K daily active users.}
+  \resumeBullet{Delivered Buy \& Swap: users purchase a supported asset with fiat, then initiate a swap to the target token after the asset reaches their wallet.}
+  \resumeBullet{Aligned Product and Backend on a simpler purchase-to-swap journey, evaluating deposit-status updates, notification integration, and quote timing; defined conversion and error logging.}
+  \resumeBullet{Built staking, unstaking, reward-claiming, and position-management flows across blockchain protocols.}
+  \resumeBullet{Investigated crashes, rendering delays, and API latency with Firebase Crashlytics, Firebase Performance, and Datadog; used Segment for analytics and A/B testing.}
+\end{itemize}
+\resumeSubrole{Cronos App (Pre-launch)}
+\begin{itemize}
+  \resumeBullet{Built the Earn tab in React Native and TypeScript using Fabric and TurboModules; implemented wallet signing, UserOperation construction, and Morpho vault flows, validated on Cronos Testnet with mocked vaults.}
+\end{itemize}
+\resumeSubrole{AI-Assisted Development}
+\begin{itemize}
+  \resumeBullet{Used AI for Jira task breakdown, implementation, and PR review; manually verified UI, network behavior, and error cases before code-owner approval.}
+\end{itemize}
+
+\resumeRole{San Orange Technology}{Taiwan}{Senior iOS Developer (Contract)}{Jun 2024 - Aug 2024}
+\begin{itemize}
+  \resumeBullet{Delivered KINTO vehicle usage tracking, vehicle status, and in-app guidance with Product, Design, and Backend teams during a three-month contract.}
+\end{itemize}
+
+\resumeRole{OpenNet}{Taiwan}{Senior iOS Developer}{Oct 2020 - Apr 2024}
+\resumeSubrole{SportyBet -- real-time consumer application, approximately 100K daily active users}
+\begin{itemize}
+  \resumeBullet{Helped evolve MVVM/RxSwift flows for odds, open bets, and betting history, separating UI state from network and persistence responsibilities.}
+  \resumeBullet{Used a queue-based pipeline to decode WebSocket updates sequentially, pass them through the data layer, and propagate model changes to the UI with RxSwift. Improved subscriptions to prevent duplicate updates.}
+  \resumeBullet{Helped build an HTTP abstraction over AFNetworking for backend-specific signature handling and model decoding; used Core Data to persist history and reflect record changes in table views.}
+  \resumeBullet{Adapted Android-first requirements to native iOS flows; built an internal mock server for UI development and automated testing.}
+  \resumeBullet{Investigated production issues with Firebase and Elasticsearch logs, reviewed pull requests, and mentored junior iOS engineers.}
+\end{itemize}
+
+\newpage
+\section{Selected iOS Project \& Public Code Sample}
+\resumeRole{Moment}{In Development / Private Project}{Native iOS Planning App}{Swift, SwiftUI, Swift Package Manager}
+\begin{itemize}
+  \resumeBullet{Building an app that turns natural-language requests into editable preparation plans. The private prototype preserves original input and lets users save it when AI is unavailable.}
+  \resumeBullet{Organized SwiftUI code by feature, with separate navigation and platform services. MomentCore holds shared domain contracts and state logic; async services are injected through protocols for testing.}
+  \resumeBullet{Separated LLM response decoding, product-rule validation, and compilation into domain commands. Unsupported structures and model-authored action outcomes are rejected before review; user acceptance and persistence remain app-owned.}
+  \resumeBullet{Added tests for stale async results, cancelled publication, invalid proposals, and recovery behavior. Kept provider credentials outside the app in a separate TypeScript/Node.js backend.}
+\end{itemize}
+
+\resumeSubrole{Swift LLM Output Validation -- public, standalone adaptation from Moment}
+\href{https://github.com/timyeou1234/swift-llm-output-validation}{github.com/timyeou1234/swift-llm-output-validation}
+\begin{itemize}
+  \resumeBullet{Published a dependency-free Swift package that checks typed decoding, unknown fields, schema versions, IDs, ordering, field compatibility, and candidate values before producing a reviewable proposal.}
+  \resumeBullet{Included 34 deterministic XCTest cases and local demo fixtures, with Debug and Release tests in Linux/macOS CI. A structurally valid response that claims an action is complete is rejected by product rules.}
+\end{itemize}
+
+\section{Additional Experience}
+\resumeRole{Royal Technology}{Taiwan}{Project Manager / iOS Developer}{Apr 2019 - Aug 2020}
+\begin{itemize}
+  \resumeBullet{Managed client app projects from planning through App Store release while serving as primary iOS developer; coordinated Product, Backend, and Android teams.}
+\end{itemize}
+\resumeCompactRole{Awesome Limited}{iOS Developer}{Apr 2018 - Jan 2019}
+  {Built video-streaming apps for the China market, including encrypted HLS (m3u8) playback.}
+\resumeCompactRole{Lion Travel Information}{iOS Developer}{Aug 2017 - Apr 2018}
+  {Led a three-engineer iOS team for enterprise applications, internal distribution, and release coordination.}
+\resumeRole{WeWork Technology}{Taiwan}{Co-Founder / iOS Developer}{Jan 2017 - Jul 2017}
+\begin{itemize}
+  \resumeBullet{Handled business development and client requirements interviews alongside independent iOS delivery for barcode/QR scanning, vehicle rental, Bluetooth accessories, and media playback.}
+  \resumeBullet{Simplified a client's food-barcode lookup by removing two intermediate screens. Used native iOS navigation to open product details while preserving back navigation, and added visual scanning guidance.}
+\end{itemize}
+\resumeCompactRole{IdeaBus Technology}{iOS Developer}{Aug 2016 - Jan 2017}
+  {Independently built logistics tracking and packaging-monitoring apps using Swift and SOAP APIs.}
+\input{sections/education}
+}
+
+\AtBeginDocument{%
+  \hypersetup{
+    pdftitle={Timothy Yu - Senior iOS Engineer},
+    pdfsubject={iOS architecture, client delivery, persistence, recovery, and AI integration},
+    pdfkeywords={Swift, UIKit, SwiftUI, MVVM, RxSwift, Core Data, WebSocket, Swift Concurrency, Firebase, Datadog, XCTest, LLM output validation}
+  }
+}

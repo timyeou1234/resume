@@ -37,6 +37,11 @@ jobs:
           make ai COMPANY=cresta-fde
           ./scripts/validate.sh ai-cresta-fde
 
+      - name: Build and validate Born West iOS resume
+        run: |
+          make ai COMPANY=born-west-ios
+          ./scripts/validate.sh ai-born-west-ios
+
       - name: Upload PDF artifacts
         uses: actions/upload-artifact@v7
         with:
