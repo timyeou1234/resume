@@ -8,58 +8,11 @@
   var coarsePointer = window.matchMedia("(pointer: coarse)");
   var compactViewport = window.matchMedia("(max-width: 720px)");
   var languageButtons = Array.prototype.slice.call(doc.querySelectorAll(".lang-toggle"));
-  var currentLanguage = "en";
+  var currentLanguage = root.lang === "zh-Hant" ? "zh" : "en";
   var updateShowcaseLanguage = function () {};
 
-  function setLanguage(language) {
-    currentLanguage = language === "zh" ? "zh" : "en";
-    root.lang = currentLanguage === "zh" ? "zh-Hant" : "en";
-
-    doc.querySelectorAll("[data-en][data-zh]").forEach(function (node) {
-      node.textContent = node.getAttribute("data-" + currentLanguage);
-    });
-
-    doc.querySelectorAll("[data-aria-en][data-aria-zh]").forEach(function (node) {
-      node.setAttribute("aria-label", node.getAttribute("data-aria-" + currentLanguage));
-    });
-
-    doc.querySelectorAll("[data-href-en][data-href-zh]").forEach(function (node) {
-      node.setAttribute("href", node.getAttribute("data-href-" + currentLanguage));
-    });
-
-    doc.querySelectorAll("img[data-image-en][data-image-zh]").forEach(function (node) {
-      node.setAttribute("src", node.getAttribute("data-image-" + currentLanguage));
-    });
-
-    doc.querySelectorAll("img[data-alt-en][data-alt-zh]").forEach(function (node) {
-      node.setAttribute("alt", node.getAttribute("data-alt-" + currentLanguage));
-    });
-
-    doc.querySelectorAll(".lang-current").forEach(function (current) {
-      current.textContent = currentLanguage === "en" ? "EN" : "中";
-    });
-    doc.querySelectorAll(".lang-next").forEach(function (next) {
-      next.textContent = currentLanguage === "en" ? "中" : "EN";
-    });
-
-    languageButtons.forEach(function (button) {
-      button.setAttribute(
-        "aria-label",
-        currentLanguage === "en" ? "切換為繁體中文" : "Switch to English"
-      );
-    });
-
-    doc.querySelectorAll("[data-content-en][data-content-zh]").forEach(function (node) {
-      node.setAttribute("content", node.getAttribute("data-content-" + currentLanguage));
-    });
-    doc.querySelectorAll("[data-title-en][data-title-zh]").forEach(function (node) {
-      node.setAttribute("title", node.getAttribute("data-title-" + currentLanguage));
-    });
-    updateShowcaseLanguage();
-  }
-
-  // The URL and its prerendered HTML determine the language, including without JS.
-  setLanguage(root.lang === "zh-Hant" ? "zh" : "en");
+  // Localized HTML is already rendered at build time. Avoid rewriting every
+  // text node on load, which also repeats layout work for Chinese glyphs.
   function updateLanguageLinks() {
     languageButtons.forEach(function (link) {
       link.href = (currentLanguage === "en" ? "/" : "/en/") + window.location.hash;
@@ -241,7 +194,7 @@
   }
 
   function revealElements() {
-    var nodes = Array.prototype.slice.call(doc.querySelectorAll("[data-reveal]"));
+    var nodes = Array.prototype.slice.call(doc.querySelectorAll("[data-reveal]:not(.hero [data-reveal])"));
 
     if (
       reducedMotion.matches ||
@@ -258,8 +211,8 @@
           var node = entry.target;
           var index = Number(node.getAttribute("data-reveal-index") || "0");
           var keyframes = [
-            { opacity: 0, transform: "translateY(24px)", filter: "blur(6px)" },
-            { opacity: 1, transform: "translateY(0)", filter: "blur(0)" }
+            { opacity: 0, transform: "translateY(24px)" },
+            { opacity: 1, transform: "translateY(0)" }
           ];
 
           node.animate(keyframes, {

@@ -321,7 +321,7 @@ if (fs.readFileSync(path.join(site, "consulting.css"), "utf8") !== fs.readFileSy
 }
 
 const app = fs.readFileSync(path.join(site, "app.js"), "utf8");
-for (const behavior of ["IntersectionObserver", "data-image-en", "data-alt-en", "updateLanguageLinks"]) {
+for (const behavior of ["IntersectionObserver", "currentLanguage", "updateLanguageLinks"]) {
   if (!app.includes(behavior)) errors.push(`Current page behavior is missing: ${behavior}`);
 }
 
