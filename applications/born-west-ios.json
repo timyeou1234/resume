@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "company": "Born West",
+  "role": "Senior iOS Engineer",
+  "job_url": "https://www.bornwest.com/careers/senior-ios-engineer",
+  "reviewed_on": "2026-09-29",
+  "base": "ai",
+  "status": "ready",
+  "brief": "source/born-west-ios.md",
+  "sources": [
+    "source/resume.md",
+    "source/production-tooling.md",
+    "source/born-west-ios.md"
+  ],
+  "validation": {
+    "exact_pages": 2,
+    "required_text": [
+      "Architecture & Product Delivery",
+      "Taiwan (UTC+8)",
+      "Core Data",
+      "AFNetworking",
+      "queue-based",
+      "Co-Founder / iOS Developer",
+      "two intermediate screens",
+      "AI-Assisted Development",
+      "In Development / Private Project",
+      "github.com/timyeou1234/swift-llm-output-validation",
+      "34 deterministic XCTest"
+    ],
+    "forbidden_text": []
+  }
+}

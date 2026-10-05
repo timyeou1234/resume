@@ -2,10 +2,13 @@
 
 ## Source of truth
 
-Use `source/resume.md` as the factual content source.
+Use `source/resume.md` as the factual baseline. Also consult
+`source/production-tooling.md` and the explicitly listed supplemental sources
+in `applications/<slug>.json` (including `source/born-west-ios.md` for its
+candidate-confirmed details). Follow `AGENTS.md` for the JD-to-PDF workflow.
 
 Audience-specific sections may condense or reorder facts, but must not introduce
-claims that are absent from the source. Preserve the distinction between
+claims that are absent from these reviewed sources or explicit candidate confirmation. Preserve the distinction between
 `Crypto.com Onchain` and `Cronos App`; they are separate phases of the
 candidate's Crypto.com experience.
 

@@ -36,13 +36,30 @@ applications. Tailor the headline, summary, and project order for a specific rol
 it is not a model-training or AI-infrastructure resume. Other variants remain
 available for more specialized applications.
 
+## Tailor an application
+
+Existing company profiles: Binance Full Stack AI, Wand FDE, Cresta FDE, and
+Born West iOS. Each retains its exact job reference, evidence and factual limits.
+
+```sh
+make profiles
+make tailor COMPANY=born-west-ios
+make validate  # all five standard PDFs plus every ready application
+```
+
+Start a new job with `python3 scripts/resume.py init <slug> --company "..."
+--role "..." --url "..."`; complete its brief, overlay and JSON checks, then mark
+it ready. CI discovers the profile automatically. See [DEVELOPMENT.md](DEVELOPMENT.md)
+for the full JD-to-PDF workflow and required factual/visual review.
+
 ## Repository purpose
 
 This is Timothy Yu's personal resume repository. LaTeX sources generate the
 five ATS-friendly PDFs, while `source/resume.md` supplies the readable GitHub
 Pages version and acts as the reviewed factual baseline.
 
-Every push and pull request builds and validates all PDF variants and checks the
+Every push and pull request tests the workflow, builds and validates all five
+standard PDFs and every ready application profile and checks the
 portfolio's local links and JavaScript. A successful build on `main` publishes
 the Markdown resume and validated PDFs to GitHub Pages.
 

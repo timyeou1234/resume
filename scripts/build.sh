@@ -18,16 +18,23 @@ if [[ -n "$company" && ! "$company" =~ ^[a-z0-9][a-z0-9-]*$ ]]; then
   exit 2
 fi
 
-mkdir -p "$repo_dir/build/$variant" "$repo_dir/dist"
-
 output_name="$variant"
-entrypoint="$repo_dir/build/$variant/entry.tex"
 if [[ -n "$company" ]]; then
   output_name="$variant-$company"
-  printf '\\def\\CompanyOverlay{%s}\\input{resumes/%s.tex}\\n' \
+  [[ -f "$repo_dir/companies/$company.tex" ]] || {
+    echo "Unknown company overlay: $company" >&2
+    exit 2
+  }
+fi
+build_dir="$repo_dir/build/$output_name"
+mkdir -p "$build_dir" "$repo_dir/dist"
+entrypoint="$build_dir/entry.tex"
+cd "$repo_dir"
+if [[ -n "$company" ]]; then
+  printf '\\def\\CompanyOverlay{%s}\\input{resumes/%s.tex}\n' \
     "$company" "$variant" > "$entrypoint"
 else
-  printf '\\input{resumes/%s.tex}\\n' "$variant" > "$entrypoint"
+  printf '\\input{resumes/%s.tex}\n' "$variant" > "$entrypoint"
 fi
 
 engine="-pdf"
@@ -40,9 +47,9 @@ latexmk \
   -interaction=nonstopmode \
   -halt-on-error \
   -file-line-error \
-  -output-directory="$repo_dir/build/$variant" \
+  -output-directory="$build_dir" \
   -jobname="$output_name" \
   "$entrypoint"
 
-cp "$repo_dir/build/$variant/$output_name.pdf" "$repo_dir/dist/$output_name.pdf"
+cp "$build_dir/$output_name.pdf" "$repo_dir/dist/$output_name.pdf"
 echo "Built dist/$output_name.pdf"

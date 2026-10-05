@@ -21,17 +21,27 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v5
 
-      - name: Install PDF validation tools
-        run: apk add --no-cache poppler-utils poppler-data font-noto-cjk
+      - name: Trust the checked-out workspace for source receipts
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-      - name: Build and validate PDFs
+      - name: Install PDF validation tools
+        run: apk add --no-cache poppler-utils poppler-data font-noto-cjk python3
+
+      - name: Check application profiles and workflow regressions
+        run: |
+          make check-profiles
+          make test
+
+      - name: Build and validate all standard and ready application PDFs
         run: make validate
 
       - name: Upload PDF artifacts
         uses: actions/upload-artifact@v7
         with:
           name: resumes-${{ github.sha }}
-          path: dist/*.pdf
+          path: |
+            dist/*.pdf
+            dist/applications/**
           if-no-files-found: error
           retention-days: 90
 
