@@ -42,6 +42,11 @@ jobs:
           make ai COMPANY=born-west-ios
           ./scripts/validate.sh ai-born-west-ios
 
+      - name: Build and validate Binance Full Stack AI resume
+        run: |
+          make ai COMPANY=binance-full-stack-ai
+          ./scripts/validate.sh ai-binance-full-stack-ai
+
       - name: Upload PDF artifacts
         uses: actions/upload-artifact@v7
         with:

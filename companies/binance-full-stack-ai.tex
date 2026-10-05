@@ -1,0 +1,54 @@
+% Target job ID: ab26c3f8-3728-4750-a07b-88adb962e3bc (not Futures).
+% Build: make ai COMPANY=binance-full-stack-ai
+\renewcommand{\TargetCompany}{Binance}
+\renewcommand{\VariantLabel}{Binance Full Stack AI}
+\renewcommand{\ResumeTagline}{Software Engineer | Mobile, Web \& AI Applications}
+
+\renewcommand{\ResumeContent}{%
+\section{Summary}
+Software engineer with 10+ years in mobile development, including Earn ownership at Crypto.com and real-time applications at SportyBet. Built the pre-launch Cronos Earn tab in React Native and TypeScript. Recent independent work spans a React task workspace, Node.js services, LLM integration and evaluation, and MCP tools.
+
+\section{Technical Skills}
+\textbf{Mobile:} Swift, UIKit, SwiftUI, Swift Concurrency, RxSwift, React Native, TypeScript\\
+\textbf{Web \& Backend (Projects):} React, JavaScript, Node.js, TypeScript, HTTP APIs\\
+\textbf{Data \& Runtime (Projects):} SQLite, Cloudflare Workers, D1, local model inference\\
+\textbf{AI Integration (Projects):} LLM APIs, JSON Schema, LLM evaluation, Model Context Protocol (MCP)\\
+\textbf{Engineering:} REST APIs, WebSocket, MVVM, GitHub Actions, automated testing, code review\\
+\textbf{Observability:} Firebase Crashlytics, Firebase Performance, Datadog, Segment, Elasticsearch
+
+\section{Selected AI \& Cross-Stack Projects}
+
+\resumeRole{Development Task \& Handoff Tools}{Personal Project / Local Sandbox}{React Web Workspace \& Agent Tool Interfaces}{React, JavaScript, Node.js, MCP}
+\begin{itemize}
+  \resumeBullet{Built a React workspace for project work, task dependencies, and agent run status, with views for handoff context and decisions.}
+  \resumeBullet{Exposed local ticket creation, editing, recoverable deletion, and restoration through shared CLI, HTTP, and MCP interfaces.}
+  \resumeBullet{Added revision and digest checks to reject stale edits, idempotency keys to prevent duplicate writes, and history for restoring prior content. Ticket writes remain separate from production worker control.}
+\end{itemize}
+
+\resumeRole{LINE-Based Family Translator}{Private Pilot}{Chinese-Indonesian Translation}{JavaScript, Node.js, Cloudflare Workers, D1}
+\begin{itemize}
+  \resumeBullet{Built a LINE bot with a Node.js local-model gateway and Cloudflare Workers; verified both translation directions in private messages and a first family-group translation.}
+  \resumeBullet{Added webhook signature checks, source allowlisting, D1-backed message deduplication, and daily request limits.}
+  \resumeBullet{Refined prompts on 100 development cases and evaluated a separate 40-case holdout set. Native-speaker review and always-on operation remain pending.}
+\end{itemize}
+
+\resumeRole{Moment}{In Development}{Native iOS Planning App \& Private AI Backend}{Swift, SwiftUI, TypeScript, Node.js, SQLite}
+\begin{itemize}
+  \resumeBullet{Building an app that turns requests such as planning a birthday into editable preparation plans. Built a private prototype that saves original input locally and presents AI output for review.}
+  \resumeBullet{Built a separate TypeScript/Node.js HTTP service around a private AI SDK, with typed operations and SQLite-backed request state. Provider credentials stay out of the iOS app.}
+  \resumeBullet{Added deterministic HTTP tests for request replay and restart recovery without duplicate dispatch. The app can still save input when AI is unavailable; the full product remains in development.}
+\end{itemize}
+
+\newpage
+\input{sections/experience-ai-primary}
+\input{sections/experience-ai-additional}
+\input{sections/education}
+}
+
+\AtBeginDocument{%
+  \hypersetup{
+    pdftitle={Timothy Yu - Software Engineer},
+    pdfsubject={Mobile expertise, cross-stack product development, and AI integration},
+    pdfkeywords={Swift, React Native, TypeScript, React, JavaScript, Node.js, SQLite, Cloudflare Workers, D1, LLM integration, LLM evaluation, Model Context Protocol, AI-assisted development}
+  }
+}

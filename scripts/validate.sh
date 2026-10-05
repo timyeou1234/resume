@@ -9,7 +9,7 @@ if [[ "$#" -gt 0 ]]; then
 fi
 for variant in "${expected[@]}"; do
   case "$variant" in
-    us-tech|web3|taiwan|chinese|ai|ai-wand-fde|ai-cresta-fde|ai-born-west-ios) ;;
+    us-tech|web3|taiwan|chinese|ai|ai-wand-fde|ai-cresta-fde|ai-born-west-ios|ai-binance-full-stack-ai) ;;
     *) echo "Unknown validation target: $variant" >&2; exit 2 ;;
   esac
 done
@@ -52,7 +52,7 @@ for variant in "${expected[@]}"; do
     exit 1
   }
 
-  if [[ ( "$variant" == "ai-wand-fde" || "$variant" == "ai-cresta-fde" || "$variant" == "ai-born-west-ios" ) && "$pages" -ne 2 ]]; then
+  if [[ ( "$variant" == "ai-wand-fde" || "$variant" == "ai-cresta-fde" || "$variant" == "ai-born-west-ios" || "$variant" == "ai-binance-full-stack-ai" ) && "$pages" -ne 2 ]]; then
     echo "$variant.pdf must contain two substantive pages." >&2
     exit 1
   fi
@@ -133,6 +133,14 @@ for variant in "${expected[@]}"; do
       "queue-based" "Co-Founder / iOS Developer" "two intermediate screens"
       "AI-Assisted Development" "In Development / Private Project"
       "github.com/timyeou1234/swift-llm-output-validation" "34 deterministic XCTest"
+    )
+  fi
+  if [[ "$variant" == "ai-binance-full-stack-ai" ]]; then
+    required_facts+=(
+      "Mobile, Web & AI Applications" "Selected AI & Cross-Stack Projects"
+      "React Web Workspace" "Node.js" "SQLite" "Model Context Protocol (MCP)"
+      "Personal Project / Local Sandbox" "Private Pilot" "In Development"
+      "AI-Assisted Development" "40-case holdout"
     )
   fi
   for fact in "${required_facts[@]}"; do

@@ -43,6 +43,7 @@ Senior iOS engineer with 10+ years in mobile development. Built self-custodial w
 
 ### Development Task & Handoff Tools (Personal Tooling / Local Sandbox)
 
+- Built a React/JavaScript web workspace for project work, task dependencies, run status, knowledge, and decisions. The local CLI/HTTP/MCP command tooling runs on Node.js; React web experience here is personal-project work, distinct from professional React Native experience.
 - Built a shared CLI, HTTP, and Model Context Protocol (MCP) interface for creating, editing, soft-deleting, restoring, and inspecting local work tickets.
 - Added revision and digest checks to reject stale edits, idempotency keys to prevent duplicate writes, and an audit history for recovering earlier ticket content. Content writes require explicit opt-in; ticket editing does not start or control production workers.
 - Created companion context-handoff, task-estimation, and read-only run-monitoring tools. The companion tools are public; the sandbox task platform remains personal tooling.
