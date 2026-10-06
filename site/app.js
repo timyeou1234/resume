@@ -143,18 +143,41 @@
     var label = figure.querySelector('[data-line-play-label]');
     var chapters = Array.prototype.slice.call(figure.querySelectorAll('[data-line-chapter]'));
     var visible = false, loaded = false, expectedPause = false;
+    var loadPromise = null, loadFailed = false, seekGeneration = 0;
     var wantsPlaying = !reducedMotion.matches && !(navigator.connection && navigator.connection.saveData);
     var mobile = window.matchMedia('(max-width: 700px)').matches;
     video.poster = video.getAttribute('data-' + (mobile ? 'mobile-poster-' : 'poster-') + currentLanguage);
     video.muted = true;
     function load() {
-      if (loaded) return;
-      video.src = video.getAttribute('data-' + (mobile ? 'mobile-src-' : 'src-') + currentLanguage);
-      loaded = true;
-      video.controls = true;
+      if (loadPromise) return loadPromise;
+      loadFailed = false;
+      var source = video.getAttribute('data-' + (mobile ? 'mobile-src-' : 'src-') + currentLanguage);
+      // This static host returns full MP4 responses to Range requests. A bounded,
+      // locally buffered Blob gives the native player reliable random access.
+      loadPromise = fetch(source).then(function (response) {
+        if (!response.ok) throw new Error('Video unavailable');
+        return response.blob();
+      }).then(function (blob) {
+        video.src = URL.createObjectURL(blob);
+        loaded = true;
+        video.controls = true;
+        update();
+      }).catch(function () {
+        loadPromise = null;
+        loadFailed = true;
+        wantsPlaying = false;
+        update();
+        throw new Error('Video unavailable');
+      });
+      update();
+      return loadPromise;
     }
     function update() {
-      label.textContent = currentLanguage === 'zh' ? (video.paused ? '播放示範' : '暫停') : (video.paused ? 'Play demo' : 'Pause');
+      var loading = !!loadPromise && !loaded;
+      label.textContent = currentLanguage === 'zh'
+        ? (loading ? '載入中…' : loadFailed ? '重試播放' : video.paused ? '播放示範' : '暫停')
+        : (loading ? 'Loading…' : loadFailed ? 'Retry video' : video.paused ? 'Play demo' : 'Pause');
+      toggle.disabled = loading;
       toggle.setAttribute('aria-pressed', String(!video.paused));
       var active = 0;
       chapters.forEach(function (button, index) { if (video.currentTime >= Number(button.getAttribute('data-line-chapter'))) active = index; });
@@ -162,8 +185,9 @@
     }
     function sync() {
       if (visible && !doc.hidden && wantsPlaying) {
-        load();
-        video.play().catch(function () { wantsPlaying = false; update(); });
+        load().then(function () {
+          if (visible && !doc.hidden && wantsPlaying) return video.play();
+        }).catch(function () { wantsPlaying = false; update(); });
       } else if (!video.paused) { expectedPause = true; video.pause(); }
       update();
     }
@@ -175,10 +199,18 @@
     chapters.forEach(function (button) {
       button.addEventListener('click', function () {
         wantsPlaying = false;
-        sync(); load();
-        var seek = function () { video.currentTime = Number(button.getAttribute('data-line-chapter')) + 3.2; update(); };
-        if (video.readyState >= 1) seek();
-        else { video.addEventListener('loadedmetadata', seek, {once: true}); video.load(); }
+        sync();
+        var generation = ++seekGeneration;
+        load().then(function () {
+          if (generation !== seekGeneration) return;
+          var seek = function () {
+            if (generation !== seekGeneration) return;
+            video.currentTime = Number(button.getAttribute('data-line-chapter')) + 3.2;
+            update();
+          };
+          if (video.readyState >= 1) seek();
+          else { video.addEventListener('loadedmetadata', seek, {once: true}); video.load(); }
+        }).catch(function () {});
       });
     });
     video.addEventListener('play', function () { wantsPlaying = true; update(); });
@@ -191,9 +223,9 @@
     if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', preferenceChanged);
     if (navigator.connection && navigator.connection.addEventListener) navigator.connection.addEventListener('change', preferenceChanged);
     if ('IntersectionObserver' in window) new IntersectionObserver(function (entries) {
-      visible = entries[0].isIntersecting; if (visible) load(); sync();
+      visible = entries[0].isIntersecting; sync();
     }, {threshold: 0.15}).observe(video);
-    else { visible = true; wantsPlaying = false; load(); }
+    else { visible = true; wantsPlaying = false; }
     figure.querySelector('.line-film-controls').hidden = false;
     update();
   })();

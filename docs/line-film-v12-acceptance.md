@@ -18,3 +18,7 @@ Verified locally:
 Evidence: sibling `portfolio-line-v12-qa/` (rendered frames, capture summary, browser-chapters.json, render logs and release verification). Deployment identity and public PageSpeed rechecks are recorded there after publishing. Prior release rollback: `8a2adc9d-c9eb-4aff-8d29-03c9bb7cf0a1`.
 
 Rendering dependency audit: npm reports the unpatched braces stack-exhaustion advisory through the ESLint development chain. It is not shipped to visitors. The rendering input is repository-authored, without external glob input.
+
+## Production host correction
+
+Live verification found Cloudflare's static asset response returned HTTP 200 to Range requests, leaving native seeking at `[0, 0]`. The controller now fetches the selected ~1 MB film only when playback or a chapter is requested (automatic playback counts when visible and motion/data preferences permit), then supplies a local Blob URL to the native player. That provides a verified `[0, 36]` seek range without a Worker routing change. The buffer is reused for the document lifetime; loading/error states, retry, late offscreen completion, and latest-chapter selection are tested. Manual motion/data preferences do not fetch until interaction. The four film bytes are unchanged.
