@@ -67,8 +67,6 @@
   text-wrap: balance;
 }
 .consulting-site .case-copy > p { font-size: 1rem; line-height: 1.85; }
-.consulting-site .case-role { grid-template-columns: 7rem minmax(0, 1fr); }
-.consulting-site .case-role span { font-size: 0.7rem; letter-spacing: 0.03em; }
 .consulting-site .case-meta { font-family: inherit; font-size: 0.78rem; letter-spacing: 0.02em; text-transform: none; }
 .consulting-site .tag-list li { font-family: inherit; font-size: 0.72rem; }
 .consulting-site .project-film-header > div:first-child { min-width: 0; }
@@ -118,7 +116,6 @@ html[lang="zh-Hant"] .consulting-hero h1 { letter-spacing: -0.015em; }
   .consulting-site .consulting-hero { min-height: auto; padding-block: calc(var(--header) + 3rem) 4rem; }
   .consulting-site .hero h1 { font-size: clamp(2rem, 9vw, 3.3rem); }
   .consulting-site .eyebrow { font-size: 0.65rem; letter-spacing: 0.05em; line-height: 1.8; }
-  .consulting-site .case-role { grid-template-columns: 6rem minmax(0, 1fr); gap: 0.6rem; }
   .consulting-site .case-copy h3 { font-size: clamp(1.8rem, 8vw, 2.6rem); }
   .consulting-site .project-film-header { flex-wrap: wrap; }
   .consulting-site .case-compact { grid-template-columns: minmax(0, 1fr); }

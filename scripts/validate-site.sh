@@ -269,8 +269,8 @@ for (const asset of motion.assets) {
 }
 for (const project of Object.keys(versions)) {
   const article = html.match(new RegExp(`<article[^>]*data-case="${project}"[^>]*>([\\s\\S]*?)<\\/article>`));
-  if (!article || !article[1].includes('class="case-role"') || !article[1].includes('alt="')) {
-    errors.push(`Missing product, contribution or image description: ${project}`);
+  if (!article || !article[1].includes('alt="')) {
+    errors.push(`Missing product or image description: ${project}`);
   }
   if (project === "line-family-translator") {
     if (!article || !article[1].includes('data-line-film') || !article[1].includes('preload="none"') ||

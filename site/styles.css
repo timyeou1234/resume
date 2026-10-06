@@ -778,27 +778,6 @@ main {
   line-height: 1.75;
 }
 
-.case-role {
-  display: grid;
-  grid-template-columns: 4rem 1fr;
-  gap: 1rem;
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--line);
-}
-
-.case-role span {
-  color: var(--dim);
-  font-family: ui-monospace, monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
-}
-
-.case-role strong {
-  font-size: 0.78rem;
-  font-weight: 550;
-}
-
 .tag-list {
   display: flex;
   flex-wrap: wrap;
