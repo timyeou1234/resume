@@ -5,7 +5,7 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
 const app = fs.readFileSync(path.join(__dirname, '../site/app.js'), 'utf8');
-const controller = app.slice(app.indexOf('  (function setupProductShowcases()'), app.indexOf('  var year ='));
+const controller = app.slice(app.indexOf('  (function setupProductShowcases()'), app.indexOf('  (function setupLineFilm()'));
 assert(controller.includes('setupProductShowcases'));
 function element() {
   return {
@@ -18,9 +18,9 @@ function element() {
   };
 }
 function fixture({ reduce = false, saveData = false } = {}) {
-  const players = Array.from({length: 4}, (_, index) => {
+  const players = Array.from({length: 3}, (_, index) => {
     const e = element(); e.style.owner = e;
-    e.scenes = Array.from({length: index === 1 ? 2 : 3}, element);
+    e.scenes = Array.from({length: 3}, element);
     e.steps = e.scenes.map(element);
     e.images = e.scenes.map(element);
     e.toggle = element(); e.label = element(); e.stage = element(); e.controls = element();

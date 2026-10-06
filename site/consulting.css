@@ -206,3 +206,26 @@ html[lang="zh-Hant"] .consulting-hero h1 { letter-spacing: -0.015em; }
   .showcase-steps button { font-size: 0.7rem; gap: 0.35rem; }
   .showcase-toggle { margin-left: auto; }
 }
+
+/* V12: source-backed LINE film, with a separately composed portrait edition. */
+.line-film { margin: 0; min-width: 0; }
+.line-film video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #101d1a; }
+.line-film-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 1rem; border: 1px solid var(--line-bright); border-radius: 0 0 1rem 1rem; }
+.line-film-controls[hidden] { display: none; }
+.line-film button { min-height: 44px; border: 1px solid #546c5f; border-radius: .6rem; background: #17261f; padding: .6rem .9rem; color: #ecf7ef; font: inherit; font-size: .82rem; cursor: pointer; }
+.line-film button:hover, .line-film button[aria-current="step"] { background: #32543e; border-color: #99cba8; }
+.line-film button:focus-visible, .line-transcript summary:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+.line-film-chapters { display: flex; flex-wrap: wrap; gap: .5rem; }
+.line-film figcaption { padding: .8rem 0; color: #b5c2c0; font-size: .8rem; line-height: 1.7; }
+.line-transcript { font-size: .85rem; color: #c4d0cd; line-height: 1.8; }
+.line-transcript summary { cursor: pointer; padding: .4rem 0; }
+.line-transcript li { margin: .5rem 0; }
+@media (max-width: 700px) { .line-film video { aspect-ratio: 3 / 4; } .line-film .showcase-top { padding: .8rem; } .line-film .showcase-label { font-size: .6rem; } .line-film-controls { padding: .75rem; gap: .6rem; } }
+
+.line-film .line-film-controls { border-radius: 0; background: #111c18; }
+.line-film video { border-radius: 0 0 1rem 1rem; }
+@media (max-width: 700px) {
+  .line-film-controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .line-film-chapters { display: contents; }
+  .line-film button { padding: .55rem .3rem; font-size: .76rem; }
+}

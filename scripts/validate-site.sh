@@ -27,7 +27,7 @@ for (const match of html.matchAll(/href="#([^"]+)"/g)) {
 
 const generatedPaths = new Set(["resume.html"]);
 const localReferences = [];
-for (const match of html.matchAll(/\s(?:href|src|poster|data-(?:src|poster|href|image)-(?:en|zh))="([^"]+)"/g)) {
+for (const match of html.matchAll(/\s(?:href|src|poster|data-(?:src|poster|href|image|mobile-src|mobile-poster)-(?:en|zh))="([^"]+)"/g)) {
   const value = match[1];
   if (/^(?:https?:|mailto:|tel:|#)/.test(value)) continue;
   const relative = decodeURIComponent(value.split(/[?#]/)[0].replace(/^\.\//, ""));
@@ -272,7 +272,13 @@ for (const project of Object.keys(versions)) {
   if (!article || !article[1].includes('class="case-role"') || !article[1].includes('alt="')) {
     errors.push(`Missing product, contribution or image description: ${project}`);
   }
-  const count = project === "line-family-translator" ? 2 : 3;
+  if (project === "line-family-translator") {
+    if (!article || !article[1].includes('data-line-film') || !article[1].includes('preload="none"') ||
+        (article[1].match(/data-line-chapter=/g) || []).length !== 5 || !article[1].includes('data-line-toggle') ||
+        !article[1].includes('line-transcript')) errors.push("LINE film must retain settings, translation, transcript and playback controls");
+    continue;
+  }
+  const count = 3;
   if (!article || !article[1].includes(`data-product-showcase="${project}"`) ||
       (article[1].match(/data-scene="/g) || []).length !== count ||
       (article[1].match(/data-showcase-step="/g) || []).length !== count ||
@@ -280,7 +286,7 @@ for (const project of Object.keys(versions)) {
     errors.push(`Missing animated walkthrough or playback controls: ${project}`);
   }
 }
-if (/<video\b|data-project-video=|project-film-dialog|(?:film|loop|poster)-(?:en|zh)-v[457]/.test(html)) {
+if (/data-project-video=|project-film-dialog|(?:film|loop|poster)-(?:en|zh)-v[457]/.test(html)) {
   errors.push("Retired promotional media or inactive player controls remain on the page");
 }
 for (const caption of ["Chinese UI with test data", "iOS 模擬器原始截圖", "Isolated test data", "隔離測試資料", "Product avatar", "macOS App 圖示", "not a LINE chat recording", "非 LINE 聊天錄影"]) {
@@ -308,6 +314,34 @@ if (!headers.includes("/assets/products/*") ||
 }
 if (fs.readFileSync(path.join(portfolio, "_headers"), "utf8") !== headers) {
   errors.push("Cloudflare portfolio bundle has a different _headers policy");
+}
+const line = JSON.parse(fs.readFileSync(path.join(repo, "media/line-showcase-v12/media-manifest.json"), "utf8"));
+const linePaths = ["desktop", "mobile"].flatMap(edition => ["zh", "en"].flatMap(lang => [
+  `assets/products/line-family-translator/film-${edition}-${lang}-v12.mp4`,
+  `assets/products/line-family-translator/poster-${edition}-${lang}-v12.jpg`
+]));
+if (line.version !== "v12" || JSON.stringify(line.assets.map(a => a.path).sort()) !== JSON.stringify(linePaths.slice().sort())) errors.push("Expected four LINE films and four posters");
+if (line.evidence !== "source-worker responses; synthetic conversations; recreated interface; no native LINE recording" || line.outboundNetworkRequests !== 0 ||
+    JSON.stringify(line.chapters) !== JSON.stringify([0, 7, 14, 20, 28])) errors.push("LINE film evidence or chapter provenance is invalid");
+const lineSourcePaths = ["src/Scenes.tsx", "src/Composition.tsx", "src/Root.tsx", "src/capture.json", "public/avatar-v9.png", "scripts/capture.mjs", "scripts/render.sh", "package-lock.json"];
+if (JSON.stringify(line.sources.map(s => s.path).sort()) !== JSON.stringify(lineSourcePaths.sort())) errors.push("LINE film requires the complete render source record");
+for (const source of line.sources) {
+  const raw = fs.readFileSync(path.join(repo, "media/line-showcase-v12", source.path));
+  if (crypto.createHash("sha256").update(raw).digest("hex") !== source.sha256) errors.push("LINE authored source differs from recorded render");
+}
+for (const asset of line.assets) {
+  if (!linePaths.includes(asset.path)) continue;
+  mediaAssets.push(asset.path);
+  const portrait = asset.path.includes('-mobile-');
+  if (asset.width !== (portrait ? 1080 : 1920) || asset.height !== (portrait ? 1440 : 1080)) errors.push("LINE film edition has incorrect dimensions");
+  if (asset.path.endsWith('.mp4') && (asset.audioTracks !== 0 || asset.duration !== 36 || asset.videoCodec !== 'h264' || !['yuv420p', 'yuvj420p'].includes(asset.pixelFormat))) errors.push("LINE films must be silent 36-second H264 videos");
+  if (!localReferences.includes(asset.path)) errors.push(`Unreferenced LINE film asset: ${asset.path}`);
+  for (const root of [site, portfolio]) {
+    const file = path.join(root, asset.path);
+    if (!fs.existsSync(file)) { errors.push(`Missing LINE film asset: ${asset.path}`); continue; }
+    const raw = fs.readFileSync(file);
+    if (raw.length !== asset.bytes || crypto.createHash("sha256").update(raw).digest("hex") !== asset.sha256) errors.push(`LINE film asset differs from recorded render: ${asset.path}`);
+  }
 }
 const allowedPortfolioFiles = ["_headers", "app.js", "consulting.css", "index.html", "en/index.html", "robots.txt", "sitemap.xml", "styles.css", ...mediaAssets].sort();
 if (JSON.stringify(portfolioFiles) !== JSON.stringify(allowedPortfolioFiles)) {

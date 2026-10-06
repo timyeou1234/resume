@@ -21,12 +21,12 @@ class LocaleRenderer(HTMLParser):
         if self.translated_tag:
             raise ValueError("Localized text must be a leaf element; nested markup would be lost")
         attrs = dict(pairs)
-        for target, key in (("aria-label", "aria"), ("href", "href"), ("src", "image"), ("alt", "alt"), ("content", "content"), ("title", "title")):
+        for target, key in (("aria-label", "aria"), ("href", "href"), ("src", "image"), ("alt", "alt"), ("content", "content"), ("title", "title"), ("poster", "poster")):
             localized = attrs.get(f"data-{key}-{self.language}")
             if localized is not None:
                 attrs[target] = localized
         for key, value in list(attrs.items()):
-            if value and value.startswith("./") and (key in {"src", "href"} or key.startswith(("data-image-", "data-href-"))):
+            if value and value.startswith("./") and (key in {"src", "href", "poster"} or key.startswith(("data-image-", "data-href-", "data-src-", "data-mobile-src-", "data-poster-", "data-mobile-poster-"))):
                 attrs[key] = value[1:]
         if tag == "html":
             attrs["lang"] = "en" if self.language == "en" else "zh-Hant"

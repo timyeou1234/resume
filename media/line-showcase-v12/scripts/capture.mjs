@@ -1,0 +1,32 @@
+// Reproducible, offline capture of the real worker. Never contacts LINE or a model.
+import {readFileSync, writeFileSync, readdirSync} from 'node:fs';
+import {resolve, join} from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {createHash, createHmac} from 'node:crypto';
+import {DatabaseSync} from 'node:sqlite';
+import {execFileSync} from 'node:child_process';
+import assert from 'node:assert/strict';
+if (!process.argv[2]) throw new Error('Usage: node scripts/capture.mjs /absolute/path/to/Line-Bot');
+const source = resolve(process.argv[2]);
+const {createWorker} = await import(pathToFileURL(join(source, 'src/worker.js')));
+const raw = new DatabaseSync(':memory:');
+for (const file of ['0001_deliveries.sql','0002_translator_settings.sql','0003_failure_diagnostics.sql']) raw.exec(readFileSync(join(source,'migrations',file),'utf8'));
+const DB = {prepare(sql) {const statement=raw.prepare(sql); const bound=params=>({async first(){return statement.get(...params)},async all(){return{success:true,results:statement.all(...params)}},async run(){return{success:true,meta:{changes:Number(statement.run(...params).changes)}}}}); return{...bound([]),bind:(...params)=>bound(params)}}};
+const now=Date.parse('2026-10-06T00:00:00Z'), secret='synthetic-demo-only-secret';
+const env={DB,LINE_CHANNEL_SECRET:secret,LINE_BOT_USER_ID:'synthetic-bot',LINE_CHANNEL_ACCESS_TOKEN:'synthetic-token',TRANSLATION_PROVIDER:'local',LOCAL_TRANSLATOR_URL:'https://translator.example.test/translate',LOCAL_TRANSLATOR_TOKEN:'A'.repeat(40),TRANSLATION_PAIR:'zh-en',ENABLED:'true',PHRASEBOOK_ENABLED:'true',ALLOWED_SOURCES:'user:synthetic-admin,group:synthetic-group',SETTINGS_ADMIN_USER_ID:'synthetic-admin'};
+globalThis.fetch=async()=>{throw new Error('Network is forbidden in this capture')};
+const calls=[],pending=[];
+const worker=createWorker({now:()=>now,report:()=>{},fetcher:async(url,options)=>{assert.equal(url,'https://api.line.me/v2/bot/message/reply','No model or other network requests allowed');calls.push(JSON.parse(options.body));return Response.json({})}});
+async function send(id,text,group=false){const body=JSON.stringify({destination:'synthetic-bot',events:[{type:'message',mode:'active',timestamp:now,webhookEventId:`synthetic-${id}`,replyToken:`synthetic-${id}`,source:group?{type:'group',groupId:'synthetic-group'}:{type:'user',userId:'synthetic-admin'},message:{type:'text',text}}]});const before=calls.length; const response=await worker.fetch(new Request('https://test.invalid/webhook',{method:'POST',headers:{'x-line-signature':createHmac('sha256',secret).update(body).digest('base64')},body}),env,{waitUntil(p){pending.push(p)}});await Promise.all(pending.splice(0));assert.equal(response.status,200);assert.equal(calls.length,before+1);return{id,input:text,context:group?'approved family group':'administrator DM',output:calls.at(-1).messages[0]}}
+const steps=[];
+steps.push(await send('menu','設定語言'));
+steps.push(await send('second','設定第一語言 中文'));
+steps.push(await send('confirm','設定語言 中文 印尼文'));
+assert.equal(raw.prepare("SELECT value FROM translator_settings WHERE key='translation_pair'").get().value,'zh-id');
+steps.push(await send('request','請把牛奶放進冰箱。\n請把桌子擦乾淨。',true));
+steps.push(await send('reply','Sudah selesai. Terima kasih.',true));
+assert.match(steps[3].output.text,/Tolong simpan susu di kulkas\nTolong lap meja sampai bersih/);
+assert.match(steps[4].output.text,/已經做好了\n謝謝/);
+const files=readdirSync(join(source,'src')).filter(f=>f.endsWith('.js')).sort().map(file=>({path:`src/${file}`,sha256:createHash('sha256').update(readFileSync(join(source,'src',file))).digest('hex')}));
+const result={version:'v12',source:{repository:'Line Bot',head:execFileSync('git',['rev-parse','HEAD'],{cwd:source,encoding:'utf8'}).trim(),files},evidence:'Actual createWorker responses with synthetic signed webhook events, isolated SQLite and source phrasebook; no external network, no model translation, no private chat, not a native LINE recording.',initialPair:'zh-en',selectedPair:'zh-id',outboundNetworkRequests:0,steps};
+writeFileSync(new URL('../src/capture.json',import.meta.url),JSON.stringify(result,null,2)+'\n');raw.close();console.log(JSON.stringify({steps:steps.map(s=>({id:s.id,output:s.output})),outboundNetworkRequests:0},null,2));

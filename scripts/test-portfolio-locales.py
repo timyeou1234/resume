@@ -47,10 +47,10 @@ for lang, route in [('zh', '/'), ('en', '/en/')]:
         attrs = node['attrs']
         if f'data-{lang}' in attrs:
             assert node['text'] == attrs[f'data-{lang}'], (lang, node)
-        for target, key in [('aria-label', 'aria'), ('src', 'image'), ('href', 'href'), ('alt', 'alt'), ('content', 'content'), ('title', 'title')]:
+        for target, key in [('aria-label', 'aria'), ('src', 'image'), ('href', 'href'), ('alt', 'alt'), ('content', 'content'), ('title', 'title'), ('poster', 'poster')]:
             if f'data-{key}-{lang}' in attrs:
                 assert attrs[target] == attrs[f'data-{key}-{lang}'], (lang, target, node)
-        for attribute in ['href', 'src']:
+        for attribute in ['href', 'src', 'poster']:
             value = attrs.get(attribute, '')
             parsed = urlsplit(value)
             if not value or parsed.scheme or parsed.netloc:
@@ -65,9 +65,15 @@ for lang, route in [('zh', '/'), ('en', '/en/')]:
                 assert parsed.fragment in ids, value
     toggle = page.one('a', **{'class': 'lang-toggle'})['attrs']
     assert toggle['href'] == ('/en/' if lang == 'zh' else '/')
-    assert len([n for n in page.nodes if 'data-product-showcase' in n['attrs']]) == 4
-    assert len([n for n in page.nodes if 'data-scene' in n['attrs']]) == 11
-    print(f'Passed {route}: static {lang} copy, metadata, alternates, all links and 11 showcase scenes')
+    assert len([n for n in page.nodes if 'data-product-showcase' in n['attrs']]) == 3
+    assert len([n for n in page.nodes if 'data-scene' in n['attrs']]) == 9
+    assert len([n for n in page.nodes if 'data-line-film' in n['attrs']]) == 1
+    assert len([n for n in page.nodes if 'data-line-chapter' in n['attrs']]) == 5
+    video = page.one('video')['attrs']
+    assert video['preload'] == 'none' and 'src' not in video
+    for edition in ['', 'mobile-']:
+        assert f'-{lang}-v12.mp4' in video[f'data-{edition}src-{lang}']
+    print(f'Passed {route}: static {lang} copy, metadata, alternates, all links and 9 capture scenes and five LINE chapters')
 ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
 sitemap = ET.fromstring((dist / 'sitemap.xml').read_text())
 assert [n.text for n in sitemap.findall('s:url/s:loc', ns)] == ['https://timyeou.com/', 'https://timyeou.com/en/']

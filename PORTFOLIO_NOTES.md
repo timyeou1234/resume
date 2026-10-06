@@ -1,5 +1,12 @@
 # Portfolio content and delivery notes
 
+## Current LINE film — V12 (2026-10-06)
+
+The owner rejected V10's simplified two-phrase LINE illustration. The current LINE section uses the five-chapter, 36-second film documented in `docs/line-film-v12-acceptance.md`: actual worker responses for language settings and bidirectional translation, rendered as a disclosed interface demonstration with synthetic test conversations. Four editions cover desktop/portrait and Chinese/English captions. The original avatar and all historical assets are preserved. The other three product walkthroughs are unchanged.
+
+Run `node scripts/test-line-film.cjs` in addition to the validation commands below. The public bundle adds exactly four films and four posters to the existing fourteen product images; the build-time Remotion project and source response fixture are excluded. Earlier V9/V10 sections below remain historical context, not the current LINE implementation.
+
+
 ## Current direction — 2026-10-05
 
 The owner's current requirement is real products with copy tailored to each

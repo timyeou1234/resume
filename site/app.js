@@ -135,6 +135,69 @@
     syncPlayback();
   })();
 
+  (function setupLineFilm() {
+    var figure = doc.querySelector('[data-line-film]');
+    if (!figure) return;
+    var video = figure.querySelector('video');
+    var toggle = figure.querySelector('[data-line-toggle]');
+    var label = figure.querySelector('[data-line-play-label]');
+    var chapters = Array.prototype.slice.call(figure.querySelectorAll('[data-line-chapter]'));
+    var visible = false, loaded = false, expectedPause = false;
+    var wantsPlaying = !reducedMotion.matches && !(navigator.connection && navigator.connection.saveData);
+    var mobile = window.matchMedia('(max-width: 700px)').matches;
+    video.poster = video.getAttribute('data-' + (mobile ? 'mobile-poster-' : 'poster-') + currentLanguage);
+    video.muted = true;
+    function load() {
+      if (loaded) return;
+      video.src = video.getAttribute('data-' + (mobile ? 'mobile-src-' : 'src-') + currentLanguage);
+      loaded = true;
+      video.controls = true;
+    }
+    function update() {
+      label.textContent = currentLanguage === 'zh' ? (video.paused ? '播放示範' : '暫停') : (video.paused ? 'Play demo' : 'Pause');
+      toggle.setAttribute('aria-pressed', String(!video.paused));
+      var active = 0;
+      chapters.forEach(function (button, index) { if (video.currentTime >= Number(button.getAttribute('data-line-chapter'))) active = index; });
+      chapters.forEach(function (button, index) { if (index === active) button.setAttribute('aria-current', 'step'); else button.removeAttribute('aria-current'); });
+    }
+    function sync() {
+      if (visible && !doc.hidden && wantsPlaying) {
+        load();
+        video.play().catch(function () { wantsPlaying = false; update(); });
+      } else if (!video.paused) { expectedPause = true; video.pause(); }
+      update();
+    }
+    toggle.addEventListener('click', function () {
+      wantsPlaying = video.paused;
+      if (video.ended) video.currentTime = 0;
+      sync();
+    });
+    chapters.forEach(function (button) {
+      button.addEventListener('click', function () {
+        wantsPlaying = false;
+        sync(); load();
+        var seek = function () { video.currentTime = Number(button.getAttribute('data-line-chapter')) + 3.2; update(); };
+        if (video.readyState >= 1) seek();
+        else { video.addEventListener('loadedmetadata', seek, {once: true}); video.load(); }
+      });
+    });
+    video.addEventListener('play', function () { wantsPlaying = true; update(); });
+    video.addEventListener('pause', function () { if (expectedPause) expectedPause = false; else wantsPlaying = false; update(); });
+    video.addEventListener('ended', function () { wantsPlaying = false; update(); });
+    video.addEventListener('timeupdate', update);
+    video.addEventListener('error', function () { wantsPlaying = false; update(); });
+    doc.addEventListener('visibilitychange', sync);
+    function preferenceChanged() { if (reducedMotion.matches || (navigator.connection && navigator.connection.saveData)) wantsPlaying = false; sync(); }
+    if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', preferenceChanged);
+    if (navigator.connection && navigator.connection.addEventListener) navigator.connection.addEventListener('change', preferenceChanged);
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting; if (visible) load(); sync();
+    }, {threshold: 0.15}).observe(video);
+    else { visible = true; wantsPlaying = false; load(); }
+    figure.querySelector('.line-film-controls').hidden = false;
+    update();
+  })();
+
   var year = doc.querySelector("#year, [data-year]");
   if (year) year.textContent = String(new Date().getFullYear());
 
