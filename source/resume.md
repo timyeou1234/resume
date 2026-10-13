@@ -101,7 +101,7 @@ Oct 2020 – Apr 2024
 **Project Manager / iOS Developer**  
 Apr 2019 – Aug 2020
 
-- Served as the primary iOS developer while managing client projects from planning through App Store release.
+- Served as the primary iOS developer while managing client projects from planning through enterprise internal distribution.
 - Delivered production iOS applications and coordinated Product, Backend, and Android development across project teams.
 
 ### Awesome Limited
@@ -138,3 +138,8 @@ Aug 2016 – Jan 2017
 ### National Taipei University
 
 **Bachelor of Business Administration**
+
+## Candidate confirmations — 2026-10-13
+
+- Royal Technology: apps used enterprise internal distribution, not App Store release. The Apr 2019 – Aug 2020 dates remain unchanged. No additional signing, certification, or operational details are inferred.
+- Lion Travel Information: the formal title was iOS Developer. Leading the three-engineer iOS team remains a responsibility, not a separate or elevated job title.

@@ -36,8 +36,9 @@ Public section order is Summary, Professional Experience, Technical Skills,
 Selected Projects (two), AI-Assisted Engineering (one paragraph), Education.
 The three recent employers remain Crypto.com, San Orange Technology (client
 KINTO), and OpenNet. All recorded dates are preserved, including Royal ending
-August 2020. Royal's release channel is worded neutrally pending confirmation;
-Lion's existing iOS Developer label is retained without inferring a higher title.
+August 2020. The candidate confirmed on 2026-10-13 that Royal used enterprise
+internal distribution and Lion's formal title was iOS Developer. Team leadership
+remains a responsibility. No signing, certification, or operational details are inferred.
 
 ## Existing website / main branch split
 
@@ -47,14 +48,18 @@ older portfolio files. This candidate imports the current factual record for
 reference. Do not merge the entire website branch into main or build/deploy
 main's old portfolio. Do not publish PDFs from the legacy website branch.
 
-The separate main-based synchronization candidate changes only the public-copy
-JSON, renderer, one line in `build-site.sh`, and content-source guidance. Apply/review those together so
+The separate main-based synchronization candidate includes the public-copy
+JSON, renderer, one line in `build-site.sh`, and content-source guidance. The
+2026-10-13 factual correction also updates Royal's distribution wording in the
+main-based source, shared LaTeX sections, and affected company overlays/brief.
+Apply/review those together so
 GitHub Pages and the Cloudflare resume use identical public content. Rebuild
 Markdown from both candidates and compare it byte for byte before release.
-GitHub Pages keeps its existing five-PDF allowlist and workflow. PDF LaTeX source
-is outside this web-copy candidate; existing PDF build/review gates still apply
+GitHub Pages keeps its existing five-PDF allowlist and workflow. The factual
+correction requires the existing PDF build/review gates for every affected variant
 before a main merge. The website's `resume` routes and print layout do not ship
-those PDF files.
+those PDF files. Use the main-based checkout for corrected PDFs; the legacy
+website branch is not the PDF release source.
 
 ## Preview and publication
 

@@ -109,6 +109,8 @@ once; `scripts/render-resume.py` generates HTML and Markdown from it.
 `source/resume.md` retains detailed factual evidence and is not emitted wholesale
 into the readable resume. Keep Summary immediately before Professional Experience,
 then skills, at most two selected projects, and a brief AI workflow paragraph.
-Royal's release channel and Lion's exact formal title await confirmation: do not
-add a release-channel claim or infer a more senior title. Preserve recorded dates.
+The candidate confirmed on 2026-10-13 that Royal used enterprise internal
+distribution, not App Store release; keep Apr 2019 – Aug 2020 and do not infer
+signing, certification, or operational details. Lion's formal title was iOS
+Developer; team leadership belongs in responsibilities, not the job title.
 See `docs/resume-subpath.md` before publishing across the existing branch split.
