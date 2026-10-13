@@ -33,7 +33,7 @@
     <nav class="site-nav" aria-label="Primary navigation" data-aria-en="Primary navigation" data-aria-zh="主要導覽">
       <a href="#native" data-en="Services" data-zh="服務項目">Services</a>
       <a href="#work" data-en="Selected work" data-zh="實作案例">Selected work</a>
-      <a href="#scale" data-en="Experience" data-zh="過往經歷">Experience</a>
+      <a href="#scale" data-en="iOS experience" data-zh="iOS 經歷">iOS experience</a>
       <a href="#contact" data-en="Contact" data-zh="聯絡合作">Contact</a>
     </nav>
     <a class="lang-toggle" href="/" hreflang="zh-Hant" aria-label="切換為繁體中文">
@@ -57,6 +57,15 @@
           <a class="button button-primary magnetic" href="#contact"><span data-en="Discuss your project" data-zh="聊聊你的需求">Discuss your project</span> <span aria-hidden="true">↗</span></a>
           <a class="button button-ghost magnetic" href="#work"><span data-en="See the projects" data-zh="看實作案例">See the projects</span> <span aria-hidden="true">↓</span></a>
         </div>
+        <aside class="recruiter-entry" aria-labelledby="recruiter-title">
+          <p class="kicker" data-en="FOR RECRUITERS" data-zh="招募資訊">FOR RECRUITERS</p>
+          <h2 id="recruiter-title" data-en="Senior iOS Engineer · Taichung opportunities" data-zh="Senior iOS Engineer · 台中職缺">Senior iOS Engineer · Taichung opportunities</h2>
+          <p data-en="10+ years in mobile development. Production iOS work on Crypto.com Onchain Earn and Buy &amp; Swap, KINTO, and SportyBet. Open to discussing Senior iOS roles in Taichung." data-zh="十年以上行動開發經驗，正式 iOS 產品經歷涵蓋 Crypto.com Onchain Earn、Buy &amp; Swap、KINTO 與 SportyBet。歡迎洽談台中 Senior iOS 職缺。">10+ years in mobile development. Production iOS work on Crypto.com Onchain Earn and Buy &amp; Swap, KINTO, and SportyBet. Open to discussing Senior iOS roles in Taichung.</p>
+          <div class="recruiter-links">
+            <a href="https://timyeou1234.github.io/resume/resume.html" data-en="View full resume ↗" data-zh="查看完整履歷 ↗">View full resume ↗</a>
+            <a href="#scale" data-en="Production iOS experience ↓" data-zh="正式 iOS 產品經歷 ↓">Production iOS experience ↓</a>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -98,6 +107,7 @@
 <h3 data-en="Moment" data-zh="Moment" data-reveal>Moment</h3>
 <p data-en="Turn a life event into an editable preparation list." data-zh="把生活事項拆成可編輯的準備清單。" class="case-thesis" data-reveal>Turn a life event into an editable preparation list.</p>
 <p data-en="Moment organizes preparation for trips, family activities, and other life events. Edit individual actions, save the plan, and return to its progress and next step. The screens show a picnic plan and its action editor." data-zh="Moment 整理旅行、家庭活動等生活事項的準備工作。可以逐項編輯行動、保存清單，再回來查看進度與下一步。畫面展示家庭野餐的事項總覽與行動編輯。" data-reveal>Moment organizes preparation for trips, family activities, and other life events. Edit individual actions, save the plan, and return to its progress and next step. The screens show a picnic plan and its action editor.</p>
+<p data-reveal data-en="Built with native Swift and SwiftUI; TypeScript supports schema validation and evaluation tooling. The app remains in development." data-zh="以原生 Swift／SwiftUI 開發；TypeScript 用於結構驗證與評估工具。App 目前仍在開發中。">Built with native Swift and SwiftUI; TypeScript supports schema validation and evaluation tooling. The app remains in development.</p>
 <ul class="tag-list" data-reveal><li data-en="iOS app" data-zh="iOS App">iOS app</li><li data-en="Editable plans" data-zh="可編輯清單">Editable plans</li><li data-en="Saved progress" data-zh="準備進度">Saved progress</li></ul>
         </div>
 <figure class="case-visual product-showcase showcase-phone" data-product-showcase="moment" aria-label="Moment product walkthrough" data-aria-en="Moment product walkthrough" data-aria-zh="Moment 產品動態展示">
@@ -180,6 +190,7 @@
 <h3 data-en="Project tasks &amp; handover" data-zh="跨專案任務與交接管理" data-reveal>Project tasks &amp; handover</h3>
 <p data-en="Keep project progress, tasks, and decisions in one workspace." data-zh="在同一個工作空間查看專案、任務與待決策事項。" class="case-thesis" data-reveal>Keep project progress, tasks, and decisions in one workspace.</p>
 <p data-en="An internal workspace for managing several software projects. Move from the project overview to work items, knowledge records, and decisions. " data-zh="為同時管理多個軟體專案製作。從專案總覽進入工作項目，查看知識紀錄與待決策事項，減少切換專案時重新查找背景。" data-reveal>An internal workspace for managing several software projects. Move from the project overview to work items, knowledge records, and decisions. </p>
+<p data-reveal data-en="The TimWork platform is private personal tooling. Its public companion tools support context handoff, task estimation, and read-only run monitoring; they are separate from the platform shown here." data-zh="TimWork 平台是私人自用工具；公開的 companion tools 提供脈絡交接、任務估時與唯讀執行監控，與此處展示的平台分開。">The TimWork platform is private personal tooling. Its public companion tools support context handoff, task estimation, and read-only run monitoring; they are separate from the platform shown here.</p>
 <ul class="tag-list" data-reveal><li data-en="Project overview" data-zh="專案總覽">Project overview</li><li data-en="Work items" data-zh="工作項目">Work items</li><li data-en="Decision records" data-zh="決策紀錄">Decision records</li></ul>
         </div>
 <figure class="case-visual product-showcase showcase-desktop" data-product-showcase="timwork" aria-label="Project workspace walkthrough" data-aria-en="Project workspace walkthrough" data-aria-zh="專案工作空間產品動態展示">
@@ -215,26 +226,35 @@
           <div class="card-index">01 / WALLET</div>
           <img class="product-symbol" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d3/17/ba/d317bad6-53f7-d591-bfea-c4164de2ea8a/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/512x512bb.png" alt="Crypto.com Onchain app icon" width="64" height="64" loading="lazy" decoding="async">
           <h3>Crypto.com Onchain</h3>
-          <p data-en="Owned iOS Earn across multiple blockchain protocols. Shipped staking, rewards, position management, and Buy & Swap for a self-custodial wallet." data-zh="負責跨多個區塊鏈協議的 iOS Earn，交付質押、獎勵、部位管理，以及自託管錢包的 Buy & Swap。">Owned iOS Earn across multiple blockchain protocols. Shipped staking, rewards, position management, and Buy & Swap for a self-custodial wallet.</p>
-          <dl><div><dt>~20K</dt><dd data-en="DAU during tenure" data-zh="任職時日活">DAU during tenure</dd></div><div><dt>iOS</dt><dd data-en="Ownership" data-zh="功能負責">Ownership</dd></div><div><dt data-en="Multi-chain" data-zh="多鏈">Multi-chain</dt><dd data-en="Protocols" data-zh="協議整合">Protocols</dd></div></dl>
+          <p class="experience-tenure" data-en="Crypto.com · Senior iOS Developer · Sep 2024 – Jul 2026 · Production product" data-zh="Crypto.com · Senior iOS Developer · Sep 2024 – Jul 2026 · 正式產品">Crypto.com · Senior iOS Developer · Sep 2024 – Jul 2026 · Production product</p>
+          <p data-en="Owned iOS Earn and delivered Buy &amp; Swap for a self-custodial wallet, alongside multi-chain staking, rewards, and position management." data-zh="負責自託管錢包的 iOS Earn 與 Buy &amp; Swap，並交付跨鏈質押、獎勵與部位管理。">Owned iOS Earn and delivered Buy &amp; Swap for a self-custodial wallet, alongside multi-chain staking, rewards, and position management.</p>
+          <dl><div><dt>~20K</dt><dd data-en="Product DAU during tenure" data-zh="任職時產品日活">Product DAU during tenure</dd></div><div><dt>iOS</dt><dd data-en="Ownership" data-zh="功能負責">Ownership</dd></div><div><dt data-en="Multi-chain" data-zh="多鏈">Multi-chain</dt><dd data-en="Protocols" data-zh="協議整合">Protocols</dd></div></dl>
           <a href="https://crypto.com/onchain" target="_blank" rel="noreferrer" aria-label="Visit Crypto.com Onchain" data-en="Company product ↗" data-zh="公司產品 ↗">Company product ↗</a>
         </article>
         <article class="scale-card tilt sporty" data-reveal>
           <div class="card-index">02 / REAL-TIME</div>
           <img class="product-symbol" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d7/c7/f4/d7c7f45c-0905-6d40-e6a7-7cf1d1a102c0/AppIcon-0-0-1x_U007emarketing-0-6-0-sRGB-85-220.png/512x512bb.png" alt="SportyBet app icon" width="64" height="64" loading="lazy" decoding="async">
           <h3>SportyBet</h3>
+          <p class="experience-tenure" data-en="OpenNet · Senior iOS Developer · Oct 2020 – Apr 2024" data-zh="OpenNet · Senior iOS Developer · Oct 2020 – Apr 2024">OpenNet · Senior iOS Developer · Oct 2020 – Apr 2024</p>
           <p data-en="Built live odds, open bets, and betting-history synchronization. Prevented duplicated WebSocket updates across multiple betting slips and evolved legacy modules." data-zh="建立即時賠率、未結算投注與投注紀錄同步，避免多張投注單重複接收 WebSocket 更新，並演進既有模組。">Built live odds, open bets, and betting-history synchronization. Prevented duplicated WebSocket updates across multiple betting slips and evolved legacy modules.</p>
-          <dl><div><dt>~100K</dt><dd data-en="DAU during tenure" data-zh="任職時日活">DAU during tenure</dd></div><div><dt>WebSocket</dt><dd data-en="Live state" data-zh="狀態同步">Live state</dd></div><div><dt>RxSwift</dt><dd data-en="Migration" data-zh="模組遷移">Migration</dd></div></dl>
+          <dl><div><dt>~100K</dt><dd data-en="Product DAU during tenure" data-zh="任職時產品日活">Product DAU during tenure</dd></div><div><dt>WebSocket</dt><dd data-en="Live state" data-zh="狀態同步">Live state</dd></div><div><dt>RxSwift</dt><dd data-en="Migration" data-zh="模組遷移">Migration</dd></div></dl>
           <a href="https://www.sportybet.com/" target="_blank" rel="noreferrer" aria-label="Visit SportyBet" data-en="Company product ↗" data-zh="公司產品 ↗">Company product ↗</a>
         </article>
         <article class="scale-card tilt kinto" data-reveal>
           <div class="card-index">03 / MOBILITY</div>
           <img class="product-symbol" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/67/42/86/67428649-ace0-a82a-8047-9765992c79f8/AppIcon-1x_U007ephone-0-1-85-220-0.png/512x512bb.png" alt="KINTO Unlimited app icon" width="64" height="64" loading="lazy" decoding="async">
           <h3>KINTO</h3>
+          <p class="experience-tenure" data-en="San Orange Technology · Senior iOS Developer (Contract) · Jun 2024 – Aug 2024 · Client: KINTO" data-zh="San Orange Technology · Senior iOS Developer（約聘）· Jun 2024 – Aug 2024 · 客戶：KINTO">San Orange Technology · Senior iOS Developer (Contract) · Jun 2024 – Aug 2024 · Client: KINTO</p>
           <p data-en="Delivered vehicle usage tracking, vehicle status, and in-app guidance for a connected vehicle application on a focused three-month production cycle." data-zh="在三個月的密集正式開發週期中，交付聯網車輛應用的使用紀錄、車況資訊與 App 內操作引導。">Delivered vehicle usage tracking, vehicle status, and in-app guidance for a connected vehicle application on a focused three-month production cycle.</p>
           <dl><div><dt data-en="3 mo" data-zh="3 個月">3 mo</dt><dd data-en="Contract" data-zh="合約期間">Contract</dd></div><div><dt data-en="Vehicle" data-zh="車況">Vehicle</dt><dd data-en="Live state" data-zh="狀態同步">Live state</dd></div><div><dt>iOS</dt><dd data-en="Production" data-zh="正式產品">Production</dd></div></dl>
           <a href="https://www.kinto-mobility.com/unlimited" target="_blank" rel="noreferrer" aria-label="Visit KINTO Unlimited" data-en="Company product ↗" data-zh="公司產品 ↗">Company product ↗</a>
         </article>
+      </div>
+      <div class="experience-note">
+        <h3 data-en="Cronos App · Pre-launch" data-zh="Cronos App · 上線前開發">Cronos App · Pre-launch</h3>
+        <p data-en="A separate phase within the same Crypto.com tenure: built the Earn tab in React Native and TypeScript, plus wallet signing and Morpho vault flows validated on Cronos Testnet. This work was pre-launch; Onchain above is the production product." data-zh="同一段 Crypto.com 任期中的另一產品階段：使用 React Native／TypeScript 開發 Earn 頁籤、錢包簽署與 Morpho Vault 流程，並在 Cronos Testnet 驗證。此部分為上線前開發；上方 Onchain 為正式產品。">A separate phase within the same Crypto.com tenure: built the Earn tab in React Native and TypeScript, plus wallet signing and Morpho vault flows validated on Cronos Testnet. This work was pre-launch; Onchain above is the production product.</p>
+        <p data-en="DAU figures describe approximate product scale during my tenure, not user growth attributed to my work." data-zh="DAU 為任職時產品的概略規模，並非個人創造的使用者增長。">DAU figures describe approximate product scale during my tenure, not user growth attributed to my work.</p>
+        <a href="https://timyeou1234.github.io/resume/resume.html" data-en="Full employment history and technical experience ↗" data-zh="完整任職紀錄與技術經歷 ↗">Full employment history and technical experience ↗</a>
       </div>
     </section>
 

@@ -226,3 +226,26 @@ html[lang="zh-Hant"] .consulting-hero h1 { letter-spacing: -0.015em; }
   .line-film-chapters { display: contents; }
   .line-film button { padding: .55rem .3rem; font-size: .76rem; }
 }
+
+/* Recruiter entry keeps the consulting services and existing product layout. */
+.recruiter-entry {
+  max-width: 52rem;
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--cyan);
+  border-radius: 0.75rem;
+  background: var(--panel);
+}
+.recruiter-entry .kicker { margin: 0 0 0.5rem; }
+.recruiter-entry h2 { margin: 0; font-size: clamp(1.1rem, 2vw, 1.5rem); line-height: 1.5; }
+.recruiter-entry > p:not(.kicker), .experience-note p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+.recruiter-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+.recruiter-links a, .experience-note > a { color: var(--cyan); text-underline-offset: 0.25em; text-decoration: underline; line-height: 1.8; }
+.scale-card > .experience-tenure { color: var(--text); font-size: 0.75rem; }
+.experience-note { margin-top: 1.5rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 1rem; }
+.experience-note h3 { margin: 0; font-size: 1.1rem; line-height: 1.5; }
