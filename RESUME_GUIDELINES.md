@@ -128,6 +128,7 @@ Before publishing, confirm:
 Place Summary immediately before Professional Experience, then Technical Skills,
 at most two Selected Projects, one brief AI-Assisted Engineering paragraph, and
 Education. Keep all dates and production/pre-launch/private-development boundaries.
-Royal's release channel and Lion's exact formal title await confirmation: use
-neutral delivery wording and do not infer a higher title. The web copy change
-does not re-author the standard LaTeX PDFs.
+The candidate confirmed on 2026-10-13 that Royal used enterprise internal
+distribution, not App Store release; keep Apr 2019 – Aug 2020 and do not infer
+signing, certification, or operational details. Lion's formal title was iOS
+Developer; team leadership belongs in responsibilities, not the job title.
