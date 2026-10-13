@@ -26,8 +26,8 @@ The strongest themes are:
 - At OpenNet, confirmed production tooling includes Firebase and Elasticsearch-based logs for production issue investigation.
 - Slack alerts, the in-house feature-flag system, and Firebase Remote Config are confirmed cross-role experience but remain unattributed to a named employer until the candidate confirms that mapping.
 - The AI-company variant may describe the user-provided AI-assisted engineering workflow at Crypto.com: Jira review and task decomposition, optional architecture notes from ticket and Figma context, AI-assisted implementation, manual QA, AI-assisted commit and PR preparation, multi-model review, manual comment adjudication, code-owner approval, and weekly release CI.
-- Moment OS is an in-development, iOS-first React Native/Expo/TypeScript product built with AI-assisted development. Describe its validation, persistence, rendering, recovery, and evidence boundaries in plain language rather than presenting those concepts as standalone core skills.
-- Tim Work consists of the public Context Handoff, Task ETA Tracker, and Moment Monitor tools for reliable, observable, and recoverable agent work.
+- Moment is an in-development native Swift/SwiftUI iOS app. TypeScript supports schema validation and evaluation tooling. Keep private-prototype evidence distinct from a public release.
+- The TimWork platform is private personal tooling. Public Context Handoff, Task ETA Tracker, and Moment Monitor companion tools are separate from that platform.
 - ProductDev is an in-development, local-first macOS workbench built with AI-assisted development and Swift 6. It observes existing repository automation; GitHub Issues and the existing scheduler retain authority. Guarded actions, exact dry-runs, permanent receipts, and recovery views may be described in plain language.
 - Separate production expertise, AI-assisted engineering capabilities, and side-project technologies. Do not list unfamiliar architecture terms or side-project technologies as unqualified core skills.
 - Objective-C is intentionally omitted from every current resume variant. The AI-company variant uses the fuller, historically verified experience wording; other variants retain their concise experience rendering.
@@ -100,3 +100,15 @@ Before publishing, confirm:
 - The layout remains readable at normal zoom.
 - A two-page version uses both pages meaningfully and does not orphan Education
   or another short section on page two.
+
+## Public web resume (2026-10-13 candidate)
+
+`source/resume-public.json` is the shared bilingual public copy for the two
+portfolio resume routes and the GitHub Pages readable resume. Update that file
+once; `scripts/render-resume.py` generates HTML and Markdown from it.
+`source/resume.md` retains detailed factual evidence and is not emitted wholesale
+into the readable resume. Keep Summary immediately before Professional Experience,
+then skills, at most two selected projects, and a brief AI workflow paragraph.
+Royal's release channel and Lion's exact formal title await confirmation: do not
+add a release-channel claim or infer a more senior title. Preserve recorded dates.
+See `docs/resume-subpath.md` before publishing across the existing branch split.

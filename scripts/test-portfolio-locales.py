@@ -76,6 +76,6 @@ for lang, route in [('zh', '/'), ('en', '/en/')]:
     print(f'Passed {route}: static {lang} copy, metadata, alternates, all links and 9 capture scenes and five LINE chapters')
 ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
 sitemap = ET.fromstring((dist / 'sitemap.xml').read_text())
-assert [n.text for n in sitemap.findall('s:url/s:loc', ns)] == ['https://timyeou.com/', 'https://timyeou.com/en/']
+assert [n.text for n in sitemap.findall('s:url/s:loc', ns)] == ['https://timyeou.com/', 'https://timyeou.com/en/', 'https://timyeou.com/resume/', 'https://timyeou.com/en/resume/']
 assert 'Sitemap: https://timyeou.com/sitemap.xml' in (dist / 'robots.txt').read_text()
 print('Passed sitemap and crawler discovery')

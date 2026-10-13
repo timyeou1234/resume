@@ -10,6 +10,9 @@ find "$output_dir" -mindepth 1 -delete
 mkdir -p "$output_dir/assets"
 
 python3 "$repo_dir/scripts/render-locales.py"
+python3 "$repo_dir/scripts/render-resume.py"
+cp "$source_dir/resume.css" "$output_dir/resume.css"
+cp "$source_dir/resume.js" "$output_dir/resume.js"
 cp "$source_dir/styles.css" "$output_dir/styles.css"
 cp "$source_dir/consulting.css" "$output_dir/consulting.css"
 cp "$source_dir/app.js" "$output_dir/app.js"

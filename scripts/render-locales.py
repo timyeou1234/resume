@@ -86,10 +86,11 @@ def main():
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text("".join(renderer.output))
     (dist / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n")
-    alternates = (f'<xhtml:link rel="alternate" hreflang="{lang}" href="{ORIGIN}{route}"/>'
-                  for lang, route in (("zh-Hant", "/"), ("en", "/en/"), ("x-default", "/")))
-    links = "".join(alternates)
-    urls = "".join(f"<url><loc>{ORIGIN}{route}</loc>{links}</url>" for route in ("/", "/en/"))
+    urls = ""
+    for zh_route, en_route in (("/", "/en/"), ("/resume/", "/en/resume/")):
+        links = "".join(f'<xhtml:link rel="alternate" hreflang="{lang}" href="{ORIGIN}{route}"/>'
+                        for lang, route in (("zh-Hant", zh_route), ("en", en_route), ("x-default", zh_route)))
+        urls += "".join(f"<url><loc>{ORIGIN}{route}</loc>{links}</url>" for route in (zh_route, en_route))
     (dist / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'
         + urls + "</urlset>\n")

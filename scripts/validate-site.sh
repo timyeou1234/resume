@@ -4,6 +4,7 @@ set -euo pipefail
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 node --check "$repo_dir/site/app.js"
+node --check "$repo_dir/site/resume.js"
 bash "$repo_dir/scripts/build-portfolio.sh"
 
 RESUME_REPO_DIR="$repo_dir" node <<'NODE'
@@ -32,6 +33,10 @@ for (const match of html.matchAll(/\s(?:href|src|poster|data-(?:src|poster|href|
   if (/^(?:https?:|mailto:|tel:|#)/.test(value)) continue;
   const relative = decodeURIComponent(value.split(/[?#]/)[0].replace(/^\.\//, ""));
   if (!relative || generatedPaths.has(relative)) continue;
+  if (["/resume/", "/en/resume/"].includes(relative)) {
+    if (!fs.existsSync(path.join(portfolio, relative.slice(1), "index.html"))) errors.push(`Missing resume route: ${value}`);
+    continue;
+  }
   localReferences.push(relative);
   if (!fs.existsSync(path.join(site, relative))) errors.push(`Missing source target: ${value}`);
   if (!fs.existsSync(path.join(portfolio, relative))) errors.push(`Missing deployment target: ${value}`);
@@ -343,7 +348,7 @@ for (const asset of line.assets) {
     if (raw.length !== asset.bytes || crypto.createHash("sha256").update(raw).digest("hex") !== asset.sha256) errors.push(`LINE film asset differs from recorded render: ${asset.path}`);
   }
 }
-const allowedPortfolioFiles = ["_headers", "app.js", "consulting.css", "index.html", "en/index.html", "robots.txt", "sitemap.xml", "styles.css", ...mediaAssets].sort();
+const allowedPortfolioFiles = ["_headers", "app.js", "consulting.css", "index.html", "en/index.html", "robots.txt", "sitemap.xml", "styles.css", "resume/index.html", "en/resume/index.html", "resume.css", "resume.js", ...mediaAssets].sort();
 if (JSON.stringify(portfolioFiles) !== JSON.stringify(allowedPortfolioFiles)) {
   errors.push(`Cloudflare portfolio bundle differs from the explicit allowlist: ${portfolioFiles.join(", ")}`);
 }
@@ -376,3 +381,5 @@ console.log(`Validated portfolio: ${ids.length} ids and all local targets resolv
 NODE
 
 python3 "$repo_dir/scripts/test-portfolio-locales.py"
+
+python3 "$repo_dir/scripts/test-resume-public.py"

@@ -16,8 +16,9 @@ motion_manifest = json.loads((repo / "media/portfolio-motion-v10/media-manifest.
 with tempfile.TemporaryDirectory(prefix="portfolio-manifest-tests-") as directory:
     root = pathlib.Path(directory)
     (root / "site").symlink_to(repo / "site", target_is_directory=True)
+    (root / "source").symlink_to(repo / "source", target_is_directory=True)
     (root / "scripts").mkdir()
-    for script in ("validate-site.sh", "build-portfolio.sh", "render-locales.py", "test-portfolio-locales.py"):
+    for script in ("validate-site.sh", "build-portfolio.sh", "render-locales.py", "test-portfolio-locales.py", "render-resume.py", "test-resume-public.py"):
         shutil.copyfile(repo / "scripts" / script, root / "scripts" / script)
     (root / "media/portfolio-media-v8").mkdir(parents=True)
     (root / "media/moment").symlink_to(repo / "media/moment", target_is_directory=True)
