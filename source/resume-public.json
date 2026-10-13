@@ -1,0 +1,292 @@
+{
+  "provenance": {
+    "reviewed_source": "source/resume.md",
+    "source_commit": "3724357edce0600c06cfd9c8a8e91be464112635",
+    "purpose": "Shared public copy for timyeou.com resume routes and the GitHub Pages readable resume. Detailed evidence remains in source/resume.md."
+  },
+  "name": "Timothy Yu",
+  "role": "Senior iOS Engineer",
+  "availability": {
+    "en": "Open to Senior iOS opportunities in Taichung",
+    "zh": "歡迎洽談台中 Senior iOS 職缺"
+  },
+  "contacts": [
+    {
+      "label": "timyeou1234@hotmail.com",
+      "url": "mailto:timyeou1234@hotmail.com"
+    },
+    {
+      "label": "+886 929070110",
+      "url": "tel:+886929070110"
+    },
+    {
+      "label": "github.com/timyeou1234",
+      "url": "https://github.com/timyeou1234"
+    },
+    {
+      "label": "linkedin.com/in/timothy-yeou-0134a9117",
+      "url": "https://www.linkedin.com/in/timothy-yeou-0134a9117"
+    }
+  ],
+  "summary": {
+    "en": "Senior iOS engineer with 10+ years in mobile development. Delivered self-custodial wallet, real-time betting, and connected vehicle features, owning work from product and API discussions through implementation and production support.",
+    "zh": "十年以上行動開發經驗的 Senior iOS Engineer，曾交付自託管錢包、即時投注與聯網車輛功能，從產品與 API 討論、實作到正式環境維護，持續負責功能交付。"
+  },
+  "experience": [
+    {
+      "name": "Crypto.com",
+      "title": "Senior iOS Developer",
+      "dates": "Sep 2024 – Jul 2026",
+      "parts": [
+        {
+          "title": {
+            "en": "Crypto.com Onchain · Production product",
+            "zh": "Crypto.com Onchain · 正式產品"
+          },
+          "bullets": [
+            {
+              "en": "Owned iOS Earn across multiple blockchain protocols, including delivery, maintenance, and refactoring.",
+              "zh": "負責跨多個區塊鏈協議的 iOS Earn 功能交付、維護與重構。"
+            },
+            {
+              "en": "Delivered Buy & Swap, extending fiat purchase with a user-initiated on-chain swap after funds reached the wallet. Built staking, unstaking, rewards, and position-management flows.",
+              "zh": "交付 Buy & Swap，在法幣購買資產到帳後，由使用者啟動鏈上兌換；並實作質押、解除質押、獎勵領取與部位管理。"
+            },
+            {
+              "en": "Worked with Product and Backend teams through planning, API discussions, and production delivery for Onchain, a wallet with approximately 20K DAU during my tenure.",
+              "zh": "與產品及後端團隊協作規劃功能、討論 API 並交付正式版本；Onchain 在任職時約有 20K DAU。"
+            },
+            {
+              "en": "Investigated crashes, rendering delays, and API latency using Firebase Crashlytics, Firebase Performance, and Datadog; used Segment for analytics and A/B testing.",
+              "zh": "使用 Firebase Crashlytics、Firebase Performance 與 Datadog 調查崩潰、畫面延遲和 API 延遲，並使用 Segment 進行分析與 A/B 測試。"
+            }
+          ]
+        },
+        {
+          "title": {
+            "en": "Cronos App · Pre-launch",
+            "zh": "Cronos App · 上線前開發"
+          },
+          "bullets": [
+            {
+              "en": "Built the Earn tab in React Native and TypeScript using Fabric and TurboModules.",
+              "zh": "使用 React Native／TypeScript 與 Fabric、TurboModules 開發 Earn 頁籤。"
+            },
+            {
+              "en": "Implemented wallet signing, UserOperation construction, and Morpho deposit, withdrawal, and position flows; validated multi-step transactions on Cronos Testnet with mocked vaults.",
+              "zh": "實作錢包簽署、UserOperation 建構及 Morpho 存入、提領與部位流程，使用模擬 Vault 在 Cronos Testnet 驗證多步驟交易。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "San Orange Technology",
+      "title": "Senior iOS Developer (Contract)",
+      "dates": "Jun 2024 – Aug 2024",
+      "parts": [
+        {
+          "title": {
+            "en": "Client: KINTO · Production iOS app",
+            "zh": "客戶：KINTO · 正式 iOS App"
+          },
+          "bullets": [
+            {
+              "en": "Delivered vehicle usage tracking, vehicle status, and in-app guidance during a three-month contract, collaborating with Product, Design, and Backend teams.",
+              "zh": "在三個月約聘期間，與產品、設計及後端團隊協作，交付車輛使用紀錄、車況資訊與 App 內操作引導。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "OpenNet",
+      "title": "Senior iOS Developer",
+      "dates": "Oct 2020 – Apr 2024",
+      "parts": [
+        {
+          "title": {
+            "en": "SportyBet · Production iOS app",
+            "zh": "SportyBet · 正式 iOS App"
+          },
+          "bullets": [
+            {
+              "en": "Built live odds, open bets, and betting-history synchronization with WebSocket; prevented duplicate updates across multiple betting slips. SportyBet had approximately 100K DAU during my tenure.",
+              "zh": "使用 WebSocket 建立即時賠率、未結算投注與投注紀錄同步，避免多張投注單重複接收更新；SportyBet 在任職時約有 100K DAU。"
+            },
+            {
+              "en": "Adapted Android-first requirements into native iOS flows and migrated legacy modules to RxSwift and MVVM.",
+              "zh": "將以 Android 為主的需求轉成原生 iOS 流程，並將既有模組遷移至 RxSwift 與 MVVM。"
+            },
+            {
+              "en": "Built an internal mock server for UI development and automated testing; investigated issues with Firebase and Elasticsearch logs, reviewed PRs, and mentored junior engineers.",
+              "zh": "建立供 UI 開發與自動化測試使用的內部 mock server，使用 Firebase 與 Elasticsearch 紀錄調查問題，審查 PR 並指導初階工程師。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Royal Technology",
+      "title": "Project Manager / iOS Developer",
+      "dates": "Apr 2019 – Aug 2020",
+      "parts": [
+        {
+          "title": null,
+          "bullets": [
+            {
+              "en": "Served as the primary iOS developer and managed client projects from planning through delivery, coordinating Product, Backend, and Android teams.",
+              "zh": "擔任主要 iOS 開發者，管理客戶專案從規劃到交付，協調產品、後端與 Android 團隊。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Awesome Limited",
+      "title": "iOS Developer",
+      "dates": "Apr 2018 – Jan 2019",
+      "parts": [
+        {
+          "title": null,
+          "bullets": [
+            {
+              "en": "Developed video-streaming apps with encrypted HLS playlist playback.",
+              "zh": "開發影音串流 App，支援加密 HLS 播放清單。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lion Travel Information",
+      "title": "iOS Developer",
+      "dates": "Aug 2017 – Apr 2018",
+      "parts": [
+        {
+          "title": null,
+          "bullets": [
+            {
+              "en": "Led a three-engineer iOS team delivering enterprise apps, internal distribution, and release coordination.",
+              "zh": "帶領三人工程團隊開發企業 iOS App，負責內部分發與發布協調。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WeWork Technology",
+      "title": "Co-Founder / iOS Developer",
+      "dates": "Jan 2017 – Jul 2017",
+      "parts": [
+        {
+          "title": null,
+          "bullets": [
+            {
+              "en": "Conducted client requirements interviews and business development; independently delivered apps with scanning, vehicle rental, Bluetooth, and media features.",
+              "zh": "負責業務開發與客戶需求訪談，獨立交付掃碼、車輛租賃、藍牙及媒體功能的 App。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "IdeaBus Technology",
+      "title": "iOS Developer",
+      "dates": "Aug 2016 – Jan 2017",
+      "parts": [
+        {
+          "title": null,
+          "bullets": [
+            {
+              "en": "Independently built logistics tracking and packaging-monitoring apps with Swift and SOAP APIs.",
+              "zh": "使用 Swift 與 SOAP API，獨立開發物流追蹤和包裝監控 App。"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scale_note": {
+    "en": "DAU figures describe approximate product scale during my tenure, not growth attributed to my work.",
+    "zh": "DAU 為任職時產品的概略規模，並非個人創造的使用者增長。"
+  },
+  "skills": [
+    [
+      {
+        "en": "Native iOS",
+        "zh": "原生 iOS"
+      },
+      "Swift · UIKit · SwiftUI · RxSwift · Combine · Swift Concurrency · MVVM"
+    ],
+    [
+      {
+        "en": "Networking",
+        "zh": "網路"
+      },
+      "REST APIs · WebSocket"
+    ],
+    [
+      {
+        "en": "React Native (Cronos pre-launch)",
+        "zh": "React Native（Cronos 上線前開發）"
+      },
+      "TypeScript · Fabric · TurboModules"
+    ],
+    [
+      {
+        "en": "Wallet engineering",
+        "zh": "錢包工程"
+      },
+      {
+        "en": "EOA & smart contract wallets · Transaction signing · Wallet SDK integration · Staking & vault integrations",
+        "zh": "EOA 與智慧合約錢包 · 交易簽署 · Wallet SDK 整合 · 質押與 Vault 整合"
+      }
+    ],
+    [
+      {
+        "en": "Tools & diagnostics",
+        "zh": "工具與問題診斷"
+      },
+      "Xcode · Git · GitHub Actions · Firebase · Datadog · Segment · Elasticsearch"
+    ]
+  ],
+  "projects": [
+    {
+      "title": {
+        "en": "Moment · In development",
+        "zh": "Moment · 開發中"
+      },
+      "bullets": [
+        {
+          "en": "Building a native Swift/SwiftUI iOS app that turns natural-language requests into editable preparation plans. TypeScript supports schema validation and evaluation tooling.",
+          "zh": "以原生 Swift／SwiftUI 開發 iOS App，把自然語言需求轉成可編輯的準備計畫；TypeScript 用於結構驗證與評估工具。"
+        },
+        {
+          "en": "The private prototype saves the original request locally and presents AI output for review; users can still save their input when AI is unavailable.",
+          "zh": "私人原型會在本機保存原始需求，讓使用者檢視 AI 建議；AI 無法使用時仍能保存輸入。"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "Development task & handoff tools · Personal tooling",
+        "zh": "開發任務與交接工具 · 個人自用"
+      },
+      "bullets": [
+        {
+          "en": "Built a private React/JavaScript workspace with Node.js CLI/HTTP/MCP ticket tools. Public companion tools provide context handoff, task estimation, and read-only run monitoring; the TimWork platform itself remains private.",
+          "zh": "建立私人 React／JavaScript 工作空間，搭配 Node.js CLI／HTTP／MCP 任務工具。公開 companion tools 提供脈絡交接、任務估時與唯讀監控；TimWork 平台本身仍為私人自用。"
+        }
+      ]
+    }
+  ],
+  "workflow": {
+    "en": "Used AI for task decomposition, implementation support, and code review at Crypto.com. Personally validated UI, network behavior, and failure states, adjudicated review comments, and required code-owner approval before release.",
+    "zh": "在 Crypto.com 使用 AI 協助拆解任務、實作與程式碼審查；親自驗證 UI、網路行為及失敗狀態，判斷審查意見，並在發布前取得 code owner 核准。"
+  },
+  "education": {
+    "en": "National Taipei University · Bachelor of Business Administration",
+    "zh": "國立臺北大學 · 企業管理學士"
+  }
+}

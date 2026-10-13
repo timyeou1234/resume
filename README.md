@@ -55,8 +55,10 @@ for the full JD-to-PDF workflow and required factual/visual review.
 ## Repository purpose
 
 This is Timothy Yu's personal resume repository. LaTeX sources generate the
-five ATS-friendly PDFs, while `source/resume.md` supplies the readable GitHub
-Pages version and acts as the reviewed factual baseline.
+five ATS-friendly PDFs, while `source/resume.md` remains the reviewed factual baseline.
+The readable GitHub Pages resume is generated from `source/resume-public.json`
+by `scripts/render-resume.py --markdown`. The portfolio resume routes use the
+same bilingual public-copy source; edit it once, not the generated pages.
 
 Every push and pull request tests the workflow, builds and validates all five
 standard PDFs and every ready application profile and checks the

@@ -21,7 +21,7 @@ done
 {
   printf '%s\n' '---' 'layout: default' 'title: Timothy Yu - Senior iOS Engineer' 'permalink: /resume.html' '---' ''
   printf '%s\n' '[Download US Tech PDF](./assets/us-tech.pdf) · [Download Web3 PDF](./assets/web3.pdf) · [Download Taiwan PDF](./assets/taiwan.pdf) · [Download AI Company PDF](./assets/ai.pdf) · [下載繁體中文 PDF](./assets/chinese.pdf)' ''
-  sed -n '1,$p' "$repo_dir/source/resume.md"
+  python3 "$repo_dir/scripts/render-resume.py" --markdown
   if [[ -n "${GITHUB_SHA:-}" && -n "${GITHUB_REPOSITORY:-}" ]]; then
     printf '\n---\n\n_Last updated from commit [`%s`](https://github.com/%s/commit/%s)._\n' \
       "$GITHUB_SHA" "$GITHUB_REPOSITORY" "$GITHUB_SHA"
