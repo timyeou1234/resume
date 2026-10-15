@@ -14,6 +14,9 @@ cp "$source_dir/styles.css" "$output_dir/styles.css"
 cp "$source_dir/consulting.css" "$output_dir/consulting.css"
 cp "$source_dir/app.js" "$output_dir/app.js"
 cp "$source_dir/_headers" "$output_dir/_headers"
+for icon in favicon.svg favicon.ico favicon-32.png apple-touch-icon.png icon-512.png; do
+  cp "$source_dir/$icon" "$output_dir/$icon"
+done
 portfolio_assets=(
   "products/moment/moments-runtime-zh-v9.png"
   "products/moment/actions-runtime-zh-v9.png"
