@@ -348,7 +348,7 @@ for (const asset of line.assets) {
     if (raw.length !== asset.bytes || crypto.createHash("sha256").update(raw).digest("hex") !== asset.sha256) errors.push(`LINE film asset differs from recorded render: ${asset.path}`);
   }
 }
-const allowedPortfolioFiles = ["_headers", "app.js", "consulting.css", "index.html", "en/index.html", "robots.txt", "sitemap.xml", "styles.css", "resume/index.html", "en/resume/index.html", "resume.css", "resume.js", ...mediaAssets].sort();
+const allowedPortfolioFiles = ["favicon.svg", "favicon.ico", "favicon-32.png", "apple-touch-icon.png", "icon-512.png", "_headers", "app.js", "consulting.css", "index.html", "en/index.html", "robots.txt", "sitemap.xml", "styles.css", "resume/index.html", "en/resume/index.html", "resume.css", "resume.js", ...mediaAssets].sort();
 if (JSON.stringify(portfolioFiles) !== JSON.stringify(allowedPortfolioFiles)) {
   errors.push(`Cloudflare portfolio bundle differs from the explicit allowlist: ${portfolioFiles.join(", ")}`);
 }
