@@ -15,9 +15,9 @@ on existing resume content; do not add new claims.
 | Inferred requirement | Confirmed fact and source | Resume change |
 | --- | --- | --- |
 | Lead / mentor a junior developer | OpenNet: reviewed pull requests and mentored junior iOS engineers (source/resume.md:96) | Summary leads with it; "Team practices" skills line |
-| Work with Android | OpenNet: adapted Android-first requirements into native iOS (:94); Royal: coordinated Product, Backend and Android (:104) | Summary mentions both |
+| Work with Android | OpenNet: adapted Android-first requirements into native iOS (:94); Royal: coordinated Product, Backend and Android (:104) | Summary mentions Android-first; Royal stays in Experience |
 | Team tooling / quality | OpenNet: internal mock server for UI and automated testing (:96) | Skills "Team practices" |
-| Cross-platform | Cronos App React Native/TypeScript, pre-launch (:70) | Skills "Cross-platform" |
+| Cross-platform | Cronos App React Native/TypeScript, pre-launch (:69) | Skills "Cross-platform" |
 | Production scale | SportyBet about 100K DAU (:92); Crypto.com Onchain about 20K DAU (:63) | Summary |
 
 ## Gaps and pending candidate confirmation
