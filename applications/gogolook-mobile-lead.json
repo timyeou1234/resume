@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "company": "Gogolook",
+  "role": "Mobile Tech Lead (referral; leads a junior Android developer)",
+  "job_url": "https://www.gogolook.com/",
+  "reviewed_on": "2026-11-10",
+  "base": "ai",
+  "status": "ready",
+  "brief": "companies/gogolook-mobile-lead.md",
+  "sources": [
+    "source/resume.md",
+    "source/production-tooling.md"
+  ],
+  "validation": {
+    "exact_pages": 1,
+    "required_text": [
+      "Mobile Team Leadership",
+      "mentored junior iOS engineers",
+      "Android-first requirements",
+      "Team practices"
+    ],
+    "forbidden_text": [
+      "Kotlin",
+      "Tech Lead"
+    ]
+  }
+}
