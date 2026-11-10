@@ -29,8 +29,8 @@
     }
   ],
   "summary": {
-    "en": "Senior iOS engineer with 10+ years in mobile development. Delivered self-custodial wallet, real-time betting, and connected vehicle features, owning work from product and API discussions through implementation and production support.",
-    "zh": "十年以上行動開發經驗的 Senior iOS Engineer，曾交付自託管錢包、即時投注與聯網車輛功能，從產品與 API 討論、實作到正式環境維護，持續負責功能交付。"
+    "en": "Senior iOS engineer with 10+ years in mobile development. Built real-time WebSocket betting for SportyBet (about 100K DAU) and multi-protocol Earn and Buy & Swap for Crypto.com Onchain (about 20K DAU), plus connected vehicle features, from product and API discussions through production support. Additional React Native experience on the pre-launch Cronos App.",
+    "zh": "具備 10 年以上行動應用開發經驗的資深 iOS 工程師。負責 Crypto.com Onchain 多協議 Earn 與 Buy & Swap（約 2 萬 DAU）及 SportyBet WebSocket 即時投注（約 10 萬 DAU），並開發聯網車輛功能，與產品及後端團隊協作至上線及維運；另於上線前的 Cronos App 使用 React Native 開發 Earn 頁籤。"
   },
   "experience": [
     {
@@ -270,13 +270,13 @@
     },
     {
       "title": {
-        "en": "Development task & handoff tools · Personal tooling",
+        "en": "Development task & handoff tools · Personal tool",
         "zh": "開發任務與交接工具 · 個人自用"
       },
       "bullets": [
         {
-          "en": "Built a private React/JavaScript workspace with Node.js CLI/HTTP/MCP ticket tools. Public companion tools provide context handoff, task estimation, and read-only run monitoring; the sandbox task platform itself remains private.",
-          "zh": "建立私人 React／JavaScript 工作空間，搭配 Node.js CLI／HTTP／MCP 任務工具。公開 companion tools 提供脈絡交接、任務估時與唯讀監控；沙盒任務平台本身仍為私人自用。"
+          "en": "Built a private React/JavaScript workspace with Node.js CLI/HTTP/MCP ticket tools. Public companion tools provide context handoff, task estimation, and read-only run monitoring.",
+          "zh": "建立私人 React／JavaScript 工作空間，搭配 Node.js CLI／HTTP／MCP 任務工具。公開 companion tools 提供脈絡交接、任務估時與唯讀監控。"
         }
       ]
     }
