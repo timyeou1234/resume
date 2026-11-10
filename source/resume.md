@@ -115,7 +115,7 @@ Apr 2018 – Jan 2019
 **iOS Developer**  
 Aug 2017 – Apr 2018
 
-- Led a three-engineer iOS team responsible for enterprise applications, internal distribution, and release coordination.
+- Led a three-engineer iOS team responsible for enterprise applications, enterprise signing, internal distribution, and release coordination.
 
 ### WeWork Technology
 
@@ -147,3 +147,4 @@ Aug 2016 – Jan 2017
 
 - Job search location: open to Senior iOS opportunities in Taichung, Taiwan.
 - App Store releases: responsible for App Store releases at Crypto.com, SportyBet, and Awesome Limited. Royal Technology remains enterprise internal distribution only.
+- Lion Travel Information: the iOS team's responsibilities included enterprise signing for internal distribution.
