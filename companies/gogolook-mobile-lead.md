@@ -41,5 +41,5 @@ on existing resume content; do not add new claims.
 
 ## Verification
 
-Local: `make check-profiles`, `make test`. PDF build, one-page check and rendered-page
+Local: `make check-profiles`, `make test`. PDF build, two-page check and rendered-page
 review use the CI artifact for the PR head; results are recorded in the PR.
