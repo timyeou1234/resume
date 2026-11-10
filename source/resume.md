@@ -46,7 +46,7 @@ Senior iOS engineer with 10+ years in mobile development. Built real-time WebSoc
 - Built a shared CLI, HTTP, and Model Context Protocol (MCP) interface for creating, editing, soft-deleting, restoring, and inspecting local work tickets.
 - Added revision and digest checks to reject stale edits, idempotency keys to prevent duplicate writes, and an audit history for recovering earlier ticket content. Content writes require explicit opt-in.
 - Created public companion tools for context handoff, task estimation, and read-only run monitoring.
-- Built a Swift 6 macOS workbench that observes existing repository automation and provides health and recovery views.
+- Building an in-development Swift 6 macOS workbench that observes existing repository automation and provides health and recovery views.
 
 ## Professional Experience
 
