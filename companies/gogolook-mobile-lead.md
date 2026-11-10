@@ -16,7 +16,7 @@ on existing resume content; do not add new claims.
 | --- | --- | --- |
 | Lead / mentor a junior developer | OpenNet: reviewed pull requests and mentored junior iOS engineers (source/resume.md:96) | Summary leads with it; "Team practices" skills line |
 | Work with Android | OpenNet: adapted Android-first requirements into native iOS (:94); Royal: coordinated Product, Backend and Android (:104) | Summary mentions both |
-| Team tooling / quality | OpenNet: internal mock server for UI and automated testing (:96); Crypto.com AI-assisted PR review and code-owner approval (:25) | Skills "Team practices" |
+| Team tooling / quality | OpenNet: internal mock server for UI and automated testing (:96) | Skills "Team practices" |
 | Cross-platform | Cronos App React Native/TypeScript, pre-launch (:70) | Skills "Cross-platform" |
 | Production scale | SportyBet about 100K DAU (:92); Crypto.com Onchain about 20K DAU (:63) | Summary |
 
@@ -32,7 +32,7 @@ on existing resume content; do not add new claims.
 
 - English, one page, ai base with full ResumeContent override.
 - Tagline "Senior iOS Engineer | Mobile Team Leadership"; avoids a Tech Lead title.
-- Summary: mentoring and Android collaboration first, then scale (DAU).
+- Summary (two lines to fit one page): mentoring, PR review and Android-first requirements at OpenNet first, then scale (DAU).
 - Skills: drops the Blockchain line; adds Cross-platform and Team practices.
 - Experience and education reuse sections/experience.tex and education.tex unchanged.
 
