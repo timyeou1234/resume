@@ -35,7 +35,7 @@ an initial CoderPad assessment after resume review.
 | Profile emphasis | Confirmed candidate evidence |
 | --- | --- |
 | Customer requirements | WeWork Technology Co-Founder / iOS Developer: business development and client requirements interviews |
-| Coordinated technical delivery | Royal Technology: primary developer and project manager from client planning to App Store release; Crypto.com: feature scope, APIs, and releases |
+| Coordinated technical delivery | Royal Technology: primary developer and project manager from client planning to enterprise internal distribution; Crypto.com: feature scope, APIs, and releases |
 | Integration and evaluation | LINE private pilot: webhooks, Node.js gateway, Workers/D1, signature checks, deduplication, 100 development cases and a separate 40-case holdout |
 | Safe tool interfaces | Local CLI/HTTP/MCP ticket operations, revision/digest guards, idempotency and audit history |
 | Request recovery | Moment private TypeScript/Node.js service, SQLite state, replay and restart tests; input remains savable when AI is unavailable |
@@ -45,7 +45,9 @@ The source of candidate facts is `source/resume.md` at
 `c17addb4e7bae81f1cc08c9a102488dc4f0e56a6` (blob
 `33c60a29f2c77e549066730b82b2042eb33c2b06`) plus the previously reviewed shared
 employment sections. The user's WeWork co-founder correction is preserved;
-Royal is a separate employer. Page-one highlights summarize the same jobs on
+Royal's distribution wording was corrected from the candidate's 2026-10-13
+confirmation recorded in `source/resume.md`. Royal is a separate employer.
+Page-one highlights summarize the same jobs on
 page two and must not be counted as additional employment.
 
 Do not add unverified Python/Go proficiency, RAG deployments, CRM connectors,

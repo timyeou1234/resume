@@ -90,7 +90,7 @@ Avoid generic phrases when a concrete description is available:
 - Apply confirmed production diagnostics and analytics experience to the non-AI variants as relevant mobile experience; do not imply that every listed tool serves the same purpose.
 - Keep headlines, summary emphasis, skill ordering, AI workflow detail, and project selection audience-specific. Do not copy the entire AI projects section into every version.
 - Lead the AI variant's employer section with delivered product work, not with the use of AI tools. Keep shared development methods distinct from individual product phases.
-- Treat `source/resume.md` as published copy too: synchronize project names, readable links, and corrections there, while retaining additional factual detail.
+- Keep detailed supporting facts in `source/resume.md`. Edit shared bilingual public copy in `source/resume-public.json`; `scripts/render-resume.py` generates the portfolio resume routes and the GitHub Pages readable resume from it. Do not edit generated pages or maintain a second public summary.
 
 ## Metrics
 
@@ -122,3 +122,13 @@ Before publishing, confirm:
 - The layout remains readable at normal zoom.
 - A two-page version uses both pages meaningfully and does not orphan Education
   or another short section on page two.
+
+## Public resume ordering
+
+Place Summary immediately before Professional Experience, then Technical Skills,
+at most two Selected Projects, one brief AI-Assisted Engineering paragraph, and
+Education. Keep all dates and production/pre-launch/private-development boundaries.
+The candidate confirmed on 2026-10-13 that Royal used enterprise internal
+distribution, not App Store release; keep Apr 2019 – Aug 2020 and do not infer
+signing, certification, or operational details. Lion's formal title was iOS
+Developer; team leadership belongs in responsibilities, not the job title.
