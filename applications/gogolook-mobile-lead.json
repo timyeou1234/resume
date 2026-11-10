@@ -12,12 +12,13 @@
     "source/production-tooling.md"
   ],
   "validation": {
-    "exact_pages": 1,
+    "exact_pages": 2,
     "required_text": [
       "Mobile Team Leadership",
       "mentored junior iOS engineers",
       "Android-first requirements",
-      "Team practices"
+      "Team practices",
+      "AI-Assisted Engineering Workflow"
     ],
     "forbidden_text": [
       "Kotlin",
