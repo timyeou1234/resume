@@ -72,7 +72,12 @@ used instead of a fabricated LINE conversation or private family messages. Do no
 claim public signup, universal language support, perfect translation, or
 continuous availability from a bounded trial.
 
-The two personal tools retain purpose-based public names. Tim Work OS is a web
+As of 2026-11-10 the two personal tools are presented as one case,
+`devtools` (Development task & handoff tools / 開發任務與交接工具), with a
+four-scene walkthrough: workspace overview → decisions → native monitor → run
+detail. The V10 runs and knowledge captures remain in the immutable manifest and
+`site/assets` but are no longer shipped. Public copy uses no private platform
+name. Historically, the two personal tools retained purpose-based public names. Tim Work OS is a web
 workspace, separate from the similarly named open-source skills described in the
 resume. ProductDev remains a personal macOS tool. Capturing private live
 telemetry is unnecessary for either case; the selected assets contain no live

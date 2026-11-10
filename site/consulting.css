@@ -99,8 +99,8 @@ html[lang="zh-Hant"] .consulting-hero h1 { letter-spacing: -0.015em; }
 .runtime-gallery a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 5px; }
 .runtime-gallery figcaption, .product-identity figcaption { margin-top: 1rem; color: var(--muted); font-size: 0.78rem; line-height: 1.7; }
 .desktop-capture { display: block; width: 100%; height: auto; border: 1px solid var(--line-bright); border-radius: 0.75rem; }
-.consulting-site .case-timwork.case-real { grid-template-columns: minmax(0, 1fr); }
-.consulting-site .case-timwork.case-real .case-copy { max-width: 47rem; }
+.consulting-site .case-devtools.case-real { grid-template-columns: minmax(0, 1fr); }
+.consulting-site .case-devtools.case-real .case-copy { max-width: 47rem; }
 .consulting-site .case-compact { grid-template-columns: minmax(0, 1fr) minmax(10rem, 0.4fr); }
 .product-identity { justify-self: center; width: min(100%, 13rem); text-align: center; }
 .product-identity img { display: block; width: 100%; height: auto; border-radius: 2rem; }
@@ -153,7 +153,6 @@ html[lang="zh-Hant"] .consulting-hero h1 { letter-spacing: -0.015em; }
 .showcase-desktop .showcase-copy p, .showcase-desktop .showcase-count { margin: 0; }
 .showcase-desktop .showcase-capture { height: 100%; width: 100%; background: #20262c; }
 .showcase-desktop .showcase-capture img { height: 100%; object-fit: contain; object-position: center top; }
-.case-timwork .showcase-capture img { height: auto; }
 .translation-flow { width: 100%; max-width: 23rem; justify-self: center; }
 .phrase { padding: 1.4rem 1.5rem; background: #f3f8f4; border-radius: 1rem; color: #16362a; }
 .phrase span { display: block; font-size: 0.7rem; margin-bottom: 0.6rem; color: #496c5b; }

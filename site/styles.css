@@ -708,8 +708,7 @@ main {
 
 .case-moment { --case-glow: rgba(116, 78, 232, 0.16); }
 .case-line { --case-glow: rgba(6, 199, 85, 0.1); }
-.case-productdev { --case-glow: rgba(33, 171, 211, 0.12); }
-.case-timwork { --case-glow: rgba(72, 214, 155, 0.1); }
+.case-devtools { --case-glow: rgba(33, 171, 211, 0.12); }
 
 .case-copy {
   max-width: 34rem;

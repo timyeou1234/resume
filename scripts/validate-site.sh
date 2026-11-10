@@ -51,10 +51,8 @@ const requiredText = [
   "Independent app · Preparing for launch",
   "自有 App · 準備推出",
   "Family LINE Translator",
-  "Development task monitoring",
-  "開發任務監控",
-  "Project tasks &amp; handover",
-  "跨專案任務與交接管理",
+  "Development task &amp; handoff tools",
+  "開發任務與交接工具",
   "個人自用工具",
   "Family trial",
   "依約定條件驗收"
@@ -90,7 +88,8 @@ if (momentArticle && /Personal tool|個人自用工具|not a public service|非�
 for (const text of ["not client commissions or products for sale", "不是客戶委託案，也不是對外販售的產品"]) {
   if (displayCopy.includes(text)) errors.push("Do not apply a personal-only or not-for-sale disclaimer to every project");
 }
-for (const project of ["productdev", "timwork"]) {
+// ProductDev and the web workspace are presented as one personal-tooling case.
+for (const project of ["devtools"]) {
   const article = html.match(new RegExp(`<article[^>]*data-case="${project}"[^>]*>([\\s\\S]*?)<\\/article>`));
   if (!article || !article[1].includes("Personal tool") || !article[1].includes("個人自用工具")) {
     errors.push(`Personal-use status is missing for ${project}`);
@@ -248,12 +247,20 @@ const motionPaths = [
 if (motion.version !== "v10" || JSON.stringify(motion.assets.map(asset => asset.path).sort()) !== JSON.stringify(motionPaths.sort())) {
   errors.push("Expected exactly eight sourced V10 captures");
 }
+// V10 remains the immutable capture record; these captures are no longer shipped after the merged devtools case.
+const retiredMotionPaths = [
+  "assets/products/productdev/runs-native-v10.jpg",
+  ...["en", "zh"].map(lang => `assets/products/timwork/knowledge-${lang}-v10.jpg`)
+];
+for (const retired of retiredMotionPaths) {
+  if (html.includes(retired)) errors.push(`Retired V10 capture remains referenced: ${retired}`);
+}
 if (motion.lineExamples?.classification !== "authored synthetic examples; ai_draft phrasebook, not private conversations or native-speaker certification" ||
     JSON.stringify(motion.lineExamples?.pairs) !== JSON.stringify([["早安", "Selamat pagi"], ["謝謝", "Terima kasih"]])) {
   errors.push("LINE flow must retain its authored-example evidence boundary");
 }
 for (const asset of motion.assets) {
-  if (!motionPaths.includes(asset.path)) continue;
+  if (!motionPaths.includes(asset.path) || retiredMotionPaths.includes(asset.path)) continue;
   mediaAssets.push(asset.path);
   if (asset.kind !== "runtime-screenshot" || asset.transformation !== "none" ||
       !asset.source?.repository || !(asset.source.path || asset.source.route) || !asset.source.data ||
@@ -272,7 +279,8 @@ for (const asset of motion.assets) {
   }
   if (!localReferences.includes(asset.path)) errors.push(`Unreferenced V10 capture: ${asset.path}`);
 }
-for (const project of Object.keys(versions)) {
+const sceneCounts = { moment: motion.scenes.moment, devtools: 4 };
+for (const project of ["moment", "line-family-translator", "devtools"]) {
   const article = html.match(new RegExp(`<article[^>]*data-case="${project}"[^>]*>([\\s\\S]*?)<\\/article>`));
   if (!article || !article[1].includes('alt="')) {
     errors.push(`Missing product or image description: ${project}`);
@@ -283,11 +291,11 @@ for (const project of Object.keys(versions)) {
         !article[1].includes('line-transcript')) errors.push("LINE film must retain settings, translation, transcript and playback controls");
     continue;
   }
-  const count = 3;
+  const count = sceneCounts[project];
   if (!article || !article[1].includes(`data-product-showcase="${project}"`) ||
       (article[1].match(/data-scene="/g) || []).length !== count ||
       (article[1].match(/data-showcase-step="/g) || []).length !== count ||
-      !article[1].includes("data-showcase-toggle") || motion.scenes[project] !== count) {
+      !article[1].includes("data-showcase-toggle")) {
     errors.push(`Missing animated walkthrough or playback controls: ${project}`);
   }
 }

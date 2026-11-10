@@ -38,11 +38,8 @@ portfolio_assets=(
   "products/moment/saved-runtime-zh-v10.png"
   "products/productdev/monitor-native-v10.jpg"
   "products/productdev/run-detail-native-v10.jpg"
-  "products/productdev/runs-native-v10.jpg"
   "products/timwork/decisions-en-v10.jpg"
   "products/timwork/decisions-zh-v10.jpg"
-  "products/timwork/knowledge-en-v10.jpg"
-  "products/timwork/knowledge-zh-v10.jpg"
 )
 
 for asset in "${portfolio_assets[@]}"; do
