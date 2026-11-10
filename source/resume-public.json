@@ -275,15 +275,15 @@
       },
       "bullets": [
         {
-          "en": "Built a private React/JavaScript workspace with Node.js CLI/HTTP/MCP ticket tools. Public companion tools provide context handoff, task estimation, and read-only run monitoring; the TimWork platform itself remains private.",
-          "zh": "建立私人 React／JavaScript 工作空間，搭配 Node.js CLI／HTTP／MCP 任務工具。公開 companion tools 提供脈絡交接、任務估時與唯讀監控；TimWork 平台本身仍為私人自用。"
+          "en": "Built a private React/JavaScript workspace with Node.js CLI/HTTP/MCP ticket tools. Public companion tools provide context handoff, task estimation, and read-only run monitoring; the sandbox task platform itself remains private.",
+          "zh": "建立私人 React／JavaScript 工作空間，搭配 Node.js CLI／HTTP／MCP 任務工具。公開 companion tools 提供脈絡交接、任務估時與唯讀監控；沙盒任務平台本身仍為私人自用。"
         }
       ]
     }
   ],
   "workflow": {
-    "en": "Used AI for task decomposition, implementation support, and code review at Crypto.com. Personally validated UI, network behavior, and failure states, adjudicated review comments, and required code-owner approval before release.",
-    "zh": "在 Crypto.com 使用 AI 協助拆解任務、實作與程式碼審查；親自驗證 UI、網路行為及失敗狀態，判斷審查意見，並在發布前取得 code owner 核准。"
+    "en": "Used AI for task decomposition, implementation support, and code review at Crypto.com. Personally validated UI, network behavior, and failure states, adjudicated review comments, and requested code-owner approval before release.",
+    "zh": "在 Crypto.com 使用 AI 協助拆解任務、實作與程式碼審查；親自驗證 UI、網路行為及失敗狀態，判斷審查意見，並在發布前送交 code owner 核准。"
   },
   "education": {
     "en": "National Taipei University · Bachelor of Business Administration",

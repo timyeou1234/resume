@@ -143,3 +143,8 @@ Aug 2016 – Jan 2017
 
 - Royal Technology: apps used enterprise internal distribution, not App Store release. The Apr 2019 – Aug 2020 dates remain unchanged. No additional signing, certification, or operational details are inferred.
 - Lion Travel Information: the formal title was iOS Developer. Leading the three-engineer iOS team remains a responsibility, not a separate or elevated job title.
+
+## Candidate confirmations — 2026-11-10
+
+- Job search location: open to Senior iOS opportunities in Taichung, Taiwan.
+- App Store releases: responsible for App Store releases at Crypto.com, SportyBet, and Awesome Limited. Royal Technology remains enterprise internal distribution only.
