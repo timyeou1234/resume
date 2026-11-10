@@ -1,0 +1,120 @@
+{
+  "version": "v12",
+  "evidence": "source-worker responses; synthetic conversations; recreated interface; no native LINE recording",
+  "outboundNetworkRequests": 0,
+  "chapters": [
+    0,
+    7,
+    14,
+    20,
+    28
+  ],
+  "sources": [
+    {
+      "path": "src/Scenes.tsx",
+      "sha256": "1f8f96e355ccf01c1089cf2aaf2c361185e503b4662ce9b6e35ebab4aaa3537c"
+    },
+    {
+      "path": "src/Composition.tsx",
+      "sha256": "bc8a9c45a71436ea4c193865ea5a9c8c1ff84acdb13977645a849adf65da3bef"
+    },
+    {
+      "path": "src/Root.tsx",
+      "sha256": "c9d11b0b611db35d7eff0f4e2fe851c66499e7cd7e96a047c31d84a3922336c3"
+    },
+    {
+      "path": "src/capture.json",
+      "sha256": "65f98d448d19ad2a8bbd12748181feb263118018f0663a72d60b876befe5b53e"
+    },
+    {
+      "path": "public/avatar-v9.png",
+      "sha256": "d934b9726c6381daee4124179090c3df20af6a8dde25f1e8f417a1be4794290f"
+    },
+    {
+      "path": "scripts/capture.mjs",
+      "sha256": "fe0b49addb42ed11e6ad2e16ef032f1a7ad321f2bc3b378a04ea827c705d0114"
+    },
+    {
+      "path": "scripts/render.sh",
+      "sha256": "2df915d562ae94ec51293e53cda69664d03c86a4c0c4a499d88ded3dea28f41e"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "1cc410513870adb0ac74e7441c45f9f6f462c300562cf844549b4ec58cee26b6"
+    }
+  ],
+  "assets": [
+    {
+      "path": "assets/products/line-family-translator/film-desktop-zh-v12.mp4",
+      "sha256": "7c37e08d2429ea34fe10822d2ac57f9503921f7b3571d8fe24532bc2da357e3b",
+      "bytes": 1119442,
+      "width": 1920,
+      "height": 1080,
+      "duration": 36.0,
+      "audioTracks": 0,
+      "videoCodec": "h264",
+      "pixelFormat": "yuvj420p"
+    },
+    {
+      "path": "assets/products/line-family-translator/poster-desktop-zh-v12.jpg",
+      "sha256": "17507a96fd93a59ddc8e9d3da24f0d4e63804ee8123f3eb8c2eece1617184146",
+      "bytes": 131527,
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "path": "assets/products/line-family-translator/film-desktop-en-v12.mp4",
+      "sha256": "34b62287a0bdf650f3ba25bf78832148701083d2f830cb812d090907ad4b03ec",
+      "bytes": 1143974,
+      "width": 1920,
+      "height": 1080,
+      "duration": 36.0,
+      "audioTracks": 0,
+      "videoCodec": "h264",
+      "pixelFormat": "yuvj420p"
+    },
+    {
+      "path": "assets/products/line-family-translator/poster-desktop-en-v12.jpg",
+      "sha256": "e5d3e5c97f5fa920d3513db2213f9cb2547fee19551d8e32af8a779152c3f10c",
+      "bytes": 133291,
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "path": "assets/products/line-family-translator/film-mobile-zh-v12.mp4",
+      "sha256": "07e932a41e28f5c90df355f3c0fa1729f3a672c0cd24b6455e5b13e440d936ba",
+      "bytes": 1002188,
+      "width": 1080,
+      "height": 1440,
+      "duration": 36.0,
+      "audioTracks": 0,
+      "videoCodec": "h264",
+      "pixelFormat": "yuvj420p"
+    },
+    {
+      "path": "assets/products/line-family-translator/poster-mobile-zh-v12.jpg",
+      "sha256": "4ca944495ee785fc8ab2f6f30bd042e1664653bd47260a2044af1ee212e1ef33",
+      "bytes": 103419,
+      "width": 1080,
+      "height": 1440
+    },
+    {
+      "path": "assets/products/line-family-translator/film-mobile-en-v12.mp4",
+      "sha256": "38e30cfac5d488ec5f6c9563d76549afab0f3b4b8bd0baabd885bf1fdb8ede96",
+      "bytes": 1031397,
+      "width": 1080,
+      "height": 1440,
+      "duration": 36.0,
+      "audioTracks": 0,
+      "videoCodec": "h264",
+      "pixelFormat": "yuvj420p"
+    },
+    {
+      "path": "assets/products/line-family-translator/poster-mobile-en-v12.jpg",
+      "sha256": "5d7511f435e98f2a96787cf408c098fa8306b646e46bf429dd01e12db63862ad",
+      "bytes": 106607,
+      "width": 1080,
+      "height": 1440
+    }
+  ]
+}

@@ -107,13 +107,17 @@ def document(data, lang):
 <link rel="alternate" hreflang="zh-Hant" href="{ORIGIN}/resume/">
 <link rel="alternate" hreflang="en" href="{ORIGIN}/en/resume/">
 <link rel="alternate" hreflang="x-default" href="{ORIGIN}/resume/">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
 <link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/resume.css">
 <script src="/resume.js" defer></script>
 </head>
 <body class="resume-site">
 <a class="skip-link" href="#main">{choose('Skip to resume', '跳至履歷')}</a>
 <header class="resume-header">
-<a class="brand" href="{home}" aria-label="{choose('Timothy Yu, consulting home', 'Timothy Yu，接案首頁')}"><span class="brand-mark">TY</span><span>Timothy Yu</span></a>
+<a class="brand" href="{home}" aria-label="{choose('Timothy Yu, consulting home', 'Timothy Yu，接案首頁')}"><img class="brand-mark" src="/favicon.svg" width="32" height="32" alt="Timothy Yu" aria-hidden="true"><span>Timothy Yu</span></a>
 <nav aria-label="{choose('Audience navigation', '網站分流導覽')}" class="audience-nav">
 <a href="{home}">{choose('Consulting', '接案服務')}</a><a href="{route}" aria-current="page">{choose('Resume', '求職履歷')}</a>
 <a class="resume-language" href="{other}" hreflang="{choose('zh-Hant', 'en')}">{choose('中文', 'English')}</a>

@@ -56,9 +56,9 @@ for the full JD-to-PDF workflow and required factual/visual review.
 
 This is Timothy Yu's personal resume repository. LaTeX sources generate the
 five ATS-friendly PDFs, while `source/resume.md` remains the reviewed factual baseline.
-The readable GitHub Pages resume is generated from `source/resume-public.json`
-by `scripts/render-resume.py --markdown`. The portfolio resume routes use the
-same bilingual public-copy source; edit it once, not the generated pages.
+`source/resume-public.json` supplies the shared bilingual public copy for the
+portfolio resume routes and the readable GitHub Pages version. See
+[resume route and source notes](docs/resume-subpath.md) for the candidate workflow.
 
 Every push and pull request tests the workflow, builds and validates all five
 standard PDFs and every ready application profile and checks the
@@ -66,9 +66,9 @@ portfolio's local links and JavaScript. A successful build on `main` publishes
 the Markdown resume and validated PDFs to GitHub Pages.
 
 `timyeou.com` serves the standalone portfolio directly from Cloudflare. The
-Cloudflare bundle contains only the portfolio HTML, CSS, JavaScript, and project
-images. Resume pages and PDFs continue to be built and published separately on
-GitHub Pages, and the portfolio links to that release. The `www` hostname serves
+Cloudflare bundle contains the portfolio and resume HTML, CSS, JavaScript, and
+project media. The GitHub Pages readable resume uses the same public-copy source;
+PDFs continue to be built and published separately on GitHub Pages. The `www` hostname serves
 the same Cloudflare deployment.
 
 For local setup, repository architecture, build commands, company tailoring,

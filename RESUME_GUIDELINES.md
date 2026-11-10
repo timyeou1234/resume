@@ -123,11 +123,14 @@ Before publishing, confirm:
 - A two-page version uses both pages meaningfully and does not orphan Education
   or another short section on page two.
 
-## Public resume ordering
+## Public web resume (2026-10-13 candidate)
 
-Place Summary immediately before Professional Experience, then Technical Skills,
-at most two Selected Projects, one brief AI-Assisted Engineering paragraph, and
-Education. Keep all dates and production/pre-launch/private-development boundaries.
+`source/resume-public.json` is the shared bilingual public copy for the two
+portfolio resume routes and the GitHub Pages readable resume. Update that file
+once; `scripts/render-resume.py` generates HTML and Markdown from it.
+`source/resume.md` retains detailed factual evidence and is not emitted wholesale
+into the readable resume. Keep Summary immediately before Professional Experience,
+then skills, at most two selected projects, and a brief AI workflow paragraph.
 The candidate confirmed on 2026-10-13 that Royal used enterprise internal
 distribution, not App Store release; keep Apr 2019 – Aug 2020 and do not infer
 signing, certification, or operational details. Lion's formal title was iOS

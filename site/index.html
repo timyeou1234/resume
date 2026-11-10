@@ -3,14 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Timothy Yu — Software consulting and development. Requirements, technical assessment, mobile apps, internal tools, and LINE integrations.">
+  <meta name="description" data-content-en="App development and software consulting by Timothy Yu. Over ten years of mobile development: requirements, API integration, testing, and handover." data-content-zh="Timothy Yu 提供 App 開發、LINE Bot 串接與內部工具開發服務。十年以上行動開發經驗，從需求釐清、API 整合到測試與交接；查看 Moment 等實作案例，討論你的專案需求。" content="App development and software consulting by Timothy Yu. Over ten years of mobile development: requirements, API integration, testing, and handover.">
   <meta name="theme-color" content="#080a0f">
-  <meta property="og:title" content="Timothy Yu — Software Consulting &amp; Development">
-  <meta property="og:description" content="From understanding your workflow to building the software you need. Mobile apps, internal tools, and LINE integrations.">
+  <meta property="og:title" data-content-en="App Development &amp; Software Consulting | Timothy Yu" data-content-zh="App 開發與 LINE Bot 串接｜Timothy Yu 軟體開發與技術顧問" content="App Development &amp; Software Consulting | Timothy Yu">
+  <meta property="og:description" data-content-en="Mobile apps, internal tools, and LINE integrations. Explore original product walkthroughs and discuss your project with Timothy Yu." data-content-zh="App 開發、內部工具與 LINE Bot 串接。查看真實產品的操作展示，與 Timothy Yu 討論需求、技術方案及交付範圍。" content="Mobile apps, internal tools, and LINE integrations. Explore original product walkthroughs and discuss your project with Timothy Yu.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://timyeou.com/">
-  <title data-en="Timothy Yu — Software Consulting &amp; Development" data-zh="Timothy Yu — 軟體開發與技術顧問">Timothy Yu — Software Consulting &amp; Development</title>
+  <title data-en="App Development &amp; Software Consulting | Timothy Yu" data-zh="App 開發與 LINE Bot 串接｜Timothy Yu 軟體開發與技術顧問">App Development &amp; Software Consulting | Timothy Yu</title>
   <link rel="canonical" href="https://timyeou.com/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://timyeou.com/">
+  <link rel="alternate" hreflang="en" href="https://timyeou.com/en/">
+  <link rel="alternate" hreflang="x-default" href="https://timyeou.com/">
+  <link rel="icon" href="./favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" type="image/png" href="./favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" sizes="any">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" sizes="180x180">
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./consulting.css">
   <script src="./app.js" defer></script>
@@ -24,18 +31,18 @@
 
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Timothy Yu, home">
-      <span class="brand-mark">TY</span>
+      <img class="brand-mark" src="./favicon.svg" width="32" height="32" alt="Timothy Yu" aria-hidden="true">
       <span class="brand-name">Timothy Yu</span>
     </a>
     <nav class="site-nav" aria-label="Primary navigation" data-aria-en="Primary navigation" data-aria-zh="主要導覽">
       <a href="#native" data-en="Services" data-zh="服務項目">Services</a>
-      <a href="#work" data-en="Work examples" data-zh="實作範例">Work examples</a>
-      <a href="#scale" data-en="Experience" data-zh="過往經歷">Experience</a>
+      <a href="#work" data-en="Selected work" data-zh="實作案例">Selected work</a>
+      <a href="/en/resume/" data-href-en="/en/resume/" data-href-zh="/resume/" data-en="Resume" data-zh="求職履歷">Resume</a>
       <a href="#contact" data-en="Contact" data-zh="聯絡合作">Contact</a>
     </nav>
-    <button class="lang-toggle" type="button" aria-label="Switch language">
+    <a class="lang-toggle" href="/" hreflang="zh-Hant" aria-label="切換為繁體中文">
       <span class="lang-current">EN</span><span aria-hidden="true">／</span><span class="lang-next">中</span>
-    </button>
+    </a>
   </header>
 
   <main id="main">
@@ -46,22 +53,22 @@
           <span data-en="Timothy Yu · Software Consulting &amp; Development" data-zh="Timothy Yu · 軟體開發與技術顧問">Timothy Yu · Software Consulting &amp; Development</span>
         </p>
         <h1 data-reveal>
-          <span data-en="Define the problem." data-zh="把需求釐清，">Define the problem.</span>
-          <span class="consulting-accent" data-en="Build the right tool." data-zh="把工具做出來。">Build the right tool.</span>
+          <span data-en="App development. LINE integrations." data-zh="App 開發、LINE 串接，">App development. LINE integrations.</span>
+          <span class="consulting-accent" data-en="Tools for your workflow." data-zh="為你的工作流程開發工具。">Tools for your workflow.</span>
         </h1>
-        <p class="hero-lede" data-reveal data-en="I help you clarify requirements, choose a technical approach, and build the software you need. My work spans mobile apps, internal tools, and LINE integrations, with over ten years of experience shipping mobile products." data-zh="從需求訪談、技術評估到開發與交付，協助你把想法變成能實際使用的軟體。累積十年以上行動 App 開發經驗，也製作內部工具與 LINE 串接。">I help you clarify requirements, choose a technical approach, and build the software you need. My work spans mobile apps, internal tools, and LINE integrations, with over ten years of experience shipping mobile products.</p>
+        <p class="hero-lede" data-reveal data-en="I develop mobile apps and internal tools, from requirements and API integration to testing and handover. Over ten years of mobile development, with production work on wallets, real-time betting, and connected vehicle apps." data-zh="合作範圍：App 開發 / LINE Bot 串接 / 內部工具。涵蓋需求整理、API 整合、測試與交接。累積十年以上行動開發經驗，曾參與錢包、即時投注與聯網車輛 App。">I develop mobile apps and internal tools, from requirements and API integration to testing and handover. Over ten years of mobile development, with production work on wallets, real-time betting, and connected vehicle apps.</p>
         <div class="hero-actions" data-reveal>
           <a class="button button-primary magnetic" href="#contact"><span data-en="Discuss your project" data-zh="聊聊你的需求">Discuss your project</span> <span aria-hidden="true">↗</span></a>
-          <a class="button button-ghost magnetic" href="#work"><span data-en="See work examples" data-zh="看實作範例">See work examples</span> <span aria-hidden="true">↓</span></a>
+          <a class="button button-ghost magnetic" href="#work"><span data-en="See the projects" data-zh="看實作案例">See the projects</span> <span aria-hidden="true">↓</span></a>
         </div>
-        <p class="consulting-availability" data-reveal data-en="Available for project-based development and technical consulting." data-zh="可討論專案開發、既有系統改善或技術顧問合作。">Available for project-based development and technical consulting.</p>
+        <p class="audience-entry"><a href="/en/resume/" data-href-en="/en/resume/" data-href-zh="/resume/" data-en="Hiring a Senior iOS Engineer? View my resume →" data-zh="招募 Senior iOS Engineer？前往求職履歷 →">Hiring a Senior iOS Engineer? View my resume →</a></p>
       </div>
     </section>
 
     <section class="services section" id="native" aria-labelledby="services-title">
       <div class="section-heading" data-reveal>
         <p class="kicker" data-en="SERVICES" data-zh="服務項目">SERVICES</p>
-        <h2 id="services-title" data-en="What we can work on." data-zh="可以一起做的事。">What we can work on.</h2>
+        <h2 id="services-title" data-en="Development and technical consulting." data-zh="開發與技術顧問服務。">Development and technical consulting.</h2>
       </div>
       <div class="service-grid">
         <article class="service-card" data-reveal>
@@ -72,7 +79,7 @@
         </article>
         <article class="service-card" data-reveal>
           <span class="service-index" aria-hidden="true">02</span>
-          <h3 data-en="App development &amp; improvements" data-zh="App 開發與功能改善">App development &amp; improvements</h3>
+          <h3 data-en="App development &amp; improvements" data-zh="App 開發">App development &amp; improvements</h3>
           <p data-en="Build a mobile app or improve an existing one: new features, API integration, troubleshooting, and performance work." data-zh="開發行動 App，或改善現有產品的功能、API 串接、穩定性與效能。可以從一個明確的功能開始合作。">Build a mobile app or improve an existing one: new features, API integration, troubleshooting, and performance work.</p>
           <p class="service-deliverable" data-en="Deliverables: working software, agreed tests, and handover documentation." data-zh="交付內容：可測試版本、約定的功能與驗收、交接文件。">Deliverables: working software, agreed tests, and handover documentation.</p>
         </article>
@@ -87,203 +94,137 @@
 
     <section class="featured section" id="work">
       <div class="section-heading compact" data-reveal>
-        <p class="kicker" data-en="WORK EXAMPLES" data-zh="實作範例">WORK EXAMPLES</p>
-        <h2 data-en="Apps and tools built around real needs." data-zh="從實際需求出發的 App 與工具。">Apps and tools built around real needs.</h2>
-        <p data-en="These independent projects include Moment, an app I am preparing for public release; a LINE bot in family use; and tools for my own development workflow. They show how I approach a specific problem, not client commissions." data-zh="這裡包含我準備推出的 Moment App、供家庭試用的 LINE Bot，以及自用開發工具。用具體問題呈現從需求整理到實作的過程，不是客戶委託案例。">These independent projects include Moment, an app I am preparing for public release; a LINE bot in family use; and tools for my own development workflow. They show how I approach a specific problem, not client commissions.</p>
+<p data-en="SELECTED WORK" data-zh="實作案例" class="kicker">SELECTED WORK</p><h2 data-en="App development and tools in practice." data-zh="App 開發與工具實作案例。">App development and tools in practice.</h2><p data-en="Independent projects for life planning, family communication, and my development workflow." data-zh="從生活事項、家庭溝通到開發工作，各有不同的使用情境。">Independent projects for life planning, family communication, and my development workflow.</p>
       </div>
 
-      <article class="case-study case-video case-moment" data-case="moment">
+      <article class="case-study case-real case-animated case-moment" id="moment" data-case="moment">
         <div class="case-copy">
-          <div class="case-meta" data-reveal><span>01</span><span data-en="Independent app · Preparing for launch" data-zh="自有 App · 準備推出">Independent app · Preparing for launch</span></div>
-          <h3 data-reveal data-en="Moment" data-zh="Moment">Moment</h3>
-          <p class="case-thesis" data-reveal data-en="Keep plans, confirmed details, and the next step together." data-zh="把準備進度、已確認資訊與下一步放在一起。">Keep plans, confirmed details, and the next step together.</p>
-          <p data-reveal data-en="Moment is an app I am developing for public release. It brings preparation, saved details, and next steps for trips, moving, and other life events into one place, instead of leaving them scattered across messages and notes." data-zh="Moment 是我正在開發、規劃推出的生活事項 App。把旅行、搬家等事件的準備進度、已確認資訊與下一步集中整理，減少在訊息與筆記之間來回找資料。">Moment is an app I am developing for public release. It brings preparation, saved details, and next steps for trips, moving, and other life events into one place, instead of leaving them scattered across messages and notes.</p>
-          <div class="case-role" data-reveal>
-            <span data-en="MY WORK" data-zh="我負責的部分">MY WORK</span>
-            <strong data-en="Requirements, interface design, and app development" data-zh="需求整理、介面設計與 App 開發">Requirements, interface design, and app development</strong>
-          </div>
-          <ul class="tag-list" data-reveal>
-            <li data-en="Mobile app" data-zh="行動 App">Mobile app</li><li data-en="Information organization" data-zh="資訊整理">Information organization</li><li data-en="React Native" data-zh="React Native">React Native</li>
-          </ul>
+<div class="case-meta" data-reveal><span>01</span><span data-en="Independent app · Preparing for launch" data-zh="自有 App · 準備推出">Independent app · Preparing for launch</span></div>
+<h3 data-en="Moment" data-zh="Moment" data-reveal>Moment</h3>
+<p data-en="Turn a life event into an editable preparation list." data-zh="把生活事項拆成可編輯的準備清單。" class="case-thesis" data-reveal>Turn a life event into an editable preparation list.</p>
+<p data-en="Moment organizes preparation for trips, family activities, and other life events. Edit individual actions, save the plan, and return to its progress and next step. The screens show a picnic plan and its action editor." data-zh="Moment 整理旅行、家庭活動等生活事項的準備工作。可以逐項編輯行動、保存清單，再回來查看進度與下一步。畫面展示家庭野餐的事項總覽與行動編輯。" data-reveal>Moment organizes preparation for trips, family activities, and other life events. Edit individual actions, save the plan, and return to its progress and next step. The screens show a picnic plan and its action editor.</p>
+<p data-reveal data-en="Built with native Swift and SwiftUI; TypeScript supports schema validation and evaluation tooling. The app remains in development." data-zh="以原生 Swift／SwiftUI 開發；TypeScript 用於結構驗證與評估工具。App 目前仍在開發中。">Built with native Swift and SwiftUI; TypeScript supports schema validation and evaluation tooling. The app remains in development.</p>
+<ul class="tag-list" data-reveal><li data-en="iOS app" data-zh="iOS App">iOS app</li><li data-en="Editable plans" data-zh="可編輯清單">Editable plans</li><li data-en="Saved progress" data-zh="準備進度">Saved progress</li></ul>
         </div>
-        <figure class="case-visual project-shot project-video-showcase" data-project-video="moment" data-project-title-en="Moment" data-project-title-zh="Moment" data-reveal>
-          <div class="project-video-frame">
-            <video id="moment-loop" class="project-loop-video" width="1920" height="1080" muted loop playsinline preload="none" data-src-en="./assets/products/moment/loop-en-v5.mp4" data-src-zh="./assets/products/moment/loop-zh-v5.mp4" data-poster-en="./assets/products/moment/poster-en-v5.jpg" data-poster-zh="./assets/products/moment/poster-zh-v5.jpg" data-aria-en="Moment app preview in English" data-aria-zh="Moment App 繁體中文預覽" aria-label="Moment app preview in English" aria-describedby="moment-loop-caption moment-loop-status"></video>
-            <span class="project-loading-label" aria-hidden="true" data-en="Loading preview…" data-zh="載入預覽中…">Loading preview…</span>
-            <button class="project-loop-toggle" type="button" aria-controls="moment-loop">
-              <span class="project-control-icon" aria-hidden="true">▶</span>
-              <span class="project-control-label" data-en="Play preview" data-zh="播放預覽">Play preview</span>
-            </button>
-          </div>
-          <div class="project-video-actions">
-            <a id="moment-film-open" class="project-film-link" href="./assets/products/moment/film-en-v5-silent.mp4" data-href-en="./assets/products/moment/film-en-v5-silent.mp4" data-href-zh="./assets/products/moment/film-zh-v5-silent.mp4" target="_blank" rel="noreferrer" aria-haspopup="dialog" aria-controls="project-film-dialog">
-              <span data-en="Watch the app film · 24 sec" data-zh="觀看 App 介紹 · 24 秒">Watch the app film · 24 sec</span>
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-          <figcaption id="moment-loop-caption" data-en="Moment · App in development for public release. Design preview." data-zh="Moment · 準備推出的 App；影片為設計稿展示。">Moment · App in development for public release. Design preview.</figcaption>
-          <p id="moment-loop-status" class="visually-hidden" aria-live="polite" data-en="The preview loads as it approaches the screen." data-zh="預覽接近畫面時載入。">The preview loads as it approaches the screen.</p>
-        </figure>
+<figure class="case-visual product-showcase showcase-phone" data-product-showcase="moment" aria-label="Moment product walkthrough" data-aria-en="Moment product walkthrough" data-aria-zh="Moment 產品動態展示">
+<div class="showcase-top"><span class="showcase-brand">Moment</span><span class="showcase-label" data-en="PRODUCT WALKTHROUGH" data-zh="產品動態展示">PRODUCT WALKTHROUGH</span></div>
+<div class="showcase-stage">
+<div class="showcase-scene" id="moment-showcase-0" data-scene="0">
+<div class="showcase-copy"><span class="showcase-count">01 / 03</span><h4  data-en="See what needs preparing." data-zh="先看這件事，還需要準備什麼。">See what needs preparing.</h4><p  data-en="A picnic plan, its progress, and the next action." data-zh="家庭野餐的準備進度與下一個行動。">A picnic plan, its progress, and the next action.</p></div>
+<a class="showcase-capture" href="./assets/products/moment/moments-runtime-zh-v9.png" target="_blank" rel="noreferrer" aria-label="Open original screenshot" data-aria-en="Open original screenshot" data-aria-zh="開啟原始截圖"><img class="" src="./assets/products/moment/moments-runtime-zh-v9.png" width="1170" height="2532" loading="lazy" decoding="async" alt="Moment app development: picnic plan overview" title="Moment app development: picnic plan overview" data-title-en="Moment app development: picnic plan overview" data-title-zh="Moment App 開發案例：野餐事項總覽" data-alt-en="Moment app development: picnic plan overview" data-alt-zh="Moment App 開發案例：野餐事項總覽，顯示準備進度與下一個行動"></a>
+</div>
+<div class="showcase-scene" id="moment-showcase-1" data-scene="1" hidden>
+<div class="showcase-copy"><span class="showcase-count">02 / 03</span><h4  data-en="Make the plan your own." data-zh="把準備清單，改成自己的安排。">Make the plan your own.</h4><p  data-en="Edit each action before saving the list." data-zh="逐項修改行動內容，再保存清單。">Edit each action before saving the list.</p></div>
+<a class="showcase-capture" href="./assets/products/moment/actions-runtime-zh-v9.png" target="_blank" rel="noreferrer" aria-label="Open original screenshot" data-aria-en="Open original screenshot" data-aria-zh="開啟原始截圖"><img class="" src="./assets/products/moment/actions-runtime-zh-v9.png" width="1170" height="2532" loading="lazy" decoding="async" alt="Moment editable picnic actions" data-alt-en="Moment editable picnic actions" data-alt-zh="Moment 野餐行動編輯"></a>
+</div>
+<div class="showcase-scene" id="moment-showcase-2" data-scene="2" hidden>
+<div class="showcase-copy"><span class="showcase-count">03 / 03</span><h4  data-en="Return to the saved actions." data-zh="下次打開，接著準備。">Return to the saved actions.</h4><p  data-en="The saved list keeps both picnic actions together." data-zh="保存後，兩個野餐行動保留在同一份清單。">The saved list keeps both picnic actions together.</p></div>
+<a class="showcase-capture" href="./assets/products/moment/saved-runtime-zh-v10.png" target="_blank" rel="noreferrer" aria-label="Open original screenshot" data-aria-en="Open original screenshot" data-aria-zh="開啟原始截圖"><img class="" src="./assets/products/moment/saved-runtime-zh-v10.png" width="1170" height="2532" loading="lazy" decoding="async" alt="Moment saved picnic action list" data-alt-en="Moment saved picnic action list" data-alt-zh="Moment 已保存的野餐行動清單"></a>
+</div>
+</div>
+<div class="showcase-controls" hidden><div class="showcase-steps"><button type="button" data-showcase-step="0" aria-controls="moment-showcase-0" aria-current="step"><span class="step-number">01</span><span  data-en="Overview" data-zh="事項總覽">Overview</span><span class="step-progress" aria-hidden="true"></span></button><button type="button" data-showcase-step="1" aria-controls="moment-showcase-1"><span class="step-number">02</span><span  data-en="Edit" data-zh="編輯行動">Edit</span><span class="step-progress" aria-hidden="true"></span></button><button type="button" data-showcase-step="2" aria-controls="moment-showcase-2"><span class="step-number">03</span><span  data-en="Save" data-zh="保存清單">Save</span><span class="step-progress" aria-hidden="true"></span></button></div><button class="showcase-toggle" type="button" data-showcase-toggle aria-pressed="false"><span data-playback-label data-en="Pause" data-zh="暫停">Pause</span></button></div>
+<figcaption  data-en="Original iOS simulator captures in motion · Chinese UI with test data. Select a screen to inspect the original." data-zh="iOS 模擬器原始截圖動畫 · 測試資料。點選可查看原始畫面。">Original iOS simulator captures in motion · Chinese UI with test data. Select a screen to inspect the original.</figcaption>
+</figure>
       </article>
 
-      <article class="case-study case-video case-line" data-case="line-family-translator">
+      <article class="case-study case-real case-animated case-line" id="line-family-translator" data-case="line-family-translator">
         <div class="case-copy">
-          <div class="case-meta" data-reveal><span>02</span><span data-en="LINE bot · Family trial" data-zh="LINE Bot · 家庭試用">LINE bot · Family trial</span></div>
-          <h3 data-reveal data-en="Family LINE Translator" data-zh="家庭 LINE 翻譯 Bot">Family LINE Translator</h3>
-          <p class="case-thesis" data-reveal data-en="Use your own language. Stay in the same conversation." data-zh="各自用熟悉的語言，留在同一個聊天室。">Use your own language. Stay in the same conversation.</p>
-          <p data-reveal data-en="Built for Chinese–Indonesian family communication. Each person sends a message in their own language and the bot translates the text in LINE, without copying it into another translation app. Currently in a family trial, not open for public signup." data-zh="為中文與印尼文的家庭溝通製作。雙方直接在 LINE 傳送各自熟悉的語言，由 Bot 協助翻譯文字，不必再複製到另一個翻譯工具。目前供家庭試用，尚未開放一般申請。">Built for Chinese–Indonesian family communication. Each person sends a message in their own language and the bot translates the text in LINE, without copying it into another translation app. Currently in a family trial, not open for public signup.</p>
-          <div class="case-role" data-reveal>
-            <span data-en="MY WORK" data-zh="我負責的部分">MY WORK</span>
-            <strong data-en="Creator · Product, conversation flow, and service integration" data-zh="創作者 · 需求整理、對話流程與服務串接">Creator · Product, conversation flow, and service integration</strong>
-          </div>
-          <ul class="tag-list" data-reveal>
-            <li data-en="LINE bot" data-zh="LINE Bot">LINE bot</li><li data-en="Text translation" data-zh="雙向文字翻譯">Text translation</li><li data-en="Service integration" data-zh="服務串接">Service integration</li>
-          </ul>
+<div class="case-meta" data-reveal><span>02</span><span data-en="LINE bot · Family trial" data-zh="LINE Bot · 家庭試用">LINE bot · Family trial</span></div>
+<h3 data-en="Family LINE Translator" data-zh="家庭 LINE 翻譯 Bot" data-reveal>Family LINE Translator</h3>
+<p data-en="Translate Chinese and Indonesian in the same LINE chat." data-zh="在同一個 LINE 聊天室，翻譯中文與印尼文。" class="case-thesis" data-reveal>Translate Chinese and Indonesian in the same LINE chat.</p>
+<p data-en="Built for everyday communication in my family. A Chinese message receives an Indonesian translation; an Indonesian message receives Traditional Chinese. Tested in personal chats and a family group. Access is limited to approved users and groups." data-zh="為家中日常溝通製作：傳送中文，Bot 回覆印尼文；傳送印尼文，回覆繁體中文。已完成本人私訊與家庭群組試用，目前僅供指定使用者與群組使用。" data-reveal>Built for everyday communication in my family. A Chinese message receives an Indonesian translation; an Indonesian message receives Traditional Chinese. Tested in personal chats and a family group. Access is limited to approved users and groups.</p>
+<ul class="tag-list" data-reveal><li data-en="Chinese ↔ Indonesian" data-zh="中文 ↔ 印尼文">Chinese ↔ Indonesian</li><li data-en="Text messages" data-zh="文字訊息">Text messages</li><li data-en="Private access" data-zh="指定對象使用">Private access</li></ul>
         </div>
-        <figure class="case-visual project-shot project-video-showcase" data-project-video="line-family-translator" data-project-title-en="Family LINE Translator" data-project-title-zh="家庭 LINE 翻譯 Bot" data-reveal>
-          <div class="project-video-frame">
-            <video id="line-family-translator-loop" class="project-loop-video" width="1920" height="1080" muted loop playsinline preload="none" data-src-en="./assets/products/line-family-translator/loop-en-v7.mp4" data-src-zh="./assets/products/line-family-translator/loop-zh-v7.mp4" data-poster-en="./assets/products/line-family-translator/poster-en-v7.jpg" data-poster-zh="./assets/products/line-family-translator/poster-zh-v7.jpg" data-aria-en="Family LINE Translator demo preview in English" data-aria-zh="家庭 LINE 翻譯 Bot繁體中文示範預覽" aria-label="Family LINE Translator demo preview in English" aria-describedby="line-family-translator-loop-caption line-family-translator-loop-status"></video>
-            <span class="project-loading-label" aria-hidden="true" data-en="Loading preview…" data-zh="載入預覽中…">Loading preview…</span>
-            <button class="project-loop-toggle" type="button" aria-controls="line-family-translator-loop">
-              <span class="project-control-icon" aria-hidden="true">▶</span>
-              <span class="project-control-label" data-en="Play preview" data-zh="播放預覽">Play preview</span>
-            </button>
-          </div>
-          <div class="project-video-actions">
-            <a id="line-family-translator-film-open" class="project-film-link" href="./assets/products/line-family-translator/film-en-v7-silent.mp4" data-href-en="./assets/products/line-family-translator/film-en-v7-silent.mp4" data-href-zh="./assets/products/line-family-translator/film-zh-v7-silent.mp4" target="_blank" rel="noreferrer" aria-haspopup="dialog" aria-controls="project-film-dialog">
-              <span data-en="Watch the demo · 24 sec" data-zh="觀看操作示意 · 24 秒">Watch the demo · 24 sec</span>
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-          <figcaption id="line-family-translator-loop-caption" data-en="Scripted chat demo · Not a recording of private chats or an official LINE product." data-zh="示範對話與介面示意 · 非私人聊天錄影，亦非 LINE 官方產品。">Scripted chat demo · Not a recording of private chats or an official LINE product.</figcaption>
-          <p id="line-family-translator-loop-status" class="visually-hidden" aria-live="polite" data-en="The preview loads as it approaches the screen." data-zh="預覽接近畫面時載入。">The preview loads as it approaches the screen.</p>
-        </figure>
+<figure class="case-visual line-film" data-line-film aria-label="LINE Bot language settings and translation" data-aria-en="LINE Bot language settings and translation" data-aria-zh="LINE Bot 語言設定與雙向翻譯">
+<div class="showcase-top"><span class="showcase-brand"><img src="./assets/products/line-family-translator/avatar-v9.png" width="1254" height="1254" loading="lazy" alt="Product avatar" data-alt-en="Product avatar" data-alt-zh="Bot 產品頭像">LINE Bot</span><span class="showcase-label" data-en="36-SECOND PRODUCT DEMO" data-zh="36 秒完整操作示範">36-SECOND PRODUCT DEMO</span></div>
+
+<div class="line-film-controls" hidden><button type="button" data-line-toggle aria-controls="line-film"><span data-line-play-label data-en="Play demo" data-zh="播放示範">Play demo</span></button><div class="line-film-chapters" aria-label="Video chapters" data-aria-en="Video chapters" data-aria-zh="影片章節"><button type="button" data-line-chapter="0" aria-controls="line-film"><span  data-en="Language menu" data-zh="語言設定">Language menu</span></button><button type="button" data-line-chapter="7" aria-controls="line-film"><span  data-en="Choose a pair" data-zh="選擇語言">Choose a pair</span></button><button type="button" data-line-chapter="14" aria-controls="line-film"><span  data-en="Confirm" data-zh="切換確認">Confirm</span></button><button type="button" data-line-chapter="20" aria-controls="line-film"><span  data-en="Send a message" data-zh="傳送訊息">Send a message</span></button><button type="button" data-line-chapter="28" aria-controls="line-film"><span  data-en="Read the reply" data-zh="雙向翻譯">Read the reply</span></button></div></div>
+<video id="line-film" width="1920" height="1080" preload="none" muted playsinline poster="./assets/products/line-family-translator/poster-desktop-zh-v12.jpg" data-src-en="./assets/products/line-family-translator/film-desktop-en-v12.mp4" data-mobile-src-en="./assets/products/line-family-translator/film-mobile-en-v12.mp4" data-poster-en="./assets/products/line-family-translator/poster-desktop-en-v12.jpg" data-mobile-poster-en="./assets/products/line-family-translator/poster-mobile-en-v12.jpg" data-src-zh="./assets/products/line-family-translator/film-desktop-zh-v12.mp4" data-mobile-src-zh="./assets/products/line-family-translator/film-mobile-zh-v12.mp4" data-poster-zh="./assets/products/line-family-translator/poster-desktop-zh-v12.jpg" data-mobile-poster-zh="./assets/products/line-family-translator/poster-mobile-zh-v12.jpg" aria-label="Silent language settings and translation demonstration" data-aria-en="Silent language settings and translation demonstration" data-aria-zh="無聲影片：語言設定與雙向翻譯示範"></video>
+<figcaption><span  data-en="Actual Bot responses with test data · Recreated interface, not a LINE chat recording." data-zh="以實際 Bot 回覆與測試資料製作 · 介面示意，非 LINE 聊天錄影。">Actual Bot responses with test data · Recreated interface, not a LINE chat recording.</span></figcaption>
+<details class="line-transcript"><summary><span  data-en="Read the demo transcript" data-zh="查看影片文字內容">Read the demo transcript</span></summary><ol>
+<li><span  data-en="In the administrator’s private chat, send 設定語言. The Bot offers Chinese, Indonesian, English and Thai." data-zh="在管理者私訊中傳送「設定語言」，Bot 提供中文、印尼文、英文與泰文選項。">In the administrator’s private chat, send 設定語言. The Bot offers Chinese, Indonesian, English and Thai.</span></li>
+<li><span  data-en="Choose Chinese, then Indonesian. The Bot confirms the shared Chinese ↔ Indonesian pair." data-zh="先選中文，再選印尼文。Bot 確認切換為「中文 ↔ 印尼文」，套用至所有已啟用的聊天室。">Choose Chinese, then Indonesian. The Bot confirms the shared Chinese ↔ Indonesian pair.</span></li>
+<li><span lang="zh-Hant">請把牛奶放進冰箱。請把桌子擦乾淨。</span> → <span lang="id">Tolong simpan susu di kulkas. Tolong lap meja sampai bersih.</span></li>
+<li><span lang="id">Sudah selesai. Terima kasih.</span> → <span lang="zh-Hant">已經做好了。謝謝。</span></li>
+</ol></details>
+<noscript><p><a href="./assets/products/line-family-translator/film-desktop-zh-v12.mp4" data-href-en="./assets/products/line-family-translator/film-desktop-en-v12.mp4" data-href-zh="./assets/products/line-family-translator/film-desktop-zh-v12.mp4"><span  data-en="Open the demo video" data-zh="開啟示範影片">Open the demo video</span></a></p></noscript>
+</figure>
       </article>
 
-      <article class="case-study case-video case-productdev" data-case="productdev">
+      <article class="case-study case-real case-animated case-devtools" id="devtools" data-case="devtools">
         <div class="case-copy">
-          <div class="case-meta" data-reveal><span>03</span><span data-en="Personal tool · For my development workflow" data-zh="個人自用工具 · 開發流程">Personal tool · For my development workflow</span></div>
-          <h3 data-reveal data-en="Development task monitoring" data-zh="開發任務監控">Development task monitoring</h3>
-          <p class="case-thesis" data-reveal data-en="See which tasks are running and which need attention." data-zh="看清楚哪些任務在跑，哪些需要處理。">See which tasks are running and which need attention.</p>
-          <p data-reveal data-en="A tool for monitoring my own development tasks. Run status, check results, and error records are brought into one view so I can see where to investigate without checking each terminal separately." data-zh="為自己的開發流程製作。把任務執行狀態、檢查結果與錯誤紀錄集中到一個畫面，方便判斷哪裡需要查看，不用逐一翻找終端機。">A tool for monitoring my own development tasks. Run status, check results, and error records are brought into one view so I can see where to investigate without checking each terminal separately.</p>
-          <div class="case-role" data-reveal>
-            <span data-en="MY WORK" data-zh="我負責的部分">MY WORK</span>
-            <strong data-en="Workflow analysis, interface design, and macOS development" data-zh="流程整理、介面設計與 macOS 開發">Workflow analysis, interface design, and macOS development</strong>
-          </div>
-          <ul class="tag-list" data-reveal>
-            <li data-en="macOS" data-zh="macOS">macOS</li><li data-en="Task monitoring" data-zh="任務監控">Task monitoring</li><li data-en="Status &amp; logs" data-zh="狀態與紀錄">Status &amp; logs</li>
-          </ul>
+<div class="case-meta" data-reveal><span>03</span><span data-en="Personal tooling · Web + macOS" data-zh="個人自用工具 · 網頁＋macOS">Personal tooling · Web + macOS</span></div>
+<h3 data-en="Development task &amp; handoff tools" data-zh="開發任務與交接工具" data-reveal>Development task &amp; handoff tools</h3>
+<p data-en="Project progress, pending decisions, and automation runs in one toolset." data-zh="專案進度、待決策事項與自動化執行，一套工具看完。" class="case-thesis" data-reveal>Project progress, pending decisions, and automation runs in one toolset.</p>
+<p data-en="Built for running several software projects at once. The web workspace moves from the project overview to work items, knowledge records, and decisions; the macOS monitor shows automation task status and opens run details, checks, and error records to locate stalled work. Both are personal tools; companion tools for context handoff and task estimation are published separately." data-zh="為同時管理多個軟體專案製作。網頁工作空間從專案總覽進入工作項目、知識紀錄與待決策事項；macOS 監控工具集中顯示自動化任務狀態，可查看執行明細、檢查結果與錯誤紀錄，快速定位卡住的工作。兩者皆為個人自用；脈絡交接、任務估時等 companion tools 另外公開。" data-reveal>Built for running several software projects at once. The web workspace moves from the project overview to work items, knowledge records, and decisions; the macOS monitor shows automation task status and opens run details, checks, and error records to locate stalled work. Both are personal tools; companion tools for context handoff and task estimation are published separately.</p>
+<ul class="tag-list" data-reveal><li data-en="Project overview" data-zh="專案總覽">Project overview</li><li data-en="Decisions" data-zh="待決策事項">Decisions</li><li data-en="Run history" data-zh="執行紀錄">Run history</li><li data-en="Error inspection" data-zh="錯誤檢視">Error inspection</li></ul>
         </div>
-        <figure class="case-visual project-shot project-video-showcase" data-project-video="productdev" data-project-title-en="Development task monitoring" data-project-title-zh="開發任務監控" data-reveal>
-          <div class="project-video-frame">
-            <video id="productdev-loop" class="project-loop-video" width="1920" height="1080" muted loop playsinline preload="none" data-src-en="./assets/products/productdev/loop-en-v7.mp4" data-src-zh="./assets/products/productdev/loop-zh-v7.mp4" data-poster-en="./assets/products/productdev/poster-en-v7.jpg" data-poster-zh="./assets/products/productdev/poster-zh-v7.jpg" data-aria-en="Development task monitoring demo preview in English" data-aria-zh="開發任務監控繁體中文示範預覽" aria-label="Development task monitoring demo preview in English" aria-describedby="productdev-loop-caption productdev-loop-status"></video>
-            <span class="project-loading-label" aria-hidden="true" data-en="Loading preview…" data-zh="載入預覽中…">Loading preview…</span>
-            <button class="project-loop-toggle" type="button" aria-controls="productdev-loop">
-              <span class="project-control-icon" aria-hidden="true">▶</span>
-              <span class="project-control-label" data-en="Play preview" data-zh="播放預覽">Play preview</span>
-            </button>
-          </div>
-          <div class="project-video-actions">
-            <a id="productdev-film-open" class="project-film-link" href="./assets/products/productdev/film-en-v7-silent.mp4" data-href-en="./assets/products/productdev/film-en-v7-silent.mp4" data-href-zh="./assets/products/productdev/film-zh-v7-silent.mp4" target="_blank" rel="noreferrer" aria-haspopup="dialog" aria-controls="project-film-dialog">
-              <span data-en="Watch the demo · 24 sec" data-zh="觀看操作示意 · 24 秒">Watch the demo · 24 sec</span>
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-          <figcaption id="productdev-loop-caption" data-en="Workflow illustration with demo data · Personal tool, not a live run recording." data-zh="流程示意與示範資料 · 個人自用工具，非即時執行錄影。">Workflow illustration with demo data · Personal tool, not a live run recording.</figcaption>
-          <p id="productdev-loop-status" class="visually-hidden" aria-live="polite" data-en="The preview loads as it approaches the screen." data-zh="預覽接近畫面時載入。">The preview loads as it approaches the screen.</p>
-        </figure>
+<figure class="case-visual product-showcase showcase-desktop" data-product-showcase="devtools" aria-label="Development tools walkthrough" data-aria-en="Development tools walkthrough" data-aria-zh="開發工具產品動態展示">
+<div class="showcase-top"><span class="showcase-brand"><img class="" src="./assets/products/productdev/app-icon-v9.png" width="1024" height="1024" loading="lazy" decoding="async" alt="macOS app icon" data-alt-en="macOS app icon" data-alt-zh="macOS App 圖示"><span data-en="Development tools" data-zh="開發工具">Development tools</span></span><span class="showcase-label" data-en="PRODUCT WALKTHROUGH" data-zh="產品動態展示">PRODUCT WALKTHROUGH</span></div>
+<div class="showcase-stage">
+<div class="showcase-scene" id="devtools-showcase-0" data-scene="0">
+<div class="showcase-copy"><span class="showcase-count">01 / 04</span><h4 data-en="Start with the whole portfolio." data-zh="先掌握所有專案。">Start with the whole portfolio.</h4><p data-en="See project status and the work needing attention." data-zh="查看各專案狀態與需要處理的工作。">See project status and the work needing attention.</p></div>
+<a class="showcase-capture" href="./assets/products/timwork/portfolio-en-v9.jpg" data-href-en="./assets/products/timwork/portfolio-en-v9.jpg" data-href-zh="./assets/products/timwork/portfolio-zh-v9.jpg" target="_blank" rel="noreferrer" aria-label="Open original screenshot" data-aria-en="Open original screenshot" data-aria-zh="開啟原始截圖"><img class="" src="./assets/products/timwork/portfolio-en-v9.jpg" width="1280" height="1220" loading="lazy" decoding="async" alt="Web workspace project overview" data-alt-en="Web workspace project overview" data-alt-zh="網頁工作空間專案總覽" data-image-en="./assets/products/timwork/portfolio-en-v9.jpg" data-image-zh="./assets/products/timwork/portfolio-zh-v9.jpg"></a>
+</div>
+<div class="showcase-scene" id="devtools-showcase-1" data-scene="1" hidden>
+<div class="showcase-copy"><span class="showcase-count">02 / 04</span><h4 data-en="Know what needs a decision." data-zh="知道哪些事情，還需要決定。">Know what needs a decision.</h4><p data-en="Review pending decisions alongside their project context." data-zh="在專案脈絡中查看待處理的決策。">Review pending decisions alongside their project context.</p></div>
+<a class="showcase-capture" href="./assets/products/timwork/decisions-en-v10.jpg" data-href-en="./assets/products/timwork/decisions-en-v10.jpg" data-href-zh="./assets/products/timwork/decisions-zh-v10.jpg" target="_blank" rel="noreferrer" aria-label="Open original screenshot" data-aria-en="Open original screenshot" data-aria-zh="開啟原始截圖"><img class="" src="./assets/products/timwork/decisions-en-v10.jpg" width="1280" height="751" loading="lazy" decoding="async" alt="Web workspace decision records" data-alt-en="Web workspace decision records" data-alt-zh="網頁工作空間決策紀錄" data-image-en="./assets/products/timwork/decisions-en-v10.jpg" data-image-zh="./assets/products/timwork/decisions-zh-v10.jpg"></a>
+</div>
+<div class="showcase-scene" id="devtools-showcase-2" data-scene="2" hidden>
+<div class="showcase-copy"><span class="showcase-count">03 / 04</span><h4 data-en="Find the work that needs attention." data-zh="先找出需要處理的任務。">Find the work that needs attention.</h4><p data-en="View running, ready, and blocked work together." data-zh="同時查看執行中、已就緒與受阻的工作。">View running, ready, and blocked work together.</p></div>
+<a class="showcase-capture" href="./assets/products/productdev/monitor-native-v10.jpg" target="_blank" rel="noreferrer" aria-label="Open original screenshot" data-aria-en="Open original screenshot" data-aria-zh="開啟原始截圖"><img class="" src="./assets/products/productdev/monitor-native-v10.jpg" width="2360" height="1560" loading="lazy" decoding="async" alt="Native macOS task monitor using isolated fixtures" data-alt-en="Native macOS task monitor using isolated fixtures" data-alt-zh="macOS 原生任務監控，使用隔離測試資料"></a>
+</div>
+<div class="showcase-scene" id="devtools-showcase-3" data-scene="3" hidden>
+<div class="showcase-copy"><span class="showcase-count">04 / 04</span><h4 data-en="Open the run behind the task." data-zh="從任務，進入執行明細。">Open the run behind the task.</h4><p data-en="Inspect its phase, Issue, and available runtime fields." data-zh="查看執行階段、Issue 與可取得的執行資訊。">Inspect its phase, Issue, and available runtime fields.</p></div>
+<a class="showcase-capture" href="./assets/products/productdev/run-detail-native-v10.jpg" target="_blank" rel="noreferrer" aria-label="Open original screenshot" data-aria-en="Open original screenshot" data-aria-zh="開啟原始截圖"><img class="" src="./assets/products/productdev/run-detail-native-v10.jpg" width="2360" height="1560" loading="lazy" decoding="async" alt="Native macOS run details using isolated fixtures" data-alt-en="Native macOS run details using isolated fixtures" data-alt-zh="macOS 原生執行明細，使用隔離測試資料"></a>
+</div>
+</div>
+<div class="showcase-controls" hidden><div class="showcase-steps"><button type="button" data-showcase-step="0" aria-controls="devtools-showcase-0" aria-current="step"><span class="step-number">01</span><span data-en="Overview" data-zh="專案總覽">Overview</span><span class="step-progress" aria-hidden="true"></span></button><button type="button" data-showcase-step="1" aria-controls="devtools-showcase-1"><span class="step-number">02</span><span data-en="Decisions" data-zh="待決策事項">Decisions</span><span class="step-progress" aria-hidden="true"></span></button><button type="button" data-showcase-step="2" aria-controls="devtools-showcase-2"><span class="step-number">03</span><span data-en="Monitor" data-zh="任務監控">Monitor</span><span class="step-progress" aria-hidden="true"></span></button><button type="button" data-showcase-step="3" aria-controls="devtools-showcase-3"><span class="step-number">04</span><span data-en="Details" data-zh="執行明細">Details</span><span class="step-progress" aria-hidden="true"></span></button></div><button class="showcase-toggle" type="button" data-showcase-toggle aria-pressed="false"><span data-playback-label data-en="Pause" data-zh="暫停">Pause</span></button></div>
+<figcaption  data-en="Web workspace and original macOS interface in motion · Isolated test data. macOS UI in English. Select a screen to inspect the original." data-zh="網頁工作空間與 macOS 原始介面動畫 · 隔離測試資料，macOS 為英文介面。點選可查看原始畫面。">Web workspace and original macOS interface in motion · Isolated test data. macOS UI in English. Select a screen to inspect the original.</figcaption>
+</figure>
       </article>
-
-      <article class="case-study case-video case-timwork" data-case="timwork">
-        <div class="case-copy">
-          <div class="case-meta" data-reveal><span>04</span><span data-en="Personal tool · Project organization" data-zh="個人自用工具 · 專案整理">Personal tool · Project organization</span></div>
-          <h3 data-reveal data-en="Project tasks &amp; handover" data-zh="跨專案任務與交接管理">Project tasks &amp; handover</h3>
-          <p class="case-thesis" data-reveal data-en="Pick up the work without piecing everything together again." data-zh="工作接著做，不必每次重新整理來龍去脈。">Pick up the work without piecing everything together again.</p>
-          <p data-reveal data-en="A workspace for organizing my own projects: requirements, tasks, decisions, and handover notes. It keeps the context needed to resume interrupted work or hand off a task in one place." data-zh="把不同專案的需求、任務、決策與交接紀錄集中整理。中斷後接續工作，或交接一項任務時，不必再從分散的對話與文件重新拼湊背景。">A workspace for organizing my own projects: requirements, tasks, decisions, and handover notes. It keeps the context needed to resume interrupted work or hand off a task in one place.</p>
-          <div class="case-role" data-reveal>
-            <span data-en="MY WORK" data-zh="我負責的部分">MY WORK</span>
-            <strong data-en="Requirements, workflow design, and tool integration" data-zh="需求整理、工作流程設計與工具整合">Requirements, workflow design, and tool integration</strong>
-          </div>
-          <ul class="tag-list" data-reveal>
-            <li data-en="Task management" data-zh="任務管理">Task management</li><li data-en="Decision records" data-zh="決策紀錄">Decision records</li><li data-en="Handover" data-zh="工作交接">Handover</li>
-          </ul>
-        </div>
-        <figure class="case-visual project-shot project-video-showcase" data-project-video="timwork" data-project-title-en="Project tasks &amp; handover" data-project-title-zh="跨專案任務與交接管理" data-reveal>
-          <div class="project-video-frame">
-            <video id="timwork-loop" class="project-loop-video" width="1920" height="1080" muted loop playsinline preload="none" data-src-en="./assets/products/timwork/loop-en-v7.mp4" data-src-zh="./assets/products/timwork/loop-zh-v7.mp4" data-poster-en="./assets/products/timwork/poster-en-v7.jpg" data-poster-zh="./assets/products/timwork/poster-zh-v7.jpg" data-aria-en="Project tasks & handover demo preview in English" data-aria-zh="跨專案任務與交接管理繁體中文示範預覽" aria-label="Project tasks & handover demo preview in English" aria-describedby="timwork-loop-caption timwork-loop-status"></video>
-            <span class="project-loading-label" aria-hidden="true" data-en="Loading preview…" data-zh="載入預覽中…">Loading preview…</span>
-            <button class="project-loop-toggle" type="button" aria-controls="timwork-loop">
-              <span class="project-control-icon" aria-hidden="true">▶</span>
-              <span class="project-control-label" data-en="Play preview" data-zh="播放預覽">Play preview</span>
-            </button>
-          </div>
-          <div class="project-video-actions">
-            <a id="timwork-film-open" class="project-film-link" href="./assets/products/timwork/film-en-v7-silent.mp4" data-href-en="./assets/products/timwork/film-en-v7-silent.mp4" data-href-zh="./assets/products/timwork/film-zh-v7-silent.mp4" target="_blank" rel="noreferrer" aria-haspopup="dialog" aria-controls="project-film-dialog">
-              <span data-en="Watch the demo · 24 sec" data-zh="觀看操作示意 · 24 秒">Watch the demo · 24 sec</span>
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-          <figcaption id="timwork-loop-caption" data-en="Workflow illustration with demo data · Personal tool, not a production rollout demonstration." data-zh="流程示意與示範資料 · 個人自用工具，非正式系統切換展示。">Workflow illustration with demo data · Personal tool, not a production rollout demonstration.</figcaption>
-          <p id="timwork-loop-status" class="visually-hidden" aria-live="polite" data-en="The preview loads as it approaches the screen." data-zh="預覽接近畫面時載入。">The preview loads as it approaches the screen.</p>
-        </figure>
-      </article>
-
-      <dialog id="project-film-dialog" class="project-film-dialog" aria-labelledby="project-film-title" aria-describedby="project-film-description project-film-status">
-        <div class="project-film-shell">
-          <div class="project-film-header">
-            <div>
-              <h3 id="project-film-title">Full introduction</h3>
-              <p id="project-film-description" data-en="24 sec · Silent English demo film" data-zh="24 秒 · 無聲繁體中文示範影片">24 sec · Silent English demo film</p>
-            </div>
-            <div class="project-film-header-actions">
-              <button class="lang-toggle project-film-lang-toggle" type="button" aria-label="Switch language">
-                <span class="lang-current">EN</span><span aria-hidden="true">／</span><span class="lang-next">中</span>
-              </button>
-              <button class="project-film-close" type="button" data-aria-en="Close full introduction" data-aria-zh="關閉完整介紹" aria-label="Close full introduction">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-          </div>
-          <video id="project-film" class="project-film-video" width="1920" height="1080" controls playsinline preload="none" aria-labelledby="project-film-title" aria-describedby="project-film-description project-film-status"></video>
-          <div class="project-film-footer">
-            <p id="project-film-status" class="project-film-status" aria-live="polite" data-en="Use the player controls for playback, progress, and fullscreen." data-zh="可使用播放器控制播放、進度與全螢幕。">Use the player controls for playback, progress, and fullscreen.</p>
-            <a class="project-film-direct" href="./assets/products/moment/film-en-v5-silent.mp4" target="_blank" rel="noreferrer" data-en="Open the English film directly ↗" data-zh="直接開啟繁體中文影片 ↗">Open the English film directly ↗</a>
-          </div>
-        </div>
-      </dialog>
     </section>
 
     <section class="scale section" id="scale">
       <div class="section-heading" data-reveal>
         <p class="kicker" data-en="SELECTED COMPANY PRODUCTS" data-zh="參與過的公司產品">SELECTED COMPANY PRODUCTS</p>
-        <h2 data-en="Products I contributed to in production." data-zh="我曾參與正式環境產品的開發。">Products I contributed to in production.</h2>
-        <p data-en="Selected contributions made as part of engineering teams across self-custodial wallets, real-time betting, and connected mobility." data-zh="以下是我在自託管錢包、即時投注平台與聯網移動服務工程團隊中負責或參與的工作，並非個人獨立完成的產品。">Selected contributions made as part of engineering teams across self-custodial wallets, real-time betting, and connected mobility.</p>
+        <h2 data-en="Production apps I helped build." data-zh="我參與開發的公司產品。">Production apps I helped build.</h2>
+        <p data-en="Selected contributions made as part of engineering teams across self-custodial wallets, real-time betting, and connected mobility." data-zh="以下是任職期間在工程團隊中的開發貢獻，涵蓋自託管錢包、即時投注與聯網車輛服務。">Selected contributions made as part of engineering teams across self-custodial wallets, real-time betting, and connected mobility.</p>
       </div>
       <div class="scale-grid">
         <article class="scale-card tilt onchain" data-reveal>
           <div class="card-index">01 / WALLET</div>
           <img class="product-symbol" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d3/17/ba/d317bad6-53f7-d591-bfea-c4164de2ea8a/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/512x512bb.png" alt="Crypto.com Onchain app icon" width="64" height="64" loading="lazy" decoding="async">
           <h3>Crypto.com Onchain</h3>
-          <p data-en="Owned iOS Earn across multiple blockchain protocols. Shipped staking, rewards, position management, and Buy & Swap for a self-custodial wallet." data-zh="負責跨多個區塊鏈協議的 iOS Earn，交付質押、獎勵、部位管理，以及自託管錢包的 Buy & Swap。">Owned iOS Earn across multiple blockchain protocols. Shipped staking, rewards, position management, and Buy & Swap for a self-custodial wallet.</p>
-          <dl><div><dt>~20K</dt><dd>DAU</dd></div><div><dt>iOS</dt><dd>Ownership</dd></div><div><dt>Multi-chain</dt><dd>Protocols</dd></div></dl>
+          <p class="experience-tenure" data-en="Crypto.com · Senior iOS Developer · Sep 2024 – Jul 2026 · Production product" data-zh="Crypto.com · Senior iOS Developer · Sep 2024 – Jul 2026 · 正式產品">Crypto.com · Senior iOS Developer · Sep 2024 – Jul 2026 · Production product</p>
+          <p data-en="Owned iOS Earn and delivered Buy &amp; Swap for a self-custodial wallet, alongside multi-chain staking, rewards, and position management." data-zh="負責自託管錢包的 iOS Earn 與 Buy &amp; Swap，並交付多鏈質押、獎勵與部位管理。">Owned iOS Earn and delivered Buy &amp; Swap for a self-custodial wallet, alongside multi-chain staking, rewards, and position management.</p>
+          <dl><div><dt>~20K</dt><dd data-en="Product DAU during tenure" data-zh="任職時產品日活">Product DAU during tenure</dd></div><div><dt>iOS</dt><dd data-en="Ownership" data-zh="功能負責">Ownership</dd></div><div><dt data-en="Multi-chain" data-zh="多鏈">Multi-chain</dt><dd data-en="Protocols" data-zh="協議整合">Protocols</dd></div></dl>
           <a href="https://crypto.com/onchain" target="_blank" rel="noreferrer" aria-label="Visit Crypto.com Onchain" data-en="Company product ↗" data-zh="公司產品 ↗">Company product ↗</a>
         </article>
         <article class="scale-card tilt sporty" data-reveal>
           <div class="card-index">02 / REAL-TIME</div>
           <img class="product-symbol" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d7/c7/f4/d7c7f45c-0905-6d40-e6a7-7cf1d1a102c0/AppIcon-0-0-1x_U007emarketing-0-6-0-sRGB-85-220.png/512x512bb.png" alt="SportyBet app icon" width="64" height="64" loading="lazy" decoding="async">
           <h3>SportyBet</h3>
+          <p class="experience-tenure" data-en="OpenNet · Senior iOS Developer · Oct 2020 – Apr 2024" data-zh="OpenNet · Senior iOS Developer · Oct 2020 – Apr 2024">OpenNet · Senior iOS Developer · Oct 2020 – Apr 2024</p>
           <p data-en="Built live odds, open bets, and betting-history synchronization. Prevented duplicated WebSocket updates across multiple betting slips and evolved legacy modules." data-zh="建立即時賠率、未結算投注與投注紀錄同步，避免多張投注單重複接收 WebSocket 更新，並演進既有模組。">Built live odds, open bets, and betting-history synchronization. Prevented duplicated WebSocket updates across multiple betting slips and evolved legacy modules.</p>
-          <dl><div><dt>~100K</dt><dd>DAU</dd></div><div><dt>WebSocket</dt><dd>Live state</dd></div><div><dt>RxSwift</dt><dd>Migration</dd></div></dl>
+          <dl><div><dt>~100K</dt><dd data-en="Product DAU during tenure" data-zh="任職時產品日活">Product DAU during tenure</dd></div><div><dt>WebSocket</dt><dd data-en="Live state" data-zh="狀態同步">Live state</dd></div><div><dt>RxSwift</dt><dd data-en="Migration" data-zh="模組遷移">Migration</dd></div></dl>
           <a href="https://www.sportybet.com/" target="_blank" rel="noreferrer" aria-label="Visit SportyBet" data-en="Company product ↗" data-zh="公司產品 ↗">Company product ↗</a>
         </article>
         <article class="scale-card tilt kinto" data-reveal>
           <div class="card-index">03 / MOBILITY</div>
           <img class="product-symbol" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/67/42/86/67428649-ace0-a82a-8047-9765992c79f8/AppIcon-1x_U007ephone-0-1-85-220-0.png/512x512bb.png" alt="KINTO Unlimited app icon" width="64" height="64" loading="lazy" decoding="async">
           <h3>KINTO</h3>
+          <p class="experience-tenure" data-en="San Orange Technology · Senior iOS Developer (Contract) · Jun 2024 – Aug 2024 · Client: KINTO" data-zh="San Orange Technology · Senior iOS Developer（約聘）· Jun 2024 – Aug 2024 · 客戶：KINTO">San Orange Technology · Senior iOS Developer (Contract) · Jun 2024 – Aug 2024 · Client: KINTO</p>
           <p data-en="Delivered vehicle usage tracking, vehicle status, and in-app guidance for a connected vehicle application on a focused three-month production cycle." data-zh="在三個月的密集正式開發週期中，交付聯網車輛應用的使用紀錄、車況資訊與 App 內操作引導。">Delivered vehicle usage tracking, vehicle status, and in-app guidance for a connected vehicle application on a focused three-month production cycle.</p>
-          <dl><div><dt>3 mo</dt><dd>Contract</dd></div><div><dt>Vehicle</dt><dd>Live state</dd></div><div><dt>iOS</dt><dd>Production</dd></div></dl>
+          <dl><div><dt data-en="3 mo" data-zh="3 個月">3 mo</dt><dd data-en="Contract" data-zh="合約期間">Contract</dd></div><div><dt data-en="Vehicle" data-zh="車況">Vehicle</dt><dd data-en="Live state" data-zh="狀態同步">Live state</dd></div><div><dt>iOS</dt><dd data-en="Production" data-zh="正式產品">Production</dd></div></dl>
           <a href="https://www.kinto-mobility.com/unlimited" target="_blank" rel="noreferrer" aria-label="Visit KINTO Unlimited" data-en="Company product ↗" data-zh="公司產品 ↗">Company product ↗</a>
         </article>
+      </div>
+      <div class="experience-note">
+        <h3 data-en="Cronos App · Pre-launch" data-zh="Cronos App · 上線前開發">Cronos App · Pre-launch</h3>
+        <p data-en="A separate phase within the same Crypto.com tenure: built the Earn tab in React Native and TypeScript, plus wallet signing and Morpho vault flows validated on Cronos Testnet. This work was pre-launch; Onchain above is the production product." data-zh="同一段 Crypto.com 任期中的另一產品階段：使用 React Native／TypeScript 開發 Earn 頁籤、錢包簽署與 Morpho Vault 流程，並在 Cronos Testnet 驗證。此部分為上線前開發；上方 Onchain 為正式產品。">A separate phase within the same Crypto.com tenure: built the Earn tab in React Native and TypeScript, plus wallet signing and Morpho vault flows validated on Cronos Testnet. This work was pre-launch; Onchain above is the production product.</p>
+        <p data-en="DAU figures describe approximate product scale during my tenure, not user growth attributed to my work." data-zh="DAU 為任職時產品的概略規模，並非個人創造的使用者增長。">DAU figures describe approximate product scale during my tenure, not user growth attributed to my work.</p>
+        <a href="/en/resume/#experience" data-href-en="/en/resume/#experience" data-href-zh="/resume/#experience" data-en="Full employment history and resume →" data-zh="完整任職紀錄與求職履歷 →">Full employment history and resume →</a>
       </div>
     </section>
 
@@ -301,8 +242,8 @@
 
     <section class="contact section" id="contact">
       <p class="kicker" data-reveal data-en="LET&#x27;S TALK" data-zh="聯絡合作">LET&#x27;S TALK</p>
-      <h2 data-reveal data-en="What would you like to make easier?" data-zh="有什麼事情，想做得更順？">What would you like to make easier?</h2>
-      <p class="contact-brief" data-reveal data-en="Tell me about the current workflow, what is getting in the way, and your expected timeline. We can start by deciding what is worth building and what can stay as it is." data-zh="來信簡單說明目前的做法、卡住的地方與預期時程。我們可以先一起判斷，哪些值得開發，哪些沿用現有工具就好。">Tell me about the current workflow, what is getting in the way, and your expected timeline. We can start by deciding what is worth building and what can stay as it is.</p>
+      <h2 data-reveal data-en="Discuss your app or workflow." data-zh="聊聊你要開發的 App 或工具。">Discuss your app or workflow.</h2>
+      <p class="contact-brief" data-reveal data-en="Include who will use it, the workflow or feature you need, any existing systems, and your target timeline. I can help define the scope and technical approach." data-zh="來信說明使用者、想完成的功能、需要串接的既有系統與預期時程。我會協助整理需求範圍與技術方案。">Include who will use it, the workflow or feature you need, any existing systems, and your target timeline. I can help define the scope and technical approach.</p>
       <div class="contact-actions" data-reveal>
         <a class="contact-email magnetic" href="mailto:timyeou1234@hotmail.com">timyeou1234@hotmail.com <span>↗</span></a>
         <div><a href="https://www.linkedin.com/in/timothy-yeou-0134a9117" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/timyeou1234" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://timyeou1234.github.io/resume/resume.html" data-en="Résumé ↗" data-zh="履歷 ↗">Résumé ↗</a></div>
