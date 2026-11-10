@@ -69,9 +69,9 @@ for (const text of retiredText) {
 // Keep media keys stable. Moment is a branded launch-bound app, not a self-use tool.
 const displayCopy = [
   ...[...html.matchAll(/>([^<>]+)</g)].map((match) => match[1]),
-  ...[...html.matchAll(/\s(?:data-(?:en|zh|aria-en|aria-zh|project-title(?:-en|-zh)?)|aria-label)="([^"]*)"/g)].map((match) => match[1])
+  ...[...html.matchAll(/\s(?:data-(?:en|zh|aria-en|aria-zh|alt-en|alt-zh|project-title(?:-en|-zh)?)|aria-label|alt)="([^"]*)"/g)].map((match) => match[1])
 ].join("\n");
-for (const text of ["Moment OS", "ProductDev", "Tim Work", "Context Handoff", "Task ETA Tracker", "Moment Monitor",
+for (const text of ["Moment OS", "ProductDev", "Tim Work", "TimWork", "Context Handoff", "Task ETA Tracker", "Moment Monitor",
   "intelligence is infrastructure", "AI is not a feature", "AI proposes.", "AI, STRUCTURALLY", "AI ASSISTED",
   "Product clarity before model cleverness", "A bilingual LINE bot concept"]) {
   if (displayCopy.includes(text)) errors.push(`Retired marketing copy remains: ${text}`);
@@ -279,7 +279,7 @@ for (const asset of motion.assets) {
   }
   if (!localReferences.includes(asset.path)) errors.push(`Unreferenced V10 capture: ${asset.path}`);
 }
-const sceneCounts = { moment: motion.scenes.moment, devtools: 4 };
+const sceneCounts = { moment: 3, devtools: 4 };
 for (const project of ["moment", "line-family-translator", "devtools"]) {
   const article = html.match(new RegExp(`<article[^>]*data-case="${project}"[^>]*>([\\s\\S]*?)<\\/article>`));
   if (!article || !article[1].includes('alt="')) {
@@ -295,7 +295,7 @@ for (const project of ["moment", "line-family-translator", "devtools"]) {
   if (!article || !article[1].includes(`data-product-showcase="${project}"`) ||
       (article[1].match(/data-scene="/g) || []).length !== count ||
       (article[1].match(/data-showcase-step="/g) || []).length !== count ||
-      !article[1].includes("data-showcase-toggle")) {
+      !article[1].includes("data-showcase-toggle") || (project === "moment" && motion.scenes.moment !== count)) {
     errors.push(`Missing animated walkthrough or playback controls: ${project}`);
   }
 }
