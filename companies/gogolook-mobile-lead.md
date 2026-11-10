@@ -18,7 +18,8 @@ on existing resume content; do not add new claims.
 | Work with Android | OpenNet: adapted Android-first requirements into native iOS (:94); Royal: coordinated Product, Backend and Android (:104) | Summary mentions Android-first; Royal stays in Experience |
 | Team tooling / quality | OpenNet: internal mock server for UI and automated testing (:96) | Skills "Team practices" |
 | Cross-platform | Cronos App React Native/TypeScript, pre-launch (:69) | Skills "Cross-platform" |
-| Production scale | SportyBet about 100K DAU (:92); Crypto.com Onchain about 20K DAU (:63) | Summary |
+| AI-assisted workflow | Crypto.com AI-assisted engineering (source/resume.md:22-24) | Summary sentence; page 2 workflow section |
+| Production scale | SportyBet about 100K DAU (:91); Crypto.com Onchain about 20K DAU (:63) | Summary |
 
 ## Gaps and pending candidate confirmation
 
@@ -30,13 +31,15 @@ on existing resume content; do not add new claims.
 
 ## Editorial choices
 
-- English, one page, ai base with full ResumeContent override.
+- English, two pages (candidate preference, 2026-11-10), ai base with ResumeContent override.
 - Tagline "Senior iOS Engineer | Mobile Team Leadership"; avoids a Tech Lead title.
-- Summary (two lines to fit one page): mentoring, PR review and Android-first requirements at OpenNet first, then scale (DAU).
-- Skills: drops the Blockchain line; adds Cross-platform and Team practices.
-- Experience and education reuse sections/experience.tex and education.tex unchanged.
+- Summary: mentoring, PR review and Android-first requirements at OpenNet; scale
+  (DAU on SportyBet and Crypto.com Onchain); AI-assisted workflow at Crypto.com.
+- Skills: ai-variant lines with Experimentation and AI Integration removed; adds Team practices.
+- Page 1: sections/experience-ai-primary.tex. Page 2: sections/ai-workflow.tex,
+  sections/projects-ai.tex, sections/experience-ai-additional.tex, education. All unchanged.
 
 ## Verification
 
-Local: `make check-profiles`, `make test`. PDF build, one-page check and rendered-page
+Local: `make check-profiles`, `make test`. PDF build, two-page check and rendered-page
 review use the CI artifact for the PR head; results are recorded in the PR.
