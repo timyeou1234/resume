@@ -77,9 +77,9 @@ As of 2026-11-10 the two personal tools are presented as one case,
 four-scene walkthrough: workspace overview → decisions → native monitor → run
 detail. The V10 runs and knowledge captures remain in the immutable manifest and
 `site/assets` but are no longer shipped. Public copy uses no private platform
-name. Historically, the two personal tools retained purpose-based public names. Tim Work OS is a web
-workspace, separate from the similarly named open-source skills described in the
-resume. ProductDev remains a personal macOS tool. Capturing private live
+name. Historically, the two personal tools retained purpose-based public names. The web
+workspace is a private personal tool, separate from the open-source skills described in the
+resume; the macOS monitor is also personal tooling. Capturing private live
 telemetry is unnecessary for either case; the selected assets contain no live
 run records or private messages.
 
@@ -92,7 +92,7 @@ at `docs/portfolio-media-v8-acceptance.md` describes that earlier candidate only
 
 V10 has four silent browser-native animated walkthroughs: Moment overview → edit → saved list; LINE Chinese → Indonesian and Indonesian → Chinese; native monitor → task graph → run detail; workspace overview → knowledge → decisions. Scenes advance every 5.5 seconds using elapsed time. These are animations of source captures (LINE is an explicit flow illustration), not screen recordings.
 
-Each walkthrough includes pause/play and direct step selection. Step selection pauses playback; inactive scenes leave the accessibility tree and keyboard order. Focusing an original-image link pauses its walkthrough. Offscreen and hidden-document playback stops. Reduced-motion and data-saver preferences default to manual playback. Without JavaScript the first scene remains readable. Tim Work screenshots and links switch with the page language; Moment and the native macOS UI preserve their original language.
+Each walkthrough includes pause/play and direct step selection. Step selection pauses playback; inactive scenes leave the accessibility tree and keyboard order. Focusing an original-image link pauses its walkthrough. Offscreen and hidden-document playback stops. Reduced-motion and data-saver preferences default to manual playback. Without JavaScript the first scene remains readable. Web workspace screenshots and links switch with the page language; Moment and the native macOS UI preserve their original language.
 
 ## Validation and delivery
 

@@ -1,6 +1,6 @@
 # Resume routes and public-copy source
 
-Candidate based on website commit `1271907c97c3a81cd9ee675bd2d2a9090fb922cb`.
+Introduced with website commit `1271907`; live since 2026-11-10.
 This document does not authorize publication.
 
 ## Routes and audience
@@ -40,26 +40,16 @@ August 2020. The candidate confirmed on 2026-10-13 that Royal used enterprise
 internal distribution and Lion's formal title was iOS Developer. Team leadership
 remains a responsibility. No signing, certification, or operational details are inferred.
 
-## Existing website / main branch split
+## Source of truth
 
-The live Cloudflare site was built from a newer website branch; GitHub `main`
-(`3724357edce0600c06cfd9c8a8e91be464112635` at review) has newer resume facts but
-older portfolio files. This candidate imports the current factual record for
-reference. Do not merge the entire website branch into main or build/deploy
-main's old portfolio. Do not publish PDFs from the legacy website branch.
+Since 2026-11-10 `main` is the single source for both outputs: the Cloudflare
+portfolio (`site/`, built by `scripts/build-portfolio.sh`) and the GitHub Pages
+resume and five PDFs (`scripts/build-site.sh`). The former website branches were
+merged in PR #29; do not deploy from older branches or clones.
 
-The separate main-based synchronization candidate includes the public-copy
-JSON, renderer, one line in `build-site.sh`, and content-source guidance. The
-2026-10-13 factual correction also updates Royal's distribution wording in the
-main-based source, shared LaTeX sections, and affected company overlays/brief.
-Apply/review those together so
-GitHub Pages and the Cloudflare resume use identical public content. Rebuild
-Markdown from both candidates and compare it byte for byte before release.
-GitHub Pages keeps its existing five-PDF allowlist and workflow. The factual
-correction requires the existing PDF build/review gates for every affected variant
-before a main merge. The website's `resume` routes and print layout do not ship
-those PDF files. Use the main-based checkout for corrected PDFs; the legacy
-website branch is not the PDF release source.
+Change public resume copy in `source/resume-public.json` and keep
+`source/resume.md` as the detailed evidence record. Factual changes still need
+the PDF build/review gates for every affected variant before merging.
 
 ## Preview and publication
 
@@ -80,9 +70,9 @@ button enhancement and cross-language hash retention require it. Browser print
 also remains available without JavaScript. The sitemap lists all four pages,
 with self canonicals and reciprocal hreflang for each audience.
 
-This candidate requires a new publication confirmation. After approval, publish
-reviewed main-based resume changes through the existing GitHub Pages process and
-the reviewed website bundle through the existing Cloudflare configuration.
+Publishing requires the owner's confirmation. Merging to `main` publishes
+GitHub Pages; the Cloudflare worker has no Git connection, so deploy the
+reviewed bundle from a clean checkout of `main` with Wrangler.
 Verify the content source hash and readable resume text agree. Record the active
 Cloudflare version before deployment for rollback; keep the prior local commit
 and source patch as well. A failed Pages build must not be called synchronized.
