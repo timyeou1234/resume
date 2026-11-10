@@ -9,16 +9,32 @@ import tempfile
 
 repo = pathlib.Path(__file__).resolve().parents[1]
 manifest = json.loads((repo / "media/portfolio-media-v8/media-manifest.json").read_text())
+current_manifest = json.loads((repo / "media/portfolio-real-v9/media-manifest.json").read_text())
+line_manifest = json.loads((repo / "media/line-showcase-v12/media-manifest.json").read_text())
+motion_manifest = json.loads((repo / "media/portfolio-motion-v10/media-manifest.json").read_text())
 
 with tempfile.TemporaryDirectory(prefix="portfolio-manifest-tests-") as directory:
     root = pathlib.Path(directory)
     (root / "site").symlink_to(repo / "site", target_is_directory=True)
+    (root / "source").symlink_to(repo / "source", target_is_directory=True)
     (root / "scripts").mkdir()
-    for script in ("validate-site.sh", "build-portfolio.sh"):
+    for script in ("validate-site.sh", "build-portfolio.sh", "render-locales.py", "test-portfolio-locales.py", "render-resume.py", "test-resume-public.py"):
         shutil.copyfile(repo / "scripts" / script, root / "scripts" / script)
     (root / "media/portfolio-media-v8").mkdir(parents=True)
     (root / "media/moment").symlink_to(repo / "media/moment", target_is_directory=True)
+    (root / "media/line-showcase-v12").mkdir()
+    for item in (repo / "media/line-showcase-v12").iterdir():
+        if item.name not in {'media-manifest.json','node_modules'}:
+            (root / "media/line-showcase-v12" / item.name).symlink_to(item, target_is_directory=item.is_dir())
+    line_target = root / "media/line-showcase-v12/media-manifest.json"
+    line_target.write_text(json.dumps(line_manifest))
     target = root / "media/portfolio-media-v8/media-manifest.json"
+    current_target = root / "media/portfolio-real-v9/media-manifest.json"
+    current_target.parent.mkdir(parents=True)
+    current_target.write_text(json.dumps(current_manifest, ensure_ascii=False))
+    motion_target = root / "media/portfolio-motion-v10/media-manifest.json"
+    motion_target.parent.mkdir(parents=True)
+    motion_target.write_text(json.dumps(motion_manifest, ensure_ascii=False))
 
     def run(candidate, diagnostic=None):
         target.write_text(json.dumps(candidate, ensure_ascii=False))
@@ -59,4 +75,65 @@ with tempfile.TemporaryDirectory(prefix="portfolio-manifest-tests-") as director
     for name, candidate, diagnostic in cases:
         run(candidate, diagnostic)
         print(f"Rejected: {name}")
-    print(f"Valid baseline and {len(cases)} rejection scenarios passed")
+    target.write_text(json.dumps(manifest, ensure_ascii=False))
+    current_cases = []
+    candidate = copy.deepcopy(current_manifest)
+    candidate["assets"].pop()
+    current_cases.append(("missing runtime capture", candidate, "Expected exactly the six sourced V9 product assets"))
+    candidate = copy.deepcopy(current_manifest)
+    candidate["assets"][0]["sha256"] = "0" * 64
+    current_cases.append(("altered current screenshot", candidate, "Current asset differs from recorded original"))
+    candidate = copy.deepcopy(current_manifest)
+    del candidate["assets"][0]["source"]["data"]
+    current_cases.append(("missing test-data provenance", candidate, "Missing original asset provenance"))
+    candidate = copy.deepcopy(current_manifest)
+    candidate["assets"][2]["kind"] = "runtime-screenshot"
+    current_cases.append(("artwork misrepresented as a capture", candidate, "Missing original asset provenance"))
+    candidate = copy.deepcopy(current_manifest)
+    candidate["assets"][0]["transformation"] = "redrawn interface"
+    current_cases.append(("reconstructed product UI", candidate, "Missing original asset provenance"))
+    candidate = copy.deepcopy(current_manifest)
+    del candidate["assets"][0]["width"]
+    current_cases.append(("missing image dimensions", candidate, "Missing current asset dimensions"))
+    for name, candidate, diagnostic in current_cases:
+        current_target.write_text(json.dumps(candidate, ensure_ascii=False))
+        result = subprocess.run(["bash", str(root / "scripts/validate-site.sh")], capture_output=True, text=True)
+        output = result.stdout + result.stderr
+        assert result.returncode != 0 and diagnostic in output, output
+        print(f"Rejected: {name}")
+    current_target.write_text(json.dumps(current_manifest, ensure_ascii=False))
+    motion_cases = []
+    candidate = copy.deepcopy(motion_manifest)
+    candidate["assets"].pop()
+    motion_cases.append(("missing walkthrough capture", candidate, "Expected exactly eight sourced V10 captures"))
+    candidate = copy.deepcopy(motion_manifest)
+    candidate["assets"][0]["sha256"] = "0" * 64
+    motion_cases.append(("altered walkthrough capture", candidate, "V10 capture differs from recorded original"))
+    candidate = copy.deepcopy(motion_manifest)
+    del candidate["assets"][1]["source"]["harness"]
+    motion_cases.append(("unidentified native fixture harness", candidate, "Missing V10 original capture provenance"))
+    candidate = copy.deepcopy(motion_manifest)
+    candidate["lineExamples"]["classification"] = "live chat recording"
+    motion_cases.append(("illustration misrepresented as recording", candidate, "LINE flow must retain"))
+    candidate = copy.deepcopy(motion_manifest)
+    candidate["scenes"]["moment"] = 1
+    motion_cases.append(("walkthrough reduced to static image", candidate, "Missing animated walkthrough"))
+    for name, candidate, diagnostic in motion_cases:
+        motion_target.write_text(json.dumps(candidate, ensure_ascii=False))
+        run(manifest, diagnostic)
+        print(f"Rejected: {name}")
+    print(f"Valid baseline and {len(cases) + len(current_cases) + len(motion_cases)} rejection scenarios passed")
+
+    motion_target.write_text(json.dumps(motion_manifest))
+    for name, mutate, diagnostic in [
+        ('missing portrait edition', lambda c: c['assets'].pop(), 'Expected four LINE films'),
+        ('film hash mismatch', lambda c: c['assets'][0].update(sha256='0'*64), 'LINE film asset differs'),
+        ('unverified recording claim', lambda c: c.update(evidence='native LINE recording'), 'LINE film evidence'),
+        ('audio track introduced', lambda c: c['assets'][0].update(audioTracks=1), 'LINE films must be silent'),
+        ('incomplete language flow', lambda c: c.update(chapters=[0,20,28]), 'LINE film evidence'),
+        ('source mismatch', lambda c: c['sources'][0].update(sha256='0'*64), 'LINE authored source differs'),
+    ]:
+        candidate = copy.deepcopy(line_manifest); mutate(candidate)
+        line_target.write_text(json.dumps(candidate)); run(manifest, diagnostic)
+        print(f'Rejected: {name}')
+    print('Six LINE film rejection scenarios passed')

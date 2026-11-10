@@ -1,0 +1,136 @@
+{
+  "version": "v9",
+  "policy": "Only original runtime captures and existing product artwork. UI language is preserved; captions are localized. No rebuilt interfaces, invented live data, or promotional video overlays.",
+  "products": [
+    "moment",
+    "line-family-translator",
+    "productdev",
+    "timwork"
+  ],
+  "assets": [
+    {
+      "path": "assets/products/moment/moments-runtime-zh-v9.png",
+      "kind": "runtime-screenshot",
+      "product": "moment",
+      "source": {
+        "repository": "Moment",
+        "path": "design/visual-parity/evidence/latest/moments-present/simulator.png",
+        "capturedAt": "2026-09-21T14:22:45+00:00",
+        "appBinarySha256": "9f0f81e476221a767196502ea182e4ec46f2d42addbd851b19eb1272bb8ef5f4",
+        "data": "synthetic QA fixture",
+        "sha256": "0d1b75a5f19e4614838e8ec8939082b1e4edbe06e30b271243525dda1fa0d7fd"
+      },
+      "transformation": "none",
+      "bytes": 213223,
+      "sha256": "0d1b75a5f19e4614838e8ec8939082b1e4edbe06e30b271243525dda1fa0d7fd",
+      "width": 1170,
+      "height": 2532
+    },
+    {
+      "path": "assets/products/moment/actions-runtime-zh-v9.png",
+      "kind": "runtime-screenshot",
+      "product": "moment",
+      "source": {
+        "repository": "Moment",
+        "path": "design/visual-parity/evidence/latest/act-editing/simulator.png",
+        "capturedAt": "2026-09-21T14:22:45+00:00",
+        "appBinarySha256": "9f0f81e476221a767196502ea182e4ec46f2d42addbd851b19eb1272bb8ef5f4",
+        "data": "synthetic QA fixture",
+        "sha256": "7b8ec8f7ea640e3bbb4deb57a158aa9d9c86df303cd3cd73ecb5800aa5ea7134"
+      },
+      "transformation": "none",
+      "bytes": 162337,
+      "sha256": "7b8ec8f7ea640e3bbb4deb57a158aa9d9c86df303cd3cd73ecb5800aa5ea7134",
+      "width": 1170,
+      "height": 2532
+    },
+    {
+      "path": "assets/products/line-family-translator/avatar-v9.png",
+      "kind": "product-artwork",
+      "product": "line-family-translator",
+      "source": {
+        "repository": "Line Bot",
+        "path": "Line Bot/assets/branding/line-avatar-safe-v2.png",
+        "sha256": "d934b9726c6381daee4124179090c3df20af6a8dde25f1e8f417a1be4794290f"
+      },
+      "transformation": "none",
+      "bytes": 1286148,
+      "sha256": "d934b9726c6381daee4124179090c3df20af6a8dde25f1e8f417a1be4794290f",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "assets/products/productdev/app-icon-v9.png",
+      "kind": "product-artwork",
+      "product": "productdev",
+      "source": {
+        "repository": "ProductDev",
+        "path": "ProductDev/build/ProductDev.app/Contents/Resources/Identity/ProductDevAppIcon.png",
+        "sha256": "e77bf8ac4fd9e9858d4b7ea40d735b2ad5248cfc916b76996a80fb80ebd69032"
+      },
+      "transformation": "none",
+      "bytes": 21277,
+      "sha256": "e77bf8ac4fd9e9858d4b7ea40d735b2ad5248cfc916b76996a80fb80ebd69032",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "path": "assets/products/timwork/portfolio-zh-v9.jpg",
+      "kind": "runtime-screenshot",
+      "product": "timwork",
+      "source": {
+        "repository": "Tim Work OS",
+        "commit": "035aa7bb694fb4786fc57ca1c9dd988a34e11af6",
+        "route": "/portfolio",
+        "capturedAt": "2026-10-05",
+        "data": "bundled mock fixtures; VITE_DATA_MODE=mock",
+        "language": "zh",
+        "sha256": "8a572d0d3306713b723448e4f6a50f0b2539f61d842f5b5fa9bb1d12ed552a2b"
+      },
+      "transformation": "none",
+      "bytes": 93771,
+      "sha256": "8a572d0d3306713b723448e4f6a50f0b2539f61d842f5b5fa9bb1d12ed552a2b",
+      "width": 1280,
+      "height": 1234
+    },
+    {
+      "path": "assets/products/timwork/portfolio-en-v9.jpg",
+      "kind": "runtime-screenshot",
+      "product": "timwork",
+      "source": {
+        "repository": "Tim Work OS",
+        "commit": "035aa7bb694fb4786fc57ca1c9dd988a34e11af6",
+        "route": "/portfolio",
+        "capturedAt": "2026-10-05",
+        "data": "bundled mock fixtures; VITE_DATA_MODE=mock",
+        "language": "en",
+        "sha256": "32d73e31b373c7ddac7be5046e14691b613a630fb253a317445c15e953b65b22"
+      },
+      "transformation": "none",
+      "bytes": 109293,
+      "sha256": "32d73e31b373c7ddac7be5046e14691b613a630fb253a317445c15e953b65b22",
+      "width": 1280,
+      "height": 1220
+    }
+  ],
+  "copySources": {
+    "moment": {
+      "source": "Moment/README.md and design/visual-parity/evidence/latest/evidence.json",
+      "claim": "Life-event preparation, editable actions, saved progress; development status."
+    },
+    "line-family-translator": {
+      "source": "Line Bot/README.md and docs/live-personal-dm-trial-20260911.md",
+      "commit": "110d27a38ba6c2b31a8e0b9c54afe742bef82630",
+      "claim": "Chinese–Indonesian text translation, personal-chat and family-group trials, restricted access."
+    },
+    "productdev": {
+      "source": "ProductDev/README.md and Sources/ProductDevApp/{MonitorScreens,RunTransparencyScreens}.swift; installed app inspection",
+      "claim": "Native monitoring, execution details, checks, error and recovery records."
+    },
+    "timwork": {
+      "source": "Tim Work OS/README.md and running /portfolio route",
+      "commit": "035aa7bb694fb4786fc57ca1c9dd988a34e11af6",
+      "claim": "Multi-project overview, work items, knowledge and decisions; mock-mode capture."
+    }
+  }
+}

@@ -4,6 +4,7 @@ set -euo pipefail
 repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 node --check "$repo_dir/site/app.js"
+node --check "$repo_dir/site/resume.js"
 bash "$repo_dir/scripts/build-portfolio.sh"
 
 RESUME_REPO_DIR="$repo_dir" node <<'NODE'
@@ -27,18 +28,22 @@ for (const match of html.matchAll(/href="#([^"]+)"/g)) {
 
 const generatedPaths = new Set(["resume.html"]);
 const localReferences = [];
-for (const match of html.matchAll(/\s(?:href|src|poster|data-(?:src|poster|href)-(?:en|zh))="([^"]+)"/g)) {
+for (const match of html.matchAll(/\s(?:href|src|poster|data-(?:src|poster|href|image|mobile-src|mobile-poster)-(?:en|zh))="([^"]+)"/g)) {
   const value = match[1];
   if (/^(?:https?:|mailto:|tel:|#)/.test(value)) continue;
   const relative = decodeURIComponent(value.split(/[?#]/)[0].replace(/^\.\//, ""));
   if (!relative || generatedPaths.has(relative)) continue;
+  if (["/resume/", "/en/resume/"].includes(relative)) {
+    if (!fs.existsSync(path.join(portfolio, relative.slice(1), "index.html"))) errors.push(`Missing resume route: ${value}`);
+    continue;
+  }
   localReferences.push(relative);
   if (!fs.existsSync(path.join(site, relative))) errors.push(`Missing source target: ${value}`);
   if (!fs.existsSync(path.join(portfolio, relative))) errors.push(`Missing deployment target: ${value}`);
 }
 
 const requiredText = [
-  "Timothy Yu — Software Consulting &amp; Development",
+  "App Development &amp; Software Consulting | Timothy Yu",
   "軟體開發與技術顧問",
   "Scope &amp; technical assessment",
   "App development &amp; improvements",
@@ -46,13 +51,10 @@ const requiredText = [
   "Independent app · Preparing for launch",
   "自有 App · 準備推出",
   "Family LINE Translator",
-  "Development task monitoring",
-  "開發任務監控",
-  "Project tasks &amp; handover",
-  "跨專案任務與交接管理",
+  "Development task &amp; handoff tools",
+  "開發任務與交接工具",
   "個人自用工具",
   "Family trial",
-  "not client commissions",
   "依約定條件驗收"
 ];
 for (const text of requiredText) {
@@ -67,9 +69,9 @@ for (const text of retiredText) {
 // Keep media keys stable. Moment is a branded launch-bound app, not a self-use tool.
 const displayCopy = [
   ...[...html.matchAll(/>([^<>]+)</g)].map((match) => match[1]),
-  ...[...html.matchAll(/\s(?:data-(?:en|zh|aria-en|aria-zh|project-title(?:-en|-zh)?)|aria-label)="([^"]*)"/g)].map((match) => match[1])
+  ...[...html.matchAll(/\s(?:data-(?:en|zh|aria-en|aria-zh|alt-en|alt-zh|project-title(?:-en|-zh)?)|aria-label|alt)="([^"]*)"/g)].map((match) => match[1])
 ].join("\n");
-for (const text of ["Moment OS", "ProductDev", "Tim Work", "Context Handoff", "Task ETA Tracker", "Moment Monitor",
+for (const text of ["Moment OS", "ProductDev", "Tim Work", "TimWork", "Context Handoff", "Task ETA Tracker", "Moment Monitor",
   "intelligence is infrastructure", "AI is not a feature", "AI proposes.", "AI, STRUCTURALLY", "AI ASSISTED",
   "Product clarity before model cleverness", "A bilingual LINE bot concept"]) {
   if (displayCopy.includes(text)) errors.push(`Retired marketing copy remains: ${text}`);
@@ -77,16 +79,6 @@ for (const text of ["Moment OS", "ProductDev", "Tim Work", "Context Handoff", "T
 const momentArticle = html.match(/<article[^>]*data-case="moment"[^>]*>([\s\S]*?)<\/article>/);
 if (!momentArticle || !/<h3\b[^>]*>Moment<\/h3>/.test(momentArticle[1])) {
   errors.push("Moment must retain its app brand as the project heading");
-}
-for (const language of ["en", "zh"]) {
-  if (!momentArticle || !momentArticle[1].includes(`data-project-title-${language}="Moment"`)) {
-    errors.push(`Moment must retain its brand in the ${language} player title`);
-  }
-  if (!momentArticle || !momentArticle[1].includes(`data-${language}="Moment"`) ||
-      !momentArticle[1].includes(`data-aria-${language}="Moment `) ||
-      !new RegExp(`<figcaption[^>]*data-${language}="Moment `).test(momentArticle[1])) {
-    errors.push(`Moment brand is missing from localized heading, accessible name or caption: ${language}`);
-  }
 }
 if (!momentArticle?.[1].includes('data-en="Independent app · Preparing for launch"') ||
     !momentArticle?.[1].includes('data-zh="自有 App · 準備推出"')) errors.push("Moment article must retain its localized launch status");
@@ -96,15 +88,11 @@ if (momentArticle && /Personal tool|個人自用工具|not a public service|非�
 for (const text of ["not client commissions or products for sale", "不是客戶委託案，也不是對外販售的產品"]) {
   if (displayCopy.includes(text)) errors.push("Do not apply a personal-only or not-for-sale disclaimer to every project");
 }
-for (const project of ["productdev", "timwork"]) {
+// ProductDev and the web workspace are presented as one personal-tooling case.
+for (const project of ["devtools"]) {
   const article = html.match(new RegExp(`<article[^>]*data-case="${project}"[^>]*>([\\s\\S]*?)<\\/article>`));
   if (!article || !article[1].includes("Personal tool") || !article[1].includes("個人自用工具")) {
     errors.push(`Personal-use status is missing for ${project}`);
-  }
-  for (const language of ["en", "zh"]) {
-    if (!article || !article[1].includes(`data-project-title-${language}=`)) {
-      errors.push(`Localized purpose-based player title is missing for ${project}/${language}`);
-    }
   }
 }
 if ((html.match(/class="service-card"/g) || []).length !== 3) errors.push("Expected three concrete consulting services");
@@ -151,14 +139,15 @@ if (momentPosition?.type !== "launch-bound-app" || momentPosition?.brandPreserve
 for (const product of ["productdev", "timwork"]) {
   if (mediaManifest.positioning?.[product]?.type !== "personal-development-tool") errors.push(`Invalid personal-tool classification: ${product}`);
 }
-const mediaAssets = [];
+// V8 remains an immutable historical package; it is not shipped or referenced.
+const archivedMediaAssets = [];
 for (const [product, languages] of Object.entries(mediaManifest.products)) {
   if (!sameKeys(languages, ["en", "zh"])) errors.push(`Expected exactly two media languages: ${product}`);
   for (const [language, media] of Object.entries(languages)) {
     if (!sameKeys(media, ["film", "loop", "poster"])) errors.push(`Expected film, loop and poster: ${product}/${language}`);
     for (const [kind, expected] of Object.entries(media)) {
       const asset = expected.path;
-      mediaAssets.push(asset);
+      archivedMediaAssets.push(asset);
       if (!asset.startsWith(`assets/products/${product}/`)) {
         errors.push(`Unexpected media path for ${product}/${language}/${kind}: ${asset}`);
       }
@@ -184,12 +173,7 @@ for (const [product, languages] of Object.entries(mediaManifest.products)) {
           }
         }
       }
-      const article = html.match(new RegExp(`<article[^>]*data-case="${product}"[^>]*>([\\s\\S]*?)<\\/article>`));
-      const attribute = kind === "film" ? "href" : kind === "loop" ? "src" : "poster";
-      if (!article?.[1].includes(`data-${attribute}-${language}="./${asset}"`)) {
-        errors.push(`Incorrect localized ${kind} reference: ${product}/${language}`);
-      }
-      for (const root of [site, portfolio]) {
+      for (const root of [site]) {
         const target = path.join(root, asset);
         if (!fs.existsSync(target) || fs.statSync(target).size === 0) {
           errors.push(`Missing or empty side-project asset: ${path.relative(repo, target)}`);
@@ -203,49 +187,131 @@ for (const [product, languages] of Object.entries(mediaManifest.products)) {
           if (digest !== expected.sha256) errors.push(`Media hash differs from manifest: ${path.relative(repo, target)}`);
         }
       }
-      if (!localReferences.includes(asset)) errors.push(`Side-project asset is not referenced by the page: ${asset}`);
     }
   }
 }
-if (mediaAssets.filter((asset) => asset.endsWith(".mp4")).length !== 16 ||
-    mediaAssets.filter((asset) => asset.endsWith(".jpg")).length !== 8) {
+if (archivedMediaAssets.filter((asset) => asset.endsWith(".mp4")).length !== 16 ||
+    archivedMediaAssets.filter((asset) => asset.endsWith(".jpg")).length !== 8) {
   errors.push("Side-project media manifest must contain 16 MP4 files and 8 posters");
 }
-if (new Set(mediaAssets).size !== mediaAssets.length) errors.push("Duplicate paths found in side-project media manifest");
+if (new Set(archivedMediaAssets).size !== archivedMediaAssets.length) errors.push("Duplicate paths found in side-project media manifest");
 if (mediaManifest.company_apps_included !== false) errors.push("Company products must remain outside the side-project media package");
 for (const retiredAsset of ["moments-demo.png", "productdev-figma.svg", "timwork-figma.svg", "assets/moment/"]) {
   if (html.includes(retiredAsset)) errors.push(`Retired static or V4 project media remains referenced: ${retiredAsset}`);
 }
-const projectHooks = ["moment", "line-family-translator", "productdev", "timwork"];
-for (const project of projectHooks) {
-  if (!html.includes(`data-project-video="${project}"`) || !html.includes(`id="${project}-loop"`) || !html.includes(`id="${project}-film-open"`)) {
-    errors.push(`Video player hooks are missing for ${project}`);
+// The current page uses only original captures and product artwork.
+const current = JSON.parse(fs.readFileSync(path.join(repo, "media/portfolio-real-v9/media-manifest.json"), "utf8"));
+const expectedPaths = [
+  "assets/products/moment/moments-runtime-zh-v9.png",
+  "assets/products/moment/actions-runtime-zh-v9.png",
+  "assets/products/line-family-translator/avatar-v9.png",
+  "assets/products/productdev/app-icon-v9.png",
+  "assets/products/timwork/portfolio-zh-v9.jpg",
+  "assets/products/timwork/portfolio-en-v9.jpg"
+];
+const mediaAssets = current.assets.map(asset => asset.path);
+if (current.version !== "v9" || JSON.stringify(current.products) !== JSON.stringify(Object.keys(versions)) ||
+    JSON.stringify(mediaAssets.slice().sort()) !== JSON.stringify(expectedPaths.slice().sort())) {
+  errors.push("Expected exactly the six sourced V9 product assets");
+}
+for (const asset of current.assets) {
+  if (!expectedPaths.includes(asset.path)) continue;
+  const expectedKind = ["moment", "timwork"].includes(asset.product) ? "runtime-screenshot" : "product-artwork";
+  if (asset.kind !== expectedKind || asset.transformation !== "none" || !asset.source?.repository ||
+      !(asset.source.path || asset.source.route) || asset.source.sha256 !== asset.sha256 ||
+      (expectedKind === "runtime-screenshot" && (!asset.source.capturedAt || !asset.source.data))) {
+    errors.push(`Missing original asset provenance: ${asset.path}`);
+  }
+  if (!Number.isInteger(asset.width) || !Number.isInteger(asset.height) || asset.width <= 0 || asset.height <= 0 ||
+      !Number.isInteger(asset.bytes) || asset.bytes <= 0 || !/^[a-f0-9]{64}$/.test(asset.sha256 || "")) {
+    errors.push(`Missing current asset dimensions, bytes or SHA-256: ${asset.path}`);
+  }
+  for (const root of [site, portfolio]) {
+    const target = path.join(root, asset.path);
+    if (!fs.existsSync(target)) { errors.push(`Missing current asset: ${asset.path}`); continue; }
+    const raw = fs.readFileSync(target);
+    if (raw.length !== asset.bytes || crypto.createHash("sha256").update(raw).digest("hex") !== asset.sha256) {
+      errors.push(`Current asset differs from recorded original: ${asset.path}`);
+    }
+  }
+  if (!localReferences.includes(asset.path)) errors.push(`Unreferenced current asset: ${asset.path}`);
+}
+const motion = JSON.parse(fs.readFileSync(path.join(repo, "media/portfolio-motion-v10/media-manifest.json"), "utf8"));
+const motionPaths = [
+  "assets/products/moment/saved-runtime-zh-v10.png",
+  "assets/products/productdev/monitor-native-v10.jpg",
+  "assets/products/productdev/runs-native-v10.jpg",
+  "assets/products/productdev/run-detail-native-v10.jpg",
+  ...["knowledge", "decisions"].flatMap(route => ["en", "zh"].map(lang => `assets/products/timwork/${route}-${lang}-v10.jpg`))
+];
+if (motion.version !== "v10" || JSON.stringify(motion.assets.map(asset => asset.path).sort()) !== JSON.stringify(motionPaths.sort())) {
+  errors.push("Expected exactly eight sourced V10 captures");
+}
+// V10 remains the immutable capture record; these captures are no longer shipped after the merged devtools case.
+const retiredMotionPaths = [
+  "assets/products/productdev/runs-native-v10.jpg",
+  ...["en", "zh"].map(lang => `assets/products/timwork/knowledge-${lang}-v10.jpg`)
+];
+for (const retired of retiredMotionPaths) {
+  if (html.includes(retired)) errors.push(`Retired V10 capture remains referenced: ${retired}`);
+}
+if (motion.lineExamples?.classification !== "authored synthetic examples; ai_draft phrasebook, not private conversations or native-speaker certification" ||
+    JSON.stringify(motion.lineExamples?.pairs) !== JSON.stringify([["早安", "Selamat pagi"], ["謝謝", "Terima kasih"]])) {
+  errors.push("LINE flow must retain its authored-example evidence boundary");
+}
+for (const asset of motion.assets) {
+  if (!motionPaths.includes(asset.path) || retiredMotionPaths.includes(asset.path)) continue;
+  mediaAssets.push(asset.path);
+  if (asset.kind !== "runtime-screenshot" || asset.transformation !== "none" ||
+      !asset.source?.repository || !(asset.source.path || asset.source.route) || !asset.source.data ||
+      !asset.source.capturedAt || asset.source.sha256 !== asset.sha256 ||
+      !Number.isInteger(asset.width) || !Number.isInteger(asset.height) || !asset.bytes ||
+      (asset.product === "productdev" && (!asset.source.harness || !asset.source.appBinarySha256))) {
+    errors.push(`Missing V10 original capture provenance: ${asset.path}`);
+  }
+  for (const root of [site, portfolio]) {
+    const target = path.join(root, asset.path);
+    if (!fs.existsSync(target)) { errors.push(`Missing V10 capture: ${asset.path}`); continue; }
+    const raw = fs.readFileSync(target);
+    if (raw.length !== asset.bytes || crypto.createHash("sha256").update(raw).digest("hex") !== asset.sha256) {
+      errors.push(`V10 capture differs from recorded original: ${asset.path}`);
+    }
+  }
+  if (!localReferences.includes(asset.path)) errors.push(`Unreferenced V10 capture: ${asset.path}`);
+}
+const sceneCounts = { moment: 3, devtools: 4 };
+for (const project of ["moment", "line-family-translator", "devtools"]) {
+  const article = html.match(new RegExp(`<article[^>]*data-case="${project}"[^>]*>([\\s\\S]*?)<\\/article>`));
+  if (!article || !article[1].includes('alt="')) {
+    errors.push(`Missing product or image description: ${project}`);
+  }
+  if (project === "line-family-translator") {
+    if (!article || !article[1].includes('data-line-film') || !article[1].includes('preload="none"') ||
+        (article[1].match(/data-line-chapter=/g) || []).length !== 5 || !article[1].includes('data-line-toggle') ||
+        !article[1].includes('line-transcript')) errors.push("LINE film must retain settings, translation, transcript and playback controls");
+    continue;
+  }
+  const count = sceneCounts[project];
+  if (!article || !article[1].includes(`data-product-showcase="${project}"`) ||
+      (article[1].match(/data-scene="/g) || []).length !== count ||
+      (article[1].match(/data-showcase-step="/g) || []).length !== count ||
+      !article[1].includes("data-showcase-toggle") || (project === "moment" && motion.scenes.moment !== count)) {
+    errors.push(`Missing animated walkthrough or playback controls: ${project}`);
   }
 }
-const loopTags = [...html.matchAll(/<video\b[^>]*class="[^"]*project-loop-video[^"]*"[^>]*>/g)].map((match) => match[0]);
-if (loopTags.length !== 4) errors.push(`Expected four side-project loop players, found ${loopTags.length}`);
-for (const tag of loopTags) {
-  if (/\ssrc=|\sposter=|\bautoplay\b/.test(tag)) errors.push("Loop players must select localized media lazily");
-  for (const attribute of ["muted", "loop", "playsinline", 'preload="none"', "data-src-en", "data-src-zh", "data-poster-en", "data-poster-zh"]) {
-    if (!tag.includes(attribute)) errors.push(`Side-project loop is missing ${attribute}: ${tag}`);
+if (/data-project-video=|project-film-dialog|(?:film|loop|poster)-(?:en|zh)-v[457]/.test(html)) {
+  errors.push("Retired promotional media or inactive player controls remain on the page");
+}
+for (const caption of ["Chinese UI with test data", "iOS 模擬器原始截圖", "Isolated test data", "隔離測試資料", "Product avatar", "macOS App 圖示", "not a LINE chat recording", "非 LINE 聊天錄影"]) {
+  if (!html.includes(caption)) errors.push(`Missing source context: ${caption}`);
+}
+const imgs = [...html.matchAll(/<img\b[^>]*>/g)].map(match => match[0]);
+for (const img of imgs) {
+  if (!/\balt="[^"]+"/.test(img) || !/\bwidth="\d+"/.test(img) || !/\bheight="\d+"/.test(img)) {
+    errors.push(`Image needs descriptive alt text and reserved dimensions: ${img}`);
   }
 }
-if (!/<video id="project-film"[^>]*\bcontrols\b[^>]*preload="none"/.test(html)) {
-  errors.push("Shared full-film player must expose native controls and remain initially unloaded");
-}
-if (/<video id="project-film"[^>]*\ssrc=/.test(html)) {
-  errors.push("Shared full-film player must not have an eager src");
-}
-if (!html.includes("Products I contributed to in production.")) errors.push("Company-product ownership wording is missing");
-
-const css = fs.readFileSync(path.join(site, "styles.css"), "utf8");
-if (/\.project-shot\s*\{[^}]*content-visibility\s*:\s*auto/s.test(css)) {
-  errors.push("Project media must not use unstable offscreen height placeholders");
-}
-if (!/\.project-video-frame\s*\{[^}]*aspect-ratio\s*:\s*16\s*\/\s*9/s.test(css) ||
-    !/\.project-loop-video[^}]*\{[^}]*width\s*:\s*100%[^}]*height\s*:\s*100%[^}]*object-fit\s*:\s*contain/s.test(css)) {
-  errors.push("Side-project videos must reserve 16:9 frames and contain the complete image");
-}
+if (!html.includes("Production apps I helped build.")) errors.push("Company-product ownership wording is missing");
 
 const portfolioFiles = fs.readdirSync(portfolio, { recursive: true, withFileTypes: true })
   .filter((entry) => entry.isFile())
@@ -262,7 +328,35 @@ if (!headers.includes("/assets/products/*") ||
 if (fs.readFileSync(path.join(portfolio, "_headers"), "utf8") !== headers) {
   errors.push("Cloudflare portfolio bundle has a different _headers policy");
 }
-const allowedPortfolioFiles = ["_headers", "app.js", "consulting.css", "index.html", "styles.css", ...mediaAssets].sort();
+const line = JSON.parse(fs.readFileSync(path.join(repo, "media/line-showcase-v12/media-manifest.json"), "utf8"));
+const linePaths = ["desktop", "mobile"].flatMap(edition => ["zh", "en"].flatMap(lang => [
+  `assets/products/line-family-translator/film-${edition}-${lang}-v12.mp4`,
+  `assets/products/line-family-translator/poster-${edition}-${lang}-v12.jpg`
+]));
+if (line.version !== "v12" || JSON.stringify(line.assets.map(a => a.path).sort()) !== JSON.stringify(linePaths.slice().sort())) errors.push("Expected four LINE films and four posters");
+if (line.evidence !== "source-worker responses; synthetic conversations; recreated interface; no native LINE recording" || line.outboundNetworkRequests !== 0 ||
+    JSON.stringify(line.chapters) !== JSON.stringify([0, 7, 14, 20, 28])) errors.push("LINE film evidence or chapter provenance is invalid");
+const lineSourcePaths = ["src/Scenes.tsx", "src/Composition.tsx", "src/Root.tsx", "src/capture.json", "public/avatar-v9.png", "scripts/capture.mjs", "scripts/render.sh", "package-lock.json"];
+if (JSON.stringify(line.sources.map(s => s.path).sort()) !== JSON.stringify(lineSourcePaths.sort())) errors.push("LINE film requires the complete render source record");
+for (const source of line.sources) {
+  const raw = fs.readFileSync(path.join(repo, "media/line-showcase-v12", source.path));
+  if (crypto.createHash("sha256").update(raw).digest("hex") !== source.sha256) errors.push("LINE authored source differs from recorded render");
+}
+for (const asset of line.assets) {
+  if (!linePaths.includes(asset.path)) continue;
+  mediaAssets.push(asset.path);
+  const portrait = asset.path.includes('-mobile-');
+  if (asset.width !== (portrait ? 1080 : 1920) || asset.height !== (portrait ? 1440 : 1080)) errors.push("LINE film edition has incorrect dimensions");
+  if (asset.path.endsWith('.mp4') && (asset.audioTracks !== 0 || asset.duration !== 36 || asset.videoCodec !== 'h264' || !['yuv420p', 'yuvj420p'].includes(asset.pixelFormat))) errors.push("LINE films must be silent 36-second H264 videos");
+  if (!localReferences.includes(asset.path)) errors.push(`Unreferenced LINE film asset: ${asset.path}`);
+  for (const root of [site, portfolio]) {
+    const file = path.join(root, asset.path);
+    if (!fs.existsSync(file)) { errors.push(`Missing LINE film asset: ${asset.path}`); continue; }
+    const raw = fs.readFileSync(file);
+    if (raw.length !== asset.bytes || crypto.createHash("sha256").update(raw).digest("hex") !== asset.sha256) errors.push(`LINE film asset differs from recorded render: ${asset.path}`);
+  }
+}
+const allowedPortfolioFiles = ["favicon.svg", "favicon.ico", "favicon-32.png", "apple-touch-icon.png", "icon-512.png", "_headers", "app.js", "consulting.css", "index.html", "en/index.html", "robots.txt", "sitemap.xml", "styles.css", "resume/index.html", "en/resume/index.html", "resume.css", "resume.js", ...mediaAssets].sort();
 if (JSON.stringify(portfolioFiles) !== JSON.stringify(allowedPortfolioFiles)) {
   errors.push(`Cloudflare portfolio bundle differs from the explicit allowlist: ${portfolioFiles.join(", ")}`);
 }
@@ -274,8 +368,8 @@ if (fs.readFileSync(path.join(site, "consulting.css"), "utf8") !== fs.readFileSy
 }
 
 const app = fs.readFileSync(path.join(site, "app.js"), "utf8");
-for (const behavior of ["IntersectionObserver", "visibilitychange", "saveData", "showModal", "mediaPath", "loadPoster"]) {
-  if (!app.includes(behavior)) errors.push(`Side-project media behavior is missing: ${behavior}`);
+for (const behavior of ["IntersectionObserver", "currentLanguage", "updateLanguageLinks"]) {
+  if (!app.includes(behavior)) errors.push(`Current page behavior is missing: ${behavior}`);
 }
 
 const englishSource = path.join(repo, "media", "moment", "en-v4");
@@ -293,3 +387,7 @@ if (errors.length) {
 
 console.log(`Validated portfolio: ${ids.length} ids and all local targets resolved.`);
 NODE
+
+python3 "$repo_dir/scripts/test-portfolio-locales.py"
+
+python3 "$repo_dir/scripts/test-resume-public.py"

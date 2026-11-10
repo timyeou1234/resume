@@ -1,0 +1,188 @@
+{
+  "version": "v12",
+  "source": {
+    "repository": "Line Bot",
+    "head": "110d27a38ba6c2b31a8e0b9c54afe742bef82630",
+    "files": [
+      {
+        "path": "src/account-content.js",
+        "sha256": "a61ccf11cfb359e1e383abb24780c42af1baaf331b7534e5df2bbd02be736360"
+      },
+      {
+        "path": "src/language-pairs.js",
+        "sha256": "aadcaf5d42955122dfeb18786f58c07143839f1583707b161c655ad2c2246e56"
+      },
+      {
+        "path": "src/phrasebook-data.js",
+        "sha256": "a290ca6f6e73add0396433b29a7502ba0a38ff4e96cafeca123d29589a025ee6"
+      },
+      {
+        "path": "src/phrasebook-engine.js",
+        "sha256": "a6471295c4e6e50b57ecb9c9346cb2053dc16a264b577c61c084bd6c5469271f"
+      },
+      {
+        "path": "src/phrasebook-number-data.js",
+        "sha256": "5593d17c641c1924bc7630b42beca16f909bbe4da79a1c9a617ad543dd56c1c0"
+      },
+      {
+        "path": "src/phrasebook.js",
+        "sha256": "060710c12f78506efcd57d6f760ebfdb456d4867e0a118c6fdaec2a41aa1cae7"
+      },
+      {
+        "path": "src/service-log.js",
+        "sha256": "a929e16c7bb9e901422009bf4dc32250001ee42fa033330122cc10615394027f"
+      },
+      {
+        "path": "src/service-telemetry.js",
+        "sha256": "2884fb75e8df3996433cf4422b26d9ea4c3b01ecfddcfe2d2c9efa12142c89ef"
+      },
+      {
+        "path": "src/timeouts.js",
+        "sha256": "a562f9cfebe08336b4ed78feca9a7e50330018a819ead23db96e4056dba00880"
+      },
+      {
+        "path": "src/translation-contract.js",
+        "sha256": "79afd2302f0552f3de2b30638caf81234f4ed1f16045ae3006914f483d88b472"
+      },
+      {
+        "path": "src/translation-protocol.js",
+        "sha256": "c4124909f6fa5976da8ef8dcbe43669e13a577337c65d5b8ef32695056445aee"
+      },
+      {
+        "path": "src/translation-provider.js",
+        "sha256": "e58271d2bc377c35ea1b83a80060a31722c6144004147c95a60498e7ab497818"
+      },
+      {
+        "path": "src/worker.js",
+        "sha256": "dbae2ae1e72dbf33926e40e3f75c481b0ac0f8fcd52f02159769281760e8170e"
+      }
+    ]
+  },
+  "evidence": "Actual createWorker responses with synthetic signed webhook events, isolated SQLite and source phrasebook; no external network, no model translation, no private chat, not a native LINE recording.",
+  "initialPair": "zh-en",
+  "selectedPair": "zh-id",
+  "outboundNetworkRequests": 0,
+  "steps": [
+    {
+      "id": "menu",
+      "input": "設定語言",
+      "context": "administrator DM",
+      "output": {
+        "type": "text",
+        "text": "目前語言：中文 ↔ 英文\n請先選第一種語言：",
+        "quickReply": {
+          "items": [
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": "中文",
+                "text": "設定第一語言 中文"
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": "印尼文",
+                "text": "設定第一語言 印尼文"
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": "英文",
+                "text": "設定第一語言 英文"
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": "泰文",
+                "text": "設定第一語言 泰文"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "second",
+      "input": "設定第一語言 中文",
+      "context": "administrator DM",
+      "output": {
+        "type": "text",
+        "text": "第一種語言：中文\n請選第二種語言：",
+        "quickReply": {
+          "items": [
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": "印尼文",
+                "text": "設定語言 中文 印尼文"
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": "英文",
+                "text": "設定語言 中文 英文"
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": "泰文",
+                "text": "設定語言 中文 泰文"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "confirm",
+      "input": "設定語言 中文 印尼文",
+      "context": "administrator DM",
+      "output": {
+        "type": "text",
+        "text": "已切換：中文 ↔ 印尼文。\n之後的新訊息會雙向翻譯。",
+        "quickReply": {
+          "items": [
+            {
+              "type": "action",
+              "action": {
+                "type": "message",
+                "label": "重新選擇",
+                "text": "設定語言"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "request",
+      "input": "請把牛奶放進冰箱。\n請把桌子擦乾淨。",
+      "context": "approved family group",
+      "output": {
+        "type": "text",
+        "text": "印尼文 / Bahasa Indonesia\nTolong simpan susu di kulkas\nTolong lap meja sampai bersih"
+      }
+    },
+    {
+      "id": "reply",
+      "input": "Sudah selesai. Terima kasih.",
+      "context": "approved family group",
+      "output": {
+        "type": "text",
+        "text": "中文 / Mandarin\n已經做好了\n謝謝"
+      }
+    }
+  ]
+}

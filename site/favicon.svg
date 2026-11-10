@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Timothy Yu — TY</title>
+  <defs>
+    <linearGradient id="background" x1="6" y1="3" x2="58" y2="63" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#24213D"/>
+      <stop offset="1" stop-color="#0B1720"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="33" y1="16" x2="51" y2="49" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#91F5DF"/>
+      <stop offset="1" stop-color="#45D6F2"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="62" height="62" rx="16" fill="url(#background)" stroke="#586076" stroke-width="2"/>
+  <path d="M10 16H32V23H25V49H17V23H10V16Z" fill="#F5F7FC"/>
+  <path d="M33 16H41L45 26L49 16H57L49 34V49H41V34L33 16Z" fill="url(#accent)"/>
+</svg>
